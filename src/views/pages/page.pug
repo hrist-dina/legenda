@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+include ../../blocks/components/product/product
+
+block variables
+	- const title = "New Page";
+
+
+block content
+	.container
+		+product
+		br
+		.quantity
+		.quantity(quantity="5")

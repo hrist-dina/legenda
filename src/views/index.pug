@@ -1,0 +1,12 @@
+extends layouts/pages
+include helpers/mixins
+
+block variables
+	- const title = "Легенда"
+
+block content
+	.container
+		h1=title
+		ul
+			li
+				a(href='page.html') Тест компонентов

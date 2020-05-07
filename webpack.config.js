@@ -3,26 +3,16 @@ const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
-    plugins: [
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            jquery: 'jquery',
-            'window.jquery': 'jquery',
-            $: 'jquery',
-            'window.$': 'jquery',
-        }),
-        new VueLoaderPlugin(),
-    ],
+    plugins: [new VueLoaderPlugin()],
 
     entry: {
-        main: './src/js/index.js',
+        main: './src/js/index.js'
     },
 
     output: {
         filename: '[name].js',
         chunkFilename: '[name].js',
-        publicPath: '/',
+        publicPath: '/'
     },
 
     optimization: {
@@ -32,29 +22,29 @@ module.exports = {
                     test: /node_modules/,
                     chunks: 'initial',
                     name: 'vendor',
-                    enforce: true,
-                },
-            },
-        },
+                    enforce: true
+                }
+            }
+        }
     },
 
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ['vue-style-loader', 'css-loader'],
+                use: ['vue-style-loader', 'css-loader']
             },
             {
                 test: /\.scss$/,
-                use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+                use: ['vue-style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.sass$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
-                    'sass-loader?indentedSyntax',
-                ],
+                    'sass-loader?indentedSyntax'
+                ]
             },
             {
                 test: /\.vue$/,
@@ -68,11 +58,11 @@ module.exports = {
                         sass: [
                             'vue-style-loader',
                             'css-loader',
-                            'sass-loader?indentedSyntax',
-                        ],
-                    },
+                            'sass-loader?indentedSyntax'
+                        ]
+                    }
                     // other vue-loader options go here
-                },
+                }
             },
             {
                 test: /\.pug$/,
@@ -80,13 +70,13 @@ module.exports = {
                     // это применяется к `<template lang="pug">` в компонентах Vue
                     {
                         resourceQuery: /^\?vue/,
-                        use: ['pug-plain-loader'],
+                        use: ['pug-plain-loader']
                     },
                     // это применяется к импортам pug внутри JavaScript
                     {
-                        use: ['raw-loader', 'pug-plain-loader'],
-                    },
-                ],
+                        use: ['raw-loader', 'pug-plain-loader']
+                    }
+                ]
             },
             {
                 test: /\.js$/,
@@ -94,22 +84,22 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     query: {
-                        presets: [['@babel/preset-env', { modules: false }]],
-                    },
-                },
-            },
-        ],
+                        presets: [['@babel/preset-env', { modules: false }]]
+                    }
+                }
+            }
+        ]
     },
 
     resolve: {
         alias: {
             '%modules%': path.resolve(__dirname, 'src/blocks/modules'),
             '%components%': path.resolve(__dirname, 'src/blocks/components'),
-            '%vue%': path.resolve(__dirname, 'src/blocks/vue'),
+            '%vue%': path.resolve(__dirname, 'src/vue'),
             '%classes%': path.resolve(__dirname, 'src/js/classes'),
             '%common%': path.resolve(__dirname, 'src/js/common'),
-            vue$: 'vue/dist/vue.esm.js',
+            vue$: 'vue/dist/vue.esm.js'
         },
-        extensions: ['*', '.js', '.vue', '.json'],
-    },
+        extensions: ['*', '.js', '.vue', '.json']
+    }
 }

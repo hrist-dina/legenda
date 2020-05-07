@@ -5,4 +5,4 @@ import ComponentVue from '%vue%/ComponentVue'
 
 new ComponentVue('.js-vue-product', Product, false)
 new ComponentVue('.js-vue-cart', Cart, false)
-new ComponentVue('.quantity', QuantityCounter)
+new ComponentVue('.js-vue-quantity', QuantityCounter)

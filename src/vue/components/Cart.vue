@@ -1,9 +1,10 @@
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
     computed: {
-        ...mapState(['cart'])
+        ...mapState('cart', ['products']),
+        ...mapGetters('cart', ['cnt', 'total'])
     },
     methods: {
         ...mapActions('cart', {

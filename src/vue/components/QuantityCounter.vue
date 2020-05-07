@@ -1,41 +1,34 @@
 <template lang="pug">
 div.quantity
     button(type="button" @click.prevent="minus") -
-    input(type="text" v-model="quantityData")
+    input(type="text" :value="quantity" @input="onInput")
     button(type="button" @click.prevent="plus") +
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            quantity: 1,
+    props: {
+        quantity: {
+            type: Number,
+            default: 1
         }
     },
     methods: {
         minus() {
-            this.quantity--
+            this.updateQuantity(Math.max(this.quantity - 1, 1))
         },
         plus() {
-            this.quantity++
+            this.updateQuantity(Math.max(this.quantity + 1, 1))
         },
-    },
-    watch: {
-        quantity: function (value) {
-            console.log(value)
+        onInput({ target }) {
+            const value = target.value.trim().replace(/[^0-9]+/g, '')
+            this.updateQuantity(Math.max(+value, 1))
+            this.$forceUpdate()
+        },
+        updateQuantity(value) {
             this.$emit('change-quantity', value)
-        },
-    },
-    computed: {
-        quantityData: {
-            get: function () {
-                return Math.max(this.quantity, 1)
-            },
-            set: function (value) {
-                return Math.max(value.quantity, 1)
-            },
-        },
-    },
+        }
+    }
 }
 </script>
 

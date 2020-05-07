@@ -1,9 +1,19 @@
 
-
-mixin product
+mixin product(id)
     .product.js-vue-product
         .__inner
             .__data
                 a(href='#').__title "Легенда жизни" 19л
                 .__desc Йод, фтор и селен
-            button(type='button' data-id='1' @click='addToCartOne') Купить
+                .__price 200 Р
+            .__actions
+                quantity-counter(@change-quantity='onChangeQuantity' :quantity="cnt")
+                button(type='button' ref='product-button' data-id=id @click='addToCartOne' :disabled="inProcessing(id)") Купить
+
+
+mixin product-list
+    .product-list
+        - let i = 1
+        while (i < 12)
+            +product(i)
+            - i++

@@ -7,62 +7,63 @@ const requireDir = require('require-dir'),
         views: {
             src: ['./src/views/index.pug', './src/views/pages/*.pug'],
             dist: './dist/',
-            watch: ['./src/blocks/**/*.pug', './src/views/**/*.pug'],
+            watch: ['./src/blocks/**/*.pug', './src/views/**/*.pug']
         },
         styles: {
             src: './src/styles/main.{scss,sass}',
             dist: './dist/styles/',
             watch: [
                 './src/blocks/**/*.{scss,sass}',
-                './src/styles/**/*.{scss,sass}',
-            ],
+                './src/styles/**/*.{scss,sass}'
+            ]
         },
         scripts: {
             src: './src/js/index.js',
             dist: './dist/js/',
             watch: [
                 './src/blocks/**/*.js',
-                './src/blocks/**/*.vue',
                 './src/js/**/*.js',
-            ],
+                './src/vue/**/*.js',
+                './src/vue/**/*.vue'
+            ]
         },
         images: {
             src: [
                 './src/img/**/*.{jpg,jpeg,png,gif,tiff,svg}',
-                '!./src/img/favicon/*.{jpg,jpeg,png,gif,tiff}',
+                '!./src/img/favicon/*.{jpg,jpeg,png,gif,tiff}'
             ],
             dist: './dist/img/',
-            watch: './src/img/**/*.{jpg,jpeg,png,gif,svg}',
+            watch: './src/img/**/*.{jpg,jpeg,png,gif,svg}'
         },
         webp: {
             src: [
                 './src/img/**/*.{jpg,jpeg,png,tiff}',
-                '!./src/img/favicon/*.{jpg,jpeg,png,gif}',
+                '!./src/img/favicon/*.{jpg,jpeg,png,gif}'
             ],
             dist: './dist/img/',
             watch: [
                 './src/img/**/*.{jpg,jpeg,png,tiff}',
-                '!./src/img/favicon.{jpg,jpeg,png,gif}',
-            ],
+                '!./src/img/favicon.{jpg,jpeg,png,gif}'
+            ]
         },
         sprites: {
             src: './src/img/svg/*.svg',
             dist: './dist/img/sprites/',
-            watch: './src/img/svg/*.svg',
+            watch: './src/img/svg/*.svg'
         },
         fonts: {
             src: './src/fonts/**/*.{woff,woff2}',
             dist: './dist/fonts/',
-            watch: './src/fonts/**/*.{woff,woff2}',
+            watch: './src/fonts/**/*.{woff,woff2}'
         },
         favicons: {
             src: './src/img/favicon/*.{jpg,jpeg,png,gif,tiff}',
-            dist: './dist/img/favicons/',
+            dist: './dist/img/favicons/'
         },
         gzip: {
             src: './src/.htaccess',
-            dist: './dist/',
-        },
+            dist: './dist/'
+        }
     }
 
 requireDir('./gulp-tasks/')
@@ -80,7 +81,7 @@ export const development = gulp.series(
         'webp',
         'sprites',
         'fonts',
-        'favicons',
+        'favicons'
     ]),
     gulp.parallel('serve')
 )
@@ -96,7 +97,7 @@ export const prod = gulp.series(
         'sprites',
         'fonts',
         'favicons',
-        'gzip',
+        'gzip'
     ])
 )
 

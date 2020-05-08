@@ -14,6 +14,9 @@ export default {
         )
         state.products.splice(ind, 1)
     },
+    clean(state) {
+        state.products = []
+    },
     startProcessing(state, { id }) {
         state.processingId.push(id)
     },

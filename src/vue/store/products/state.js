@@ -9,6 +9,7 @@ function getProducts() {
         products.push({
             id,
             title: '"Легенда жизни" 19л',
+            description: 'Йод, фтор и селен',
             price: 200
         })
         id++

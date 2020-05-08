@@ -8,7 +8,7 @@ mixin product(id)
                 .__price 200 Р
             .__actions
                 quantity-counter(@change-quantity='onChangeQuantity' :quantity="cnt")
-                button(type='button' ref='product-button' data-id=id @click='addToCartOne' :disabled="inProcessing(id)") Купить
+                button(type='button' ref='product-button' data-id=id @click='addToCart' :disabled="inProcessing(id)") Купить
 
 
 mixin product-list

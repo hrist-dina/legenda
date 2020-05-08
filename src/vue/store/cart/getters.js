@@ -6,23 +6,29 @@ export default {
     },
     productsDetailed: (state, getters, rootState, rootGetters) => {
         return state.products.map(pr => {
-            const { title, price } = rootGetters['products/one'](pr.id)
+            const { title, description, price } = rootGetters['products/one'](
+                pr.id
+            )
             return {
                 ...pr,
                 title,
+                description,
                 price
             }
         })
     },
-    cnt: state => state.products.reduce((total, pr) => total + pr.cnt, 0),
+    cnt: state => state.products.length,
     total: (state, getters) =>
         getters.productsDetailed.reduce(
             (total, pr) => total + pr.price * pr.cnt,
             0
         ),
+    dataById: (state, getters) => id => {
+        const ind = getters.productsMap[id]
+        return state.products[ind]
+    },
     inCart: (state, getters) => payload =>
-        getters.productsMap.hasOwnProperty(payload.id) &&
-        getters.isEqualCnt(payload),
+        getters.productsMap.hasOwnProperty(payload.id),
     isEqualCnt: (state, getters) => payload => {
         const ind = getters.productsMap[payload.id]
         if (typeof ind === 'undefined') {
@@ -32,7 +38,8 @@ export default {
     },
     inProcessing: state => id => state.processingId.includes(id),
     canAdd: (state, getters) => payload =>
-        !getters.inCart(payload) && !getters.inProcessing(payload.id),
+        !(getters.inCart(payload) && getters.isEqualCnt(payload)) &&
+        !getters.inProcessing(payload.id),
     canRemove: (state, getters) => payload =>
         getters.inCart(payload) && !getters.inProcessing(payload.id)
 }

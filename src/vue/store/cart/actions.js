@@ -25,5 +25,11 @@ export default {
                 commit('endProcessing', payload)
             }, 200)
         }
+    },
+    clean({ commit }) {
+        // TODO:: add request to server for remove item form cart
+        setTimeout(() => {
+            commit('clean')
+        }, 200)
     }
 }

@@ -13,14 +13,14 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('cart', ['inProcessing'])
+        ...mapGetters('cart', ['inProcessing', 'dataById'])
     },
     methods: {
         ...mapActions('cart', {
-            addToCart: 'add'
+            add: 'add'
         }),
-        addToCartOne() {
-            this.addToCart({ id: this.id, cnt: this.cnt })
+        addToCart() {
+            this.add({ id: this.id, cnt: this.cnt })
         },
         onChangeQuantity(cnt) {
             this.cnt = cnt
@@ -28,6 +28,10 @@ export default {
     },
     mounted() {
         this.id = this.$refs['product-button'].dataset.id
+        const data = this.dataById(this.id)
+        if (data) {
+            this.cnt = data.cnt
+        }
     }
 }
 </script>

@@ -1,23 +1,19 @@
 <template lang="pug">
-    .cart-page-item
-        .cart-page-item__inner
-            .cart-page-item__marks
-            .cart-page-item__img
-            .cart-page-item__data
-                .cart-page-item__title {{ title }}
-                .cart-page-item__description {{ description }}
-            .cart-page-item__order
-                .cart-page-item__quantity
+    .cart-item
+        .cart-item__inner
+            .cart-item__marks
+            .cart-item__img
+            .cart-item__data
+                .cart-item__title {{ title }}
+                .cart-item__description {{ description }}
+            .cart-item__order(v-if="hasOrder")
+                .cart-item__quantity
                     quantity-counter(@change-quantity='onChangeQuantity' :quantity="quantity" )
-                .cart-page-item__price
+                .cart-item__price
                     span {{ price }} руб / шт.
-            .cart-page-item__total {{ total }} руб.
-            .cart-page-item__delete
+            .cart-item__total {{ total }} руб.
+            .cart-item__delete
                 button(type='button' @click.prevent="removeFromCart") x
-
-
-
-
 </template>
 
 <script>
@@ -46,6 +42,10 @@ export default {
         price: {
             type: Number,
             required: true
+        },
+        hasOrder: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {

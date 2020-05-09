@@ -1,0 +1,10 @@
+.checkout {
+    &__body {
+        @include row-flex;
+    }
+
+    &__stucture {
+        @include size(6);
+        @include col;
+    }
+}

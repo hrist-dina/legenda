@@ -5,6 +5,7 @@
 
         &-left, &-center, &-right {
             @include size(4);
+            @include col;
         }
 
         &-center {
@@ -22,13 +23,23 @@
         margin-top: 50px;
     }
 
-    &-item {
-        margin-bottom: 20px;
+    &__list {
+        @include row-flex;
+    }
 
-        &__inner {
+    &__footer {
+        @include row-flex;
+
+        &-right, &-left {
+            @include size(6);
+            @include col;
+        }
+
+        &-right {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-end;
         }
     }
 }

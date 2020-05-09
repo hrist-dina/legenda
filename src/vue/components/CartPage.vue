@@ -6,10 +6,10 @@
                     h2.cart-page__title Корзина
                 .cart-page__header-center
                 .cart-page__header-right
-                    a(href='javascript:void(0)' @click.prevent="cleanCart").cart-page__clean Очистить корзину
+                    a(href='javascript:void(0)' @click.prevent="cleanCart" v-if="hasProducts").cart-page__clean Очистить корзину
             .cart-page__products
-                .cart-page__list(v-if="productsDetailed.length > 0")
-                    cart-page-item(
+                .cart-page__list(v-if="hasProducts")
+                    cart-item(
                         v-for="product in productsDetailed"
                         :key="product.id"
                         :id="product.id"
@@ -22,23 +22,29 @@
                     p Корзина пуста! Перейдите в
                         |
                         |
-                        a(href="catalog.html") каталог
-
-
-
+                        a(href="/catalog.html") каталог
+            .cart-page__footer(v-if="hasProducts")
+                .cart-page__footer-left
+                .cart-page__footer-right
+                    .cart-page__total Итого {{ total }} Р
+                    .cart-page__to-order
+                        router-link(:to="{name: 'checkout'}") Перейти к оформлению
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import CartPageItem from '%vue%/components/CartPageItem'
+import CartItem from '%vue%/components/CartItem'
 
 export default {
     components: {
-        CartPageItem
+        CartItem
     },
     computed: {
         ...mapState('cart', ['products']),
-        ...mapGetters('cart', ['cnt', 'total', 'productsDetailed'])
+        ...mapGetters('cart', ['cnt', 'total', 'productsDetailed']),
+        hasProducts() {
+            return !!this.productsDetailed.length
+        }
     },
     methods: {
         ...mapActions('cart', {

@@ -16,12 +16,10 @@ const store = new Vuex.Store({
 
 store.watch(state => {
     const cartProducts = state.cart.products
-    console.log(cartProducts)
     localStorage.setItem(
         'cartProducts',
         !!cartProducts.length ? JSON.stringify(cartProducts) : '[]'
     )
-    console.log(localStorage)
 })
 
 export default store

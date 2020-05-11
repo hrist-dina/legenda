@@ -1,7 +1,13 @@
 import router from '%vue%/router/base'
 import CartPage from '%vue%/components/CartPage'
-import Checkout from '%vue%/components/Checkout'
-import E404 from '%vue%/components/E404'
+import AppCheckout from '%vue%/views/checkout/AppCheckout'
+import CheckoutAuth from '%vue%/views/checkout/CheckoutAuth'
+import CheckoutWelcome from '%vue%/views/checkout/CheckoutWelcome'
+import CheckoutPersonalData from '%vue%/views/checkout/CheckoutPersonalData'
+import {
+    CHECKOUT_AUTH,
+    CHECKOUT_PERSONAL_DATA
+} from '%vue%/store/checkout/state'
 
 const routes = [
     {
@@ -15,14 +21,27 @@ const routes = [
     {
         name: 'checkout',
         path: '/#/checkout',
-        component: Checkout,
+        component: AppCheckout,
         meta: {
             title: 'Оформление заказа'
-        }
-    },
-    {
-        path: '*',
-        component: E404
+        },
+        children: [
+            {
+                name: 'welcome',
+                path: '',
+                component: CheckoutWelcome
+            },
+            {
+                name: CHECKOUT_AUTH,
+                path: CHECKOUT_AUTH,
+                component: CheckoutAuth
+            },
+            {
+                name: CHECKOUT_PERSONAL_DATA,
+                path: CHECKOUT_PERSONAL_DATA,
+                component: CheckoutPersonalData
+            }
+        ]
     }
 ]
 

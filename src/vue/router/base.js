@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import callbacks from '%vue%/router/callbacks'
+import E404 from '%vue%/components/E404'
 
 const redirect = redirectName => ({
     path: '/',
@@ -19,6 +20,10 @@ const router = (base, routesData, redirectName) => {
     if (redirectName) {
         routes = [redirect(redirectName), ...routesData]
     }
+    routes.push({
+        path: '*',
+        component: E404
+    })
     const router = new VueRouter({
         mode: 'history',
         base: base,

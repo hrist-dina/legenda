@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 import cart from './cart'
 import products from './products'
+import checkout from './checkout'
 
 const store = new Vuex.Store({
     modules: {
         cart,
-        products
+        products,
+        checkout
     },
     strict: process.env.NODE_ENV !== 'production'
 })

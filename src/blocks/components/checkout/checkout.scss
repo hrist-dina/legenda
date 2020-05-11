@@ -1,10 +1,14 @@
 .checkout {
     &__body {
         @include row-flex;
+
+        &-half {
+            @include size(6);
+            @include col;
+        }
     }
 
-    &__stucture {
-        @include size(6);
-        @include col;
+    &__welcome {
+        text-align: center;
     }
 }

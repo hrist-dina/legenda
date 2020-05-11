@@ -28,7 +28,7 @@
                 .cart-page__footer-right
                     .cart-page__total Итого {{ total }} Р
                     .cart-page__to-order
-                        router-link(:to="{name: 'checkout'}") Перейти к оформлению
+                        router-link(:to="{name: 'welcome'}") Перейти к оформлению
 </template>
 
 <script>

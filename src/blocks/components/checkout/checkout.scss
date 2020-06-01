@@ -11,4 +11,60 @@
     &__welcome {
         text-align: center;
     }
+
+    &__title {
+        display: none;
+    }
+
+    &__desc {
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    &__nav-item {
+        list-style: none;
+    }
+
+    &__nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: #b3b0b0;
+        cursor: not-allowed;
+        pointer-events: none;
+
+        &:before {
+            @include wh(21px);
+            content: "";
+            position: relative;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            background: #b3b0b0;
+        }
+    }
+
+    &__nav-item--active &__nav-link {
+        color: #000;
+        pointer-events: auto;
+        cursor: pointer;
+
+        &:before {
+            background: #000;
+        }
+    }
 }

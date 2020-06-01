@@ -1,11 +1,21 @@
 <template lang="pug">
     .checkout__auth
         .checkout__title {{ title }}
-        .form
-            .field
-                input-text(:required="true" name="login" placeholder="Логин" )
-            .field
-                input-text(:required="true" name="password" placeholder="Пароль" type="password")
+            include ../../../blocks/modules/ui-kit/ui-kit
+        form.form(@submit.prevent="onSubmit")
+            .field(v-for="item in form")
+                input-text(
+                    :key="item.name"
+                    :required="item.required"
+                    :name="item.name"
+                    :value="item.value"
+                    @input="onInput($event, item.name)"
+                    @validate="onValidate($event, item.name)"
+                    :placeholder="item.placeholder"
+                    :type="item.type"
+                )
+            .form__button
+                +button('Войти')(:disabled="!isValidForm")
 </template>
 
 <script>
@@ -18,7 +28,25 @@ export default {
     },
     data() {
         return {
-            title: ''
+            title: '',
+            form: [
+                {
+                    placeholder: 'Логин',
+                    name: 'login',
+                    value: '',
+                    required: true,
+                    isValid: false,
+                    type: 'text'
+                },
+                {
+                    placeholder: 'Пароль',
+                    name: 'password',
+                    value: '',
+                    required: true,
+                    isValid: false,
+                    type: 'password'
+                }
+            ]
         }
     },
     props: {
@@ -27,10 +55,25 @@ export default {
         }
     },
     computed: {
-        ...mapState('checkout', ['hasLogin', 'activeStep'])
+        ...mapState('checkout', ['hasLogin', 'activeStep']),
+        isValidForm() {
+            return !this.form.filter(el => !el.isValid).length
+        }
     },
     methods: {
-        ...mapActions('checkout', ['getDataByName'])
+        ...mapActions('checkout', ['getDataByName']),
+        onSubmit(e) {
+            // TODO:: send to server
+        },
+        getIndexByName(name) {
+            return this.form.findIndex(el => el.name === name)
+        },
+        onInput(data, name) {
+            this.form[this.getIndexByName(name)].value = data.value
+        },
+        onValidate(data, name) {
+            this.form[this.getIndexByName(name)].isValid = data.isValid
+        }
     },
     created() {
         if (!this.title) {

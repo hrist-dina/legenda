@@ -1,6 +1,12 @@
 <template lang="pug">
     .checkout__personal-data
         .checkout__title {{ title }}
+        .checkout__desc Спасибо, что выбрали нас! При первом заказе Вам нужно
+            |
+            |
+            b один раз
+            |
+            |ввести необходимую информацию:
         .form
             .field
                 input-text(:required="true" name="fio" placeholder="Ф. И. О.")

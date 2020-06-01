@@ -3,6 +3,7 @@
         .checkout__step
             .checkout__step-nav(v-if="!isWelcome")
                 button(type='button' @click.prevent="onBack") <-
+                checkout-navigation(v-if="isWithoutLogin")
             .checkout__step-body
                 router-view
 </template>
@@ -10,12 +11,21 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import { CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
+import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
 
 export default {
+    components: {
+        CheckoutNavigation
+    },
     computed: {
-        ...mapState('checkout', ['activeStep']),
+        ...mapState('checkout', ['activeStep', 'steps']),
         isWelcome() {
             return this.activeStep === CHECKOUT_WELCOME
+        },
+        isWithoutLogin() {
+            return !!this.steps.withoutLogin.filter(
+                el => el.name === this.activeStep
+            ).length
         }
     },
     methods: {

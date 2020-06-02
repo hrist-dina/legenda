@@ -6,16 +6,19 @@
                 checkout-navigation(v-if="isWithoutLogin")
             .checkout__step-body
                 router-view
+                checkout-total(v-if="isWithoutLogin")
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import { CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
+import CheckoutTotal from '%vue%/views/checkout/CheckoutTotal'
 
 export default {
     components: {
-        CheckoutNavigation
+        CheckoutNavigation,
+        CheckoutTotal
     },
     computed: {
         ...mapState('checkout', ['activeStep', 'steps']),

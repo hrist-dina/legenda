@@ -1,7 +1,6 @@
 <template lang="pug">
     .checkout__auth
-        .checkout__title {{ title }}
-            include ../../../blocks/modules/ui-kit/ui-kit
+        .checkout__title.checkout__title--auth {{ title }}
         form.form(@submit.prevent="onSubmit")
             .field(v-for="item in form")
                 input-text(
@@ -15,6 +14,7 @@
                     :type="item.type"
                 )
             .form__button
+                include ../../../blocks/modules/ui-kit/ui-kit
                 +button('Войти')(:disabled="!isValidForm")
 </template>
 

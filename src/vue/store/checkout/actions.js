@@ -54,9 +54,30 @@ export default {
         })
 
         if (nameToBack !== activeStep) {
-            console.log(nameToBack)
             commit('setActiveStep', { activeStep: nameToBack })
         }
         return nameToBack
+    },
+    next({ state, commit }) {
+        const activeStep = state.activeStep
+        const steps = Object.values(state.steps)
+        let nameToNext = ''
+        steps.forEach((item, i) => {
+            let nextElem = steps[i + 1]
+
+            if (Array.isArray(item)) {
+                let index = item.findIndex(el => el.name === activeStep)
+                if (index === 0 || index > 0) {
+                    nameToNext = item[index + 1].name
+                }
+            } else {
+                nameToNext = nextElem ? nextElem.name : activeStep
+            }
+        })
+
+        if (nameToNext !== activeStep) {
+            commit('setActiveStep', { activeStep: nameToNext })
+        }
+        return nameToNext
     }
 }

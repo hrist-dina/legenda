@@ -23,6 +23,7 @@ export default {
             (total, pr) => total + pr.price * pr.cnt,
             0
         ),
+    bonus: (state, getters) => getters.total * (8 / 100),
     dataById: (state, getters) => id => {
         const ind = getters.productsMap[id]
         return state.products[ind]

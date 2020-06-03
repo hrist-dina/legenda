@@ -20,11 +20,11 @@
                 )
             .form__button
                 include ../../../blocks/modules/ui-kit/ui-kit
-                +button('Далее')(:disabled="!isValidForm" @click.prevent="onNext")
+                +button('Далее')(:disabled="!isValidForm")
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
 
 export default {
@@ -75,8 +75,21 @@ export default {
             getDataByName: 'getDataByName',
             onNext: 'next'
         }),
-        onSubmit(e) {
-            // TODO:: send to server
+        ...mapActions('user', {
+            register: 'register'
+        }),
+        onSubmit() {
+            if (this.isValidForm) {
+                this.register({
+                    fio: this.form[this.getIndexByName('fio')].value,
+                    email: this.form[this.getIndexByName('email')].value,
+                    phone: this.form[this.getIndexByName('phone')].value
+                }).then(response => {
+                    if (response) {
+                        this.onNext()
+                    }
+                })
+            }
         },
         getIndexByName(name) {
             return this.form.findIndex(el => el.name === name)

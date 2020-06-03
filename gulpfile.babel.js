@@ -27,6 +27,11 @@ const requireDir = require('require-dir'),
                 './src/vue/**/*.vue'
             ]
         },
+        mock: {
+            src: './src/mock/**/*.json',
+            dist: './dist/mock/',
+            watch: ['./src/mock/**/*.json']
+        },
         images: {
             src: [
                 './src/img/**/*.{jpg,jpeg,png,gif,tiff,svg}',
@@ -77,6 +82,7 @@ export const development = gulp.series(
         'views',
         'styles',
         'scripts',
+        'mock',
         'images',
         'webp',
         'sprites',

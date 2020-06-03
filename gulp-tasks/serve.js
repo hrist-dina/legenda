@@ -14,6 +14,7 @@ gulp.task('serve', () => {
     gulp.watch(paths.views.watch, gulp.parallel('views'))
     gulp.watch(paths.styles.watch, gulp.parallel('styles'))
     gulp.watch(paths.scripts.watch, gulp.parallel('scripts'))
+    gulp.watch(paths.mock.watch, gulp.parallel('mock'))
     gulp.watch(paths.sprites.watch, gulp.parallel('sprites'))
     gulp.watch(paths.images.watch, gulp.parallel('images'))
     gulp.watch(paths.webp.watch, gulp.parallel('webp'))

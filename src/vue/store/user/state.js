@@ -16,21 +16,7 @@ export default {
                 name: 'На работу'
             }
         ],
-        items: [
-            {
-                type: {
-                    code: '',
-                    name: ''
-                },
-                city: {
-                    code: '',
-                    value: ''
-                },
-                address: '',
-                date: '',
-                time: ''
-            }
-        ]
+        items: []
     },
     payment: [
         {

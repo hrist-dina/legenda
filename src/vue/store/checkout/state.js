@@ -2,6 +2,7 @@ export const CHECKOUT_WELCOME = 'welcome'
 export const CHECKOUT_AUTH = 'auth'
 export const CHECKOUT_PERSONAL_DATA = 'personal-data'
 export const CHECKOUT_DELIVERY = 'delivery'
+export const CHECKOUT_PAYMENT = 'payment'
 
 export default {
     activeStep: 'welcome',
@@ -28,7 +29,7 @@ export default {
             },
             { name: CHECKOUT_DELIVERY, title: 'Доставка' },
             {
-                name: 'payment',
+                name: CHECKOUT_PAYMENT,
                 title: 'Оплата'
             }
         ]

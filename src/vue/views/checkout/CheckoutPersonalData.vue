@@ -65,6 +65,7 @@ export default {
         }
     },
     computed: {
+        ...mapGetters('user', ['getPerson']),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         isValidForm() {
             return !this.form.filter(el => !el.isValid).length
@@ -106,6 +107,12 @@ export default {
             this.getDataByName(this.activeStep).then(data => {
                 this.title = !!this.customTitle ? this.customTitle : data
             })
+        }
+        const person = this.getPerson
+        for (let item in person) {
+            if (person.hasOwnProperty(item)) {
+                this.form[this.getIndexByName(item)].value = person[item]
+            }
         }
     }
 }

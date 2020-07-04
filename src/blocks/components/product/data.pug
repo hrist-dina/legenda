@@ -1,6 +1,99 @@
 -
-    const products = [
-        {
+    const getProduct = (id, title, desc, price, img, composition,labels, isInCart, isInFavorite) => ({
+        id,
+        title,
+        desc,
+        price,
+        img,
+        labels,
+        composition,
+        isInCart,
+        isInFavorite
+    })
+    const getProductImg = (num) => `img/product/item-${num}.png`
+    const getProductComposition = (name, type) => ({ name, type })
+    const getProductBanner = (num, title) => ({ banner: `img/product/banner-${num}.jpg`, title })
 
-        }
+    const getProductIodine = (id) => getProduct(
+        id,
+        'Легенда жизни 19л',
+        'С добавлением йода',
+        190,
+        getProductImg(1),
+        ['Йод']
+    )
+
+    const getProductAmber = (id) => getProduct(
+        id,
+        'Легенда жизни 19л',
+        'С добавлением янтарной кислоты и селена',
+        250,
+        getProductImg(3),
+        ['Янтарь', 'Селен'],
+        [getProductComposition('Хит', 'hit')]
+    )
+
+    const getProductSimple = (id, isHit) => getProduct(
+        id,
+        'Легенда жизни 19л',
+        'Природная вода без добавок',
+        180,
+        getProductImg(6),
+        false,
+        isHit ? [getProductComposition('Хит', 'hit')] : false
+    )
+
+    const products = [
+        getProductIodine(1),
+        getProduct(
+            2,
+            'Легенда жизни 19л',
+            'Йод, фтор и селен',
+            210,
+            getProductImg(2),
+            ['Йод', 'Фтор', 'Селен'],
+            [getProductComposition('Новинка', 'new')],
+            true
+        ),
+        getProduct(
+            3,
+            'Легенда жизни 19л',
+            'С добавлением янтарной кислоты и селена',
+            250,
+            getProductImg(3),
+            ['Янтарь', 'Селен'],
+            [getProductComposition('Хит', 'hit')]
+        ),
+        getProductBanner(1, 'Хлеб с хрустящей корочкой из пекарни'),
+        getProduct(
+            4,
+            '«Легенда жизни» Бизнес»',
+            'С добавлением йода',
+            210,
+            getProductImg(4)
+        ),
+        getProduct(
+            5,
+            '«Легенда жизни» (уп. 6 шт по 1,5 л) ',
+            '6 бутылок',
+            210,
+            getProductImg(5)
+        ),
+        getProductAmber(6),
+        getProductSimple(7,true),
+        getProductIodine(8),
+        getProductBanner(2, 'Товары для поддержания чистоты в доме'),
+        getProductAmber(9),
+        getProductSimple(10),
+        getProductIodine(11),
+        getProduct(
+            12,
+            'Легенда жизни 19л',
+            'Йод, фтор и селен',
+            210,
+            getProductImg(2),
+            ['Йод', 'Фтор', 'Селен']
+        ),
+        getProductAmber(13),
+        getProductSimple(14)
     ]

@@ -1,19 +1,26 @@
 <template lang="pug">
+    include ../../views/helpers/mixins
+    include ../../views/helpers/functions
     .cart-item
         .cart-item__inner
-            .cart-item__marks
-            .cart-item__img
+            a(:href="link").cart-item__img-link
+                img(:src="img" :alt="title" :title="title").cart-item__img
             .cart-item__data
-                .cart-item__title {{ title }}
-                .cart-item__description {{ description }}
+                a(:href="link").cart-item__title {{ title }}
+                .cart-item__desc {{ desc }}
+            .cart-item__price
+                span.cart-item__price-value #{ruble('{{ price }}')}
+                span.cart-item__price-type / шт.
             .cart-item__order(v-if="hasOrder")
                 .cart-item__quantity
-                    quantity-counter(@change-quantity='onChangeQuantity' :quantity="quantity" )
-                .cart-item__price
-                    span {{ price }} руб / шт.
-            .cart-item__total {{ total }} руб.
+                    quantity-counter(
+                        @change-quantity='onChangeQuantity'
+                        :quantity="quantity"
+                    )
+
+            .cart-item__total #{ruble('{{ total }}')}
             .cart-item__delete
-                button(type='button' @click.prevent="removeFromCart") x
+                +icon('delete')(@click.prevent="removeFromCart" )
 </template>
 
 <script>
@@ -24,6 +31,10 @@ export default {
     components: { QuantityCounter },
     props: {
         id: {
+            type: [String, Number],
+            required: true
+        },
+        link: {
             type: String,
             required: true
         },
@@ -31,7 +42,11 @@ export default {
             type: String,
             required: true
         },
-        description: {
+        desc: {
+            type: String,
+            required: true
+        },
+        img: {
             type: String,
             required: true
         },

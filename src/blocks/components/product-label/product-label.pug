@@ -1,0 +1,6 @@
+
+//- Лэйблы у карточек товара: хит, новинка и т.д.
+mixin product-label(data)
+    .product-label&attributes(attributes)
+        for item in data
+            .product-label__item(class!=item.type || 'hit')=item.name

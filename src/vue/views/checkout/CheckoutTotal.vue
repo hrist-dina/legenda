@@ -13,7 +13,7 @@
                     |
                     a(href='#') условия пользовательского соглашения
         .checkout__total-button
-            include ../../../blocks/modules/ui-kit/ui-kit
+            include ../../../blocks/components/ui-kit/ui-kit
             +button('Оформить заказ')(:disabled="!isEndStep")
 
 

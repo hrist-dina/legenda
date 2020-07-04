@@ -1,0 +1,22 @@
+.product-label {
+    text-align: right;
+    &__item {
+        display: inline-block;
+        width: auto;
+        padding: 4px 12px;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+        background: #ef5026;
+        text-align: center;
+
+        &.new {
+            background: #2d9d46;
+        }
+
+        &.hit {
+            background: #ef5026;
+        }
+    }
+}

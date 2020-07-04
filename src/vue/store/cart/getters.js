@@ -5,17 +5,15 @@ export default {
         return map
     },
     productsDetailed: (state, getters, rootState, rootGetters) => {
-        return state.products.map(pr => {
-            const { title, description, price } = rootGetters['products/one'](
-                pr.id
-            )
-            return {
-                ...pr,
-                title,
-                description,
-                price
-            }
-        })
+        return state.products.reduce((tot, pr) => {
+            const product = rootGetters['products/one'](pr.id)
+            if (!product) return tot
+            tot.push({
+                ...product,
+                ...pr
+            })
+            return tot
+        }, [])
     },
     cnt: state => state.products.length,
     total: (state, getters) =>

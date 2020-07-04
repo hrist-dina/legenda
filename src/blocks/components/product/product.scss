@@ -1,39 +1,101 @@
 .product {
-    @include size(4);
+    @include col();
+    @include size(3);
+    @include transitionEaseOutQuint(box-shadow);
+    box-sizing: border-box;
+    height: 426px;
+    border: 1px solid rgba(34, 155, 215, 0.15);
     background: #fff;
-    border-radius: 16px;
-    margin-bottom: 50px;
+    border-radius: 12px;
+    margin-bottom: 24px;
 
     &__inner {
-        padding: 20px 27px 45px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        height: 100%;
+        padding: 24px;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        top: 17px;
+        right: 20px;
+        left: 24px;
+        height: 0;
+    }
+
+    &__label {
+        margin-bottom: 8px;
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    &__img-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 215px;
+    }
+
+    &__data {
+        margin-top: 24px;
     }
 
     &__title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 25px;
+        color: #343e44;
         text-decoration: none;
-        font-weight: $bold;
-        font-size: 25px;
-        line-height: 27px;
-        letter-spacing: -0.02em;
-        color: #000;
+        max-height: 42px;
+        overflow: hidden;
     }
 
-    &__desk {
-        font-weight: 500;
+    &__desc {
+        display: flex;
+        align-items: flex-end;
         font-size: 16px;
-        line-height: 19px;
-        letter-spacing: -0.02em;
+        line-height: 21px;
         color: #acacac;
+        margin-top: 8px;
+        max-height: 42px;
+        overflow: hidden;
     }
 
     &__price {
-        font-weight: $bold;
-        font-size: 25px;
-        line-height: 29px;
-        text-align: center;
-        letter-spacing: -0.02em;
-        color: #000;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 25px;
+        color: #1b262c;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+    }
+
+    &--banner {
+        border: none;
+    }
+
+    &:not(&--banner) {
+        &:hover {
+            box-shadow: 0 2px 40px rgba(34, 155, 215, 0.15);
+        }
+    }
+
+    &--banner &__img-link {
+        height: 100%;
     }
 
     &-list {

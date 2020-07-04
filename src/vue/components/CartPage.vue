@@ -13,8 +13,10 @@
                         v-for="product in productsDetailed"
                         :key="product.id"
                         :id="product.id"
+                        :link="product.link"
                         :title="product.title"
-                        :description="product.description"
+                        :img="product.img"
+                        :desc="product.desc"
                         :price="product.price"
                         :quantity="product.cnt"
                     )

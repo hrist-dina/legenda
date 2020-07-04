@@ -1,0 +1,145 @@
+{
+    "status": true,
+    "data": [
+        {
+            "id": 1,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением йода",
+            "price": 190,
+            "img": "/img/product/item-1.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 2,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Йод, фтор и селен",
+            "price": 210,
+            "img": "/img/product/item-2.png",
+            "labels": [{ "name": "Новинка", "type": "new" }],
+            "composition": ["Йод", "Фтор", "Селен"]
+        },
+        {
+            "id": 3,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 250,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 4,
+            "link": "#",
+            "title": "«Легенда жизни» Бизнес»",
+            "desc": "С добавлением йода",
+            "price": 210,
+            "img": "/img/product/item-4.png",
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 5,
+            "link": "#",
+            "title": "«Легенда жизни» (уп. 6 шт по 1,5 л) ",
+            "desc": "6 бутылок",
+            "price": 210,
+            "img": "/img/product/item-5.png",
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 6,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 250,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 7,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Природная вода без добавок",
+            "price": 180,
+            "img": "/img/product/item-6.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": false
+        },
+        {
+            "id": 8,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением йода",
+            "price": 190,
+            "img": "/img/product/item-1.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 9,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 250,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 10,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Природная вода без добавок",
+            "price": 180,
+            "img": "/img/product/item-6.png",
+            "labels": false,
+            "composition": false
+        },
+        {
+            "id": 11,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением йода",
+            "price": 190,
+            "img": "/img/product/item-1.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 12,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Йод, фтор и селен",
+            "price": 210,
+            "img": "/img/product/item-2.png",
+            "labels": null,
+            "composition": ["Йод", "Фтор", "Селен"]
+        },
+        {
+            "id": 13,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 250,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 14,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Природная вода без добавок",
+            "price": 180,
+            "img": "/img/product/item-6.png",
+            "labels": false,
+            "composition": false
+        }
+    ]
+}

@@ -14,7 +14,7 @@
                     :type="item.type"
                 )
             .form__button
-                include ../../../blocks/modules/ui-kit/ui-kit
+                include ../../../blocks/components/ui-kit/ui-kit
                 +button('Войти')(:disabled="!isValidForm")
 </template>
 

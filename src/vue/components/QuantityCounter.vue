@@ -1,8 +1,13 @@
 <template lang="pug">
+include ../../views/helpers/mixins
 div.quantity
-    button(type="button" @click.prevent="minus") -
-    input(type="text" :value="quantity" @input="onInput")
-    button(type="button" @click.prevent="plus") +
+    button(type='button' @click.prevent="minus").button.quantity__button
+        +icon('minus')
+    span.quantity__value
+        input(type="text" :value="quantity" @input="onInput").quantity__input
+        span.quantity__type(v-if="type") {{ type }}
+    button(type='button' @click.prevent="plus").button.quantity__button
+        +icon('plus')
 </template>
 
 <script>
@@ -11,7 +16,11 @@ export default {
         quantity: {
             type: Number,
             default: 1
-        }
+        },
+        type: {
+            type: [String, undefined],
+            default: 'шт.'
+        },
     },
     methods: {
         minus() {
@@ -32,26 +41,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.quantity {
-    display: flex;
-    align-items: center;
-    background: #e9e9e9;
-    border-radius: 4px;
-    padding: 4px 5px;
-}
-
-input {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    color: #000000;
-    width: 30px;
-    height: 30px;
-}
-button {
-    font-size: 18px;
-    line-height: 21px;
-    color: #aeaeae;
-}
-</style>
+<!-- style in bem components quantity -->

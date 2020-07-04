@@ -9,11 +9,21 @@ export default {
     data() {
         return {
             id: '',
-            cnt: 1
+            cnt: 1,
+            buttonEl: null
         }
     },
     computed: {
-        ...mapGetters('cart', ['inProcessing', 'dataById'])
+        ...mapGetters('cart', ['inProcessing', 'inCart', 'dataById']),
+        isDisabled() {
+            return this.inProcessing(this.id)
+        },
+        hasInCart() {
+            return this.inCart({ id: this.id })
+        },
+        classInCart() {
+            return this.hasInCart ? 'in-cart' : ''
+        }
     },
     methods: {
         ...mapActions('cart', {
@@ -24,13 +34,27 @@ export default {
         },
         onChangeQuantity(cnt) {
             this.cnt = cnt
+        },
+        changeButtonText() {
+            const inCartText = this.buttonEl.dataset.inCartText
+            if (this.hasInCart) {
+                const textEl = this.$refs['product-button-text']
+                textEl.textContent = inCartText || 'В корзине'
+            }
         }
     },
     mounted() {
-        this.id = this.$refs['product-button'].dataset.id
+        this.buttonEl = this.$refs['product-button']
+        this.id = this.buttonEl.dataset.id
         const data = this.dataById(this.id)
         if (data) {
             this.cnt = data.cnt
+        }
+        this.changeButtonText()
+    },
+    watch: {
+        hasInCart: function () {
+            this.changeButtonText()
         }
     }
 }

@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+block variables
+	- const title = "UI-Kit";
+
+
+block content
+	+container
+		p Сетка
+		.test-row
+			- let i = 0
+			while i < 12
+				.test-col
+				- i++

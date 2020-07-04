@@ -17,7 +17,7 @@ export default class ComponentVue {
         document.addEventListener('DOMContentLoaded', () => {
             let options = this.options
             if (this.needRender) {
-                options = { ...options, render: (h) => h(this.component) }
+                options = { ...options, render: h => h(this.component) }
             }
             {
                 options = {
@@ -25,7 +25,7 @@ export default class ComponentVue {
                     ...this.component
                 }
             }
-            document.querySelectorAll(this.selector).forEach((node) => {
+            document.querySelectorAll(this.selector).forEach(node => {
                 new Vue({
                     store,
                     ...options

@@ -8,13 +8,13 @@ gulp.task('smart-grid', cb => {
         outputStyle: 'scss',
         filename: '_smart-grid',
         columns: 12, // number of grid columns
-        offset: '1.875rem', // gutter width - 30px
+        offset: '1.5rem', // gutter width - 24px
         mobileFirst: true,
         mixinNames: {
             container: 'container'
         },
         container: {
-            fields: '0.9375rem' // side fields - 15px
+            fields: '0' // side fields - 15px
         },
         breakPoints: {
             xs: {

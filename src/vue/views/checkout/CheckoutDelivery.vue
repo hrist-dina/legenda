@@ -24,7 +24,7 @@
                 .delivery-datatime
 
                 .form__button
-                    include ../../../blocks/modules/ui-kit/ui-kit
+                    include ../../../blocks/components/ui-kit/ui-kit
                     +button('Далее')(:disabled="!isValidForm")
 
 

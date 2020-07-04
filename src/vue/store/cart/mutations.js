@@ -6,7 +6,9 @@ export default {
         const ind = state.products.findIndex(
             item => item.id.toString() === id.toString()
         )
-        state.products[ind].cnt = cnt
+        const item = state.products[ind]
+        item.cnt = cnt
+        state.products.splice(ind, 1, item)
     },
     remove(state, { id }) {
         const ind = state.products.findIndex(

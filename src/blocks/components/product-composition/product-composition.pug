@@ -1,0 +1,6 @@
+
+//- Состав продукта в карточке товара, приходит массив строк
+mixin product-composition(data)
+    .product-composition&attributes(attributes)
+        for item in data
+            .__item=item

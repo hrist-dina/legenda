@@ -1,0 +1,74 @@
+@import "icons-data";
+@import "mixins";
+
+.icon {
+    @include outline-none;
+    @include transitionEaseOutQuint(background);
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icon-burger {
+    @include icon-mobile-menu(2px, 15px);
+    cursor: pointer;
+    background-color: #fff;
+    margin: auto 3px;
+    border-radius: 2px;
+
+    &:before {
+        @include icon-mobile-menu-before(2px, 15px, -6px);
+        border-radius: 2px;
+    }
+
+    &:after {
+        @include icon-mobile-menu-after(2px, 15px, 6px);
+        border-radius: 2px;
+    }
+
+    &.active {
+        transition: 0.5s;
+        background: transparent;
+
+        &:before {
+            width: 28px;
+            transform: rotateZ(45deg) translate(6px, 7px);
+        }
+
+        &:after {
+            width: 28px;
+            transform: rotateZ(-45deg) translate(6px, -7px);
+        }
+    }
+
+    &.active-fixed {
+        position: fixed;
+        z-index: 101;
+        top: 25px;
+        right: 20px;
+    }
+}
+
+.icon-favorite {
+    @include wh(26px, 23px);
+    @include icon-bgc(icon-favorite());
+}
+
+.icon-product-cart {
+    @include wh(20px);
+    @include icon-bgc(icon-product-cart());
+}
+
+.icon-delete {
+    @include wh(24px);
+    @include icon-bgc(icon-delete());
+}
+
+.icon-plus {
+    @include wh(20px);
+    @include icon-bgc(icon-plus());
+}
+
+.icon-minus {
+    @include wh(20px);
+    @include icon-bgc(icon-minus());
+}

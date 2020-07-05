@@ -1,0 +1,15 @@
+extends ../layouts/default
+
+include ../../blocks/modules/inner-page/inner-page
+include ../../blocks/components/product/product
+
+block variables
+	- const title = "Полезная вода Алтая";
+	- const h1 = title
+	include ../../views/data/catalog
+
+
+block content
+	+inner-page
+	+container
+		+product-list

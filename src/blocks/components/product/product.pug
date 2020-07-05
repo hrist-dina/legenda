@@ -2,14 +2,15 @@ include ../ui-kit/ui-kit
 include ../product-label/product-label
 include ../product-composition/product-composition
 
-mixin product(data)
-    article.product.js-vue-product
+mixin product(data, isCategory)
+    article.product.js-vue-product(class={'product--category swiper-slide': isCategory})
         .__inner
             .__top
-                .__favorite
-                    +icon('favorite').__favorite-icon(class={'in-favorite': data.isInFavorite})
+                if !isCategory
+                    .__favorite
+                        +icon('favorite').__favorite-icon(class={'in-favorite': data.isInFavorite})
                 .__right
-                    if data.labels
+                    if data.labels && !isCategory
                         +product-label(data.labels).__label
                     if data.composition
                         +product-composition(data.composition).__composition
@@ -46,3 +47,17 @@ mixin product-list
                  +product-banner(item)
              else
                  +product(item)
+
+mixin product-list-slider(data)
+    section.product-list-slider
+        +icon('arrow-round-left').__prev.js-product-list-slider-prev
+        .__container.swiper-container.js-product-list-slider
+            .product-list.product-list--category.swiper-wrapper
+                for item in data
+                    +product(item, true)
+        +icon('arrow-round-right').product-list-slider__next.js-product-list-slider-next
+
+
+mixin product-section(title, data)
+    +section(title, 'Все товары').section--category
+        +product-list-slider(data)

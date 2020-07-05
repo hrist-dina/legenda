@@ -1,0 +1,25 @@
+.breadcrumbs {
+    list-style-type: none;
+
+    &__link {
+        text-decoration: none;
+    }
+
+    &__item, &__item &__link {
+        display: inline-block;
+        position: relative;
+        font-size: 14px;
+        line-height: 15px;
+        color: #999999;
+    }
+
+    &__item:not(:last-child):after {
+        content: "/";
+        display: inline-block;
+        padding: 0 12px;
+    }
+
+    &__item:last-child span {
+        color: #c6c6c6;
+    }
+}

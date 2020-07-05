@@ -1,5 +1,6 @@
 include ../helpers/functions
 include ../helpers/mixins
+include ../../blocks/modules/inner-page/inner-page
 include ../../blocks/modules/header/header
 include ../../blocks/modules/footer/footer
 block variables
@@ -14,10 +15,10 @@ html(lang="ru")
             .main-content
                 block header
                     +header
-                main
+                main(class={'inner-page': isInnerPage})
                     if isInnerPage
                         +inner-page
-                            block content
+                        block content
                     else
                         block content
             block footer

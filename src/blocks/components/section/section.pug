@@ -1,0 +1,13 @@
+//- Блок секций
+//- Инициализируется один раз в mixins
+include ../../../blocks/components/ui-kit/ui-kit
+
+mixin section(title, link)
+    section.section&attributes(attributes)
+        +container
+            if title
+                .section__head
+                    h2.h2.section__title=title
+                    if link
+                        +link(link, '#', 'all').section__link
+            block

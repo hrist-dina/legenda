@@ -1,0 +1,36 @@
+.section {
+    margin-bottom: 80px;
+
+    &__inner {
+        @include row-flex;
+    }
+
+    &__head {
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &--inner-page {
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    &--category {
+        margin-bottom: 96px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &-title {
+        margin-bottom: 40px;
+        margin-top: 32px;
+        vertical-align: middle;
+
+        .inner-page & {
+            margin-bottom: 20px;
+        }
+    }
+}

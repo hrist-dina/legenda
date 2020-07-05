@@ -69,7 +69,7 @@
             "price": 180,
             "img": "/img/product/item-6.png",
             "labels": [{ "name": "Хит", "type": "hit" }],
-            "composition": false
+            "composition": null
         },
         {
             "id": 8,
@@ -98,8 +98,8 @@
             "desc": "Природная вода без добавок",
             "price": 180,
             "img": "/img/product/item-6.png",
-            "labels": false,
-            "composition": false
+            "labels": null,
+            "composition": null
         },
         {
             "id": 11,
@@ -138,8 +138,98 @@
             "desc": "Природная вода без добавок",
             "price": 180,
             "img": "/img/product/item-6.png",
-            "labels": false,
-            "composition": false
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 15,
+            "title": "Легенда жизни 19л",
+            "desc": "Йод, фтор и селен",
+            "price": 250,
+            "img": "/img/product/item-7.png",
+            "labels": null,
+            "composition": ["Йод", "Фтор", "Селен"]
+        },
+        {
+            "id": 16,
+            "title": "«Легенда жизни» Спорт 0,7л",
+            "desc": "Калий, кальций и магний",
+            "price": 168,
+            "img": "/img/product/item-8.png",
+            "labels": null,
+            "composition": ["Калий", "Кальций", "Магний"]
+        },
+        {
+            "id": 17,
+            "title": "«Легенда жизни» Детская 0,33л",
+            "desc": "С добавлением йода",
+            "price": 288,
+            "img": "/img/product/item-9.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 17,
+            "title": "Мука «Алейка» пшеничная высший сорт",
+            "desc": "3кг",
+            "price": 110,
+            "img": "/img/product/item-10.png"
+        },
+        {
+            "id": 18,
+            "title": "Морс облепиховый, 0,2 л",
+            "desc": "Сибирская ягода",
+            "price": 95,
+            "img": "/img/product/item-11.png"
+        },
+        {
+            "id": 19,
+            "title": "«Легенда жизни» Детская 0,33л",
+            "desc": "С добавлением йода",
+            "price": 50,
+            "img": "/img/product/item-12.png"
+        },
+        {
+            "id": 20,
+            "title": "Средство Fairy д/мытья посуды Зеленое яблоко",
+            "desc": "450 мл",
+            "price": 85,
+            "img": "/img/product/item-13.png"
+        },
+        {
+            "id": 21,
+            "title": "Жидкое крем-мыло «Ушастый нянь» с экстрактом алоэ",
+            "desc": "300 мл",
+            "price": 95,
+            "img": "/img/product/item-14.png"
+        },
+        {
+            "id": 22,
+            "title": "Антисептик для рук, 100мл",
+            "desc": "100 мл ",
+            "price": 160,
+            "img": "/img/product/item-15.png"
+        },
+        {
+            "id": 23,
+            "title": "Кулер для воды Aqua Work 105-TDR",
+            "desc": "бело-черный",
+            "price": 7000,
+            "img": "/img/product/item-16.png"
+        },
+        {
+            "id": 24,
+            "title": "Кулер для воды Aqua Work 0.7-L",
+            "desc": "Напольный",
+            "price": 12000,
+            "img": "/img/product/item-17.png"
+        },
+        {
+            "id": 25,
+            "title": "Ecotronic A1-TE",
+            "desc": "Настольный кулер",
+            "price": 5000,
+            "img": "/img/product/item-18.png"
         }
     ]
 }

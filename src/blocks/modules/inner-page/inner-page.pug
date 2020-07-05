@@ -3,12 +3,11 @@ include ../../components/breadcrumbs/breadcrumbs
 
 //- Модуль внутренних страниц
 
-mixin inner-page
-    +section(false, ['section--inner-page'])
-        .container
-            .section__breadcrumbs
-                +breadcrumbs(breadcrumbs)
-            .section__title
-                h1.h1=h1
-            .section__content
-                block
+mixin inner-page(showTitle = true, title)
+    +section(false).section--inner-page
+        +container
+            +breadcrumbs(breadcrumbs).section__breadcrumbs
+    if showTitle
+        section.section-title
+            +container
+                h1.h1 #{title || h1}

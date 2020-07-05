@@ -1,11 +1,27 @@
 extends ../layouts/default
 
-include ../../blocks/components/product/product
-
 block variables
 	- const title = "Каталог";
-
+	- const h1 = title
+	- isInnerPage = true
+	include ../../views/data/inner
 
 block content
-	.container
-		+product-list
+	include ../../blocks/components/product/product
+	include ../../blocks/components/product/data
+	+product-section(
+		'Полезная вода Алтая',
+		productWater
+	)
+	+product-section(
+		'Продукты питания',
+		productFood
+	)
+	+product-section(
+		'Товары для дома',
+		productHome
+	)
+	+product-section(
+		'Оборудование для воды',
+		productEquipment
+	)

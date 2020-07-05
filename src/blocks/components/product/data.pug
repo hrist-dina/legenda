@@ -10,9 +10,9 @@
         isInCart,
         isInFavorite
     })
-    const getProductImg = (num) => `img/product/item-${num}.png`
+    const getProductImg = (num) => `/img/product/item-${num}.png`
     const getProductComposition = (name, type) => ({ name, type })
-    const getProductBanner = (num, title) => ({ banner: `img/product/banner-${num}.jpg`, title })
+    const getProductBanner = (num, title) => ({ banner: `/img/product/banner-${num}.jpg`, title })
 
     const getProductIodine = (id) => getProduct(
         id,
@@ -96,4 +96,103 @@
         ),
         getProductAmber(13),
         getProductSimple(14)
+    ]
+
+    const productWater = [
+        getProduct(
+            14,
+            'Легенда жизни 19л',
+            'Йод, фтор и селен',
+            250,
+            getProductImg(7),
+            ['Йод', 'Фтор', 'Селен']
+        ),
+        getProduct(
+            15,
+            '«Легенда жизни» Спорт 0,7л',
+            'Калий, кальций и магний',
+            168,
+            getProductImg(8),
+            ['Калий', 'Кальций', 'Магний']
+        ),
+        getProduct(
+            16,
+            '«Легенда жизни» Детская 0,33л',
+            'С добавлением йода',
+            288,
+            getProductImg(9),
+            ['Йод']
+        ),
+    ]
+
+    const productFood = [
+        getProduct(
+            17,
+            'Мука «Алейка» пшеничная высший сорт',
+            '3 кг',
+            110,
+            getProductImg(10)
+        ),
+        getProduct(
+            18,
+            'Морс облепиховый, 0,2 л',
+            'Сибирская ягода',
+            95,
+            getProductImg(11)
+        ),
+        getProduct(
+            19,
+            '«Легенда жизни» Детская 0,33л',
+            'С добавлением йода',
+            50,
+            getProductImg(12)
+        ),
+    ]
+
+    const productHome = [
+        getProduct(
+            20,
+            'Средство Fairy д/мытья посуды Зеленое яблоко',
+            '450 мл',
+            85,
+            getProductImg(13)
+        ),
+        getProduct(
+            21,
+            'Жидкое крем-мыло «Ушастый нянь» с экстрактом алоэ',
+            '300 мл',
+            95,
+            getProductImg(14)
+        ),
+        getProduct(
+            22,
+            'Антисептик для рук, 100мл',
+            '100 мл',
+            160,
+            getProductImg(15)
+        ),
+    ]
+
+    const productEquipment = [
+        getProduct(
+            23,
+            'Кулер для воды Aqua Work 105-TDR',
+            'бело-черный',
+            7000,
+            getProductImg(16)
+        ),
+        getProduct(
+            24,
+            'Кулер для воды Aqua Work 0.7-L',
+            'Напольный',
+            12000,
+            getProductImg(17)
+        ),
+        getProduct(
+            25,
+            'Ecotronic A1-TE',
+            'Настольный кулер',
+            5000,
+            getProductImg(18)
+        ),
     ]

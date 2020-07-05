@@ -72,3 +72,12 @@
     @include wh(20px);
     @include icon-bgc(icon-minus());
 }
+
+.icon-arrow-product-prev, .icon-arrow-product-next {
+    @include wh(16px, 74px);
+    @include icon-bgc(icon-arrow-triangle-thin());
+}
+
+.icon-arrow-product-next {
+    @include rotate();
+}

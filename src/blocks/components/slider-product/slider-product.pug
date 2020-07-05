@@ -1,0 +1,13 @@
+include slider-product-data
+
+//- Слайдер на детальной карточки товара
+
+mixin slider-product
+    .slider-product.swiper-container.js-slider-product
+        +icon('arrow-product-prev').__arrow-prev.swiper-button-prev.js-slider-product-prev
+        .__list.swiper-wrapper
+            for slide in sliderProduct
+                .__item.swiper-slide
+                    img(src=slide alt='').__img
+        +icon('arrow-product-next').__arrow-next.swiper-button-next.js-slider-product-next
+        .__pagination.swiper-pagination

@@ -17,3 +17,7 @@
 @function icon-minus($color: "343E44") {
     @return "data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.1451 9.0625C14.6172 9.0625 15 9.48223 15 10C15 10.5178 14.6172 10.9375 14.1451 10.9375H5.85492C5.38276 10.9375 5 10.5178 5 10C5 9.48223 5.38276 9.0625 5.85492 9.0625H14.1451Z' fill='%23#{$color}'/%3E%3C/svg%3E%0A";
 }
+
+@function icon-arrow-triangle-thin($color: "1B262C") {
+    @return "data:image/svg+xml,%3Csvg width='16' height='74' viewBox='0 0 16 74' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1L1 37L15 73' stroke='%23#{$color}' stroke-opacity='0.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A";
+}

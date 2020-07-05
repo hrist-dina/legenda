@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+include ../../blocks/modules/inner-page/inner-page
+include ../../blocks/components/product-detail/product-detail
+
+block variables
+	- const title = "«Легенда жизни» 19л";
+	- const h1 = title
+	include ../../views/data/catalog
+
+
+block content
+	+inner-page(false)
+	+product-detail

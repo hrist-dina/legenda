@@ -1,11 +1,11 @@
 <template lang="pug">
 include ../../views/helpers/mixins
-div.quantity
-    button(type='button' @click.prevent="minus").button.quantity__button
+div.quantity(:class="{'quantity--detail': isDetail}")
+    button(type='button' @click.prevent="minus" :disabled="isDisabled").button.quantity__button
         +icon('minus')
     span.quantity__value
         input(type="text" :value="quantity" @input="onInput").quantity__input
-        span.quantity__type(v-if="type") {{ type }}
+        span.quantity__type(v-if="type && !isDetail") {{ type }}
     button(type='button' @click.prevent="plus").button.quantity__button
         +icon('plus')
 </template>
@@ -21,6 +21,15 @@ export default {
             type: [String, undefined],
             default: 'шт.'
         },
+        isDetail: {
+            type: Boolean,
+            default: false
+        },
+    },
+    computed: {
+        isDisabled() {
+            return this.quantity === 1
+        }
     },
     methods: {
         minus() {

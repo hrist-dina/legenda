@@ -55,6 +55,9 @@ export default {
     watch: {
         hasInCart: function () {
             this.changeButtonText()
+        },
+        cnt: function () {
+            this.add({ id: this.id, cnt: this.cnt })
         }
     }
 }

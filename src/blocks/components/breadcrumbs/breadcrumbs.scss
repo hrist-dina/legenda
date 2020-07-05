@@ -7,19 +7,20 @@
 
     &__item, &__item &__link {
         display: inline-block;
+        align-items: flex-end;
         position: relative;
         font-size: 14px;
-        line-height: 15px;
-        color: #999999;
+        line-height: 18px;
+        color: #9db2c6;
     }
 
     &__item:not(:last-child):after {
         content: "/";
         display: inline-block;
-        padding: 0 12px;
+        padding: 0 16px;
     }
 
     &__item:last-child span {
-        color: #c6c6c6;
+        color: #d8dfe6;
     }
 }

@@ -1,8 +1,8 @@
 -
-    const formatThousand = (number) => number.toString().replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
+    const formatThousand = (number) => String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ');
     const phoneReplace = (value) => value.replace(/[^\d+]/g, '')
     const ruble = (value) =>  `${formatThousand(value)} ₽`;
-    const bonus = (value) => `<span>${formatThousand(value)}</span> ${declOfNum(value, ['бонус', 'бонуса', 'бонусов'])}`;
+    const bonus = (value) => `<span>${formatThousand(value)}</span> ${declOfNum(value, ['бонус', 'бонуса', 'бонусов'])}`
 
     const declOfNum = (n, titles) => {
         let cases = [2, 0, 1, 1, 1, 2]

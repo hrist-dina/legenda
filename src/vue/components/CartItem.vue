@@ -6,10 +6,10 @@
             a(:href="link").cart-item__img-link
                 img(:src="img" :alt="title" :title="title").cart-item__img
             .cart-item__data
-                a(:href="link").cart-item__title {{ title }}
+                a(:href="link" :title="title").cart-item__title {{ title }}
                 .cart-item__desc {{ desc }}
             .cart-item__price
-                span.cart-item__price-value #{ruble('{{ price }}')}
+                span.cart-item__price-value(v-ruble) {{ price }}
                 span.cart-item__price-type / шт.
             .cart-item__order(v-if="hasOrder")
                 .cart-item__quantity
@@ -17,8 +17,7 @@
                         @change-quantity='onChangeQuantity'
                         :quantity="quantity"
                     )
-
-            .cart-item__total #{ruble('{{ total }}')}
+            .cart-item__total(v-ruble) {{ total }}
             .cart-item__delete
                 +icon('delete')(@click.prevent="removeFromCart" )
 </template>

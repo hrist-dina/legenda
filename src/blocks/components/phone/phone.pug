@@ -1,0 +1,17 @@
+//- Блок ссылки телефона
+
+mixin phone(value)
+    a.phone(href=`tel:${phoneReplace(value)}`)&attributes(attributes)=value
+
+
+mixin phone-list
+    .phone-list
+        +phone('777-777')&attributes(attributes)
+        +phone('222-222')&attributes(attributes)
+
+mixin phone-footer
+    +phone-list.phone--footer
+
+mixin phone-title
+    .phone-title&attributes(attributes)
+        block

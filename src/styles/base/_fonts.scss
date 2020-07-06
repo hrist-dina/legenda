@@ -1,87 +1,87 @@
 @font-face {
-    font-family: "Manrope-Bold";
-    src: url("../fonts/Manrope-Bold-webfont.eot");
-    src: url("../fonts/Manrope-Bold-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Manrope-Bold-webfont.woff2") format("woff2"),
-        url("../fonts/Manrope-Bold-webfont.woff") format("woff"),
-        url("../fonts/Manrope-Bold-webfont.ttf") format("truetype");
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Bold.eot");
+    src: url("../fonts/Manrope-Bold.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Manrope-Bold.woff2") format("woff2"),
+        url("../fonts/Manrope-Bold.woff") format("woff"),
+        url("../fonts/Manrope-Bold.ttf") format("truetype");
     font-style: normal;
-    font-weight: 700;
+    font-weight: $bold;
 }
 
 @font-face {
-    font-family: "Manrope-ExtraBold";
-    src: url("../fonts/Manrope-ExtraBold-webfont.eot");
-    src: url("../fonts/Manrope-ExtraBold-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Manrope-ExtraBold-webfont.woff2") format("woff2"),
-        url("../fonts/Manrope-ExtraBold-webfont.woff") format("woff"),
-        url("../fonts/Manrope-ExtraBold-webfont.ttf") format("truetype");
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-ExtraBold.eot");
+    src: url("../fonts/Manrope-ExtraBold.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Manrope-ExtraBold.woff2") format("woff2"),
+        url("../fonts/Manrope-ExtraBold.woff") format("woff"),
+        url("../fonts/Manrope-ExtraBold.ttf") format("truetype");
     font-style: normal;
     font-weight: 800;
 }
 
 @font-face {
-    font-family: "Manrope-Light";
-    src: url("../fonts/Manrope-Light-webfont.eot");
-    src: url("../fonts/Manrope-Light-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Manrope-Light-webfont.woff2") format("woff2"),
-        url("../fonts/Manrope-Light-webfont.woff") format("woff"),
-        url("../fonts/Manrope-Light-webfont.ttf") format("truetype");
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Light.eot");
+    src: url("../fonts/Manrope-Light.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Manrope-Light.woff2") format("woff2"),
+        url("../fonts/Manrope-Light.woff") format("woff"),
+        url("../fonts/Manrope-Light.ttf") format("truetype");
     font-style: normal;
     font-weight: 300;
 }
 
 @font-face {
-    font-family: "Manrope-Medium";
-    src: url("../fonts/Manrope-Medium-webfont.eot");
-    src: url("../fonts/Manrope-Medium-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Manrope-Medium-webfont.woff2") format("woff2"),
-        url("../fonts/Manrope-Medium-webfont.woff") format("woff"),
-        url("../fonts/Manrope-Medium-webfont.ttf") format("truetype");
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Medium.eot");
+    src: url("../fonts/Manrope-Medium.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Manrope-Medium.woff2") format("woff2"),
+        url("../fonts/Manrope-Medium.woff") format("woff"),
+        url("../fonts/Manrope-Medium.ttf") format("truetype");
     font-style: normal;
     font-weight: 500;
 }
 
 @font-face {
-    font-family: "Manrope-Regular";
-    src: url("../fonts/Manrope-Regular-webfont.eot");
-    src: url("../fonts/Manrope-Regular-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Manrope-Regular-webfont.woff2") format("woff2"),
-        url("../fonts/Manrope-Regular-webfont.woff") format("woff"),
-        url("../fonts/Manrope-Regular-webfont.ttf") format("truetype");
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Regular.eot");
+    src: url("../fonts/Manrope-Regular.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Manrope-Regular.woff2") format("woff2"),
+        url("../fonts/Manrope-Regular.woff") format("woff"),
+        url("../fonts/Manrope-Regular.ttf") format("truetype");
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Manrope-Semibold";
-    src: url("../fonts/Manrope-Semibold-webfont.eot");
-    src: url("../fonts/Manrope-Semibold-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/Manrope-Semibold-webfont.woff2") format("woff2"),
-        url("../fonts/Manrope-Semibold-webfont.woff") format("woff"),
-        url("../fonts/Manrope-Semibold-webfont.ttf") format("truetype");
+    font-family: "Manrope";
+    src: url("../fonts/Manrope-Semibold.eot");
+    src: url("../fonts/Manrope-Semibold.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Manrope-Semibold.woff2") format("woff2"),
+        url("../fonts/Manrope-Semibold.woff") format("woff"),
+        url("../fonts/Manrope-Semibold.ttf") format("truetype");
     font-style: normal;
     font-weight: 600;
 }
 
 @font-face {
-    font-family: "tavolga-bold";
-    src: url("../fonts/tavolga-bold-webfont.eot");
-    src: url("../fonts/tavolga-bold-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/tavolga-bold-webfont.woff2") format("woff2"),
-        url("../fonts/tavolga-bold-webfont.woff") format("woff"),
-        url("../fonts/tavolga-bold-webfont.ttf") format("truetype");
+    font-family: "Tavolga";
+    src: url("../fonts/tavolga-bold.eot");
+    src: url("../fonts/tavolga-bold.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/tavolga-bold.woff2") format("woff2"),
+        url("../fonts/tavolga-bold.woff") format("woff"),
+        url("../fonts/tavolga-bold.ttf") format("truetype");
     font-style: normal;
-    font-weight: 600;
+    font-weight: $bold;
 }
 
 @font-face {
-    font-family: "tavolga-medium";
-    src: url("../fonts/tavolga-medium-webfont.eot");
-    src: url("../fonts/tavolga-medium-webfont.eot?#iefix") format("embedded-opentype"),
-        url("../fonts/tavolga-medium-webfont.woff2") format("woff2"),
-        url("../fonts/tavolga-medium-webfont.woff") format("woff"),
-        url("../fonts/tavolga-medium-webfont.ttf") format("truetype");
+    font-family: "Tavolga";
+    src: url("../fonts/tavolga-medium.eot");
+    src: url("../fonts/tavolga-medium.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/tavolga-medium.woff2") format("woff2"),
+        url("../fonts/tavolga-medium.woff") format("woff"),
+        url("../fonts/tavolga-medium.ttf") format("truetype");
     font-style: normal;
     font-weight: 500;
 }

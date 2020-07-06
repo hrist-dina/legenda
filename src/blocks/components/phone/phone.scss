@@ -1,0 +1,46 @@
+.phone {
+    font-size: 15px;
+    line-height: 22px;
+    text-decoration: none;
+    color: $base-color;
+
+    &--footer {
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 30px;
+        color: #229bd7;
+    }
+
+    &-list {
+        display: flex;
+        align-items: center;
+    }
+
+    &-list & {
+
+        &:not(:last-child) {
+            padding-right: 13px;
+            margin-right: 9px;
+            position: relative;
+            &:after {
+                @include wh(4px);
+                content: "";
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: auto;
+                margin: auto;
+                background: #229bd7;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &-title {
+        font-size: 15px;
+        line-height: 20px;
+        color: #85a0ad;
+    }
+}

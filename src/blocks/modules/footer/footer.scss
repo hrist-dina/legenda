@@ -1,0 +1,71 @@
+.footer {
+    background: #eefafd;
+    padding-top: 82px;
+    padding-bottom: 66px;
+
+    &__inner {
+
+    }
+
+    &__top {
+        @include row-flex;
+        padding-bottom: 49px;
+    }
+
+    &__bottom {
+        @include row-flex;
+        padding-top: 40px;
+    }
+
+    &__hr {
+        width: 100%;
+        border-bottom: 1px solid #d9e5e8;
+    }
+
+    &__info {
+        @include col;
+        @include size(3);
+    }
+
+    &__menu {
+        @include col;
+        @include size(6);
+        display: flex;
+        justify-content: center;
+    }
+
+    &__meta {
+        @include col;
+        @include size(3);
+    }
+
+    &__copyright, &__authors {
+        @include col;
+        @include size(6);
+    }
+
+    &__authors {
+        text-align: right;
+    }
+
+    &__address {
+        font-size: 16px;
+        line-height: 25px;
+        color: #1b262c;
+        margin-bottom: 4px;
+    }
+
+    &__work-time {
+        margin-bottom: 24px;
+        & span {
+            display: block;
+            font-size: 16px;
+            line-height: 25px;
+            color: #1b262c;
+        }
+    }
+
+    &__phone-title {
+        margin-bottom: 4px;
+    }
+}

@@ -1,3 +1,26 @@
 
+include ../../../blocks/components/phone/phone
+include ../../../blocks/components/authors/authors
+include ../../../blocks/components/footer-menu/footer-menu
+
 mixin footer
     footer.footer
+        +container
+            .__inner
+                .__top
+                    .__info
+                        .__address Барнаул, ул. Э. Алексеевой, 71
+                        .__work-time
+                            span пн-пт 7:30 – 21:00,
+                            span сб-вс 8:00 – 21:00
+                        .__phone-block
+                            +phone-title.__phone-title Заказ по телефону
+                            +phone-footer
+                    .__menu
+                        +footer-menu
+                    .__meta
+                .__hr
+                .__bottom
+                    .__copyright © 2020 «БВК». Все права защищены
+                    .__authors
+                        +authors

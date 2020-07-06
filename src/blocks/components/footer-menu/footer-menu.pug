@@ -1,0 +1,9 @@
+
+include ./footer-menu-data
+
+mixin footer-menu
+    nav.footer-menu
+        ul.__list
+            for item in footerMenu
+                li.__item
+                    a(href='#').__link=item

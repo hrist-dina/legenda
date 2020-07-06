@@ -28,7 +28,9 @@
             .cart-page__footer(v-if="hasProducts")
                 .cart-page__footer-left
                 .cart-page__footer-right
-                    .cart-page__total Итого {{ total }} Р
+                    .cart-page__total
+                        .cart-page__total-title Итого
+                        .cart-page__total-value {{ total | ruble }}
                     .cart-page__to-order
                         router-link(:to="{name: 'welcome'}") Перейти к оформлению
 </template>

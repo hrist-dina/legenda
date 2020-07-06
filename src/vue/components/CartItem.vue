@@ -9,7 +9,7 @@
                 a(:href="link" :title="title").cart-item__title {{ title }}
                 .cart-item__desc {{ desc }}
             .cart-item__price
-                span.cart-item__price-value(v-ruble) {{ price }}
+                span.cart-item__price-value {{ price | ruble }}
                 span.cart-item__price-type / шт.
             .cart-item__order(v-if="hasOrder")
                 .cart-item__quantity
@@ -17,7 +17,7 @@
                         @change-quantity='onChangeQuantity'
                         :quantity="quantity"
                     )
-            .cart-item__total(v-ruble) {{ total }}
+            .cart-item__total {{ total | ruble }}
             .cart-item__delete
                 +icon('delete')(@click.prevent="removeFromCart" )
 </template>

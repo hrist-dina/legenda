@@ -1,12 +1,12 @@
 <template lang="pug">
 include ../../views/helpers/mixins
 div.quantity(:class="{'quantity--detail': isDetail}")
-    button(type='button' @click.prevent="minus" :disabled="isDisabled").button.quantity__button
+    button(type='button' @click.prevent="minus" :disabled="isDisabled").button.quantity__button.quantity__button--minus
         +icon('minus')
     span.quantity__value
-        input(type="text" :value="quantity" @input="onInput").quantity__input
+        input(type="text" :value="quantity" @input="onInput" :style="{width: inputWidth}").quantity__input
         span.quantity__type(v-if="type && !isDetail") {{ type }}
-    button(type='button' @click.prevent="plus").button.quantity__button
+    button(type='button' @click.prevent="plus").button.quantity__button.quantity__button--plus
         +icon('plus')
 </template>
 
@@ -29,6 +29,9 @@ export default {
     computed: {
         isDisabled() {
             return this.quantity === 1
+        },
+        inputWidth() {
+            return `${this.quantity.toString().length}ch`
         }
     },
     methods: {

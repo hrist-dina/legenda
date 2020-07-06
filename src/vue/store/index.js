@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import '../directive'
+import '../filter'
 import { initStoreWatch } from './watch'
 
 Vue.use(Vuex)

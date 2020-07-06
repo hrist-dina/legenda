@@ -1,7 +1,7 @@
 .quantity {
     display: flex;
     align-items: center;
-    max-width: 140px;
+    min-width: 140px;
     height: 100%;
     max-height: 64px;
 
@@ -24,8 +24,7 @@
         display: inline-flex;
         align-items: flex-end;
         justify-content: center;
-        width: #{calc(100% - 80px)};
-        margin: auto auto auto -20px;
+        margin: auto;
     }
 
     &__button {
@@ -36,12 +35,25 @@
         border: none;
         padding: 22px 12px;
         background: transparent;
+
+        &--minus {
+            padding-right: 2px;
+        }
+
+        &--plus {
+            padding-left: 5px;
+        }
+
+        &:disabled .icon-minus {
+            cursor: not-allowed;
+        }
     }
 
     &__type {
         font-size: 16px;
         line-height: 21px;
         color: #000;
+        margin-left: 2px;
     }
 
     &--detail {

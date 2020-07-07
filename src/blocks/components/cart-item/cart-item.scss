@@ -82,4 +82,26 @@
         text-align: right;
         margin-left: 20px;
     }
+
+    &__result {
+        align-self: flex-start;
+        min-width: 100px;
+        text-align: right;
+        margin-left: 20px;
+
+        &-quantity {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 22px;
+            color: #788288;
+            margin-bottom: 4px;
+        }
+
+        &-total {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            color: #000000;
+        }
+    }
 }

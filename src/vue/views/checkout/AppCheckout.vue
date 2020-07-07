@@ -5,10 +5,9 @@
                 h1 Оформление заказа
             .checkout__body
                 .checkout__body-half
-                    checkout-structure
-                .checkout__body-half
                     checkout-steps
-
+                .checkout__body-half
+                    checkout-structure
 </template>
 
 <script>
@@ -28,8 +27,8 @@ export default {
         ...mapActions('checkout', ['setActiveStep', 'getDataByName'])
     },
     created() {
-        console.log(this.$route)
         this.setActiveStep({ activeStep: this.$route.name })
+        document.querySelector('.js-order-additional').classList.add('hide')
     },
     watch: {
         activeStep() {

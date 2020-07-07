@@ -1,5 +1,7 @@
 .cart-page {
     margin-top: 50px;
+    margin-bottom: 56px;
+
     &__header {
         @include row-flex;
 
@@ -15,12 +17,13 @@
 
         &-right {
             display: flex;
+            align-items: center;
             justify-content: flex-end;
         }
     }
 
     &__products {
-        margin-top: 50px;
+        margin-top: 32px;
     }
 
     &__list {
@@ -29,6 +32,7 @@
 
     &__footer {
         @include row-flex;
+        margin-top: 32px;
 
         &-right, &-left {
             @include size(6);
@@ -57,5 +61,34 @@
         font-size: 58px;
         line-height: 64px;
         color: #004f91;
+    }
+
+    &__order {
+        display: flex;
+        align-items: center;
+    }
+
+    &__total {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+
+        &-title {
+            font-size: 16px;
+            line-height: 25px;
+            color: #343e44;
+        }
+
+        &-value {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 36px;
+            color: #000000;
+        }
+    }
+
+    &__to-order {
+        margin-left: 36px;
     }
 }

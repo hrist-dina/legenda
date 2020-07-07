@@ -28,11 +28,13 @@
             .cart-page__footer(v-if="hasProducts")
                 .cart-page__footer-left
                 .cart-page__footer-right
-                    .cart-page__total
-                        .cart-page__total-title Итого
-                        .cart-page__total-value {{ total | ruble }}
-                    .cart-page__to-order
-                        router-link(:to="{name: 'welcome'}") Перейти к оформлению
+                    .cart-page__promocode
+                    .cart-page__order
+                        .cart-page__total
+                            .cart-page__total-title Итого:
+                            .cart-page__total-value {{ total | ruble }}
+                        .cart-page__to-order
+                            router-link(:to="{name: 'welcome'}").link.link--big К оформлению заказа
 </template>
 
 <script>
@@ -54,6 +56,9 @@ export default {
         ...mapActions('cart', {
             cleanCart: 'clean'
         })
+    },
+    created() {
+        document.querySelector('.js-order-additional').classList.remove('hide')
     }
 }
 </script>

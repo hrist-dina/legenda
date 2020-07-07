@@ -2,7 +2,13 @@ extends ../../layouts/default
 
 block variables
 	- const title = "Корзина";
+	- isInnerPage = true
+	- showTitle = false
 
 block content
 	//- Vue component
 	.js-vue-app-order
+	include ../../../blocks/components/product/product
+	include ../../../blocks/components/product/data
+	section.js-order-additional
+		+product-add-to-cart-section('Добавить к заказу', productToOrder)

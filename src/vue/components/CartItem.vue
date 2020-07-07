@@ -8,7 +8,7 @@
             .cart-item__data
                 a(:href="link" :title="title").cart-item__title {{ title }}
                 .cart-item__desc {{ desc }}
-            .cart-item__price
+            .cart-item__price(v-if="hasOrder")
                 span.cart-item__price-value {{ price | ruble }}
                 span.cart-item__price-type / шт.
             .cart-item__order(v-if="hasOrder")
@@ -17,8 +17,11 @@
                         @change-quantity='onChangeQuantity'
                         :quantity="quantity"
                     )
-            .cart-item__total {{ total | ruble }}
-            .cart-item__delete
+            .cart-item__result(v-if="!hasOrder")
+                .cart-item__result-quantity {{ quantity }} шт.
+                .cart-item__result-total {{ total | ruble }}
+            .cart-item__total(v-else) {{ total | ruble }}
+            .cart-item__delete(v-if="hasOrder")
                 +icon('delete')(@click.prevent="removeFromCart" )
 </template>
 

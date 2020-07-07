@@ -4,9 +4,10 @@ include ../../components/breadcrumbs/breadcrumbs
 //- Модуль внутренних страниц
 
 mixin inner-page(showTitle = true, title)
-    +section(false).section--inner-page
-        +container
-            +breadcrumbs(breadcrumbs).section__breadcrumbs
+    if breadcrumbs
+        +section(false).section--inner-page
+            +container
+                +breadcrumbs(breadcrumbs).section__breadcrumbs
     if showTitle
         section.section-title
             +container

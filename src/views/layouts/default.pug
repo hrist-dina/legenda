@@ -17,7 +17,7 @@ html(lang="ru")
                     +header
                 main(class={'inner-page': isInnerPage})
                     if isInnerPage
-                        +inner-page
+                        +inner-page(showTitle)
                         block content
                     else
                         block content

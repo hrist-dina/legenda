@@ -2,7 +2,7 @@ include ../ui-kit/ui-kit
 include ../product-label/product-label
 include ../product-composition/product-composition
 
-mixin product(data, isCategory)
+mixin product(data, isCategory, toOrder)
     article.product.js-vue-product(class={'product--category swiper-slide': isCategory})
         .__inner
             .__top
@@ -28,12 +28,13 @@ mixin product(data, isCategory)
                     @click='addToCart'
                     :disabled='isDisabled'
                     data-id=data.id
-                    data-in-cart-text='В корзине'
+                    data-in-cart-text=toOrder ? 'В заказе' : 'В корзине'
                     ref='product-button'
                 )
                     +icon('product-cart')
                     span(ref='product-button-text')
-                        | #{data.isInCart ? 'В корзине' : 'В корзину'}
+                        | #{toOrder ? '+ К заказу' : data.isInCart ? 'В корзине' : 'В корзину'}
+
 mixin product-banner(data)
     acticle.product.product--banner
         a(href='#').__img-link
@@ -61,3 +62,9 @@ mixin product-list-slider(data)
 mixin product-section(title, data)
     +section(title, 'Все товары').section--category
         +product-list-slider(data)
+
+mixin product-add-to-cart-section(title, data)
+    +section(title, 'Все товары').section--category&attributes(attributes)
+        .product-list.product-list--category
+            for item in data
+                +product(item, true, true)

@@ -57,7 +57,7 @@
 
     &__work-time {
         margin-bottom: 24px;
-        & span {
+        &-item {
             display: block;
             font-size: 16px;
             line-height: 25px;
@@ -67,5 +67,21 @@
 
     &__phone-title {
         margin-bottom: 4px;
+    }
+
+    &__social {
+        margin-top: 8px;
+        margin-bottom: 42px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__legal-info {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 15px;
+        line-height: 25px;
+        color: #1b262c;
+        text-decoration: none;
     }
 }

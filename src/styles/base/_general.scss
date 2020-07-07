@@ -44,6 +44,10 @@ main {
     overflow: hidden;
 }
 
+.hide {
+    display: none;
+}
+
 .container {
     @include container();
     max-width: 1200px;

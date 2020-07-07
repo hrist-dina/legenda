@@ -3,27 +3,33 @@ mixin product-detail
     include ../slider-product/slider-product
     include ../product-composition/product-composition
     include ../ui-kit/ui-kit
+    include ../share/share
     section.product-detail
         +container
-            .__inner
+            .__inner(itemscope itemtype="http://schema.org/Product")
                 article.__slider
                     +product-composition(
                         ['Йод', 'Фтор', 'Селен']
                     ).product-composition--detail.__composition
                     +slider-product
-                article.__content.js-vue-product
-                    h1.h1.__title=h1
-                    .__tabs
-                    .__price #{ruble(190)}
-                    .__actions
-                        quantity-counter(@change-quantity='onChangeQuantity' :quantity="cnt" :is-detail="true").__quantity
-                        +button('in-cart', 'button')(
-                            :class='classInCart'
-                            @click='addToCart'
-                            :disabled='isDisabled'
-                            data-id="1"
-                            data-in-cart-text='В корзине'
-                            ref='product-button'
-                        ).__button
-                            +icon('product-cart')
-                            span(ref='product-button-text') В корзину
+                article.__content
+                    .__data.js-vue-product
+                        h1.h1.__title(itemprop="name")=h1
+                        .__tabs(itemprop="description") Таб
+                        .__offer(itemprop="offers" itemscope itemtype="http://schema.org/Offer")
+                            .__price(itemprop="price") !{ruble(190)}
+                            .__currency.hide(itemprop="priceCurrency") RUB
+                        .__actions
+                            quantity-counter(@change-quantity='onChangeQuantity' :quantity="cnt" :is-detail="true").__quantity
+                            +button('in-cart', 'button')(
+                                :class='classInCart'
+                                @click='addToCart'
+                                :disabled='isDisabled'
+                                data-id="1"
+                                data-in-cart-text='В корзине'
+                                ref='product-button'
+                            ).__button
+                                +icon('product-cart')
+                                span(ref='product-button-text') В корзину
+                    .__share
+                        +share

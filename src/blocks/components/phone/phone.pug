@@ -1,7 +1,7 @@
 //- Блок ссылки телефона
 
 mixin phone(value)
-    a.phone(href=`tel:${phoneReplace(value)}`)&attributes(attributes)=value
+    a.value.phone(href=`tel:${phoneReplace(value)}` itemprop="telephone")&attributes(attributes)=value
 
 
 mixin phone-list

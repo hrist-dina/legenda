@@ -2,25 +2,37 @@
 include ../../../blocks/components/phone/phone
 include ../../../blocks/components/authors/authors
 include ../../../blocks/components/footer-menu/footer-menu
+include ../../../blocks/components/footer-social/footer-social
 
 mixin footer
     footer.footer
         +container
-            .__inner
+            .__inner(itemscope itemtype="http://schema.org/LocalBusiness")
                 .__top
                     .__info
-                        .__address Барнаул, ул. Э. Алексеевой, 71
+                        .__address.h-adr.adr(itemprop="address" itemscope itemtype="http://schema.org/PostalAddress")
+                            span.locality(temprop="addressLocality") Барнаул
+                            |,
+                            |
+                            span.street-address(itemprop="streetAddress") ул. Э. Алексеевой, 71
                         .__work-time
-                            span пн-пт 7:30 – 21:00,
-                            span сб-вс 8:00 – 21:00
-                        .__phone-block
+                            time(itemprop="openingHours" datetime="Mn,Fr 7:30−21:00").workhours.__work-time-item пн-пт 7:30 – 21:00,
+                            time(itemprop="openingHours" datetime="Sa,Su 8:00−21:00").workhours.__work-time-item сб-вс 8:00 – 21:00
+                        .__phone-block.tel
                             +phone-title.__phone-title Заказ по телефону
                             +phone-footer
                     .__menu
                         +footer-menu
                     .__meta
+                        .__social
+                            +footer-social
+                        a(href='#').__legal-info Юридическая информация
                 .__hr
                 .__bottom
-                    .__copyright © 2020 «БВК». Все права защищены
+                    .__copyright © 2020
+                        |
+                        |
+                        span(itemprop="name") «БВК»
+                        |. Все права защищены
                     .__authors
                         +authors

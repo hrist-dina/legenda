@@ -1,6 +1,6 @@
-import Swiper from 'swiper'
+import Swiper, { Navigation, Pagination } from 'swiper'
+Swiper.use([Navigation, Pagination])
 import { debounce } from '%common%/helper'
-import SliderProduct from '%components%/slider-product/slider-product'
 
 export default class SwiperBase {
     constructor(selector, options = {}) {
@@ -40,7 +40,6 @@ export default class SwiperBase {
 
         if (element || element.length) {
             if (!this.screenWidht) {
-                console.log(this.options)
                 return new Swiper(element, this.options)
             }
 
@@ -50,7 +49,6 @@ export default class SwiperBase {
                 'resize',
                 debounce(
                     () => {
-                        console.log('test test')
                         let screenWidth = window.innerWidth
 
                         const conditionOn = this.atDesctopToMobile

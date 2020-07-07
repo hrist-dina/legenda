@@ -1,0 +1,106 @@
+@mixin icon-share {
+    @include wh(24px);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.share {
+    box-sizing: border-box;
+    display: inline-flex;
+    border: 1px solid rgba(34, 155, 215, 0.15);
+    padding: 8px 16px;
+    border-radius: 4px;
+
+    &__show {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__icon {
+        @include transitionEaseOutQuint(transform);
+        margin-right: 12px;
+    }
+
+    &__list {
+        display: none;
+        margin-left: 12px;
+    }
+
+    &:hover & {
+
+        &__icon {
+            @include rotate();
+        }
+        &__list {
+            display: flex;
+        }
+    }
+
+    &__text {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #007bc2;
+    }
+
+    & .ya-share2 {
+        .ya-share2__item {
+            margin-right: 12px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &__badge {
+            border-radius: 50%;
+        }
+
+        &__item_service_vkontakte {
+            .ya-share2__icon {
+                @include icon-share;
+                background-size: 20px;
+            }
+
+            .ya-share2__badge {
+                background: #597da3;
+            }
+        }
+
+        &__item_service_odnoklassniki {
+            .ya-share2__icon {
+                @include icon-share;
+                background-size: 20px;
+            }
+
+            .ya-share2__badge {
+                background: #ed812b;
+            }
+        }
+
+        &__item_service_whatsapp {
+            .ya-share2__icon {
+                @include icon-share;
+                background-image: none;
+                background-size: 20px;
+            }
+
+            .ya-share2__badge {
+                border-radius: 0;
+                background-image: url(icon-wa());
+                background-color: transparent;
+            }
+        }
+
+        &__item_service_facebook {
+            .ya-share2__icon {
+                @include icon-share;
+                background-size: 20px;
+            }
+
+            .ya-share2__badge {
+                background: #3b5998;
+            }
+        }
+    }
+}

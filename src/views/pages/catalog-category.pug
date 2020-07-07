@@ -6,10 +6,10 @@ include ../../blocks/components/product/product
 block variables
 	- const title = "Полезная вода Алтая";
 	- const h1 = title
+	- isInnerPage = true
 	include ../../views/data/catalog
 
 
 block content
-	+inner-page
 	+container
 		+product-list

@@ -1,10 +1,11 @@
 <template lang="pug">
+    include ../../../blocks/components/ui-kit/ui-kit
     .checkout__welcome
-        h3 Приветствуем
-        p Впервые на сайте?
+        h3.checkout-subtitle Приветствуем
+        p.checkout-desc Впервые на сайте?
         .checkout__welcome-buttons
-            button(type="button" @click.prevent="noLogin") Да
-            button(type="button" @click.prevent="yesLogin") Нет
+            +button('bordered')(@click.prevent="noLogin") Да
+            +button('bordered')(@click.prevent="yesLogin") Нет, войти
 </template>
 
 <script>

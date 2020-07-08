@@ -1,10 +1,20 @@
 <template lang="pug">
     .checkout__delivery
-        .checkout__desc {{ fio }}, укажите пожалуйста тип и адрес доставки:
+        .checkout__thanks {{ fio }},
+            br
+            |
+            | укажите пожалуйста тип и адрес доставки:
         .delivery
             .delivery-type-list
-                label.delivery-type(v-for="type in deliveryTypes" :key="type.code" )
-                    input(type='radio' name="delivery_type" :value="type.code" @change="onChangeType").delivery-type__input
+                label.delivery-type(v-for="(type, i) in deliveryTypes" :key="type.code" )
+                    input(
+                        :key="type.code"
+                        type='radio'
+                        name="delivery_type"
+                        :value="type.code"
+                        @change="onChangeType"
+                        :checked="handleChecked(i, type.code)"
+                    ).delivery-type__input
                     .delivery-type__data
                         .delivery-type__icon
                         .delivery-type__title {{ type.name }}
@@ -23,9 +33,10 @@
                     )
                 .delivery-datatime
 
-                .form__button
+                .checkout__button
                     include ../../../blocks/components/ui-kit/ui-kit
-                    +button('Далее')(:disabled="!isValidForm")
+                    +button('default')(:disabled="!isValidForm") Далее
+                    checkout-back
 
 
 
@@ -34,9 +45,12 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
+import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
+
 export default {
     components: {
-        InputText
+        InputText,
+        CheckoutBack
     },
     data: () => ({
         type: '',
@@ -95,6 +109,13 @@ export default {
         },
         onValidate(data, name) {
             this.form[name].isValid = data.isValid
+        },
+        handleChecked(i, code) {
+            if (i === 0) {
+                this.type = code
+                return true
+            }
+            return false
         }
     }
 }

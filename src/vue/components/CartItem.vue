@@ -1,27 +1,27 @@
 <template lang="pug">
     include ../../views/helpers/mixins
     include ../../views/helpers/functions
-    .cart-item
+    .cart-item(:class="{'cart-item--in-order': inOrder}")
         .cart-item__inner
             a(:href="link").cart-item__img-link
                 img(:src="img" :alt="title" :title="title").cart-item__img
             .cart-item__data
                 a(:href="link" :title="title").cart-item__title {{ title }}
                 .cart-item__desc {{ desc }}
-            .cart-item__price(v-if="hasOrder")
+            .cart-item__price(v-if="!inOrder")
                 span.cart-item__price-value {{ price | ruble }}
                 span.cart-item__price-type / шт.
-            .cart-item__order(v-if="hasOrder")
+            .cart-item__order(v-if="!inOrder")
                 .cart-item__quantity
                     quantity-counter(
                         @change-quantity='onChangeQuantity'
                         :quantity="quantity"
                     )
-            .cart-item__result(v-if="!hasOrder")
+            .cart-item__result(v-if="inOrder")
                 .cart-item__result-quantity {{ quantity }} шт.
                 .cart-item__result-total {{ total | ruble }}
             .cart-item__total(v-else) {{ total | ruble }}
-            .cart-item__delete(v-if="hasOrder")
+            .cart-item__delete(v-if="!inOrder")
                 +icon('delete')(@click.prevent="removeFromCart" )
 </template>
 
@@ -60,9 +60,9 @@ export default {
             type: Number,
             required: true
         },
-        hasOrder: {
+        inOrder: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
     computed: {

@@ -13,18 +13,23 @@
                     :placeholder="item.placeholder"
                     :type="item.type"
                 )
-            .form__button
+            .checkout__button
                 include ../../../blocks/components/ui-kit/ui-kit
-                +button('Войти')(:disabled="!isValidForm")
+                +button('default')(:disabled="!isValidForm") Войти
+                checkout-back
+            .form__footer
+                +link('Забыли пароль?')
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import InputText from '%vue%/components/InputText'
+import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
 
 export default {
     components: {
-        InputText
+        InputText,
+        CheckoutBack
     },
     data() {
         return {

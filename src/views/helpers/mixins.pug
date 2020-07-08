@@ -5,4 +5,4 @@ mixin container
 
 //- Блок иконки
 mixin icon(type)
-    i.icon(class=[`icon-${type}`])&attributes(attributes)
+    i.icon(class=[ type ? `icon-${type}` : ''])&attributes(attributes)

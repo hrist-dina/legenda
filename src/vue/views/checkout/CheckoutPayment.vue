@@ -1,25 +1,22 @@
 <template lang="pug">
     .checkout__payment
-        .checkout__title {{ title }}
-        .checkout__desc Готово. Последний шаг - выбор способа оплаты
+        .checkout__title Готово!
+        .checkout__thanks Последний шаг - выбор способа оплаты
         .checkout__payment-type
             select
                 option(v-for="item in payment" :key="item.code" :value="item.code") {{ item.name }}
-        .checkout__payment-params
-            .checkout__payment-checkbox
-                label
-                    input(type='checkbox' name='bonus' value='800')
-                    span Списать бонусы
-            .checkout__payment-checkbo
-                label
-                    input(type='checkbox' name='water' value=4)
-                    span Списать воду
+        .checkout__button
+            checkout-back
 </template>
 
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex'
+import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
 
 export default {
+    components: {
+      CheckoutBack
+    },
     data() {
         return {
             title: ''

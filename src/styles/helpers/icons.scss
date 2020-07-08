@@ -124,3 +124,21 @@
         background-size: 21.33px;
     }
 }
+
+.icon-personal-data {
+    @include wh(24px);
+    @include icon-bgc(icon-personal-data());
+    background-size: 24px;
+}
+
+.icon-delivery {
+    @include wh(24px);
+    @include icon-bgc(icon-delivery());
+    background-size: 24px;
+}
+
+.icon-payment {
+    @include wh(24px);
+    @include icon-bgc(icon-payment());
+    background-size: 24px;
+}

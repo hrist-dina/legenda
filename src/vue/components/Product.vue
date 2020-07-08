@@ -57,7 +57,9 @@ export default {
             this.changeButtonText()
         },
         cnt: function () {
-            this.add({ id: this.id, cnt: this.cnt })
+            if (this.hasInCart) {
+                this.add({ id: this.id, cnt: this.cnt })
+            }
         }
     }
 }

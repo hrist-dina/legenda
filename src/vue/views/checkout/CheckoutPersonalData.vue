@@ -1,12 +1,7 @@
 <template lang="pug">
-    .checkout__personal-data
-        .checkout__title {{ title }}
-        .checkout__desc Спасибо, что выбрали нас! При первом заказе Вам нужно
-            |
-            |
-            b один раз
-            |
-            |ввести необходимую информацию:
+    .checkout-personal-data
+        .checkout__thanks
+            |Спасибо, что выбрали нас! При первом заказе Вам нужно один ввести необходимую информацию:
         form.form(@submit.prevent="onSubmit")
             .field(v-for="item in form")
                 input-text(
@@ -18,18 +13,22 @@
                     @validate="onValidate($event, item.name)"
                     :placeholder="item.placeholder"
                 )
-            .form__button
+            .checkout__button
                 include ../../../blocks/components/ui-kit/ui-kit
-                +button('Далее')(:disabled="!isValidForm")
+                +button('default')(:disabled="!isValidForm") Далее
+                checkout-back
+
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
+import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
 
 export default {
     components: {
-        InputText
+        InputText,
+        CheckoutBack
     },
     data() {
         return {

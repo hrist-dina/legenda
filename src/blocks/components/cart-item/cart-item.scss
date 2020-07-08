@@ -104,4 +104,18 @@
             color: #000000;
         }
     }
+
+    &--in-order {
+        margin-bottom: 8px;
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+    }
+
+    &--in-order & {
+        &__inner {
+            padding: 12px 0;
+        }
+    }
 }

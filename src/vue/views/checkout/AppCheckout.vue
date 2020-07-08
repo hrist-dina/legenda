@@ -2,26 +2,37 @@
     .checkout
         .container
             .checkout__header
-                h1 Оформление заказа
+                h1.h1 Оформление заказа
+            .checkout__nav(v-if="!isWelcome")
+                checkout-navigation(v-if="isWithoutLogin")
             .checkout__body
                 .checkout__body-half
-                    checkout-steps
+                    router-view
                 .checkout__body-half
                     checkout-structure
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutStructure from '%vue%/views/checkout/CheckoutStructure'
-import CheckoutSteps from '%vue%/views/checkout/CheckoutSteps'
+import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
 
 export default {
     components: {
         CheckoutStructure,
-        CheckoutSteps
+        CheckoutNavigation
     },
     computed: {
-        ...mapState('checkout', ['hasLogin', 'activeStep'])
+        ...mapState('checkout', ['steps', 'hasLogin', 'activeStep']),
+        isWelcome() {
+            return this.activeStep === CHECKOUT_WELCOME
+        },
+        isWithoutLogin() {
+            return !!this.steps.withoutLogin.filter(
+                el => el.name === this.activeStep
+            ).length
+        }
     },
     methods: {
         ...mapActions('checkout', ['setActiveStep', 'getDataByName'])

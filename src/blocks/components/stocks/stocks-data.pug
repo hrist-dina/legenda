@@ -1,0 +1,36 @@
+-
+    const getStock = (number,date,title) => ({
+        img: getStockImg(number),
+        date,
+        title
+    })
+    const getStockImg = (number) => `img/stocks/item-${number}.jpg`
+    const stocks = [
+        getStock(
+            1,
+            "До 30 июня 2020",
+            "Позаботьтесь о близких. С нас - подарок"
+        ),
+        getStock(
+            2,
+            "Подарок за совет!"
+        ),
+        getStock(
+            3,
+            "До 30 июня 2020",
+            "При покупке детской воды - дарим подарок!"
+        ),
+        getStock(
+            4,
+            "Оставайтесь дома! Мы доставим всё необходимое!»"
+        ),
+        getStock(
+            5,
+            "Меняем бонусы на «Легенду»!"
+        ),
+        getStock(
+            6,
+            "До 30 июня 2020",
+            "Помпа в подарок на дачу!"
+        )
+    ]

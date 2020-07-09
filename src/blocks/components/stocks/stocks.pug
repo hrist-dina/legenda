@@ -1,0 +1,16 @@
+include stocks-data
+
+mixin stocks
+    section.stocks
+        +container
+            .__list
+                for item in stocks
+                    +stocks-item(item)
+
+mixin stocks-item(item)
+    a(href="#" style=`background-image:url(${item.img})`).stocks__item
+        .stocks__inner
+            .stocks__meta
+                +icon("stocks").stocks__icon
+                span.stocks__date=item.date
+            .stocks__title=item.title

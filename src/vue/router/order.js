@@ -6,11 +6,13 @@ import CheckoutWelcome from '%vue%/views/checkout/CheckoutWelcome'
 import CheckoutPersonalData from '%vue%/views/checkout/CheckoutPersonalData'
 import CheckoutDelivery from '%vue%/views/checkout/CheckoutDelivery'
 import CheckoutPayment from '%vue%/views/checkout/CheckoutPayment'
+import CheckoutSuccess from '%vue%/views/checkout/CheckoutSuccess'
 import {
     CHECKOUT_AUTH,
     CHECKOUT_DELIVERY,
     CHECKOUT_PAYMENT,
     CHECKOUT_PERSONAL_DATA,
+    CHECKOUT_SUCCESS,
     CHECKOUT_WELCOME
 } from '%vue%/store/checkout/state'
 
@@ -56,6 +58,14 @@ const routes = [
                 component: CheckoutPayment
             }
         ]
+    },
+    {
+        path: '/#/checkout/success/:number/',
+        name: CHECKOUT_SUCCESS,
+        component: CheckoutSuccess,
+        meta: {
+            title: 'Заказ оформлен'
+        }
     }
 ]
 

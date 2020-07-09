@@ -3,8 +3,8 @@
         .checkout__title Готово!
         .checkout__thanks Последний шаг - выбор способа оплаты
         .checkout__payment-type
-            select
-                option(v-for="item in payment" :key="item.code" :value="item.code") {{ item.name }}
+            select(@change="onChange")
+                option(v-for="item in payment" :key="item.code" :value="item.code" :selected="handlerSelected(item)") {{ item.name }}
         .checkout__button
             checkout-back
 </template>
@@ -37,7 +37,23 @@ export default {
     methods: {
         ...mapActions('checkout', {
             getDataByName: 'getDataByName'
-        })
+        }),
+        ...mapActions('user', {
+            setPaymentType: 'setPaymentType'
+        }),
+        setType(val) {
+            this.setPaymentType({selectPaymentType:val})
+        },
+        onChange({target}) {
+            this.setType(target.value)
+        },
+        handlerSelected(val) {
+            if (val.selected) {
+                this.setType(val.code)
+                return 'selected'
+            }
+           return ''
+        }
     },
     created() {
         if (!this.title) {

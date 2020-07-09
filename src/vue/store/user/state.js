@@ -1,4 +1,5 @@
 export default {
+    id: null,
     token: null,
     person: {
         fio: '',
@@ -21,11 +22,13 @@ export default {
     payment: [
         {
             code: 'money',
-            name: 'Наличные'
+            name: 'Наличные',
+            selected: true
         },
         {
             code: 'bank-card',
             name: 'Банковской картой'
         }
-    ]
+    ],
+    selectPaymentType: null
 }

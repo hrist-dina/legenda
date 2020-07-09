@@ -1,42 +1,71 @@
-import axios from 'axios'
+import HTTP, { urlAjax } from '%common%/http'
+import router from '%vue%/router/order'
+import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
 
 export default {
     register: async ({ commit }, payload) => {
         try {
-            // TODO: change get to post
-            const { data } = await axios.get('/mock/register.json', {
-                fio: payload.fio,
-                email: payload.email,
-                phone: payload.phone
-            })
+            const response = await new HTTP(
+                urlAjax.register,
+                {
+                    fio: payload.fio,
+                    email: payload.email,
+                    phone: payload.phone
+                },
+                data => {
+                    commit('setId', { id: data.id })
+                    commit('setToken', { token: data.token })
+                    commit('setPersonalData', payload)
+                }
+            ).post()
 
-            if (data.status) {
-                commit('setToken', { token: data.data.token })
-                commit('setPersonalData', payload)
-                return true
-            }
-            return false
+            return response.data.status
         } catch (error) {
             console.error(error)
         }
     },
     delivery: async ({ commit }, payload) => {
-        console.log(payload)
-        try {
-            // TODO: change get to post
-            const { data } = await axios.get('/mock/delivery.json', {
+        const response = await new HTTP(
+            urlAjax.delivery,
+            {
                 address: payload.address,
                 date: payload.date,
                 time: payload.time
-            })
-
-            if (data.status) {
+            },
+            data => {
                 commit('setDeliveryItem', payload)
-                return true
             }
-            return false
-        } catch (error) {
-            console.error(error)
-        }
+        ).post()
+
+        return response.data.status
+    },
+    payment: async ({ state, rootState, dispatch }) => {
+        const type = state.selectPaymentType
+        const url =
+            type === 'money' ? urlAjax.paymentMoney : urlAjax.paymentCard
+        const response = await new HTTP(
+            url,
+            {
+                userId: state.id,
+                type,
+                products: rootState.cart.products
+            },
+            data => {
+                if (data.order) {
+                    dispatch('cart/clean', null, { root: true }).then(() => {
+                        router.push({
+                            name: CHECKOUT_SUCCESS,
+                            params: { number: data.order }
+                        })
+                    })
+                }
+                console.log(data)
+            }
+        ).post()
+
+        return response.data.status
+    },
+    setPaymentType: ({ commit }, payload) => {
+        commit('setSelectedPaymentType', payload)
     }
 }

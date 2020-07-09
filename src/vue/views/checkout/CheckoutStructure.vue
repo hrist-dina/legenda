@@ -6,7 +6,7 @@
                 .checkout-stucture__total-value {{ total | ruble }}
             .checkout-stucture__total-button
             include ../../../blocks/components/ui-kit/ui-kit
-            +button('order')(:disabled="!isEndStep") Оформить заказ
+            +button('order')(:disabled="!isEndStep" @click="onClickSendOrder") Оформить заказ
         .checkout-stucture__data
             .checkout-stucture__head
                 .checkout-stucture__title Состав заказа
@@ -29,7 +29,7 @@
 
 <script>
 import CartItem from '%vue%/components/CartItem'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { CHECKOUT_ORDER, CHECKOUT_PAYMENT } from "%vue%/store/checkout/state"
 
 export default {
@@ -43,6 +43,14 @@ export default {
             return name === CHECKOUT_PAYMENT || name === CHECKOUT_ORDER
         }
     },
+    methods: {
+        ...mapActions('user', {
+            handlerPayment: 'payment'
+        }),
+        onClickSendOrder() {
+            this.handlerPayment()
+        }
+    }
 }
 </script>
 

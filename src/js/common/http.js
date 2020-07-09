@@ -11,17 +11,16 @@ export default class HTTP {
     }
     async request(method) {
         try {
-            const { data } = await axios({
+            const response = await axios({
                 method,
                 url: this.url,
                 data: true.data
             })
-
+            const { data } = response
             if (data.status) {
-                this.successCallback(data.data)
-                return true
+                this.successCallback ? this.successCallback(data.data) : ''
             }
-            return false
+            return response
         } catch (error) {
             this.errors.push(error)
             console.error(error)
@@ -33,12 +32,18 @@ export default class HTTP {
     }
 
     post() {
-        return this.request('post')
+        return this.request(isProd ? 'post' : 'get')
     }
 }
 
-const isProd = process.env.NODE_ENV === 'production'
+export const isProd = process.env.NODE_ENV === 'production'
 
 export const urlAjax = {
-    products: isProd ? '/mock/products.json' : '/mock/products.json'
+    products: isProd ? '/api/products' : '/mock/products.json',
+    basketClean: isProd ? '/api/basket-clean' : '/mock/basket-clean.json',
+    register: isProd ? '/api/register' : '/mock/register.json',
+    delivery: isProd ? '/api/delivery' : '/mock/delivery.json',
+    // На проде будет один путь, запрос будет приходить с параметрами типа оплаты
+    paymentCard: isProd ? '/api/payment' : '/mock/payment-card.json',
+    paymentMoney: isProd ? '/api/payment' : '/mock/payment-money.json'
 }

@@ -1,3 +1,5 @@
+import HTTP, { urlAjax } from '%common%/http'
+
 export default {
     add({ getters, commit }, payload) {
         if (getters.canAdd(payload)) {
@@ -26,10 +28,9 @@ export default {
             }, 200)
         }
     },
-    clean({ commit }) {
-        // TODO:: add request to server for remove item form cart
-        setTimeout(() => {
+    clean: async ({ commit }) => {
+        return await new HTTP(urlAjax.basketClean, null, () => {
             commit('clean')
-        }, 200)
+        }).post()
     }
 }

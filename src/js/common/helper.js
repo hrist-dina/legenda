@@ -13,3 +13,8 @@ export const debounce = (func, wait, immediate) => {
         if (callNow) func.apply(context, args)
     }
 }
+
+export const toggleAdditionalProducts = (isHide = true) => {
+    const classList = document.querySelector('.js-order-additional').classList
+    isHide ? classList.add('hide') : classList.remove('hide')
+}

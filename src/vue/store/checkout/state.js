@@ -4,6 +4,7 @@ export const CHECKOUT_PERSONAL_DATA = 'personal-data'
 export const CHECKOUT_DELIVERY = 'delivery'
 export const CHECKOUT_PAYMENT = 'payment'
 export const CHECKOUT_ORDER = 'order'
+export const CHECKOUT_SUCCESS = 'success'
 
 export default {
     activeStep: 'welcome',

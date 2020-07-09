@@ -17,6 +17,7 @@ import { mapState, mapActions } from 'vuex'
 import { CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutStructure from '%vue%/views/checkout/CheckoutStructure'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
+import { toggleAdditionalProducts } from "%common%/helper"
 
 export default {
     components: {
@@ -39,7 +40,7 @@ export default {
     },
     created() {
         this.setActiveStep({ activeStep: this.$route.name })
-        document.querySelector('.js-order-additional').classList.add('hide')
+        toggleAdditionalProducts()
     },
     watch: {
         activeStep() {

@@ -40,6 +40,7 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import CartItem from '%vue%/components/CartItem'
+import { toggleAdditionalProducts } from "%common%/helper"
 
 export default {
     components: {
@@ -58,7 +59,7 @@ export default {
         })
     },
     created() {
-        document.querySelector('.js-order-additional').classList.remove('hide')
+        toggleAdditionalProducts(false)
     }
 }
 </script>

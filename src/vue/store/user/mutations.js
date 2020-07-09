@@ -1,4 +1,7 @@
 export default {
+    setId(state, payload) {
+        state.id = payload.id
+    },
     setToken(state, payload) {
         state.token = payload.token
     },
@@ -19,5 +22,8 @@ export default {
             date: payload.date,
             time: payload.time
         })
+    },
+    setSelectedPaymentType(state, payload) {
+        state.selectPaymentType = payload.selectPaymentType
     }
 }

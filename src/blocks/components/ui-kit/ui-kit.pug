@@ -2,7 +2,7 @@ mixin button(suffix, type)
     button.button(type=type class=suffix ? `button--${suffix}` : '')&attributes(attributes)
         block
 
-mixin button-link(text, suffix, href)
+mixin button-link(text, href, suffix)
     a.button(href=href || 'javascript:void(0)' class=suffix ? `button--${suffix}` : '')&attributes(attributes)=text ? text :''
         block
 

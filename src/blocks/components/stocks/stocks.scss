@@ -1,32 +1,29 @@
-// .stocks {
-// &__item {
-// text-decoration: none;
-// background-size: cover;
-// background-position: center;
-// background-repeat: no-repeat;
-// text-decoration: none;
-// }
+.stocks {
+    &__item {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-decoration: none;
+    }
 
-// &__date {
-// font-size: 14px;
-// line-height: 18px;
-// color: #EF5026;
-// }
+    &__date {
+        font-size: 14px;
+        line-height: 18px;
+        color: #ef5026;
+    }
 
-// &__title {
-// font-weight: 500;
-// font-size: 20px;
-// line-height: 27px;
-// 
-// color: #373737;
-// }
+    &__title {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 27px;
+        color: #373737;
+    }
 
-// &__meta {
-// box-sizing: border-box;
-// display: flex;
-// flex-direction: column;
-// align-items: flex-start;
-// justify-content: flex-start;
-// }
-
-// }
+    &__meta {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}

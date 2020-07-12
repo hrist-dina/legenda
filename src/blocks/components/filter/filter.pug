@@ -1,0 +1,24 @@
+
+
+mixin filter
+    include data
+    section.filter
+        +container
+            .__inner
+                for item in filter
+                    +filter-item(item)
+
+
+mixin filter-item(data)
+    include ../ui-kit/ui-kit
+    .filter-item.js-vue-filter-item(:class="isActive")&attributes(attributes)
+        .__inner
+            .__head(@click.prevent="open")
+                .__title(:data-count="count" :class="hasCount")=data.title
+                +icon('arrow-filter').__arrow
+            .__drop
+                .__list
+                    for item in data.list
+                        +field-checkbox(item.name, item.text, item.isChecked).__checkbox(@change="change")
+
+

@@ -17,7 +17,7 @@ import { mapState, mapActions } from 'vuex'
 import { CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutStructure from '%vue%/views/checkout/CheckoutStructure'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
-import { toggleAdditionalProducts } from "%common%/helper"
+import { toggleAdditionalProducts } from '%common%/helper'
 
 export default {
     components: {

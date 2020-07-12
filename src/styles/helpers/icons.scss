@@ -142,3 +142,8 @@
     @include icon-bgc(icon-payment());
     background-size: 24px;
 }
+.icon-arrow-filter {
+    @include wh(22px);
+    @include icon-bgc(icon-arrow-triangle-small());
+    background-size: 14px 7px;
+}

@@ -1,0 +1,39 @@
+-
+    const getFilterListItem = (name, text, isChecked) => ({
+        name,
+        text,
+        isChecked
+    })
+    const getFilterItem = (title, list) => ({
+        title,
+        list
+    })
+    const filter = [
+        getFilterItem('Объем', [
+            getFilterListItem('19', '19 л', true),
+            getFilterListItem('1_5', '1,5 л'),
+            getFilterListItem('0_5', '0,5 л'),
+            getFilterListItem('0_33', '0,33 л'),
+        ]),
+        getFilterItem('Бренд', [
+            getFilterListItem('brand_1', 'Алейка'),
+            getFilterListItem('brand_2', 'Русский хлеб'),
+            getFilterListItem('brand_3', 'Granmulino'),
+            getFilterListItem('brand_4', 'Молочная сказка'),
+            getFilterListItem('brand_5', 'Тест бренд 5'),
+            getFilterListItem('brand_6', 'Тест бренд 6'),
+            getFilterListItem('brand_7', 'Тест бренд 7'),
+        ]),
+        getFilterItem('Свежее', [
+            getFilterListItem('fresh_1', 'Свежее'),
+            getFilterListItem('fresh_2', 'Свежее тест'),
+            getFilterListItem('fresh_3', 'Свежее тест более длинный тест'),
+            getFilterListItem('fresh_4', 'Свежее тест более длинный тест и еще более длинный'),
+            getFilterListItem('fresh_5', 'Свежее тест более длинный тест'),
+            getFilterListItem('fresh_6', 'Свежее'),
+            getFilterListItem('fresh_7', 'Свежее тест'),
+            getFilterListItem('fresh_8', 'Свежее тест более длинный тест'),
+            getFilterListItem('fresh_9', 'Свежее тест более длинный тест и еще более длинный'),
+            getFilterListItem('fresh_10', 'Свежее тест более длинный тест'),
+        ]),
+    ]

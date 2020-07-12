@@ -1,0 +1,103 @@
+.filter {
+    margin-bottom: 20px;
+    min-height: 65px;
+
+    &__inner {
+        display: flex;
+        align-items: flex-start;
+        margin-left: -28px;
+    }
+
+    &-item {
+        position: relative;
+
+        &__checkbox +  &__checkbox {
+            margin-top: 16px;
+        }
+
+        &__head {
+            display: flex;
+            cursor: pointer;
+        }
+
+        &__title {
+            position: relative;
+            font-size: 22px;
+            line-height: 27px;
+            color: #343e44;
+
+            &:before {
+                @include wh(20px);
+                content: none;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: -7px;
+                right: -14px;
+                background: #007bc2;
+                border-radius: 50%;
+                font-weight: 500;
+                font-size: 13px;
+                line-height: 18px;
+                color: #fff;
+            }
+
+            &.has-count {
+                &:before {
+                    content: attr(data-count);
+                }
+            }
+        }
+
+        &__arrow {
+            @include transitionEaseOutQuint(transform);
+            margin-left: 8px;
+        }
+
+        &__list {
+            margin-top: 18px;
+        }
+
+        &__inner {
+            position: relative;
+            padding: 20px 28px;
+        }
+
+        &__drop {
+            display: none;
+            min-width: 150px;
+        }
+
+        &.active & {
+
+            &__inner {
+                position: absolute;
+                z-index: 5;
+                top: 0;
+                left: 0;
+                background: #fff;
+                box-shadow: 0 4px 16px rgba(0, 123, 194, 0.12);
+            }
+
+            &__arrow {
+                @include rotate();
+                background-image: url(icon-arrow-triangle-small('25282B'));
+            }
+
+            &__drop {
+                display: block;
+            }
+
+            &__title.has-count {
+                &:before {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    &-item + &-item {
+    }
+}

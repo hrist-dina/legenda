@@ -4,7 +4,13 @@
         .checkout__thanks Последний шаг - выбор способа оплаты
         .checkout__payment-type
             select(@change="onChange")
-                option(v-for="item in payment" :key="item.code" :value="item.code" :selected="handlerSelected(item)") {{ item.name }}
+                option(
+                    v-once
+                    v-for="item in payment"
+                    :key="item.code"
+                    :value="item.code"
+                    :selected="handlerSelected(item)"
+                ) {{ item.name }}
         .checkout__button
             checkout-back
 </template>
@@ -15,7 +21,7 @@ import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
 
 export default {
     components: {
-      CheckoutBack
+        CheckoutBack
     },
     data() {
         return {
@@ -32,6 +38,15 @@ export default {
         ...mapGetters('user', ['getPayment']),
         payment() {
             return this.getPayment
+        },
+        handlerSelected() {
+            return val => {
+                if (val.selected) {
+                    this.setType(val.code)
+                    return 'selected'
+                }
+                return ''
+            }
         }
     },
     methods: {
@@ -42,17 +57,10 @@ export default {
             setPaymentType: 'setPaymentType'
         }),
         setType(val) {
-            this.setPaymentType({selectPaymentType:val})
+            this.setPaymentType({ selectPaymentType: val })
         },
-        onChange({target}) {
+        onChange({ target }) {
             this.setType(target.value)
-        },
-        handlerSelected(val) {
-            if (val.selected) {
-                this.setType(val.code)
-                return 'selected'
-            }
-           return ''
         }
     },
     created() {

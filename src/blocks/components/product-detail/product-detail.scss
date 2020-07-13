@@ -51,6 +51,12 @@
         margin-right: 24px;
     }
 
+    &__favorite {
+        &-icon {
+            @include wh(28px);
+        }
+    }
+
     &__share {
         margin-top: 28px;
     }

@@ -40,9 +40,12 @@ export const isProd = process.env.NODE_ENV === 'production'
 
 export const urlAjax = {
     products: isProd ? '/api/products' : '/mock/products.json',
-    basketAdd: isProd ? '/api/basket/add' : '/mock/basket-add.json',
-    basketRemove: isProd ? '/api/basket/remove' : '/mock/basket-remove.json',
-    basketClean: isProd ? '/api/basket/clean' : '/mock/basket-clean.json',
+    basketAdd: isProd ? '/api/basket/add' : '/mock/basket.json',
+    basketRemove: isProd ? '/api/basket/remove' : '/mock/basket.json',
+    basketClean: isProd ? '/api/basket/clean' : '/mock/basket.json',
+    favoriteAdd: isProd ? '/api/favorite/add' : '/mock/favorite.json',
+    favoriteRemove: isProd ? '/api/favorite/remove' : '/mock/favorite.json',
+    favoriteClean: isProd ? '/api/favorite/clean' : '/mock/favorite.json',
     register: isProd ? '/api/register' : '/mock/register.json',
     auth: isProd ? '/api/auth' : '/mock/auth.json',
     delivery: isProd ? '/api/delivery' : '/mock/delivery.json',

@@ -9,13 +9,15 @@ import cart from './cart'
 import products from './products'
 import checkout from './checkout'
 import user from './user'
+import favorite from './favorite'
 
 const store = new Vuex.Store({
     modules: {
         cart,
         products,
         checkout,
-        user
+        user,
+        favorite
     },
     strict: process.env.NODE_ENV !== 'production'
 })

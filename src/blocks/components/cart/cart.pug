@@ -1,7 +1,9 @@
 
 mixin cart
     .cart.js-vue-cart
-        div {{ products }}
+        div Корзина {{ products }}
+        div Избранное {{ favorites }}
+        div В избрнном: {{ cntFavorites }}
         div В корзине: {{ cnt }}
         div Сумма: {{ total }} руб.
         a(href='/order') В корзину

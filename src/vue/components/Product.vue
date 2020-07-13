@@ -14,7 +14,15 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('cart', ['inProcessing', 'inCart', 'dataById']),
+        ...mapGetters('cart', {
+            inProcessing: 'inProcessing',
+            inCart: 'inCart',
+            dataById: 'dataById'
+        }),
+        ...mapGetters('favorite', {
+            inProcessingFavorite: 'inProcessingFavorite',
+            inFavorite: 'inFavorite'
+        }),
         isDisabled() {
             return this.inProcessing(this.id)
         },
@@ -22,12 +30,28 @@ export default {
             return this.inCart({ id: this.id })
         },
         classInCart() {
-            return this.hasInCart ? 'in-cart' : ''
+            return { 'in-cart': this.hasInCart }
+        },
+        isDisabledFavorite() {
+            return this.inProcessingFavorite(this.id)
+        },
+        hasInFavorite() {
+            return this.inFavorite({ id: this.id })
+        },
+        classInFavorite() {
+            return {
+                'in-favorite': this.hasInFavorite,
+                disabled: this.isDisabledFavorite
+            }
         }
     },
     methods: {
         ...mapActions('cart', {
             add: 'add'
+        }),
+        ...mapActions('favorite', {
+            addFavorite: 'add',
+            removeFavorite: 'remove'
         }),
         addToCart() {
             this.add({ id: this.id, cnt: this.cnt })
@@ -41,6 +65,11 @@ export default {
                 const textEl = this.$refs['product-button-text']
                 textEl.textContent = inCartText || 'В корзине'
             }
+        },
+        toggleToFavorite() {
+            this.hasInFavorite
+                ? this.removeFavorite({ id: this.id })
+                : this.addFavorite({ id: this.id })
         }
     },
     mounted() {

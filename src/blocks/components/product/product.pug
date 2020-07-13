@@ -8,7 +8,11 @@ mixin product(data, isCategory, toOrder)
             .__top
                 if !isCategory
                     .__favorite
-                        +icon('favorite').__favorite-icon(class={'in-favorite': data.isInFavorite})
+                        +icon('favorite').__favorite-icon(
+                            class={'in-favorite': data.isInFavorite}
+                            @click.prevent="toggleToFavorite"
+                            :class="classInFavorite"
+                        )
                 .__right
                     if data.labels && !isCategory
                         +product-label(data.labels).__label

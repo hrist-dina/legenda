@@ -31,5 +31,10 @@ mixin product-detail
                             ).__button
                                 +icon('product-cart')
                                 span(ref='product-button-text') В корзину
+                            .__favorite
+                                +icon('favorite').__favorite-icon(
+                                    @click.prevent="toggleToFavorite"
+                                    :class="classInFavorite"
+                                )
                     .__share
                         +share

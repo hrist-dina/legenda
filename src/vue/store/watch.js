@@ -9,7 +9,16 @@ export const initStoreWatch = store => {
             )
         }
     )
-
+    store.watch(
+        state => state.favorite.favorites,
+        newVal => {
+            const cartFavorites = newVal
+            localStorage.setItem(
+                'cartFavorites',
+                !!cartFavorites.length ? JSON.stringify(cartFavorites) : '[]'
+            )
+        }
+    )
     store.watch(
         state => state.user.token,
         newVal => {

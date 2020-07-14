@@ -1,0 +1,22 @@
+.location {
+    display: inline-flex;
+    align-items: center;
+    &__icon {
+        margin-right: 12px;
+    }
+
+    &__link {
+        font-size: 16px;
+        line-height: 21px;
+        color: #1b262c;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+
+    &__name {
+        box-sizing: border-box;
+        min-width: 64px;
+        border-bottom: 1px dashed #c4e5f5;
+    }
+}

@@ -1,0 +1,9 @@
+//- Блок смены города в хедере
+
+mixin location(name)
+    .location&attributes(attributes)
+        a(href='javascript:void()').__link
+            +icon('location').__icon
+            span.__name=name || 'Барнаул'
+
+

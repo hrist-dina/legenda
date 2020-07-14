@@ -1,7 +1,23 @@
 
+include ../../components/logo/logo
 include ../../components/cart/cart
+include ../../components/search/search
+include ../../components/location/location
+include ../../components/phone/phone
 
 mixin header
     header.header
-        .container
-            +cart
+        +container
+            .__inner
+                .__logo
+                    +logo
+                .__center
+                    .__top
+                        .__location
+                            +location
+                        .__phone
+                            +phone-header
+                    .__search
+                        +search
+                .__action
+                    +cart

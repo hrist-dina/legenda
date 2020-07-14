@@ -8,6 +8,30 @@
     background-size: contain;
 }
 
+@mixin icon-counted() {
+    position: relative;
+    margin-right: 20px;
+    &.has-count {
+        &:before{
+            content: attr(data-cnt);
+            position: absolute;
+            top: -6px;
+            right: -20px;
+            border-radius: 50%;
+            @include wh(24px);
+            font-size: 13px;
+            font-style: normal;
+            line-height: 16px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            color: #fff;
+            background: #EF5026;
+        }
+    }
+}
+
 @mixin icon-mobile-menu($height, $width) {
     position: relative;
     width: $width;
@@ -33,6 +57,21 @@
     height: $height;
     transition-duration: 0.5s;
     background-color: $bg-color;
+}
+
+@mixin skeleton-loader() {
+    position: relative;
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -150px;
+        width: 150px;
+        height: 100%;
+        animation: load 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        background: linear-gradient(to right, transparent 0%, #fff 50%, transparent 100%);
+    }
 }
 
 @mixin rotate($deg: 180deg) {
@@ -128,5 +167,14 @@
     }
     @keyframes #{$animationName} {
         @content;
+    }
+}
+
+@include keyframes(load) {
+    from {
+        left: -150px;
+    }
+    to {
+        left: 100%;
     }
 }

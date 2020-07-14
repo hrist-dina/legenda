@@ -15,3 +15,8 @@ mixin phone-footer
 mixin phone-title
     .phone-title&attributes(attributes)
         block
+
+mixin phone-header
+    .phone-row
+        +phone-title Заказ по телефону
+        +phone-list.phone--header

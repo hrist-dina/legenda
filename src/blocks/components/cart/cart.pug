@@ -1,9 +1,21 @@
 
 mixin cart
     .cart.js-vue-cart
-        div Корзина {{ products }}
-        div Избранное {{ favorites }}
-        div В избрнном: {{ cntFavorites }}
-        div В корзине: {{ cnt }}
-        div Сумма: {{ total }} руб.
-        a(href='/order') В корзину
+        .__inner
+            a(href='#').__link
+                +icon('login').__icon
+            a(href='#').__link
+                +icon('favorite-cart').icon--counted.__icon(
+                    :class="classHasFavorites"
+                    :data-cnt="cntFavorites"
+                )
+            a(href='/order').__link.cart__link--order
+                +icon('cart').icon--counted.__icon(
+                    :class="classHasInCart"
+                    :data-cnt="cnt"
+                )
+                .__data(:class="setLoaded" v-if="hasInCart")
+                    span.__data-title Заказ на
+                    span.__data-value {{ total | ruble }}
+                .__data(:class="setLoaded" v-else)
+                    span.__data-empty В корзине нет товаров

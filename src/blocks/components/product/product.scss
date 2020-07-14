@@ -100,7 +100,8 @@
     }
 
     &--category {
-        @include size(4);
+        @include size-xl(4);
+        @include size-lg(4);
         max-width: 373px;
         height: 450px;
         margin-top: 45px;

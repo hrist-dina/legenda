@@ -1,22 +1,32 @@
 <template lang="pug">
     include ../../views/helpers/mixins
     include ../../views/helpers/functions
-    .cart-item(:class="{'cart-item--in-order': inOrder}")
+    .cart-item(:class="classModificators")
         .cart-item__inner
             a(:href="link").cart-item__img-link
                 img(:src="img" :alt="title" :title="title").cart-item__img
             .cart-item__data
                 a(:href="link" :title="title").cart-item__title {{ title }}
                 .cart-item__desc {{ desc }}
-            .cart-item__price(v-if="!inOrder")
-                span.cart-item__price-value {{ price | ruble }}
-                span.cart-item__price-type / шт.
-            .cart-item__order(v-if="!inOrder")
-                .cart-item__quantity
+            template(v-if="inCartMini")
+                .cart-item__short-data
                     quantity-counter(
                         @change-quantity='onChangeQuantity'
                         :quantity="quantity"
-                    )
+                    ).quantity--mini
+                    .cart-item__price
+                        span.cart-item__price-value {{ price | ruble }}
+                        span.cart-item__price-type / шт.
+            template(v-else)
+                .cart-item__price(v-if="!inOrder")
+                    span.cart-item__price-value {{ price | ruble }}
+                    span.cart-item__price-type / шт.
+                .cart-item__order(v-if="!inOrder")
+                    .cart-item__quantity
+                        quantity-counter(
+                            @change-quantity='onChangeQuantity'
+                            :quantity="quantity"
+                        )
             .cart-item__result(v-if="inOrder")
                 .cart-item__result-quantity {{ quantity }} шт.
                 .cart-item__result-total {{ total | ruble }}
@@ -63,11 +73,21 @@ export default {
         inOrder: {
             type: Boolean,
             default: false
+        },
+        inCartMini: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
         total() {
             return this.price * this.quantity
+        },
+        classModificators() {
+            return {
+                'cart-item--in-order': this.inOrder,
+                'cart-item--in-cart-mini': this.inCartMini
+            }
         }
     },
     methods: {

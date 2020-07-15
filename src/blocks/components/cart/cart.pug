@@ -9,13 +9,20 @@ mixin cart
                     :class="classHasFavorites"
                     :data-cnt="cntFavorites"
                 )
-            a(href='/order').__link.cart__link--order
-                +icon('cart').icon--counted.__icon(
-                    :class="classHasInCart"
-                    :data-cnt="cnt"
-                )
+            .__order
+                a(href='/order').__link.cart__link--order
+                    +icon('cart').icon--counted.__icon(
+                        :class="classHasInCart"
+                        :data-cnt="cnt"
+                    )
                 .__data(:class="setLoaded" v-if="hasInCart")
                     span.__data-title Заказ на
                     span.__data-value {{ total | ruble }}
                 .__data(:class="setLoaded" v-else)
                     span.__data-empty В корзине нет товаров
+                .__mini(v-if="hasInCart")
+                    cart-mini(
+                        :products="productsDetailed"
+                        :total="total"
+                    )
+

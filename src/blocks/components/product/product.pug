@@ -25,7 +25,6 @@ mixin product(data, isCategory, toOrder)
                 .__desc=data.desc
             .__actions
                 .__price=ruble(data.price)
-                // Добавить in-cart при рендеринге на бекенде
                 +button('in-cart', 'button')(
                     :class='classInCart'
                     class={'in-cart': data.isInCart}

@@ -89,6 +89,27 @@
             }
         }
     }
+
+    &--mini {
+        min-width: 114px;
+        height: 44px;
+        background: #f9f9f9;
+        border-radius: 32px;
+    }
+
+    &--mini & {
+        &__type {
+            display: none;
+        }
+
+        &__value {
+            margin: auto;
+        }
+
+        &__input {
+            text-align: center;
+        }
+    }
 }
 /* stylelint-disable-next-line */
 quantity-counter {

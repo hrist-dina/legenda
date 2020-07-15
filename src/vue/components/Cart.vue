@@ -1,13 +1,17 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+import CartMini from '%vue%/components/CartMini'
 
 export default {
+    components: {
+        CartMini
+    },
     data: () => ({
         loaded: false
     }),
     computed: {
         ...mapState('cart', ['products']),
-        ...mapGetters('cart', ['cnt', 'total']),
+        ...mapGetters('cart', ['cnt', 'total', 'productsDetailed']),
         ...mapState('favorite', ['favorites']),
         ...mapGetters('favorite', {
             cntFavorites: 'cnt'

@@ -19,7 +19,8 @@ export default {
                 return
             }
             new HTTP(urlAjax.location, { code: codeItem }, () => {
-                this.$refs['title'].textContent = target.textContent
+                title.textContent = target.textContent
+                title.dataset.code = codeItem
                 this.active = false
             }).post()
         }

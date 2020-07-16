@@ -5,7 +5,10 @@ mixin location(name)
     .location.js-vue-location(:class="{'active': active}")&attributes(attributes)
         a(href='javascript:void()' @click.prevent="open").__link
             +icon('location').__icon
-            span.__name(ref='title')=name || 'Барнаул'
+            span.__name(
+                ref='title'
+                data-code='barnaul'
+            )=name || 'Барнаул'
         .__drop
             .__title Ваш город:
             ul.__list

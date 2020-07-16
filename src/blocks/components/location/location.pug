@@ -1,9 +1,18 @@
 //- Блок смены города в хедере
 
 mixin location(name)
-    .location&attributes(attributes)
-        a(href='javascript:void()').__link
+    include data
+    .location.js-vue-location(:class="{'active': active}")&attributes(attributes)
+        a(href='javascript:void()' @click.prevent="open").__link
             +icon('location').__icon
-            span.__name=name || 'Барнаул'
+            span.__name(ref='title')=name || 'Барнаул'
+        .__drop
+            .__title Ваш город:
+            ul.__list
+                for item in location
+                    li.__item(data-code=item.code @click.prevent="onItem")=item.name
+
+
+
 
 

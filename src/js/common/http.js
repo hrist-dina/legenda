@@ -39,6 +39,7 @@ export default class HTTP {
 export const isProd = process.env.NODE_ENV === 'production'
 
 export const urlAjax = {
+    location: isProd ? '/api/location' : '/mock/location.json',
     products: isProd ? '/api/products' : '/mock/products.json',
     basketAdd: isProd ? '/api/basket/add' : '/mock/basket.json',
     basketRemove: isProd ? '/api/basket/remove' : '/mock/basket.json',

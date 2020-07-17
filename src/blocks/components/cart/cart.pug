@@ -2,7 +2,7 @@
 mixin cart
     .cart.js-vue-cart
         .__inner
-            a(href='#').__link
+            a(:href="isAuth").__link
                 +icon('login').__icon
             a(href='#').__link
                 +icon('favorite-cart').icon--counted.__icon(

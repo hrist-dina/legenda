@@ -1,0 +1,93 @@
+.input {
+
+    &-text {
+        display: flex;
+        position: relative;
+        padding-bottom: 24px;
+
+        &__placeholder {
+            @include transitionEaseOutQuint(top);
+            position: absolute;
+            top: 14px;
+            left: 0;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            color: #909fab;
+        }
+
+        &__error {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            font-size: 13px;
+            line-height: 18px;
+            color: #f85471;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        &__eye-off {
+            @include wh(24px);
+            content: "";
+            position: absolute;
+            top: 12px;
+            right: 0;
+            bottom: auto;
+            left: auto;
+            margin: auto;
+            background-image: url(icon-eye-off());
+            background-size: 24px;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        & input {
+            @include outline-none;
+            box-sizing: border-box;
+            width: 100%;
+            border: none;
+            padding: 14px 0;
+            border-bottom: 1px solid #909fab;
+            background: transparent;
+        }
+        
+        &.focus &__placeholder {
+            font-size: 14px;
+            line-height: 18px;
+            top: -8px;
+        }
+
+        &.error {
+            position: relative;
+            margin-bottom: 15px;
+
+            &:before {
+                @include wh(24px);
+                content: "";
+                position: absolute;
+                top: 12px;
+                right: 0;
+                bottom: auto;
+                left: auto;
+                margin: auto;
+                background-image: url(icon-warning());
+                background-size: 24px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+
+            & input {
+                color: #f85471;
+            }
+        }
+
+        &.password {
+            &:before {
+                content: none;
+            }
+        }
+    }
+}

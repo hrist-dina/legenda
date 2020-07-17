@@ -5,19 +5,11 @@ import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
 export default {
     register: async ({ commit }, payload) => {
         try {
-            const response = await new HTTP(
-                urlAjax.register,
-                {
-                    fio: payload.fio,
-                    email: payload.email,
-                    phone: payload.phone
-                },
-                data => {
-                    commit('setId', { id: data.id })
-                    commit('setToken', { token: data.token })
-                    commit('setPersonalData', payload)
-                }
-            ).post()
+            const response = await new HTTP(urlAjax.register, payload, data => {
+                commit('setId', { id: data.id })
+                commit('setToken', { token: data.token })
+                commit('setPersonalData', payload)
+            }).post()
 
             return response.data.status
         } catch (error) {

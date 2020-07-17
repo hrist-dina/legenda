@@ -1,21 +1,27 @@
 <template lang="pug">
-    label.input-text
-        //- span.input-text__label
+    label.input-text(:class="classAction")
+        span.input-text__placeholder {{ placeholder }}
         input(
-            :type='type'
+            :type='getType'
             :name='name'
-            :placeholder='placeholder'
-            :value='value'
             @input='onInput'
+            @focus="onFocus"
+            @blur="onBlur"
         )
+        span.input-text__eye-off(v-if="isPassword" @click.prevent="onShowPassword")
         span.input-text__error(v-if='hasError') {{ validate }}
 </template>
 
 <script>
+import { checkEmail } from '%common%/helper'
+import { declOfNum } from '%common%/formatters'
+
 export default {
     data() {
         return {
-            isActive: this.value !== ''
+            showPassword: false,
+            isActive: this.value !== '',
+            isFocus: this.value !== ''
         }
     },
     props: {
@@ -39,32 +45,102 @@ export default {
             type: Boolean,
             default: false
         },
+        validType: {
+            type: String
+        },
+        isValidType: {
+            type: Boolean
+        },
+        minLength: {
+            type: Number
+        },
         validation: {
             type: Array,
             default: function () {
-                return this.required
-                    ? [
-                          {
-                              required: true,
-                              message: 'Поле обязательное для заполнения!'
-                          }
-                      ]
-                    : []
+                let valArray = []
+                if (this.required) {
+                    valArray.push({
+                        required: true,
+                        message: 'Поле обязательное для заполнения!'
+                    })
+                }
+
+                if (this.validType === 'email') {
+                    valArray.push({
+                        email: true,
+                        valid: checkEmail,
+                        message: 'Адрес содержит недопустимые символы'
+                    })
+                }
+
+                if (this.validType === 'password') {
+                    valArray.push({
+                        password: true,
+                        message: 'Пароли не совпадают!'
+                    })
+                }
+
+                if (this.minLength > 0) {
+                    const text = declOfNum(this.minLength, [
+                        'символ',
+                        'символа',
+                        'символов'
+                    ])
+                    valArray.push({
+                        minLength: true,
+                        message: `Длина не должна быть меньше ${this.minLength} ${text}!`
+                    })
+                }
+
+                return valArray
             }
         }
     },
     computed: {
+        getType() {
+            if (this.isPassword) {
+                return this.showPassword ? 'text' : 'password'
+            }
+            return this.type
+        },
+        isPassword() {
+            return this.type === 'password'
+        },
+        classAction() {
+            return {
+                focus: this.isFocus,
+                error: this.hasError,
+                password: this.isPassword
+            }
+        },
         hasError() {
             return this.isActive && !this.isValid
         },
         isValid() {
-            console.log(this.validate)
             return !this.validate.length
         },
         validate() {
             let error = ''
             this.validation.forEach(rule => {
                 if (rule.required && this.value.length === 0) {
+                    error = rule.message
+                }
+                if (
+                    rule.email &&
+                    this.value.length > 0 &&
+                    rule.valid(this.value)
+                ) {
+                    error = rule.message
+                }
+                if (
+                    rule.password &&
+                    this.value.length > 0 &&
+                    this.isValidType
+                ) {
+                    error = rule.message
+                }
+
+                if (rule.minLength && this.minLength > this.value.length) {
                     error = rule.message
                 }
             })
@@ -82,6 +158,17 @@ export default {
             if (this.isActive) {
                 this.$emit('validate', { isValid: this.isValid })
             }
+        },
+        onFocus() {
+            this.isFocus = true
+        },
+        onBlur() {
+            if (!this.value.length) {
+                this.isFocus = false
+            }
+        },
+        onShowPassword() {
+            this.showPassword = !this.showPassword
         }
     },
     watch: {

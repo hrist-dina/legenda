@@ -239,6 +239,72 @@
         }
     }
 
+    &-checkbox-rounded {
+        display: flex;
+        align-items: flex-start;
+        cursor: pointer;
+
+        &__input {
+            display: none;
+        }
+
+        &__input:checked ~ &__custom {
+            &:before {
+                @include wh(100%);
+                content: "";
+                box-sizing: border-box;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-image: url(icon-checkbox-check('007BC2'));
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 10px;
+            }
+        }
+
+        &__custom {
+            @include transitionEaseOutQuint(background);
+            @include wh(22px);
+            box-sizing: border-box;
+            display: inline-flex;
+            position: relative;
+            border: 1px solid #ced8dd;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            line-height: 0;
+            font-size: 0;
+        }
+
+        &__text {
+            display: inline-flex;
+            width: #{calc(100% - 38px)};
+            font-size: 15px;
+            line-height: 22px;
+            color: #acacac;
+            margin-left: 16px;
+
+            & span {
+                margin-right: 5px;
+            }
+
+            & a {
+                display: inline;
+                text-decoration: underline;
+                font-size: 16px;
+                line-height: 22px;
+                color: #004f91;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
     &-radio {
         display: flex;
         align-items: flex-start;

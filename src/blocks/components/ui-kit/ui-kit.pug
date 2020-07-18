@@ -31,11 +31,18 @@ mixin field-file(name, placeholder, isMultiple = true)
         span.field-file__placeholder=placeholder
         input.field-file__input(name=`${name}${isMultiple ? '[]' : ''}` type='file' multiple!=isMultiple)&attributes(attributes)
 
-mixin field-checkbox(name, text, isChecked)
+mixin field-checkbox(name, isChecked)
     label.field-checkbox&attributes(attributes)
         input.field-checkbox__input(type="checkbox" name=name checked!=isChecked)
         .field-checkbox__custom
-        .field-checkbox__text=text
+        .field-checkbox__text
+            block
+mixin field-checkbox-rounded(name, isChecked)
+    label.field-checkbox-rounded&attributes(attributes)
+        input.field-checkbox-rounded__input(type="checkbox" name=name checked!=isChecked)
+        .field-checkbox-rounded__custom
+        .field-checkbox-rounded__text
+            block
 
 mixin field-radio(name, value, text, isChecked)
     label.field-radio&attributes(attributes)

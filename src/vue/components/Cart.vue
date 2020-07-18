@@ -10,7 +10,7 @@ export default {
         loaded: false
     }),
     computed: {
-        ...mapState('user', ['id']),
+        ...mapState('user', ['token']),
         ...mapState('cart', ['products']),
         ...mapGetters('cart', ['cnt', 'total', 'productsDetailed']),
         ...mapState('favorite', ['favorites']),
@@ -30,7 +30,7 @@ export default {
             return { loaded: this.loaded }
         },
         isAuth() {
-            return this.id ? '/lk' : '/auth'
+            return this.token
         }
     },
     methods: {

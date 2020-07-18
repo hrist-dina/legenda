@@ -1,9 +1,11 @@
 <template lang="pug">
+    include ../../../blocks/components/ui-kit/ui-kit
     .auth-form.auth-form--register
-        form.form(@submit.prevent="onSubmit")
+        form(@submit.prevent="onSubmit")
             input-text(
                 v-for="item in form"
                 :key="item.name"
+                :mask="item.mask"
                 :required="item.required"
                 :name="item.name"
                 :type="item.type"
@@ -15,8 +17,11 @@
                 :is-valid-type="item.isValidType"
                 :min-length="item.minLength"
             )
-            .checkout__button
-                include ../../../blocks/components/ui-kit/ui-kit
+            .auth-form__agree
+                +field-checkbox-rounded('agree')(@change="onAgree")
+                    span Согласен с условиями
+                    a(href='#') Публичной оферты
+            .auth-form__button
                 +button('default')(:disabled="!isValidForm") Зарегистрироваться
 </template>
 
@@ -29,6 +34,7 @@ export default {
         InputText
     },
     data: () => ({
+        agree: false,
         form: [
             {
                 placeholder: 'Ф. И. О.',
@@ -42,7 +48,8 @@ export default {
                 name: 'phone',
                 value: '',
                 required: true,
-                isValid: false
+                isValid: false,
+                mask: 'phone'
             },
             {
                 placeholder: 'Электронная почта',
@@ -78,7 +85,7 @@ export default {
     }),
     computed: {
         isValidForm() {
-            return !this.form.filter(el => !el.isValid).length
+            return !this.form.filter(el => !el.isValid).length && this.agree
         }
     },
     methods: {
@@ -96,11 +103,14 @@ export default {
                         this.getIndexByName('password_confirm')
                     ].value
                 }).then(response => {
-                    if (response) {
-                        alert('test')
+                    if (response.status) {
+                        window.location = '/'
                     }
                 })
             }
+        },
+        onAgree() {
+            this.agree = !this.agree
         },
         getIndexByName(name) {
             return this.form.findIndex(el => el.name === name)

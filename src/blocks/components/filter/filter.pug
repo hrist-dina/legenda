@@ -19,6 +19,7 @@ mixin filter-item(data)
             .__drop
                 .__list
                     for item in data.list
-                        +field-checkbox(item.name, item.text, item.isChecked).__checkbox(@change="change")
+                        +field-checkbox(item.name, item.isChecked).__checkbox(@change="change")
+                            | #{item.text}
 
 

@@ -4,9 +4,9 @@
             .checkout-stucture__total-data
                 .checkout-stucture__total-title Итого к оплате:
                 .checkout-stucture__total-value {{ total | ruble }}
-            .checkout-stucture__total-button
-            include ../../../blocks/components/ui-kit/ui-kit
-            +button('order')(:disabled="!isEndStep" @click="onClickSendOrder") Оформить заказ
+            .checkout-stucture__total-button(v-if="!isWelcome")
+                include ../../../blocks/components/ui-kit/ui-kit
+                +button('order')(:disabled="!isEndStep" @click="onClickSendOrder") Оформить заказ
         .checkout-stucture__data
             .checkout-stucture__head
                 .checkout-stucture__title Состав заказа
@@ -30,7 +30,11 @@
 <script>
 import CartItem from '%vue%/components/CartItem'
 import { mapActions, mapGetters } from 'vuex'
-import { CHECKOUT_ORDER, CHECKOUT_PAYMENT } from "%vue%/store/checkout/state"
+import {
+    CHECKOUT_ORDER,
+    CHECKOUT_PAYMENT,
+    CHECKOUT_WELCOME
+} from '%vue%/store/checkout/state'
 
 export default {
     components: {
@@ -41,6 +45,9 @@ export default {
         isEndStep() {
             const name = this.$route.name
             return name === CHECKOUT_PAYMENT || name === CHECKOUT_ORDER
+        },
+        isWelcome() {
+            return this.$route.name === CHECKOUT_WELCOME
         }
     },
     methods: {

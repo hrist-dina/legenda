@@ -4,7 +4,7 @@
             .lk__header
                 .lk__header-top
                     h1.lk__title Личный кабинет
-                    a(href='#') Выйти
+                    a(href='javascript:void()' @click.prevent="onLogout") Выйти
                 .lk__header-meta.lk__meta
                     .lk__meta-title Вам доступно <? hint>
                     .lk__meta-list
@@ -17,11 +17,22 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
     computed: {},
-    methods: {},
+    methods: {
+        ...mapActions('user', {
+            logout: 'logout'
+        }),
+        onLogout() {
+            this.logout().then(response => {
+                if (response.status) {
+                    window.location = '/'
+                }
+            })
+        }
+    },
     created() {}
 }
 </script>

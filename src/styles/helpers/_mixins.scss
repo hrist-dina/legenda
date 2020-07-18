@@ -61,6 +61,7 @@
 
 @mixin skeleton-loader() {
     position: relative;
+    overflow: hidden;
     &:before {
         content: "";
         display: block;

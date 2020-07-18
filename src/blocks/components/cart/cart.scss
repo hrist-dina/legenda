@@ -10,6 +10,25 @@
         text-decoration: none;
         display: inline-flex;
         align-items: flex-end;
+
+        &--auth {
+            @include wh(32px);
+            background: $skeleton-color;
+            border-radius: 10px;
+            margin-right: 32px;
+            &:not(.loaded) {
+                @include skeleton-loader;
+                & + & {
+                    display: none;
+                }
+            }
+            &.loaded {
+                width: auto;
+                height: auto;
+                background: none;
+                margin-right: 0;
+            }
+        }
     }
 
     &__data {

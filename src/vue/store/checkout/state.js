@@ -20,7 +20,7 @@ export default {
                 title: 'Авторизация'
             },
             {
-                name: 'order',
+                name: CHECKOUT_ORDER,
                 title: 'Оформление заказа'
             }
         ],

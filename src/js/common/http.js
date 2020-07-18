@@ -48,7 +48,8 @@ export const urlAjax = {
     favoriteRemove: isProd ? '/api/favorite/remove' : '/mock/favorite.json',
     favoriteClean: isProd ? '/api/favorite/clean' : '/mock/favorite.json',
     register: isProd ? '/api/register' : '/mock/register.json',
-    auth: isProd ? '/api/auth' : '/mock/auth.json',
+    login: isProd ? '/api/login' : '/mock/login.json',
+    logout: isProd ? '/api/logout' : '/mock/logout.json',
     delivery: isProd ? '/api/delivery' : '/mock/delivery.json',
     // На проде будет один путь, запрос будет приходить с параметрами типа оплаты
     paymentCard: isProd ? '/api/payment' : '/mock/payment-card.json',

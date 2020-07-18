@@ -1,6 +1,7 @@
+const token = localStorage.getItem('token')
 export default {
     id: null,
-    token: null,
+    token: token === 'null' ? null : token || null,
     person: {
         fio: '',
         phone: '',

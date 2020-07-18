@@ -4,6 +4,7 @@
         input(
             :type='getType'
             :name='name'
+            :class='classInput'
             @input='onInput'
             @focus="onFocus"
             @blur="onBlur"
@@ -15,6 +16,7 @@
 <script>
 import { checkEmail } from '%common%/helper'
 import { declOfNum } from '%common%/formatters'
+import Mask from '%classes%/Mask'
 
 export default {
     data() {
@@ -53,6 +55,9 @@ export default {
         },
         minLength: {
             type: Number
+        },
+        mask: {
+            type: String
         },
         validation: {
             type: Array,
@@ -112,6 +117,12 @@ export default {
                 error: this.hasError,
                 password: this.isPassword
             }
+        },
+        classInput() {
+            return { 'js-mask-phone': this.isMaskType }
+        },
+        isMaskType() {
+            return this.mask === 'phone'
         },
         hasError() {
             return this.isActive && !this.isValid
@@ -179,6 +190,11 @@ export default {
     created() {
         if (this.isActive) {
             this.onValidChange()
+        }
+    },
+    mounted() {
+        if (this.isMaskType) {
+            new Mask('.js-mask-phone').phone()
         }
     }
 }

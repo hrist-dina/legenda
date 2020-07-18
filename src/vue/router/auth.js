@@ -1,10 +1,11 @@
 import router from '%vue%/router/base'
 import AppNav from '%vue%/views/auth/AppNav'
 import AuthRegister from '%vue%/views/auth/AuthRegister'
+import AuthLogin from '%vue%/views/auth/AuthLogin'
 
 const routes = [
     {
-        path: '/#/register',
+        path: '',
         component: AppNav,
         meta: {
             title: 'Регистрация'
@@ -12,8 +13,13 @@ const routes = [
         children: [
             {
                 name: 'register',
-                path: '',
+                path: '/#/register',
                 component: AuthRegister
+            },
+            {
+                name: 'login',
+                path: '/#/login',
+                component: AuthLogin
             }
         ]
     }

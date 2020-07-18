@@ -1,15 +1,43 @@
 .auth {
-
-    &__header {
-        margin-top: 42px;
-        margin-bottom: 36px;
-    }
+    margin-top: 48px;
 
     &__nav {
-        margin-bottom: 28px;
+        margin-bottom: 40px;
+
+        &-item {
+            text-decoration: none;
+            padding: 12px 24px;
+            margin-right: 24px;
+            border-radius: 57px;
+
+            &.active {
+                background: #f1f6fc;
+            }
+        }
+
+        &-text {
+            font-size: 16px;
+            line-height: 21px;
+            color: #343e44;
+            border-bottom: 1px dashed #343e44;
+        }
+
+        &-item.active &-text {
+            color: #004f91;
+            border-bottom: transparent;
+        }
     }
 
     &-form {
         max-width: 373px;
+
+        &__agree {
+            margin-top: 4px;
+            margin-bottom: 36px;
+        }
+
+        &__button {
+            margin-top: 15px;
+        }
     }
 }

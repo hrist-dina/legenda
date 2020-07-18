@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
+import { mapState, mapActions, mapGetters } from 'vuex'
+import { CHECKOUT_ORDER, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutStructure from '%vue%/views/checkout/CheckoutStructure'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
 import { toggleAdditionalProducts } from '%common%/helper'
@@ -25,7 +25,8 @@ export default {
         CheckoutNavigation
     },
     computed: {
-        ...mapState('checkout', ['steps', 'hasLogin', 'activeStep']),
+        ...mapState('checkout', ['steps', 'activeStep']),
+        ...mapGetters('checkout', ['getHasLogin']),
         isWelcome() {
             return this.activeStep === CHECKOUT_WELCOME
         },
@@ -40,6 +41,11 @@ export default {
     },
     created() {
         this.setActiveStep({ activeStep: this.$route.name })
+
+        if (this.getHasLogin) {
+            this.setActiveStep({ activeStep: CHECKOUT_ORDER })
+        }
+
         toggleAdditionalProducts()
     },
     watch: {

@@ -38,6 +38,7 @@ export default {
         const response = await new HTTP(
             urlAjax.delivery,
             {
+                type: payload.type,
                 address: payload.address,
                 date: payload.date,
                 time: payload.time

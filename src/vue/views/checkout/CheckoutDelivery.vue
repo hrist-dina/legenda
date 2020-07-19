@@ -1,56 +1,50 @@
 <template lang="pug">
-    .checkout-delivery
-        .checkout__thanks {{ fio }},
-            br
-            |
-            | укажите пожалуйста тип и адрес доставки:
-        .delivery
-            .delivery-type-list
-                label.delivery-type(v-for="(type, i) in deliveryTypes" :key="type.code" )
-                    input(
-                        :key="type.code"
-                        type='radio'
-                        name="delivery_type"
-                        :value="type.code"
-                        @change="onChangeType"
-                        :checked="handleChecked(i, type.code)"
-                    ).delivery-type__input
-                    .delivery-type__data
-                        .delivery-type__icon
-                        .delivery-type__title {{ type.name }}
-            form.form(@submit.prevent="onSubmit")
-                .field
-                    input-text(
-                        :key="address.name"
-                        :required="address.required"
-                        :name="address.name"
-                        :value="address.value"
-                        @input="onInput($event, address.name)"
-                        @validate="onValidate($event,address.name)"
-                        :placeholder="address.placeholder"
-                    )
-                .checkout-delivery__datetime
-                    .checkout-delivery__datetime-part
-                        app-date-picker(
-                            :date="date"
-                            @change="onChangeDate"
-                            placeholder="Желаемая дата"
-                        )
-                    .checkout-delivery__datetime-part
-                        app-time-picker(
-                            :time="time"
-                            @change="onChangeTime"
-                            placeholder="Время"
-                        )
-
-
-                .checkout__button
-                    include ../../../blocks/components/ui-kit/ui-kit
-                    +button('default')(:disabled="!isValidForm") Далее
-                    checkout-back
-
-
-
+include ../../../views/helpers/mixins
+.checkout-delivery
+    .checkout__thanks {{ fio }},
+        br
+        | укажите пожалуйста тип и адрес доставки:
+    .checkout-delivery__type-list.delivery-type-list
+        label.delivery-type(v-for="(type, i) in deliveryTypes" :key="type.code" )
+            input(
+                :key="type.code"
+                type='radio'
+                name="delivery_type"
+                :value="type.code"
+                @change="onChangeType"
+                :checked="handleChecked(i, type.code)"
+            ).delivery-type__input
+            .delivery-type__data
+                +icon(false)(:class="`icon-${type.code}`").delivery-type__icon
+                .delivery-type__title {{ type.name }}
+    form.form(@submit.prevent="onSubmit")
+        .field
+            input-text(
+                :key="address.name"
+                :required="address.required"
+                :name="address.name"
+                :value="address.value"
+                @input="onInput($event, address.name)"
+                @validate="onValidate($event,address.name)"
+                :placeholder="address.placeholder"
+            )
+        .checkout-delivery__datetime
+            .checkout-delivery__datetime-part
+                app-date-picker(
+                    :date="date"
+                    @change="onChangeDate"
+                    placeholder="Желаемая дата"
+                )
+            .checkout-delivery__datetime-part
+                app-time-picker(
+                    :time="time"
+                    @change="onChangeTime"
+                    placeholder="Время"
+                )
+        .checkout__button
+            include ../../../blocks/components/ui-kit/ui-kit
+            +button('default')(:disabled="!isValidForm") Далее
+            checkout-back
 </template>
 
 <script>
@@ -86,7 +80,9 @@ export default {
         isValidForm() {
             return (
                 !Object.values(this.form).filter(el => !el.isValid).length &&
-                !!this.type.length
+                !!this.type.length &&
+                !!this.date &&
+                !!this.time
             )
         },
         fio() {
@@ -110,7 +106,9 @@ export default {
             if (this.isValidForm) {
                 this.handleDelivery({
                     type: this.type,
-                    address: this.form.address.value
+                    address: this.form.address.value,
+                    date: this.date,
+                    time: this.time
                 }).then(response => {
                     if (response) {
                         this.onNext()
@@ -144,34 +142,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.delivery-type {
-    margin-right: 20px;
-    &-list {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    &__data {
-        padding: 16px;
-        box-sizing: border-box;
-        background: #ffffff;
-        box-shadow: 0 7px 250px rgba(0, 0, 0, 0.07);
-        border-radius: 4px;
-        border: 1px solid transparent;
-        cursor: pointer;
-    }
-
-    &__input {
-        display: none;
-    }
-
-    &__input:checked ~ &__data {
-        background: #e9e9e9;
-        border-color: #d6d6d6;
-        box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
-        border-radius: 4px;
-    }
-}
-</style>
 <!-- style in bem components checkout -->

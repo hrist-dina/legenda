@@ -9,5 +9,6 @@ export default {
         return data
     },
     getDeliveryTypes: state => state.delivery.types,
-    getPayment: state => state.payment
+    getPayment: state => state.payment,
+    isAuth: state => state.token
 }

@@ -1,0 +1,51 @@
+.delivery {
+
+    &-type {
+        &-list {
+            display: flex;
+            align-items: center;
+        }
+        &__data {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            border: 2px solid #f1f6fc;
+            padding: 26px 56px 26px 26px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        &__icon {
+            margin-right: 24px;
+        }
+
+        &__title {
+            font-size: 20px;
+            line-height: 22px;
+            color: #004f91;
+        }
+
+        &__input {
+            display: none;
+        }
+
+        &__input:checked ~ &__data {
+            background: #004f91;
+            border-color: #004f91;
+        }
+
+        &__input:checked ~ &__data &__icon {
+            &.icon-home {
+                background-image: url(icon-home('fff'));
+            }
+
+            &.icon-office {
+                background-image: url(icon-office('fff'));
+            }
+        }
+
+        &__input:checked ~ &__data &__title {
+            color: #fff;
+        }
+    }
+}

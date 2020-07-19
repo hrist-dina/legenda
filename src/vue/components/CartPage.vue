@@ -41,7 +41,7 @@
                                 .cart-page__total-title Итого:
                                 .cart-page__total-value {{ total | ruble }}
                             .cart-page__to-order
-                                router-link(:to="{name: 'welcome'}").link.link--big К оформлению заказа
+                                router-link(:to="toOrder").link.link--big К оформлению заказа
 </template>
 
 <script>
@@ -50,6 +50,7 @@ import CartItem from '%vue%/components/CartItem'
 import CartItemSkeleton from '%vue%/components/CartItemSkeleton'
 import Loader from '%vue%/components/Loader'
 import { toggleAdditionalProducts } from '%common%/helper'
+import { CHECKOUT_ORDER, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 
 export default {
     components: {
@@ -61,8 +62,14 @@ export default {
         ...mapState('cart', ['products']),
         ...mapState('products', ['isLoading']),
         ...mapGetters('cart', ['cnt', 'total', 'productsDetailed']),
+        ...mapGetters('user', ['isAuth']),
         hasProducts() {
             return !!this.productsDetailed.length
+        },
+        toOrder() {
+            return this.isAuth
+                ? { name: CHECKOUT_ORDER }
+                : { name: CHECKOUT_WELCOME }
         }
     },
     methods: {

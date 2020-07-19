@@ -186,6 +186,20 @@
     background-size: 14px 7px;
 }
 
+.icon-home {
+    @include wh(40px);
+    @include icon-bgc(icon-home());
+
+}
+
+.icon-office {
+    @include wh(40px);
+    @include icon-bgc(icon-office());
+    .active & {
+        background-image: url(icon-office('fff'));
+    }
+}
+
 .icon--counted {
     @include icon-counted;
 }

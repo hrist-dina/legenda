@@ -14,8 +14,8 @@ export default {
                 name: 'Домой'
             },
             {
-                code: 'work',
-                name: 'На работу'
+                code: 'office',
+                name: 'В офис'
             }
         ],
         items: []

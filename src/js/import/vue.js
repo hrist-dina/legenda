@@ -10,6 +10,10 @@ import routerOrder from '%vue%/router/order'
 import routerLk from '%vue%/router/lk'
 import routerAuth from '%vue%/router/auth'
 import AppAuth from '%vue%/views/AppAuth'
+import Vue from 'vue'
+import vSelect from 'vue-select'
+
+Vue.component('v-select', vSelect)
 
 new ComponentVue('.js-vue-product', Product, false)
 new ComponentVue('.js-vue-cart', Cart, false)

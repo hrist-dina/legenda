@@ -1,5 +1,5 @@
 <template lang="pug">
-    .checkout__delivery
+    .checkout-delivery
         .checkout__thanks {{ fio }},
             br
             |
@@ -18,8 +18,6 @@
                     .delivery-type__data
                         .delivery-type__icon
                         .delivery-type__title {{ type.name }}
-            .delivery-message
-                p Обратите внимание, что оборудование будет доставлено на тот же адрес, с которого было принято.
             form.form(@submit.prevent="onSubmit")
                 .field
                     input-text(
@@ -31,7 +29,20 @@
                         @validate="onValidate($event,address.name)"
                         :placeholder="address.placeholder"
                     )
-                .delivery-datatime
+                .checkout-delivery__datetime
+                    .checkout-delivery__datetime-part
+                        app-date-picker(
+                            :date="date"
+                            @change="onChangeDate"
+                            placeholder="Желаемая дата"
+                        )
+                    .checkout-delivery__datetime-part
+                        app-time-picker(
+                            :time="time"
+                            @change="onChangeTime"
+                            placeholder="Время"
+                        )
+
 
                 .checkout__button
                     include ../../../blocks/components/ui-kit/ui-kit
@@ -46,11 +57,15 @@
 import { mapActions, mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
+import AppDatePicker from '%vue%/components/AppDatePicker'
+import AppTimePicker from '%vue%/components/AppTimePicker'
 
 export default {
     components: {
         InputText,
-        CheckoutBack
+        CheckoutBack,
+        AppDatePicker,
+        AppTimePicker
     },
     data: () => ({
         type: '',
@@ -62,7 +77,9 @@ export default {
                 required: true,
                 isValid: false
             }
-        }
+        },
+        date: null,
+        time: null
     }),
     computed: {
         ...mapGetters('user', ['getPerson', 'getDeliveryTypes']),
@@ -116,6 +133,12 @@ export default {
                 return true
             }
             return false
+        },
+        onChangeDate(val) {
+            this.date = val
+        },
+        onChangeTime(val) {
+            this.time = val
         }
     }
 }
@@ -149,13 +172,6 @@ export default {
         box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
         border-radius: 4px;
     }
-}
-
-.delivery-message {
-    margin-top: 30px;
-    font-size: 16px;
-    line-height: 19px;
-    color: rgba(0, 0, 0, 0.5);
 }
 </style>
 <!-- style in bem components checkout -->

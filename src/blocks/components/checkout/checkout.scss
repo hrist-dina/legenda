@@ -250,4 +250,20 @@
             max-width: 295px;
         }
     }
+
+    &-delivery, &-payment {
+        max-width: 477px;
+    }
+
+    &-delivery {
+        &__datetime {
+            display: flex;
+            justify-content: space-between;
+
+            &-part {
+                width: 100%;
+                max-width: 220px;
+            }
+        }
+    }
 }

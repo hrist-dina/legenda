@@ -1,16 +1,15 @@
 <template lang="pug">
-    .checkout__payment
+    .checkout-payment
         .checkout__title Готово!
         .checkout__thanks Последний шаг - выбор способа оплаты
-        .checkout__payment-type
-            select(@change="onChange")
-                option(
-                    v-once
-                    v-for="item in payment"
-                    :key="item.code"
-                    :value="item.code"
-                    :selected="handlerSelected(item)"
-                ) {{ item.name }}
+        .checkout-payment__type
+            v-select(
+                placeholder="Выберите способ оплаты"
+                @input="onChange"
+                :options="getPayment"
+                :value="selectPaymentType"
+            )
+                .div(slot="no-options") Не найден способ оплаты
         .checkout__button
             checkout-back
 </template>
@@ -35,18 +34,10 @@ export default {
     },
     computed: {
         ...mapState('checkout', ['activeStep']),
+        ...mapState('user', ['selectPaymentType']),
         ...mapGetters('user', ['getPayment']),
         payment() {
             return this.getPayment
-        },
-        handlerSelected() {
-            return val => {
-                if (val.selected) {
-                    this.setType(val.code)
-                    return 'selected'
-                }
-                return ''
-            }
         }
     },
     methods: {
@@ -59,8 +50,8 @@ export default {
         setType(val) {
             this.setPaymentType({ selectPaymentType: val })
         },
-        onChange({ target }) {
-            this.setType(target.value)
+        onChange(val) {
+            this.setType(val)
         }
     },
     created() {

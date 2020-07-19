@@ -5,6 +5,7 @@
             :type='getType'
             :name='name'
             :class='classInput'
+            :value="value"
             @input='onInput'
             @focus="onFocus"
             @blur="onBlur"

@@ -12,6 +12,8 @@
                     @input="onInput($event, item.name)"
                     @validate="onValidate($event, item.name)"
                     :placeholder="item.placeholder"
+                    :mask="item.mask"
+                    :valid-type="item.validType"
                 )
             .checkout__button
                 include ../../../blocks/components/ui-kit/ui-kit
@@ -46,14 +48,16 @@ export default {
                     name: 'phone',
                     value: '',
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    mask: 'phone'
                 },
                 {
                     placeholder: 'Электронная почта',
                     name: 'email',
                     value: '',
                     required: true,
-                    isValid: false
+                    isValid: false,
+                    validType: 'email'
                 }
             ]
         }

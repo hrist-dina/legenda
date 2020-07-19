@@ -1,0 +1,50 @@
+$namespace: 'mx'; // change the 'mx' to 'xmx'. then <date-picker prefix-class="xmx" />
+
+$default-color: #343e44;
+$primary-color: #004f91;
+
+@import '../../../../node_modules/vue2-datepicker/scss/index';
+
+.mx-datepicker {
+    max-width: 220px;
+    width: 100%;
+}
+
+.mx-input {
+    border: none;
+    font-size: 16px;
+    line-height: 20px;
+    color: #909FAB;
+    padding: 14px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #909FAB;
+    border-radius: 0;
+    height: auto;
+    box-shadow: none;
+}
+
+.mx-icon-calendar {
+    & svg {
+        display: none;
+    }
+    background-image: url(icon-calendar());
+    @include wh(24px);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    .type-time & {
+        background-image: url(icon-arrow-select());
+    }
+}
+
+.mx-icon-clear {
+    & svg {
+        fill: #B7C8D6;
+        @include wh(24px);
+    }
+}
+
+.mx-time {
+    width: 220px;
+}

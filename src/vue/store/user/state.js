@@ -23,12 +23,12 @@ export default {
     payment: [
         {
             code: 'money',
-            name: 'Наличные',
+            label: 'Наличные',
             selected: true
         },
         {
             code: 'bank-card',
-            name: 'Банковской картой'
+            label: 'Банковской картой'
         }
     ],
     selectPaymentType: null

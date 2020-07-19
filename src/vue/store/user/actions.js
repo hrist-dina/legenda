@@ -50,7 +50,7 @@ export default {
         return response.data.status
     },
     payment: async ({ state, rootState, dispatch }) => {
-        const type = state.selectPaymentType
+        const type = state.selectPaymentType.code
         const url =
             type === 'money' ? urlAjax.paymentMoney : urlAjax.paymentCard
         const response = await new HTTP(

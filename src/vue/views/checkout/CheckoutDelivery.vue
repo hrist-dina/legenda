@@ -28,19 +28,12 @@ include ../../../views/helpers/mixins
                 @validate="onValidate($event,address.name)"
                 :placeholder="address.placeholder"
             )
-        .checkout-delivery__datetime
-            .checkout-delivery__datetime-part
-                app-date-picker(
-                    :date="date"
-                    @change="onChangeDate"
-                    placeholder="Желаемая дата"
-                )
-            .checkout-delivery__datetime-part
-                app-time-picker(
-                    :time="time"
-                    @change="onChangeTime"
-                    placeholder="Время"
-                )
+        checkout-delivery-datetime(
+            :date="date"
+            :time="time"
+            @changeDate="onChangeDate"
+            @changeTime="onChangeTime"
+        )
         .checkout__button
             include ../../../blocks/components/ui-kit/ui-kit
             +button('default')(:disabled="!isValidForm") Далее
@@ -50,16 +43,14 @@ include ../../../views/helpers/mixins
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
-import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
-import AppDatePicker from '%vue%/components/AppDatePicker'
-import AppTimePicker from '%vue%/components/AppTimePicker'
+import CheckoutBack from './CheckoutBack'
+import CheckoutDeliveryDatetime from './CheckoutDeliveryDatetime'
 
 export default {
     components: {
         InputText,
         CheckoutBack,
-        AppDatePicker,
-        AppTimePicker
+        CheckoutDeliveryDatetime
     },
     data: () => ({
         type: '',

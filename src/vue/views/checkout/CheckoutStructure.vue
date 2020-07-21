@@ -31,7 +31,7 @@
 import CartItem from '%vue%/components/CartItem'
 import { mapActions, mapGetters } from 'vuex'
 import {
-    CHECKOUT_ORDER,
+    CHECKOUT_FINAL,
     CHECKOUT_PAYMENT,
     CHECKOUT_WELCOME
 } from '%vue%/store/checkout/state'
@@ -44,7 +44,7 @@ export default {
         ...mapGetters('cart', ['productsDetailed', 'total']),
         isEndStep() {
             const name = this.$route.name
-            return name === CHECKOUT_PAYMENT || name === CHECKOUT_ORDER
+            return name === CHECKOUT_PAYMENT || name === CHECKOUT_FINAL
         },
         isWelcome() {
             return this.$route.name === CHECKOUT_WELCOME

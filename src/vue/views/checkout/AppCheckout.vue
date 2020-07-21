@@ -14,7 +14,7 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
-import { CHECKOUT_ORDER, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
+import { CHECKOUT_FINAL, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutStructure from '%vue%/views/checkout/CheckoutStructure'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
 import { toggleAdditionalProducts } from '%common%/helper'
@@ -43,7 +43,7 @@ export default {
         this.setActiveStep({ activeStep: this.$route.name })
 
         if (this.getHasLogin) {
-            this.setActiveStep({ activeStep: CHECKOUT_ORDER })
+            this.setActiveStep({ activeStep: CHECKOUT_FINAL })
         }
 
         toggleAdditionalProducts()

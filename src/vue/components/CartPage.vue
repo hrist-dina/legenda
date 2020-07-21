@@ -50,7 +50,7 @@ import CartItem from '%vue%/components/CartItem'
 import CartItemSkeleton from '%vue%/components/CartItemSkeleton'
 import Loader from '%vue%/components/Loader'
 import { toggleAdditionalProducts } from '%common%/helper'
-import { CHECKOUT_ORDER, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
+import { CHECKOUT_FINAL, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 
 export default {
     components: {
@@ -68,7 +68,7 @@ export default {
         },
         toOrder() {
             return this.isAuth
-                ? { name: CHECKOUT_ORDER }
+                ? { name: CHECKOUT_FINAL }
                 : { name: CHECKOUT_WELCOME }
         }
     },

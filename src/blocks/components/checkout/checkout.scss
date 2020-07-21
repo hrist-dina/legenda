@@ -209,10 +209,6 @@
         }
     }
 
-    &-personal-data {
-        max-width: 477px;
-    }
-
     &-success {
         margin-top: 64px;
         &__inner {
@@ -252,7 +248,7 @@
         }
     }
 
-    &-delivery, &-payment {
+    &-personal-data, &-delivery, &-payment, &-final {
         max-width: 477px;
     }
 
@@ -273,12 +269,21 @@
     }
 
     &-block {
-        &-title {
+        margin-bottom: 40px;
+        &__title {
             font-weight: 500;
             font-size: 18px;
             line-height: 24px;
-            color: #000000;
-            margin-bottom: 28px;
+            color: #000;
+            margin-bottom: 23px;
+        }
+
+        &__row {
+            margin-top: 0;
+            margin-bottom: 12px;
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     }
 }

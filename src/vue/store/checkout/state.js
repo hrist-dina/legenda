@@ -1,13 +1,13 @@
 export const CHECKOUT_WELCOME = 'welcome'
 export const CHECKOUT_AUTH = 'auth'
+export const CHECKOUT_FINAL = 'final'
 export const CHECKOUT_PERSONAL_DATA = 'personal-data'
 export const CHECKOUT_DELIVERY = 'delivery'
 export const CHECKOUT_PAYMENT = 'payment'
-export const CHECKOUT_ORDER = 'order'
 export const CHECKOUT_SUCCESS = 'success'
 
 export default {
-    activeStep: 'welcome',
+    activeStep: CHECKOUT_WELCOME,
     hasLogin: false,
     steps: {
         welcome: {
@@ -20,7 +20,7 @@ export default {
                 title: 'Авторизация'
             },
             {
-                name: CHECKOUT_ORDER,
+                name: CHECKOUT_FINAL,
                 title: 'Оформление заказа'
             }
         ],

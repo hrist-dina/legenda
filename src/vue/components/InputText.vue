@@ -116,7 +116,8 @@ export default {
             return {
                 focus: this.isFocus,
                 error: this.hasError,
-                password: this.isPassword
+                password: this.isPassword,
+                'show-password': this.showPassword
             }
         },
         classInput() {

@@ -42,6 +42,10 @@
             background-repeat: no-repeat;
             background-position: center;
             cursor: pointer;
+
+            .show-password & {
+                background-image: url(icon-eye-on());
+            }
         }
 
         & input {

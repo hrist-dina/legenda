@@ -1,11 +1,14 @@
 const token = localStorage.getItem('token')
+const deliveryItems = JSON.parse(localStorage.getItem('deliveryItems'))
 export default {
     id: null,
     token: token === 'null' ? null : token || null,
     person: {
         fio: '',
         phone: '',
-        email: ''
+        email: '',
+        bonus: 0,
+        bottle: 0
     },
     delivery: {
         types: [
@@ -18,7 +21,7 @@ export default {
                 name: 'В офис'
             }
         ],
-        items: []
+        items: deliveryItems || []
     },
     payment: [
         {
@@ -31,5 +34,8 @@ export default {
             label: 'Банковской картой'
         }
     ],
-    selectPaymentType: null
+    selectPaymentType: null,
+    selectDelivery: {},
+    isSpendBonus: true,
+    isSpendBottle: false
 }

@@ -37,9 +37,13 @@ mixin field-checkbox(name, isChecked)
         .field-checkbox__custom
         .field-checkbox__text
             block
-mixin field-checkbox-rounded(name, isChecked)
-    label.field-checkbox-rounded&attributes(attributes)
-        input.field-checkbox-rounded__input(type="checkbox" name=name checked!=isChecked)
+mixin field-checkbox-rounded(name, isChecked, additionalClass)
+    label.field-checkbox-rounded(class!=additionalClass)
+        input.field-checkbox-rounded__input(
+            type="checkbox"
+            name=name
+            checked!=isChecked
+        )&attributes(attributes)
         .field-checkbox-rounded__custom
         .field-checkbox-rounded__text
             block

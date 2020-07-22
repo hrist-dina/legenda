@@ -15,7 +15,7 @@ export const formatThousand = number =>
 export const phoneReplace = value => value.replace(/[^\d+]/g, '')
 export const ruble = value => `${formatThousand(value)} ₽`
 export const bonus = value =>
-    `<span>${formatThousand(value)}</span> ${declOfNum(value, [
+    `${formatThousand(value)} ${declOfNum(value, [
         'бонус',
         'бонуса',
         'бонусов'

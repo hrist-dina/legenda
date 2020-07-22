@@ -3,13 +3,11 @@
         .checkout__title Готово!
         .checkout__thanks Последний шаг - выбор способа оплаты
         .checkout-payment__type
-            v-select(
-                placeholder="Выберите способ оплаты"
-                @input="onChange"
+            app-select-payment(
+                @change="onChange"
                 :options="getPayment"
                 :value="selectPaymentType"
             )
-                .div(slot="no-options") Не найден способ оплаты
         .checkout__button
             checkout-back
 </template>
@@ -17,10 +15,12 @@
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex'
 import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
+import AppSelectPayment from '%vue%/components/AppSelectPayment'
 
 export default {
     components: {
-        CheckoutBack
+        CheckoutBack,
+        AppSelectPayment
     },
     data() {
         return {
@@ -35,10 +35,7 @@ export default {
     computed: {
         ...mapState('checkout', ['activeStep']),
         ...mapState('user', ['selectPaymentType']),
-        ...mapGetters('user', ['getPayment']),
-        payment() {
-            return this.getPayment
-        }
+        ...mapGetters('user', ['getPayment'])
     },
     methods: {
         ...mapActions('checkout', {
@@ -48,7 +45,7 @@ export default {
             setPaymentType: 'setPaymentType'
         }),
         setType(val) {
-            this.setPaymentType({ selectPaymentType: val })
+            this.setPaymentType(val)
         },
         onChange(val) {
             this.setType(val)

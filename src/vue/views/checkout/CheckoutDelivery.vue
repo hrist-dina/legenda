@@ -24,8 +24,8 @@ include ../../../views/helpers/mixins
                 :required="address.required"
                 :name="address.name"
                 :value="address.value"
-                @input="onInput($event, address.name)"
-                @validate="onValidate($event,address.name)"
+                @input="onInput($event)"
+                @validate="onValidate($event)"
                 :placeholder="address.placeholder"
             )
         checkout-delivery-datetime(
@@ -54,14 +54,12 @@ export default {
     },
     data: () => ({
         type: '',
-        form: {
-            address: {
-                placeholder: 'Адрес(улица, дом, подъезд, квартира)',
-                name: 'address',
-                value: '',
-                required: true,
-                isValid: false
-            }
+        address: {
+            placeholder: 'Адрес(улица, дом, подъезд, квартира)',
+            name: 'address',
+            value: '',
+            required: true,
+            isValid: false
         },
         date: null,
         time: null
@@ -70,7 +68,7 @@ export default {
         ...mapGetters('user', ['getPerson', 'getDeliveryTypes']),
         isValidForm() {
             return (
-                !Object.values(this.form).filter(el => !el.isValid).length &&
+                this.address.isValid &&
                 !!this.type.length &&
                 !!this.date &&
                 !!this.time
@@ -81,9 +79,6 @@ export default {
         },
         deliveryTypes() {
             return this.getDeliveryTypes
-        },
-        address() {
-            return this.form.address
         }
     },
     methods: {
@@ -97,7 +92,7 @@ export default {
             if (this.isValidForm) {
                 this.handleDelivery({
                     type: this.type,
-                    address: this.form.address.value,
+                    address: this.address.value,
                     date: this.date,
                     time: this.time
                 }).then(response => {
@@ -110,11 +105,11 @@ export default {
         onChangeType({ target }) {
             this.type = target.value
         },
-        onInput(data, name) {
-            this.form[name].value = data.value
+        onInput(data) {
+            this.address.value = data.value
         },
-        onValidate(data, name) {
-            this.form[name].isValid = data.isValid
+        onValidate(data) {
+            this.address.isValid = data.isValid
         },
         handleChecked(i, code) {
             if (i === 0) {

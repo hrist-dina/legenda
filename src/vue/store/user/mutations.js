@@ -25,5 +25,14 @@ export default {
     },
     setSelectedPaymentType(state, payload) {
         state.selectPaymentType = payload.selectPaymentType
+    },
+    setSelectedDelivery(state, payload) {
+        state.selectDelivery = payload.selectDelivery
+    },
+    setIsSpendBonus(state, payload) {
+        state.isSpendBonus = payload
+    },
+    setIsSpendBottle(state, payload) {
+        state.isSpendBottle = payload
     }
 }

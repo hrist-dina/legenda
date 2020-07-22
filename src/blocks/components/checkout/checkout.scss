@@ -191,8 +191,11 @@
 
         &__total {
             margin-bottom: 52px;
-            display: flex;
-            justify-content: space-between;
+
+            &-head {
+                display: flex;
+                justify-content: space-between;
+            }
 
             &-title {
                 font-size: 16px;
@@ -206,6 +209,17 @@
                 line-height: 36px;
                 color: #1b262c;
             }
+            
+            &-bonus {
+                font-size: 16px;
+                line-height: 22px;
+                color: #fb6565;
+                margin-top: 4px;
+            }
+        }
+
+        &__agree {
+            margin-top: 20px;
         }
     }
 
@@ -269,7 +283,10 @@
     }
 
     &-block {
-        margin-bottom: 40px;
+        & + & {
+            margin-top: 40px;
+        }
+
         &__title {
             font-weight: 500;
             font-size: 18px;
@@ -284,6 +301,15 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+    }
+
+    &__checkbox-list {
+        margin-top: 24px;
+    }
+    &__checkbox-item {
+        & + & {
+            margin-top: 20px;
         }
     }
 }

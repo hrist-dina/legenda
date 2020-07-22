@@ -58,8 +58,12 @@ export default {
             url,
             {
                 userId: state.id,
-                type,
-                products: rootState.cart.products
+                token: state.token,
+                paymentType: type,
+                delivery: state.selectDelivery,
+                products: rootState.cart.products,
+                isSpendBonus: state.isSpendBonus,
+                isSpendBottle: state.isSpendBottle
             },
             data => {
                 if (data.order) {
@@ -70,13 +74,21 @@ export default {
                         })
                     })
                 }
-                console.log(data)
             }
         ).post()
 
         return response.data.status
     },
     setPaymentType: ({ commit }, payload) => {
-        commit('setSelectedPaymentType', payload)
+        commit('setSelectedPaymentType', { selectPaymentType: payload })
+    },
+    setDelivery: ({ commit }, payload) => {
+        commit('setSelectedDelivery', { selectDelivery: payload })
+    },
+    setIsSpendBonus: ({ commit }, payload) => {
+        commit('setIsSpendBonus', payload)
+    },
+    setIsSpendBottle: ({ commit }, payload) => {
+        commit('setIsSpendBottle', payload)
     }
 }

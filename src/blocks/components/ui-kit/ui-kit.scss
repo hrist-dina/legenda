@@ -302,6 +302,19 @@
                     text-decoration: none;
                 }
             }
+
+            & b {
+                margin-left: 5px;
+            }
+        }
+
+        &--dark & {
+            &__text {
+                margin-left: 12px;
+                font-size: 16px;
+                line-height: 20px;
+                color: #343e44;
+            }
         }
     }
 

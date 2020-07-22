@@ -5,7 +5,7 @@
                 .checkout-stucture__total-data
                     .checkout-stucture__total-title Итого к оплате:
                     .checkout-stucture__total-value {{ total | ruble }}
-                    .checkout-stucture__total-bonus(v-if="isAuth") +{{ bonus | bonus }}
+                    .checkout-stucture__total-bonus(v-if="isAuthFinalStep") +{{ bonus | bonus }}
                 .checkout-stucture__total-button(v-if="!isWelcome")
                     include ../../../blocks/components/ui-kit/ui-kit
                     +button('order')(:disabled="!canOrder" @click="onClickSendOrder") Оформить заказ
@@ -57,11 +57,18 @@ export default {
             const name = this.$route.name
             return name === CHECKOUT_PAYMENT || name === CHECKOUT_FINAL
         },
+        isAuthFinalStep() {
+            return this.isAuth && this.$route.name === CHECKOUT_FINAL
+        },
         isWelcome() {
             return this.$route.name === CHECKOUT_WELCOME
         },
         canOrder() {
-            return this.isEndStep && this.agree && this.isValidCheckoutFinal
+            if (this.isAuthFinalStep) {
+                return this.isEndStep && this.agree && this.isValidCheckoutFinal
+            } else {
+                return this.isEndStep && this.agree && this.isValidCheckoutFinal
+            }
         },
         bonus() {
             return Math.ceil(this.total * CHECKOUT_BONUS_COEFFICIENT)

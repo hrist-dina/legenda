@@ -9,6 +9,8 @@ export default {
         state.person.fio = payload.fio
         state.person.email = payload.email
         state.person.phone = payload.phone
+        state.person.bonus = payload.bonus
+        state.person.bottle = payload.bottle
     },
     setDeliveryItem(state, payload) {
         state.delivery.items.push({

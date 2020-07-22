@@ -13,7 +13,7 @@ export default {
     getDeliveryItems: state => state.delivery.items,
     getBonus: state => state.person.bonus,
     getBottle: state => state.person.bottle,
-    isAuth: state => state.token,
+    isAuth: state => !!state.token,
     isValidAddress: state => !!state.selectDelivery.address,
     isValidDate: state => !!state.selectDelivery.date,
     isValidTime: state => !!state.selectDelivery.time,

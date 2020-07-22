@@ -2,6 +2,13 @@
   "status": true,
   "data": {
     "id": "123",
-    "token": "123123123"
+    "token": "123123123",
+    "person": {
+      "fio": "Иванов Иван Иванович",
+      "phone": "79997775544",
+      "email": "test@test.test",
+      "bonus": 0,
+      "bottle": 0
+    }
   }
 }

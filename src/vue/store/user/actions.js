@@ -16,6 +16,7 @@ export default {
         const response = await new HTTP(urlAjax.login, payload, data => {
             commit('setId', { id: data.id })
             commit('setToken', { token: data.token })
+            commit('setPersonalData', data.person)
         }).post()
 
         return response.data
@@ -45,6 +46,7 @@ export default {
             },
             data => {
                 commit('setDeliveryItem', payload)
+                commit('setSelectedDelivery', { selectDelivery: payload })
             }
         ).post()
 

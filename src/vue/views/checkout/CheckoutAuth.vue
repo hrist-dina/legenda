@@ -1,5 +1,5 @@
 <template lang="pug">
-    .checkout__auth
+    .checkout-auth
         .checkout__title.checkout__title--auth {{ title }}
         form.form(@submit.prevent="onSubmit")
             .field(v-for="item in form")
@@ -66,9 +66,22 @@ export default {
         }
     },
     methods: {
-        ...mapActions('checkout', ['getDataByName']),
-        onSubmit(e) {
-            // TODO:: send to server
+        ...mapActions('checkout', {
+            getDataByName: 'getDataByName',
+            onNext: 'next'
+        }),
+        ...mapActions('user', { login: 'login' }),
+        onSubmit() {
+            if (this.isValidForm) {
+                this.login({
+                    email: this.form[this.getIndexByName('login')].value,
+                    password: this.form[this.getIndexByName('password')].value
+                }).then(response => {
+                    if (response.status) {
+                        this.onNext()
+                    }
+                })
+            }
         },
         getIndexByName(name) {
             return this.form.findIndex(el => el.name === name)

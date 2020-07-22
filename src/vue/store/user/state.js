@@ -36,6 +36,6 @@ export default {
     ],
     selectPaymentType: null,
     selectDelivery: {},
-    isSpendBonus: true,
+    isSpendBonus: false,
     isSpendBottle: false
 }

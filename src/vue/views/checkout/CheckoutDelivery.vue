@@ -41,7 +41,7 @@ include ../../../views/helpers/mixins
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import CheckoutBack from './CheckoutBack'
 import CheckoutDeliveryDatetime from './CheckoutDeliveryDatetime'
@@ -65,6 +65,7 @@ export default {
         time: null
     }),
     computed: {
+        ...mapState('user', ['selectDelivery']),
         ...mapGetters('user', ['getPerson', 'getDeliveryTypes']),
         isValidForm() {
             return (
@@ -123,6 +124,13 @@ export default {
         },
         onChangeTime(val) {
             this.time = val
+        }
+    },
+    created() {
+        if (this.selectDelivery) {
+            this.address.value = this.selectDelivery.address
+            this.date = this.selectDelivery.date
+            this.time = this.selectDelivery.time
         }
     }
 }

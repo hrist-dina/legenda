@@ -4,7 +4,11 @@ export default {
         const person = state.person
         let data = {}
         for (let key in person) {
-            data[key] = !person[key].length ? fromStorage[key] : person[key]
+            data[key] = !person[key]
+                ? fromStorage
+                    ? fromStorage[key]
+                    : ''
+                : person[key]
         }
         return data
     },

@@ -114,7 +114,10 @@ export default {
         const person = this.getPerson
         for (let item in person) {
             if (person.hasOwnProperty(item)) {
-                this.form[this.getIndexByName(item)].value = person[item]
+                const fromItem = this.form[this.getIndexByName(item)]
+                if (fromItem) {
+                    fromItem.value = person[item]
+                }
             }
         }
     }

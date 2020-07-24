@@ -156,6 +156,10 @@ export default {
                 if (rule.minLength && this.minLength > this.value.length) {
                     error = rule.message
                 }
+
+                if (rule.response && this.value.length !== 0) {
+                    error = rule.message
+                }
             })
             return error
         }

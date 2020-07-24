@@ -25,5 +25,8 @@ export default {
     endProcessing(state, { id }) {
         const ind = state.products.indexOf(id)
         state.processingId.splice(ind, 1)
+    },
+    setIsLoading(state, payload) {
+        state.isLoading = payload
     }
 }

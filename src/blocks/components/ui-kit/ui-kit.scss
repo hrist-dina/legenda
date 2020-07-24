@@ -42,6 +42,17 @@
         background: #fff;
     }
 
+    &--bordered-md {
+        box-sizing: border-box;
+        border: 1px solid rgba(0, 123, 194, 0.5);
+        border-radius: 32px;
+        padding: 16px 32px;
+        font-size: 15px;
+        line-height: 20px;
+        color: #007bc2;
+        background: #fff;
+    }
+
     &--back {
         box-sizing: border-box;
         border: 1px solid #f1f6fc;
@@ -367,6 +378,42 @@
                 line-height: 20px;
             }
         }
+    }
+}
+
+.is-loading {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    color: #fff;
+    background: transparent;
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 20px;
+        left: 50%;
+        width: 320px;
+        height: 320px;
+        transform: translate(-50%);
+        transition: all 1s;
+        animation: wave 5s infinite linear;
+        border-radius: 130px;
+        background-color: #229bd7;
+    }
+
+    &:hover:before {
+        top: 15px;
+    }
+}
+
+@include keyframes(wave) {
+    0% {
+        transform: translate(-50%) rotate(-180deg);
+    }
+    100% {
+        transform: translate(-50%) rotate(360deg);
     }
 }
 

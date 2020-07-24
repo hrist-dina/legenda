@@ -44,6 +44,7 @@ export const urlAjax = {
     basketAdd: isProd ? '/api/basket/add' : '/mock/basket.json',
     basketRemove: isProd ? '/api/basket/remove' : '/mock/basket.json',
     basketClean: isProd ? '/api/basket/clean' : '/mock/basket.json',
+    basketPromocode: isProd ? '/api/basket/promocode' : '/mock/promocode.json',
     favoriteAdd: isProd ? '/api/favorite/add' : '/mock/favorite.json',
     favoriteRemove: isProd ? '/api/favorite/remove' : '/mock/favorite.json',
     favoriteClean: isProd ? '/api/favorite/clean' : '/mock/favorite.json',

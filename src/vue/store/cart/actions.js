@@ -39,5 +39,24 @@ export default {
         return await new HTTP(urlAjax.basketClean, null, () => {
             commit('clean')
         }).post()
+    },
+    promocode: async ({ getters, commit }, payload) => {
+        if (!!getters.cnt && !getters.isLoading) {
+            commit('setIsLoading', true)
+            return await new HTTP(
+                urlAjax.basketPromocode,
+                {
+                    promocode: payload.promocode
+                },
+                data => {
+                    commit('setIsLoading', false)
+                }
+            )
+                .post()
+                .then(response => {
+                    commit('setIsLoading', false)
+                    return response
+                })
+        }
     }
 }

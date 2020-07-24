@@ -91,4 +91,23 @@
     &__to-order {
         margin-left: 36px;
     }
+
+    &__promocode {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        width: 100%;
+        margin-bottom: 28px;
+    }
+
+    &__promocode &__promocode-input {
+        width: 100%;
+        max-width: 245px;
+        margin-right: 16px;
+
+        & input {
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+    }
 }

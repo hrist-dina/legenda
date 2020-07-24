@@ -104,6 +104,9 @@
         width: 100%;
         max-width: 245px;
         margin-right: 16px;
+        &.error {
+            margin-bottom: 0;
+        }
 
         & input {
             padding-top: 16px;

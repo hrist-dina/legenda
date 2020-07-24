@@ -55,7 +55,10 @@ export default {
             }
             this.getDataByName(this.$route.name).then(title => {
                 if (!!title.length) {
-                    document.title = `${document.title} | ${title}`
+                    document.title =
+                        document.title !== title
+                            ? `${document.title} | ${title}`
+                            : title
                 }
             })
         }

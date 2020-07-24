@@ -11,7 +11,7 @@
                 .checkout-success__desc В
                     |
                     |
-                    +link('личном кабинете','lk')
+                    +link('личном кабинете','/lk')
                     |
                     |вы можете отследить статус заказа, а также повторить его, если потребуется.
                 .checkout-success__button
@@ -19,8 +19,7 @@
 </template>
 
 <script>
-
-import { toggleAdditionalProducts } from "%common%/helper"
+import { toggleAdditionalProducts } from '%common%/helper'
 
 export default {
     props: {

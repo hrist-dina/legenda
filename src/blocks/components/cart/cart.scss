@@ -141,4 +141,63 @@
             margin-right: -14px;
         }
     }
+
+    &-bottle {
+        background: #fff;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 35px 45px 35px 50px;
+
+        &__head {
+            display: flex;
+            align-items: center;
+        }
+
+        &__icon {
+            @include wh(64px);
+            margin-right: 8px;
+        }
+
+        &__title {
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 32px;
+            color: #004f91;
+            margin-bottom: 20px;
+        }
+
+        &__body {
+            display: flex;
+        }
+
+        &__data {
+            width: #{calc(100% - 222px)};
+        }
+
+        &__name {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 25px;
+            color: #343e44;
+            display: block;
+        }
+
+        &__action {
+            display: flex;
+            align-items: center;
+        }
+
+        &__price {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 22px;
+            color: #1b262c;
+            margin-left: 32px;
+        }
+
+        &__buy {
+            align-self: flex-end;
+            margin-left: auto;
+            padding-bottom: 10px;
+        }
+    }
 }

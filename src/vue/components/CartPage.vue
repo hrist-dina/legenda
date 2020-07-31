@@ -39,6 +39,7 @@ include ../../blocks/components/ui-kit/ui-kit
                         a(href="/catalog.html") каталог
             .cart-page__footer(v-if="hasProducts")
                 .cart-page__footer-left
+                    cart-bottle
                 .cart-page__footer-right
                     .cart-page__promocode
                         input-text(
@@ -66,6 +67,7 @@ include ../../blocks/components/ui-kit/ui-kit
 import { mapState, mapGetters, mapActions } from 'vuex'
 import CartItem from '%vue%/components/CartItem'
 import CartItemSkeleton from '%vue%/components/CartItemSkeleton'
+import CartBottle from '%vue%/components/CartBottle'
 import InputText from '%vue%/components/InputText'
 import { toggleAdditionalProducts } from '%common%/helper'
 import { CHECKOUT_FINAL, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
@@ -73,6 +75,7 @@ import { CHECKOUT_FINAL, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 export default {
     components: {
         CartItem,
+        CartBottle,
         CartItemSkeleton,
         InputText
     },

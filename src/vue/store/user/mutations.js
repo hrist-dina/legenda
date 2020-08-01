@@ -23,6 +23,9 @@ export default {
         if (payload.bottle) {
             state.person.bottle = payload.bottle
         }
+        if (payload.balance) {
+            state.person.balance = payload.balance
+        }
     },
     setDeliveryItem(state, payload) {
         state.delivery.items.push({

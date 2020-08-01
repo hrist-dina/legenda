@@ -3,6 +3,9 @@ extends ../../layouts/default
 
 block variables
 	- const title = "Личный кабинет";
+	- isInnerPage = true
+	- showTitle = false
+	include ../../../views/data/lk
 
 block content
 	//- Vue component

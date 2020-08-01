@@ -196,6 +196,16 @@
     @include icon-bgc(icon-bottle());
 }
 
+.icon-bonus {
+    @include wh(48px);
+    @include icon-bgc(icon-bonus());
+}
+
+.icon-money {
+    @include wh(48px);
+    @include icon-bgc(icon-money());
+}
+
 .icon-cross {
     @include wh(20px);
     @include icon-bgc(icon-cross());

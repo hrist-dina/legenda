@@ -7,8 +7,9 @@
       "fio": "Иванов Иван Иванович",
       "phone": "79997775544",
       "email": "test@test.test",
-      "bonus": 0,
-      "bottle": 0
+      "bonus": 500,
+      "bottle": 4,
+      "balance": 73
     }
   }
 }

@@ -1,3 +1,7 @@
+export const BONUS_TITLE = ['бонус', 'бонуса', 'бонусов']
+
+export const BOTTLE_TITLES = ['бутыль', 'бутыли', 'бутылей']
+
 /**
  * Склонение
  * @param n number
@@ -14,12 +18,7 @@ export const formatThousand = number =>
     String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
 export const phoneReplace = value => value.replace(/[^\d+]/g, '')
 export const ruble = value => `${formatThousand(value)} ₽`
-export const bonus = value =>
-    `${formatThousand(value)} ${declOfNum(value, [
-        'бонус',
-        'бонуса',
-        'бонусов'
-    ])}`
+export const bonus = value => `${formatThousand(value)} ${declOfNum(value)}`
 
 export const phoneReplaceForMask = value =>
     phoneReplace(value).replace(/[^\d]/g, '').slice(1)

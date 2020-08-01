@@ -1,0 +1,68 @@
+.lk {
+    &__header {
+
+        &-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        &-meta {
+            margin-bottom: 48px;
+        }
+    }
+
+    &__meta {
+        box-sizing: border-box;
+        padding: 28px 48px 32px;
+        background: #fff;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+        &-head {
+            margin-bottom: 19px;
+            display: flex;
+            align-items: center;
+        }
+
+        &-hint {
+            margin-left: 8px;
+        }
+
+        &-title {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 27px;
+            color: #859aa5;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+        }
+
+        &-item {
+            margin-right: 60px;
+            display: flex;
+
+            &-icon {
+                @include wh(48px);
+                margin-right: 4px;
+            }
+
+            &-value {
+                font-weight: $bold;
+                font-size: 28px;
+                line-height: 35px;
+                color: #000000;
+                margin-bottom: 4px;
+            }
+
+            &-title {
+                font-size: 16px;
+                line-height: 25px;
+                color: #555555;
+            }
+        }
+    }
+}

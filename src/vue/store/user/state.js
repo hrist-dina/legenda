@@ -8,7 +8,8 @@ export default {
         phone: '',
         email: '',
         bonus: 0,
-        bottle: 0
+        bottle: 0,
+        balance: 0
     },
     delivery: {
         types: [

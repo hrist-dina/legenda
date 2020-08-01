@@ -1,9 +1,12 @@
 <template lang="pug">
     include ../../views/helpers/mixins
     include ../../blocks/components/ui-kit/ui-kit
+    include ../../blocks/components/hint/hint
     .cart-bottle
         .cart-bottle__head
             .cart-bottle__title Нет бутыли на обмен?
+            +hint.cart-bottle__hint
+                span Вы можете приобрести бутыль для обмена
         .cart-bottle__body
             +icon('bottle').cart-bottle__icon
             .cart-bottle__data

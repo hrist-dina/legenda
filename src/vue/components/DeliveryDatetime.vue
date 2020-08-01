@@ -1,12 +1,12 @@
 <template lang="pug">
-.checkout-delivery__datetime
-    .checkout-delivery__datetime-part
+.delivery-datetime
+    .delivery-datetime__part
         app-date-picker(
             :date="date"
             @change="$emit('changeDate', $event)"
             placeholder="Желаемая дата"
         )
-    .checkout-delivery__datetime-part
+    .delivery-datetime__part
         app-time-picker(
             :time="time"
             @change="$emit('changeTime', $event)"
@@ -36,4 +36,4 @@ export default {
 }
 </script>
 
-<!-- style in bem components checkout -->
+<!-- style in bem components delivery -->

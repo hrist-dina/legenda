@@ -50,7 +50,7 @@ export default {
             }
         ).post()
 
-        return response.data.status
+        return response.data
     },
     payment: async ({ state, rootState, dispatch }) => {
         const type = state.selectPaymentType.code

@@ -267,16 +267,6 @@
     }
 
     &-delivery {
-        &__datetime {
-            display: flex;
-            justify-content: space-between;
-
-            &-part {
-                width: 100%;
-                max-width: 220px;
-            }
-        }
-
         &__type-list {
             margin-bottom: 60px;
         }
@@ -301,6 +291,10 @@
             &:last-child {
                 margin-bottom: 0;
             }
+        }
+
+        &__edit {
+            margin-left: 36px;
         }
     }
 

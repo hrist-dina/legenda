@@ -1,9 +1,9 @@
 .delivery {
-
     &-type {
         &-list {
             display: flex;
             align-items: center;
+            margin-bottom: 50px;
         }
         &__data {
             box-sizing: border-box;
@@ -46,6 +46,22 @@
 
         &__input:checked ~ &__data &__title {
             color: #fff;
+        }
+    }
+
+    &-datetime {
+        display: flex;
+        justify-content: space-between;
+
+        &__part {
+            width: 100%;
+            max-width: 220px;
+        }
+    }
+    
+    &-form {
+        &__submit {
+            margin-top: 40px;
         }
     }
 }

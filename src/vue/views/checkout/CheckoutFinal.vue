@@ -2,13 +2,21 @@
     include ../../../blocks/components/ui-kit/ui-kit
     .checkout-final
         .checkout-block
-            .checkout-block__title Личные данные
+            .checkout-block__title
+                span Личные данные
+                +link('Изменить', false, 'bordered')(
+                    @click.prevent="onEditPersonalData"
+                ).checkout-block__edit
             .checkout-block__body
                 p.checkout-block__row {{ person.fio }}
                 p.checkout-block__row {{ person.phone }}
                 p.checkout-block__row {{ person.email }}
         .checkout-block
-            .checkout-block__title Адрес доставки
+            .checkout-block__title
+                span Адрес доставки
+                +link('Добавить адрес', false, 'bordered')(
+                    @click.prevent="onEditAddress"
+                ).checkout-block__edit
             .checkout-block__body
                 v-select(
                     placeholder="Выберите адрес доставки"
@@ -20,7 +28,7 @@
         .checkout-block
             .checkout-block__title Когда доставить
             .checkout-block__body
-                checkout-delivery-datetime(
+                delivery-datetime(
                     :date="date"
                     :time="time"
                     @changeDate="onChangeDate"
@@ -49,23 +57,49 @@
                 )
                     | Списать воду
                     b (доступно {{ getBottle | bottle }})
+        app-modal(:showModal="showModalPersonalData" @close="showModalPersonalData = false")
+            template(#header)
+                h3 Изменить личные данные
+        app-modal(:showModal="showModalAddress" @close="showModalAddress = false")
+            template(#header)
+                h3 Новый адрес
+            delivery-form(
+                :show-date-time="false"
+                @submit="onSubmitModalAddress"
+                @isValid="onValidModalAddress"
+            )
+                template(#submit)
+                    .error-message(v-if="!!errorMessage") {{ errorMessage }}
+                    +button('default')(
+                        :disabled="!isValidModalAddress || isSubmittingModalAddress"
+                        :class="{'is-loading': isSubmittingModalAddress}"
+                    ) Сохранить
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex'
-import CheckoutDeliveryDatetime from './CheckoutDeliveryDatetime'
 import AppSelectPayment from '%vue%/components/AppSelectPayment'
+import AppModal from '%vue%/components/AppModal'
+import DeliveryForm from '%vue%/components/DeliveryForm'
+import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
 
 export default {
     components: {
-        CheckoutDeliveryDatetime,
-        AppSelectPayment
+        DeliveryDatetime,
+        AppSelectPayment,
+        AppModal,
+        DeliveryForm
     },
     data() {
         return {
             title: '',
+            errorMessage: '',
             date: null,
-            time: null
+            time: null,
+            showModalPersonalData: false,
+            showModalAddress: false,
+            isValidModalAddress: false,
+            isSubmittingModalAddress: false
         }
     },
     props: {
@@ -122,7 +156,8 @@ export default {
             setPaymentType: 'setPaymentType',
             setDelivery: 'setDelivery',
             setIsBonus: 'setIsSpendBonus',
-            setIsBottle: 'setIsSpendBottle'
+            setIsBottle: 'setIsSpendBottle',
+            handleDelivery: 'delivery'
         }),
         setType(val) {
             this.setPaymentType(val)
@@ -143,6 +178,34 @@ export default {
         },
         onBottle() {
             this.setIsBottle(!this.isSpendBottle)
+        },
+        onEditPersonalData() {
+            this.showModalPersonalData = !this.showModalPersonalData
+        },
+        onEditAddress() {
+            this.showModalAddress = !this.showModalAddress
+        },
+        onValidModalAddress(value) {
+            this.isValidModalAddress = value
+        },
+        onSubmitModalAddress(value) {
+            if (this.isValidModalAddress) {
+                this.isSubmittingModalAddress = true
+                this.handleDelivery(value)
+                    .then(response => {
+                        if (response) {
+                            this.showModalAddress = false
+                            this.errorMessage = ''
+                        } else {
+                            this.errorMessage = response.error
+                        }
+                        this.isSubmittingModalAddress = false
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.isSubmittingModalAddress = false
+                    })
+            }
         }
     },
     created() {
@@ -156,7 +219,9 @@ export default {
         this.time = this.selectedDeliveryTime
         this.setDelivery({
             ...this.selectDelivery,
-            address: this.selectedDeliveryItem.code
+            address: this.selectedDeliveryItem
+                ? this.selectedDeliveryItem.code
+                : ''
         })
     }
 }

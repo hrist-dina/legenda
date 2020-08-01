@@ -386,7 +386,9 @@
     z-index: 1;
     overflow: hidden;
     color: #fff;
-    background: transparent;
+    border: 1px solid rgba(0, 123, 194, 0.5);
+    border-radius: 36px;
+    background: #fff;
 
     &:before {
         content: "";

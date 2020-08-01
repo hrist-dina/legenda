@@ -1,0 +1,10 @@
+{
+  "status": true,
+  "data": {
+    "person": {
+      "fio": "Иванов Edit Edit",
+      "phone": "79997776666",
+      "email": "test-edit@test.test"
+    }
+  }
+}

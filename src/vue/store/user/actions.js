@@ -12,6 +12,17 @@ export default {
 
         return response.data
     },
+    editPersonalData: async ({ commit }, payload) => {
+        const response = await new HTTP(
+            urlAjax.editPersonalData,
+            payload,
+            () => {
+                commit('setPersonalData', payload)
+            }
+        ).post()
+
+        return response.data
+    },
     login: async ({ commit }, payload) => {
         const response = await new HTTP(urlAjax.login, payload, data => {
             commit('setId', { id: data.id })

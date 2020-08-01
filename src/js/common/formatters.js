@@ -20,3 +20,6 @@ export const bonus = value =>
         'бонуса',
         'бонусов'
     ])}`
+
+export const phoneReplaceForMask = value =>
+    phoneReplace(value).replace(/[^\d]/g, '').slice(1)

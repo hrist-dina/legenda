@@ -1,3 +1,5 @@
+import { phoneReplace } from '%common%/formatters'
+
 export default {
     setId(state, payload) {
         state.id = payload.id
@@ -6,11 +8,21 @@ export default {
         state.token = payload.token
     },
     setPersonalData(state, payload) {
-        state.person.fio = payload.fio
-        state.person.email = payload.email
-        state.person.phone = payload.phone
-        state.person.bonus = payload.bonus
-        state.person.bottle = payload.bottle
+        if (payload.fio) {
+            state.person.fio = payload.fio
+        }
+        if (payload.email) {
+            state.person.email = payload.email
+        }
+        if (payload.phone) {
+            state.person.phone = payload.phone
+        }
+        if (payload.bonus) {
+            state.person.bonus = payload.bonus
+        }
+        if (payload.bottle) {
+            state.person.bottle = payload.bottle
+        }
     },
     setDeliveryItem(state, payload) {
         state.delivery.items.push({

@@ -40,10 +40,10 @@ export default {
         ...mapActions('checkout', ['setActiveStep', 'getDataByName'])
     },
     created() {
-        this.setActiveStep({ activeStep: this.$route.name })
-
         if (this.getHasLogin) {
             this.setActiveStep({ activeStep: CHECKOUT_FINAL })
+        } else {
+            this.setActiveStep({ activeStep: this.$route.name })
         }
 
         toggleAdditionalProducts()

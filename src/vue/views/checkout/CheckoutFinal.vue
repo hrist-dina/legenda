@@ -60,6 +60,16 @@
         app-modal(:showModal="showModalPersonalData" @close="showModalPersonalData = false")
             template(#header)
                 h3 Изменить личные данные
+            personal-data-form(
+                @submit="onSubmitModalPersonalData"
+                @isValid="onValidModalPersonalData"
+            ).checkout-personal-data__form
+                template(#submit)
+                    .error-message(v-if="!!errorMessage") {{ errorMessage }}
+                    +button('default')(
+                        :disabled="!isValidModalPersonalData || isSubmittingModalPersonalData"
+                        :class="{'is-loading': isSubmittingModalPersonalData}"
+                ) Сохранить
         app-modal(:showModal="showModalAddress" @close="showModalAddress = false")
             template(#header)
                 h3 Новый адрес
@@ -82,13 +92,15 @@ import AppSelectPayment from '%vue%/components/AppSelectPayment'
 import AppModal from '%vue%/components/AppModal'
 import DeliveryForm from '%vue%/components/DeliveryForm'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
+import PersonalDataForm from '%vue%/components/PersonalDataForm'
 
 export default {
     components: {
         DeliveryDatetime,
         AppSelectPayment,
         AppModal,
-        DeliveryForm
+        DeliveryForm,
+        PersonalDataForm
     },
     data() {
         return {
@@ -97,6 +109,8 @@ export default {
             date: null,
             time: null,
             showModalPersonalData: false,
+            isValidModalPersonalData: false,
+            isSubmittingModalPersonalData: false,
             showModalAddress: false,
             isValidModalAddress: false,
             isSubmittingModalAddress: false
@@ -157,7 +171,8 @@ export default {
             setDelivery: 'setDelivery',
             setIsBonus: 'setIsSpendBonus',
             setIsBottle: 'setIsSpendBottle',
-            handleDelivery: 'delivery'
+            handleDelivery: 'delivery',
+            handleEditPersonalData: 'editPersonalData'
         }),
         setType(val) {
             this.setPaymentType(val)
@@ -181,6 +196,28 @@ export default {
         },
         onEditPersonalData() {
             this.showModalPersonalData = !this.showModalPersonalData
+        },
+        onValidModalPersonalData(value) {
+            this.isValidModalPersonalData = value
+        },
+        onSubmitModalPersonalData(value) {
+            if (this.isValidModalPersonalData) {
+                this.isSubmittingModalPersonalData = true
+                this.handleEditPersonalData(value)
+                    .then(response => {
+                        if (response) {
+                            this.showModalPersonalData = false
+                            this.errorMessage = ''
+                        } else {
+                            this.errorMessage = response.error
+                        }
+                        this.isSubmittingModalPersonalData = false
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        this.isSubmittingModalPersonalData = false
+                    })
+            }
         },
         onEditAddress() {
             this.showModalAddress = !this.showModalAddress
@@ -223,6 +260,14 @@ export default {
                 ? this.selectedDeliveryItem.code
                 : ''
         })
+    },
+    watch: {
+        showModalPersonalData: function () {
+            this.errorMessage = ''
+        },
+        showModalAddress: function () {
+            this.errorMessage = ''
+        }
     }
 }
 </script>

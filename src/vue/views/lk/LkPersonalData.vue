@@ -57,7 +57,8 @@ export default {
             person: 'getPerson'
         }),
         isEmptyData() {
-            return !Object.values(this.person).filter(i => !!i.length).length
+            return !Object.values(this.person).filter(i => i && !!i.length)
+                .length
         }
     },
     methods: {

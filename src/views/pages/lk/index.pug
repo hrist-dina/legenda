@@ -10,3 +10,7 @@ block variables
 block content
 	//- Vue component
 	.js-vue-app-lk
+	include ../../../blocks/components/product/product
+	include ../../../blocks/components/product/data
+	section.lk-additional.js-order-additional.hide
+		+product-add-to-cart-section('Хиты продаж', productWater, false)

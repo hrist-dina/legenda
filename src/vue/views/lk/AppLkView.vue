@@ -29,6 +29,8 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import LkMeta from '%vue%/views/lk/LkMeta'
+import { LK_ORDERS } from '%vue%/router/lk'
+import { toggleAdditionalProducts } from '%common%/helper'
 
 export default {
     components: {
@@ -53,6 +55,13 @@ export default {
                     window.location = '/'
                 }
             })
+        },
+        toggleAdditional() {
+            if (this.$route.name === LK_ORDERS) {
+                toggleAdditionalProducts(false)
+            } else {
+                toggleAdditionalProducts()
+            }
         }
     },
     created() {
@@ -67,6 +76,12 @@ export default {
             }))
         } else {
             console.error('Not set routes for LK')
+        }
+        this.toggleAdditional()
+    },
+    watch: {
+        $route() {
+            this.toggleAdditional()
         }
     }
 }

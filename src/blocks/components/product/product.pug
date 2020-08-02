@@ -68,8 +68,8 @@ mixin product-section(title, data)
     +section(title, 'Все товары').section--category
         +product-list-slider(data)
 
-mixin product-add-to-cart-section(title, data)
-    +section(title, 'Все товары').section--category&attributes(attributes)
+mixin product-add-to-cart-section(title, data, linkTitle = 'Все товары')
+    +section(title, linkTitle).section--category&attributes(attributes)
         .product-list.product-list--category
             for item in data
                 +product(item, true, true)

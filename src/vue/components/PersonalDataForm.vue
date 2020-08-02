@@ -19,11 +19,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
+import AppDatePicker from '%vue%/components/AppDatePicker'
 import { phoneReplaceForMask } from '%common%/formatters'
 
 export default {
     components: {
-        InputText
+        InputText,
+        AppDatePicker
     },
     data: () => ({
         form: [

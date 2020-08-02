@@ -1,16 +1,19 @@
-const token = localStorage.getItem('token')
-const deliveryItems = JSON.parse(localStorage.getItem('deliveryItems'))
+import { token, deliveryItems, getPersonFromStorage } from './helpers'
+
+const personState = {
+    fio: '',
+    phone: '',
+    email: '',
+    birthDate: '',
+    bonus: 0,
+    bottle: 0,
+    balance: 0
+}
+
 export default {
     id: null,
     token: token === 'null' ? null : token || null,
-    person: {
-        fio: '',
-        phone: '',
-        email: '',
-        bonus: 0,
-        bottle: 0,
-        balance: 0
-    },
+    person: getPersonFromStorage(personState),
     delivery: {
         types: [
             {

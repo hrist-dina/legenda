@@ -21,5 +21,10 @@ export const ruble = value => `${formatThousand(value)} ₽`
 export const bonus = value =>
     `${formatThousand(value)} ${declOfNum(value, BONUS_TITLE)}`
 
-export const phoneReplaceForMask = value =>
-    phoneReplace(value).replace(/[^\d]/g, '').slice(1)
+export const phoneReplaceForMask = value => {
+    const newVal = phoneReplace(value).replace(/[^\d]/g, '')
+    if (newVal.length > 10) {
+        return newVal.slice(1)
+    }
+    return newVal
+}

@@ -1,17 +1,5 @@
 export default {
-    getPerson: state => {
-        const fromStorage = JSON.parse(localStorage.getItem('person'))
-        const person = state.person
-        let data = {}
-        for (let key in person) {
-            data[key] = !person[key]
-                ? fromStorage
-                    ? fromStorage[key]
-                    : ''
-                : person[key]
-        }
-        return data
-    },
+    getPerson: state => state.person,
     getDeliveryTypes: state => state.delivery.types,
     getPayment: state => state.payment,
     getDeliveryItems: state => state.delivery.items,

@@ -147,6 +147,17 @@
         color: #007bc2;
     }
 
+    &--bordered-md {
+        box-sizing: border-box;
+        display: inline-block;
+        border: 1px solid rgba(34, 155, 215, 0.15);
+        border-radius: 24px;
+        padding: 12px 20px;
+        font-size: 16px;
+        line-height: 21px;
+        color: #007bc2;
+    }
+
     &--repeat {
         font-size: 15px;
         line-height: 20px;

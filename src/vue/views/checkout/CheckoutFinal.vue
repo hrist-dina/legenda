@@ -69,7 +69,7 @@
                     +button('default')(
                         :disabled="!isValidModalPersonalData || isSubmittingModalPersonalData"
                         :class="{'is-loading': isSubmittingModalPersonalData}"
-                ) Сохранить
+                    ) Сохранить
         app-modal(:showModal="showModalAddress" @close="showModalAddress = false")
             template(#header)
                 h3 Новый адрес

@@ -11,10 +11,18 @@ export default class HTTP {
     }
     async request(method) {
         try {
+            // TODO:: remove after release
+            if (
+                !isProd &&
+                this.url == urlAjax.lkOrders &&
+                this.data.page === 2
+            ) {
+                this.url = '/mock/lk-orders-2.json'
+            }
             const response = await axios({
                 method,
                 url: this.url,
-                data: true.data
+                [method === 'get' ? 'params' : 'data']: true.data
             })
             const { data } = response
             if (data.status) {
@@ -55,5 +63,6 @@ export const urlAjax = {
     delivery: isProd ? '/api/delivery' : '/mock/delivery.json',
     // На проде будет один путь, запрос будет приходить с параметрами типа оплаты
     paymentCard: isProd ? '/api/payment' : '/mock/payment-card.json',
-    paymentMoney: isProd ? '/api/payment' : '/mock/payment-money.json'
+    paymentMoney: isProd ? '/api/payment' : '/mock/payment-money.json',
+    lkOrders: isProd ? '/api/lk/orders' : '/mock/lk-orders.json'
 }

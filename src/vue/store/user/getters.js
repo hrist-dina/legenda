@@ -27,5 +27,6 @@ export default {
         getters.isValidAddress &&
         getters.isValidDate &&
         getters.isValidTime &&
-        getters.isValidPaymentType
+        getters.isValidPaymentType,
+    getOrders: state => state.orders
 }

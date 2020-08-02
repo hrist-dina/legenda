@@ -103,5 +103,12 @@ export default {
     },
     setIsSpendBottle: ({ commit }, payload) => {
         commit('setIsSpendBottle', payload)
+    },
+    fetchOrders: async ({ commit }, payload) => {
+        const response = await new HTTP(urlAjax.lkOrders, payload, data => {
+            commit('setOrders', data)
+        }).get()
+
+        return response.data
     }
 }

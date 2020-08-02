@@ -2,7 +2,7 @@
     include ../../blocks/components/ui-kit/ui-kit
     .cart-mini
         .cart-mini__body
-            .cart-mini__list
+            .cart-mini__list.scroll-custom
                 cart-item(
                     v-for="product in products"
                     :key="product.id"

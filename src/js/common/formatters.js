@@ -18,7 +18,8 @@ export const formatThousand = number =>
     String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
 export const phoneReplace = value => value.replace(/[^\d+]/g, '')
 export const ruble = value => `${formatThousand(value)} ₽`
-export const bonus = value => `${formatThousand(value)} ${declOfNum(value)}`
+export const bonus = value =>
+    `${formatThousand(value)} ${declOfNum(value, BONUS_TITLE)}`
 
 export const phoneReplaceForMask = value =>
     phoneReplace(value).replace(/[^\d]/g, '').slice(1)

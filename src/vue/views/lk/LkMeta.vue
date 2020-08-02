@@ -1,27 +1,27 @@
 <template lang="pug">
     include ../../../blocks/components/hint/hint
     include ../../../views/helpers/mixins
-    .lk__meta
-        .lk__meta-head
-            .lk__meta-title Вам доступно
-            +hint.lk__meta-hint
+    .lk-meta
+        .lk-meta__head
+            .lk-meta__title Вам доступно
+            +hint.lk-meta__hint
                 span Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, illo, sunt. Adipisci corporis cumque dolorem expedita fugit illum nemo nulla odio repudiandae! Incidunt libero quam similique ut! Laborum, quisquam totam.
-        .lk__meta-list
-            .lk__meta-item
-                +icon('bottle').lk__meta-item-icon
-                .lk__meta-item-data
-                    .lk__meta-item-value {{ bottle }}
-                    .lk__meta-item-title {{ bottle | bottleTitle }}
-            .lk__meta-item
-                +icon('bonus').lk__meta-item-icon
-                .lk__meta-item-data
-                    .lk__meta-item-value {{ bonus | thousand}}
-                    .lk__meta-item-title {{ bonus | bonusTitle }}
-            .lk__meta-item
-                +icon('money').lk__meta-item-icon
-                .lk__meta-item-data
-                    .lk__meta-item-value {{ balance | ruble}}
-                    .lk__meta-item-title остаток
+        .lk-meta__list
+            .lk-meta__item
+                +icon('bottle').lk-meta__item-icon
+                .lk-meta__item-data
+                    .lk-meta__item-value {{ bottle }}
+                    .lk-meta__item-title {{ bottle | bottleTitle }}
+            .lk-meta__item
+                +icon('bonus').lk-meta__item-icon
+                .lk-meta__item-data
+                    .lk-meta__item-value {{ bonus | thousand}}
+                    .lk-meta__item-title {{ bonus | bonusTitle }}
+            .lk-meta__item
+                +icon('money').lk-meta__item-icon
+                .lk-meta__item-data
+                    .lk-meta__item-value {{ balance | ruble}}
+                    .lk-meta__item-title остаток
 </template>
 
 <script>

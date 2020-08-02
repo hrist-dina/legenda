@@ -38,5 +38,6 @@ export default {
     selectPaymentType: null,
     selectDelivery: {},
     isSpendBonus: false,
-    isSpendBottle: false
+    isSpendBottle: false,
+    orders: []
 }

@@ -121,11 +121,24 @@
 
     &--in-cart-mini {
         box-sizing: border-box;
+        position: relative;
         width: 100%;
         margin: 0;
+        border-bottom: none;
+
+        &:after {
+            content: "";
+            display: block;
+            position: relative;
+            width: #{calc(100% - 40px)};
+            height: 1px;
+            background: rgba(34, 155, 215, 0.15);
+            margin: auto;
+        }
     }
 
     &--in-cart-mini & {
+
         &__inner {
             align-items: flex-start;
             padding: 16px 20px 18px;
@@ -139,6 +152,9 @@
         &__img-link {
             @include wh(64px);
             margin-right: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         &__price {

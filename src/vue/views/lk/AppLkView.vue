@@ -3,9 +3,9 @@
     include ../../../views/helpers/mixins
     .lk
         +container
-            .lk__header
-                .lk__header-top
-                    h1.lk__title Личный кабинет
+            .lk-header
+                .lk-header__top
+                    h1.lk-title Личный кабинет
                     +button-link('Выйти', false, 'bordered-md')(
                         @click.prevent="onLogout"
                     )
@@ -13,10 +13,17 @@
                     :bottle="person.bottle"
                     :bonus="person.bonus"
                     :balance="person.balance"
-                ).lk__header-meta
-            .lk__body
-                .lk__tabs
-
+                ).lk-header__meta
+            .lk-body
+                .lk-nav
+                    router-link(
+                        v-for="tab in tabNav"
+                        :key="tab.name"
+                        :to="{name: tab.name}"
+                        active-class="active"
+                    ).lk-nav__item {{ tab.title }}
+                .lk-tabs
+                    router-view
 </template>
 
 <script>
@@ -27,6 +34,9 @@ export default {
     components: {
         LkMeta
     },
+    data: () => ({
+        tabNav: null
+    }),
     computed: {
         ...mapGetters('user', {
             person: 'getPerson'
@@ -44,7 +54,24 @@ export default {
             })
         }
     },
-    created() {}
+    created() {
+        const baseRoute = this.$router.options.routes.filter(
+            i => i.baseRoute
+        )[0]
+
+        if (baseRoute) {
+            this.tabNav = baseRoute.children.map((i, n) => ({
+                title: i.meta.title || `Таб №${n}`,
+                name: i.name
+            }))
+            const title = this.$route.meta.title
+            const baseTitle = baseRoute.meta.title
+            document.title =
+                baseTitle !== title ? `${baseTitle} | ${title}` : title
+        } else {
+            console.error('Not set routes for LK')
+        }
+    }
 }
 </script>
 

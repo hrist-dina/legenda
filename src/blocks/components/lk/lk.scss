@@ -1,53 +1,53 @@
 .lk {
-    &__header {
-
-        &-top {
+    &-header {
+        &__top {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 32px;
         }
 
-        &-meta {
+        &__meta {
             margin-bottom: 48px;
         }
     }
 
-    &__meta {
+    &-meta {
         box-sizing: border-box;
         padding: 28px 48px 32px;
         background: #fff;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 
-        &-head {
+        &__head {
             margin-bottom: 19px;
             display: flex;
             align-items: center;
         }
 
-        &-hint {
+        &__hint {
             margin-left: 8px;
         }
 
-        &-title {
+        &__title {
             font-weight: 500;
             font-size: 18px;
             line-height: 27px;
             color: #859aa5;
         }
 
-        &-list {
+        &__list {
             display: flex;
             align-items: center;
         }
 
-        &-item {
+        &__item {
             margin-right: 60px;
             display: flex;
 
             &-icon {
                 @include wh(48px);
                 margin-right: 4px;
+                cursor: default;
             }
 
             &-value {
@@ -62,6 +62,140 @@
                 font-size: 16px;
                 line-height: 25px;
                 color: #555555;
+            }
+        }
+    }
+
+    &-nav {
+        display: flex;
+        padding-bottom: 9px;
+        border-bottom: 1px solid rgba(34, 155, 215, 0.5);
+        margin-bottom: 32px;
+
+        &__item {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 32px;
+            color: #424f56;
+            margin-right: 38px;
+            text-decoration: none;
+
+            &.active {
+                font-weight: $bold;
+                font-size: 16px;
+                line-height: 32px;
+                color: #004f91;
+            }
+        }
+    }
+
+    &-orders {
+
+        &__pagination {
+            margin-top: 52px;
+        }
+
+        &-item {
+            margin-bottom: 40px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &__head {
+                display: flex;
+                align-items: center;
+                padding: 0 32px 12px;
+            }
+
+            &__data {
+                font-size: 14px;
+                line-height: 18px;
+                color: #767676;
+                margin-right: 42px;
+
+                &--number {
+                    font-weight: $bold;
+                    color: #000000;
+                }
+            }
+
+            &__status {
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 18px;
+                padding-left: 5px;
+                margin-left: auto;
+                color: #004f91;
+
+                &--success {
+                    color: #30ab3c;
+                }
+            }
+
+            &__body {
+                box-sizing: border-box;
+                display: flex;
+                padding: 25px 32px;
+                background: #fff;
+                box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+            }
+
+            &__list {
+                width: 100%;
+                max-width: 654px;
+            }
+
+            &__row {
+                margin-bottom: 12px;
+                display: flex;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            &__title {
+                width: 100%;
+                max-width: 490px;
+            }
+
+            &__link {
+                font-size: 16px;
+                line-height: 21px;
+                text-decoration: none;
+                color: #373737;
+            }
+
+            &__count {
+                box-sizing: border-box;
+                min-width: 70px;
+                font-size: 16px;
+                line-height: 21px;
+                color: #666666;
+                padding-left: 5px;
+                text-align: right;
+            }
+
+            &__price {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 21px;
+                color: #000;
+                min-width: 90px;
+                padding-left: 5px;
+                text-align: right;
+            }
+
+            &__actions {
+                text-align: right;
+                width: #{calc(100% - 654px)};
+            }
+
+            &__total {
+                font-weight: $bold;
+                font-size: 20px;
+                line-height: 26px;
+                color: #000;
+                margin-bottom: 16px;
             }
         }
     }

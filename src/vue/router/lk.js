@@ -1,19 +1,35 @@
 import router from '%vue%/router/base'
 import AppLkView from '%vue%/views/lk/AppLkView'
-import CheckoutWelcome from '%vue%/views/checkout/CheckoutWelcome'
+import LkOrders from '%vue%/views/lk/LkOrders'
+import LkServices from '%vue%/views/lk/LkServices'
+export const LK_ORDERS = 'orders'
+export const LK_SERVICES = 'services'
 
 const routes = [
     {
-        path: '/#/orders',
+        baseRoute: true,
+        path: '/#/',
         component: AppLkView,
         meta: {
             title: 'Личный кабинет'
         },
         children: [
             {
-                name: 'orders',
-                path: '',
-                component: CheckoutWelcome
+                name: LK_ORDERS,
+                path: `${LK_ORDERS}/:name?/:id?`, // Params for pagination
+                component: LkOrders,
+                meta: {
+                    title: 'Заказы'
+                },
+                props: route => ({ currentPage: Number(route.params.id) })
+            },
+            {
+                name: LK_SERVICES,
+                path: LK_SERVICES,
+                component: LkServices,
+                meta: {
+                    title: 'Услуги'
+                }
             }
         ]
     }

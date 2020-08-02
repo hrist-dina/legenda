@@ -135,10 +135,11 @@
         }
 
         &__list {
-            overflow-y: auto;
+            box-sizing: border-box;
             max-height: 306px;
-            padding-right: 14px;
-            margin-right: -14px;
+            overflow-y: auto;
+            padding-right: 7px;
+            margin-right: 7px;
         }
     }
 

@@ -34,7 +34,7 @@
     &--bordered {
         box-sizing: border-box;
         border: 1px solid rgba(0, 123, 194, 0.5);
-        padding: 16px 40px;
+        padding: 15px 40px;
         font-size: 18px;
         line-height: 24px;
         color: #007bc2;
@@ -46,7 +46,7 @@
         box-sizing: border-box;
         border: 1px solid rgba(0, 123, 194, 0.5);
         border-radius: 32px;
-        padding: 16px 32px;
+        padding: 15px 32px;
         font-size: 15px;
         line-height: 20px;
         color: #007bc2;
@@ -145,6 +145,19 @@
         font-size: 13px;
         line-height: 15px;
         color: #007bc2;
+    }
+
+    &--repeat {
+        font-size: 15px;
+        line-height: 20px;
+        color: #007bc2;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+
+        & .icon {
+            margin-right: 10px;
+        }
     }
 }
 

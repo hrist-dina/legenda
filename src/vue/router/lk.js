@@ -21,7 +21,7 @@ const routes = [
                 meta: {
                     title: 'Заказы'
                 },
-                props: route => ({ currentPage: Number(route.params.id) })
+                props: route => ({ currentPage: Number(route.params.id || 1) })
             },
             {
                 name: LK_SERVICES,

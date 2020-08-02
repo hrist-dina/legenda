@@ -5,13 +5,16 @@ import LkServices from '%vue%/views/lk/LkServices'
 export const LK_ORDERS = 'orders'
 export const LK_SERVICES = 'services'
 
+const LK_TITLE = 'Личный кабинет'
+const getChildrenTitle = title => `${LK_TITLE} | ${title}`
+
 const routes = [
     {
         baseRoute: true,
         path: '/#/',
         component: AppLkView,
         meta: {
-            title: 'Личный кабинет'
+            title: LK_TITLE
         },
         children: [
             {
@@ -19,7 +22,8 @@ const routes = [
                 path: `${LK_ORDERS}/:name?/:id?`, // Params for pagination
                 component: LkOrders,
                 meta: {
-                    title: 'Заказы'
+                    title: getChildrenTitle('Заказы'),
+                    tabTitle: 'Заказы'
                 },
                 props: route => ({ currentPage: Number(route.params.id || 1) })
             },
@@ -28,7 +32,8 @@ const routes = [
                 path: LK_SERVICES,
                 component: LkServices,
                 meta: {
-                    title: 'Услуги'
+                    title: getChildrenTitle('Услуги'),
+                    tabTitle: 'Услуги'
                 }
             }
         ]

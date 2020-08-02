@@ -35,7 +35,8 @@ export default {
         LkMeta
     },
     data: () => ({
-        tabNav: null
+        tabNav: null,
+        baseRout: null
     }),
     computed: {
         ...mapGetters('user', {
@@ -61,13 +62,9 @@ export default {
 
         if (baseRoute) {
             this.tabNav = baseRoute.children.map((i, n) => ({
-                title: i.meta.title || `Таб №${n}`,
+                title: i.meta.tabTitle || `Таб №${n}`,
                 name: i.name
             }))
-            const title = this.$route.meta.title
-            const baseTitle = baseRoute.meta.title
-            document.title =
-                baseTitle !== title ? `${baseTitle} | ${title}` : title
         } else {
             console.error('Not set routes for LK')
         }

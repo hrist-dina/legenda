@@ -41,8 +41,6 @@ export default {
     },
     data: () => ({
         isLoading: false,
-        lastPage: 0,
-        perPage: 2,
         routName: LK_ORDERS
     }),
     props: {
@@ -53,10 +51,21 @@ export default {
     },
     computed: {
         ...mapGetters('user', {
-            getOrders: 'getOrders'
+            getOrders: 'getOrders',
+            getOrdersMeta: 'getOrdersMeta'
         }),
         orders() {
             return this.getOrders.slice(0, this.perPage)
+        },
+        lastPage() {
+            return this.getOrdersMeta && this.getOrdersMeta.page
+                ? this.getOrdersMeta.page['last-page'] || 0
+                : 0
+        },
+        perPage() {
+            return this.getOrdersMeta && this.getOrdersMeta.page
+                ? this.getOrdersMeta.page['per-page'] || 2
+                : 2
         }
     },
     methods: {
@@ -65,17 +74,7 @@ export default {
         }),
         updateOrders() {
             this.isLoading = true
-            this.fetchOrders({ page: this.currentPage }).then(data => {
-                if (data.status) {
-                    const page =
-                        data.meta && data.meta.page ? data.meta.page : null
-                    if (page['last-page']) {
-                        this.lastPage = page['last-page']
-                    }
-                    if (page['per-page']) {
-                        this.perPage = page['per-page']
-                    }
-                }
+            this.fetchOrders({ page: this.currentPage }).then(() => {
                 this.isLoading = false
             })
         }

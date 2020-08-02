@@ -105,9 +105,14 @@ export default {
         commit('setIsSpendBottle', payload)
     },
     fetchOrders: async ({ commit }, payload) => {
-        const response = await new HTTP(urlAjax.lkOrders, payload, data => {
-            commit('setOrders', data)
-        }).get()
+        const response = await new HTTP(urlAjax.lkOrders, payload)
+            .get()
+            .then(response => {
+                if (response.data.status) {
+                    commit('setOrders', response.data)
+                }
+                return response
+            })
 
         return response.data
     }

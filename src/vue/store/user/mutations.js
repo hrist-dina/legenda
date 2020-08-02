@@ -53,6 +53,9 @@ export default {
         state.isSpendBottle = payload
     },
     setOrders(state, payload) {
-        state.orders = payload
+        state.orders.data = payload.data
+        if (payload.meta) {
+            state.orders.meta = payload.meta
+        }
     }
 }

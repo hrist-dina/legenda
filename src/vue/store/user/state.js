@@ -39,5 +39,8 @@ export default {
     selectDelivery: {},
     isSpendBonus: false,
     isSpendBottle: false,
-    orders: []
+    orders: {
+        data: [],
+        meta: {}
+    }
 }

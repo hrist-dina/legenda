@@ -28,5 +28,6 @@ export default {
         getters.isValidDate &&
         getters.isValidTime &&
         getters.isValidPaymentType,
-    getOrders: state => state.orders
+    getOrders: state => state.orders.data,
+    getOrdersMeta: state => state.orders.meta
 }

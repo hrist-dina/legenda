@@ -22,13 +22,14 @@ export default {
             if (Array.isArray(el)) {
                 findElem = el.find(e => e.name === name)
             }
+            /* eslint-disable */
             let findTitle =
                 Array.isArray(el) && findElem
                     ? findElem.title
                     : el.name === name
-                    ? el.title
-                    : ''
-
+                        ? el.title
+                        : ''
+            /*1 eslint-enable */
             if (!!findTitle.length) {
                 title = findTitle
             }
@@ -67,7 +68,7 @@ export default {
 
             if (Array.isArray(item)) {
                 let index = item.findIndex(el => el.name === activeStep)
-                if (index === 0 || index > 0) {
+                if ((index === 0 || index > 0) && item[index + 1]) {
                     nameToNext = item[index + 1].name
                 }
             } else {

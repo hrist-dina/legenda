@@ -46,6 +46,9 @@ export default {
             time: payload.time
         })
     },
+    cleanDeliveryItems(state) {
+        state.delivery.items = []
+    },
     setSelectedPaymentType(state, payload) {
         state.selectPaymentType = payload.selectPaymentType
     },

@@ -42,6 +42,7 @@ export default {
                 commit('setId', { id: null })
                 commit('setToken', { token: null })
                 commit('cleanPersonData')
+                commit('cleanDeliveryItems')
             }
         ).post()
 
@@ -51,10 +52,12 @@ export default {
         const response = await new HTTP(
             urlAjax.delivery,
             {
+                title: payload.title,
                 type: payload.type,
                 address: payload.address,
                 date: payload.date,
-                time: payload.time
+                time: payload.time,
+                city: payload.city
             },
             data => {
                 commit('setDeliveryItem', payload)

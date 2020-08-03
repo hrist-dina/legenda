@@ -94,7 +94,6 @@
     }
 
     &-orders {
-
         &__pagination {
             margin-top: 52px;
         }
@@ -240,6 +239,68 @@
         margin: 30px auto;
         & a {
             text-decoration: underline;
+        }
+    }
+
+    &-address {
+        &-item {
+            width: 100%;
+            & + & {
+                margin-top: 40px;
+            }
+
+            &__head {
+                padding: 0 32px 14px;
+            }
+
+            &__type {
+                display: flex;
+                align-items: center;
+            }
+
+            &__type-icon {
+                @include wh(28px);
+                margin-right: 12px;
+                cursor: default;
+            }
+
+            &__type-name {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 18px;
+                color: #000000;
+            }
+
+            &__body {
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                padding: 24px 32px;
+                background: #fff;
+                box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+            }
+
+            &__data, &__actions {
+                width: 50%;
+            }
+
+            &__actions {
+                text-align: right;
+            }
+
+            &__city, &__value {
+                font-size: 16px;
+                line-height: 21px;
+                color: #373737;
+            }
+
+            &__city {
+                margin-bottom: 12px;
+            }
+        }
+
+        &-add {
+            margin-top: 30px;
         }
     }
 }

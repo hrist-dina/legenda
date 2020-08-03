@@ -113,7 +113,11 @@ export default {
         },
         onInput(data, name) {
             this.form[this.getIndexByName(name)].value =
-                data && data.value ? data.value : data
+                data && data.value
+                    ? data.value
+                    : typeof data === 'string'
+                    ? data
+                    : ''
         },
         onValidate(data, name) {
             this.form[this.getIndexByName(name)].isValid = data.isValid

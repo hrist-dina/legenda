@@ -36,16 +36,24 @@ export default {
     methods: {
         ...mapActions('products', {
             getItems: 'getItems'
-        })
+        }),
+        loadProducts() {
+            if (this.products.length) {
+                this.getItems({ ids: this.products.map(item => item.id) })
+            }
+        }
     },
     created() {
         // Запрос за детальными данными для корзины
-        if (this.products.length) {
-            this.getItems({ ids: this.products.map(item => item.id) })
-        }
+        this.loadProducts()
     },
     mounted() {
         this.loaded = true
+    },
+    watch: {
+        products() {
+            this.loadProducts()
+        }
     }
 }
 </script>

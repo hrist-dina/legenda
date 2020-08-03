@@ -4,15 +4,17 @@
             :delivery-types="deliveryTypes"
             @change-type="onChangeType"
         )
-        .field
+        .field(
+            v-for="item in fields"
+            :key="item.name"
+        )
             input-text(
-                :key="address.name"
-                :required="address.required"
-                :name="address.name"
-                :value="address.value"
-                @input="onInput($event)"
-                @validate="onValidate($event)"
-                :placeholder="address.placeholder"
+                :required="item.required"
+                :name="item.name"
+                :value="item.value"
+                @input="onInput($event, item.name)"
+                @validate="onValidate($event, item.name)"
+                :placeholder="item.placeholder"
             )
         delivery-datetime(
             v-if="showDateTime"
@@ -39,12 +41,28 @@ export default {
     },
     data: () => ({
         type: '',
-        address: {
-            placeholder: 'Адрес(улица, дом, подъезд, квартира)',
-            name: 'address',
-            value: '',
-            required: true,
-            isValid: false
+        inputs: {
+            title: {
+                placeholder: 'Название адреса',
+                name: 'title',
+                value: '',
+                required: true,
+                isValid: false
+            },
+            city: {
+                placeholder: 'Город',
+                name: 'city',
+                value: '',
+                required: true,
+                isValid: false
+            },
+            address: {
+                placeholder: 'Адрес(улица, дом, подъезд, квартира)',
+                name: 'address',
+                value: '',
+                required: true,
+                isValid: false
+            }
         },
         date: null,
         time: null
@@ -53,14 +71,24 @@ export default {
         showDateTime: {
             type: Boolean,
             default: true
+        },
+        showTitleAndCity: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
         ...mapState('user', ['selectDelivery']),
         ...mapGetters('user', ['getDeliveryTypes']),
+        fields() {
+            if (this.showTitleAndCity) {
+                return Object.values(this.inputs)
+            }
+            return [this.inputs.address]
+        },
         isValidForm() {
             return (
-                this.address.isValid &&
+                this.inputs.address.isValid &&
                 !!this.type.length &&
                 this.isValidDateTime
             )
@@ -79,8 +107,10 @@ export default {
         onSubmit() {
             if (this.isValidForm) {
                 this.$emit('submit', {
+                    title: this.inputs.title.value,
+                    city: this.inputs.city.value,
                     type: this.type,
-                    address: this.address.value,
+                    address: this.inputs.address.value,
                     date: this.date,
                     time: this.time
                 })
@@ -89,11 +119,11 @@ export default {
         onChangeType(value) {
             this.type = value
         },
-        onInput(data) {
-            this.address.value = data.value
+        onInput(data, name) {
+            this.inputs[name].value = data.value
         },
-        onValidate(data) {
-            this.address.isValid = data.isValid
+        onValidate(data, name) {
+            this.inputs[name].isValid = data.isValid
         },
         onChangeDate(val) {
             this.date = val
@@ -104,7 +134,7 @@ export default {
     },
     created() {
         if (this.selectDelivery) {
-            this.address.value = this.selectDelivery.address
+            this.inputs.address.value = this.selectDelivery.address
             this.date = this.selectDelivery.date
             this.time = this.selectDelivery.time
         }

@@ -112,12 +112,11 @@ export default {
             return this.form.findIndex(el => el.name === name)
         },
         onInput(data, name) {
-            this.form[this.getIndexByName(name)].value =
-                data && data.value
-                    ? data.value
-                    : typeof data === 'string'
-                    ? data
-                    : ''
+            let value = data || ''
+            if (data && data.hasOwnProperty('value')) {
+                value = data.value
+            }
+            this.form[this.getIndexByName(name)].value = value
         },
         onValidate(data, name) {
             this.form[this.getIndexByName(name)].isValid = data.isValid

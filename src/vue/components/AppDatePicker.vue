@@ -1,11 +1,14 @@
 <template lang="pug">
-    date-picker(
-        type="date"
-        :placeholder="placeholder"
-        :value="date"
-        @change="$emit('change', $event)"
-        format="DD.MM.YYYY"
-    )
+    .datepicker
+        date-picker(
+            type="date"
+            :placeholder="placeholder"
+            :value="value"
+            @change="onChange"
+            format="DD.MM.YYYY"
+        )
+        .datepicker__desc(v-if="hasDesc")
+            slot(name="desc")
 </template>
 
 <script>
@@ -20,7 +23,24 @@ export default {
             type: String,
             required: true
         },
-        date: null
+        date: {
+            type: null,
+            required: true
+        }
+    },
+    computed: {
+        hasDesc() {
+            return !!this.$slots.desc
+        },
+        value() {
+            return this.date ? new Date(this.date) : ''
+        }
+    },
+    methods: {
+        onChange(val) {
+            this.$emit('change', val)
+            this.$emit('validate', { isValid: !!val })
+        }
     }
 }
 </script>

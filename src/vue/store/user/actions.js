@@ -41,6 +41,7 @@ export default {
             () => {
                 commit('setId', { id: null })
                 commit('setToken', { token: null })
+                commit('cleanPersonData')
             }
         ).post()
 

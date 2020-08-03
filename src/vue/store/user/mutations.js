@@ -1,4 +1,4 @@
-import { phoneReplace } from '%common%/formatters'
+import { personState } from '%vue%/store/user/state'
 
 export default {
     setId(state, payload) {
@@ -26,6 +26,12 @@ export default {
         if (payload.balance) {
             state.person.balance = payload.balance
         }
+        if (typeof payload.birthDate !== 'undefined') {
+            state.person.birthDate = payload.birthDate
+        }
+    },
+    cleanPersonData(state) {
+        state.person = personState
     },
     setDeliveryItem(state, payload) {
         state.delivery.items.push({

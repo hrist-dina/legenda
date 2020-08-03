@@ -1,6 +1,6 @@
 import { token, deliveryItems, getPersonFromStorage } from './helpers'
 
-const personState = {
+export const personState = {
     fio: '',
     phone: '',
     email: '',

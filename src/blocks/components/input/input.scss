@@ -4,6 +4,7 @@
         display: flex;
         position: relative;
         padding-bottom: 24px;
+        max-width: 100%;
 
         &__placeholder {
             @include transitionEaseOutQuint(top);

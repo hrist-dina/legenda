@@ -5,7 +5,8 @@ import {
     declOfNum,
     formatThousand,
     BONUS_TITLE,
-    BOTTLE_TITLES
+    BOTTLE_TITLES,
+    formatDate
 } from '%common%/formatters'
 
 Vue.filter('ruble', function (value) {
@@ -30,4 +31,14 @@ Vue.filter('bottle', function (value) {
 
 Vue.filter('bottleTitle', function (value) {
     return declOfNum(value, BOTTLE_TITLES)
+})
+
+Vue.filter('dateShort', function (value) {
+    if (!value) return
+    return formatDate(value)
+})
+
+Vue.filter('dateSlash', function (value) {
+    if (!value) return
+    return formatDate(value, '/')
 })

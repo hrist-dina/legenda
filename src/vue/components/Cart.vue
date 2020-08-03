@@ -40,7 +40,9 @@ export default {
     },
     created() {
         // Запрос за детальными данными для корзины
-        this.getItems({ ids: this.products.map(item => item.id) })
+        if (this.products.length) {
+            this.getItems({ ids: this.products.map(item => item.id) })
+        }
     },
     mounted() {
         this.loaded = true

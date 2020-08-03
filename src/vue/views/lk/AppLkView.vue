@@ -7,14 +7,24 @@
                 .lk-header__top
                     h1.lk-title Личный кабинет
                     +button-link('Выйти', false, 'bordered-md')(
+                        v-if="isAuth"
                         @click.prevent="onLogout"
                     )
                 lk-meta(
+                    v-if="isAuth"
                     :bottle="person.bottle"
                     :bonus="person.bonus"
                     :balance="person.balance"
                 ).lk-header__meta
-            .lk-body
+                .lk-meta.lk-center-message(v-else)
+                    | Доступно авторизованным пользователям, пожалуйста,
+                    |
+                    a(href="/auth").link зарегистрируйтесь
+                    |
+                    | или
+                    |
+                    a(href="/auth/#/login").link войдите
+            .lk-body(v-if="isAuth")
                 .lk-nav
                     router-link(
                         v-for="tab in tabNav"
@@ -42,7 +52,8 @@ export default {
     }),
     computed: {
         ...mapGetters('user', {
-            person: 'getPerson'
+            person: 'getPerson',
+            isAuth: 'isAuth'
         })
     },
     methods: {

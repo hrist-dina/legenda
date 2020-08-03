@@ -1,7 +1,8 @@
 <template lang="pug">
     form.personal-data-form(@submit.prevent="onSubmit")
-        .field(v-for="item in form")
+        .test(v-for="item in formFields")
             input-text(
+                v-if="item.type !== 'date'"
                 :key="item.name"
                 :required="item.required"
                 :name="item.name"
@@ -12,6 +13,16 @@
                 :mask="item.mask"
                 :valid-type="item.validType"
             )
+            app-date-picker(
+                v-else
+                :key="item.name"
+                :date="item.value"
+                @change="onInput($event, item.name)"
+                :placeholder="item.placeholder"
+            ).datepicker--full
+                template(#desc)
+                     | * Укажите дату рождения, чтобы получать подарки
+
         .personal-data-form__submit(v-if="hasSubmit")
             slot(name='submit')
 </template>
@@ -45,6 +56,13 @@ export default {
                 mask: 'phone'
             },
             {
+                placeholder: 'Дата рождения',
+                name: 'birthDate',
+                value: '',
+                type: 'date',
+                isValid: true
+            },
+            {
                 placeholder: 'Электронная почта',
                 name: 'email',
                 value: '',
@@ -54,8 +72,24 @@ export default {
             }
         ]
     }),
+    props: {
+        hasBirthDate: {
+            type: Boolean,
+            default: false
+        }
+    },
     computed: {
         ...mapGetters('user', ['getPerson']),
+        formFields() {
+            return this.form.reduce((tot, i) => {
+                if (i.name === 'birthDate' && !this.hasBirthDate) {
+                    return tot
+                } else {
+                    tot.push(i)
+                }
+                return tot
+            }, [])
+        },
         isValidForm() {
             return !this.form.filter(el => !el.isValid).length
         },
@@ -69,7 +103,8 @@ export default {
                 this.$emit('submit', {
                     fio: this.form[this.getIndexByName('fio')].value,
                     email: this.form[this.getIndexByName('email')].value,
-                    phone: this.form[this.getIndexByName('phone')].value
+                    phone: this.form[this.getIndexByName('phone')].value,
+                    birthDate: this.form[this.getIndexByName('birthDate')].value
                 })
             }
         },
@@ -77,7 +112,8 @@ export default {
             return this.form.findIndex(el => el.name === name)
         },
         onInput(data, name) {
-            this.form[this.getIndexByName(name)].value = data.value
+            this.form[this.getIndexByName(name)].value =
+                data && data.value ? data.value : data
         },
         onValidate(data, name) {
             this.form[this.getIndexByName(name)].isValid = data.isValid
@@ -93,7 +129,7 @@ export default {
                     if (item === 'phone') {
                         value = phoneReplaceForMask(value)
                     }
-                    fromItem.value = value
+                    this.form[this.getIndexByName(item)].value = value
                 }
             }
         }

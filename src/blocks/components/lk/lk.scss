@@ -230,4 +230,16 @@
             align-items: center;
         }
     }
+
+    &-center-message {
+        max-width: 466px;
+        font-size: 16px;
+        line-height: 25px;
+        text-align: center;
+        color: #004f91;
+        margin: 30px auto;
+        & a {
+            text-decoration: underline;
+        }
+    }
 }

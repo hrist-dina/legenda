@@ -43,6 +43,10 @@ $input-hover-border-color: #909FAB;
     }
 }
 
+.mx-input-wrapper {
+    width: 100%;
+}
+
 .mx-icon-clear {
     & svg {
         fill: #B7C8D6;
@@ -52,4 +56,23 @@ $input-hover-border-color: #909FAB;
 
 .mx-time {
     width: 220px;
+}
+
+.datepicker {
+
+    &--full {
+        padding-bottom: 24px;
+        & .mx-datepicker {
+            max-width: 100%;
+
+        }
+    }
+
+    &__desc {
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 18px;
+        color: #909FAB;
+
+    }
 }

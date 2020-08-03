@@ -28,3 +28,16 @@ export const phoneReplaceForMask = value => {
     }
     return newVal
 }
+
+export const formatDate = (value, separator = '.') => {
+    const date = new Date(value)
+    let dd = date.getDate()
+    if (dd < 10) dd = '0' + dd
+
+    let mm = date.getMonth() + 1
+    if (mm < 10) mm = '0' + mm
+
+    let yy = date.getFullYear()
+
+    return `${dd}${separator}${mm}${separator}${yy}`
+}

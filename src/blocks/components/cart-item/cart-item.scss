@@ -18,6 +18,9 @@
     &__img-link {
         @include wh(80px);
         margin-right: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__data {
@@ -51,6 +54,9 @@
     &__price {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
+        min-width: 180px;
+        margin-right: 40px;
 
         &-value {
             font-size: 20px;
@@ -78,7 +84,7 @@
         line-height: 22px;
         color: #000000;
         margin-right: 35px;
-        min-width: 100px;
+        min-width: 120px;
         text-align: right;
         margin-left: 20px;
     }

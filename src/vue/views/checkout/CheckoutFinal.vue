@@ -15,7 +15,7 @@
             .checkout-block__title
                 span Адрес доставки
                 +link('Добавить адрес', false, 'bordered')(
-                    @click.prevent="onEditAddress"
+                    @click.prevent="onAddAddress"
                 ).checkout-block__edit
             .checkout-block__body
                 v-select(
@@ -74,6 +74,7 @@
             template(#header)
                 h3 Новый адрес
             delivery-form(
+                is-new="true"
                 :show-date-time="false"
                 @submit="onSubmitModalAddress"
                 @isValid="onValidModalAddress"
@@ -219,7 +220,7 @@ export default {
                     })
             }
         },
-        onEditAddress() {
+        onAddAddress() {
             this.showModalAddress = !this.showModalAddress
         },
         onValidModalAddress(value) {

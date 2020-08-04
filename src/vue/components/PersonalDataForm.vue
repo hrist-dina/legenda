@@ -1,6 +1,6 @@
 <template lang="pug">
     form.personal-data-form(@submit.prevent="onSubmit")
-        .test(v-for="item in formFields")
+        .field(v-for="item in formFields")
             input-text(
                 v-if="item.type !== 'date'"
                 :key="item.name"

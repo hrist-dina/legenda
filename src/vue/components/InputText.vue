@@ -11,7 +11,8 @@
             @blur="onBlur"
         )
         span.input-text__eye-off(v-if="isPassword" @click.prevent="onShowPassword")
-        span.input-text__error(v-if='hasError') {{ validate }}
+        transition(name='fade-in')
+            span.input-text__error(v-if='hasError') {{ validate }}
 </template>
 
 <script>

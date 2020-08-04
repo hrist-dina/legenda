@@ -86,6 +86,10 @@ export default {
         showTitleAndCity: {
             type: Boolean,
             default: false
+        },
+        isNew: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
@@ -157,7 +161,7 @@ export default {
         }
     },
     created() {
-        if (this.selectDelivery) {
+        if (!this.isNew && this.selectDelivery) {
             this.inputs.address.value = this.selectDelivery.address
             this.inputs.title.value = this.selectDelivery.title
             if (
@@ -172,7 +176,7 @@ export default {
             this.time = this.selectDelivery.time
         }
 
-        if (this.showTitleAndCity) {
+        if (!this.isNew && this.showTitleAndCity) {
             if (this.cities) {
                 this.inputs.city.options = this.cities
             }

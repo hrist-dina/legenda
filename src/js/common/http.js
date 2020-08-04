@@ -14,7 +14,7 @@ export default class HTTP {
             // TODO:: remove after release
             if (
                 !isProd &&
-                this.url == urlAjax.lkOrders &&
+                this.url === urlAjax.lkOrders &&
                 this.data.page === 2
             ) {
                 this.url = '/mock/lk-orders-2.json'
@@ -22,7 +22,7 @@ export default class HTTP {
             const response = await axios({
                 method,
                 url: this.url,
-                [method === 'get' ? 'params' : 'data']: true.data
+                [method === 'get' ? 'params' : 'data']: this.data
             })
             const { data } = response
             if (data.status) {

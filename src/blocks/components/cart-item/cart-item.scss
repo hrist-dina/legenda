@@ -168,6 +168,8 @@
             align-items: center;
             justify-content: center;
             margin-top: 5px;
+            margin-right: 0;
+            min-width: auto;
         }
 
         &__price-value, &__price-type {

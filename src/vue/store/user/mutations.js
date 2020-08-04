@@ -37,10 +37,7 @@ export default {
         state.delivery.items.push({
             type: payload.type,
             title: payload.title || '',
-            city: {
-                code: '',
-                value: ''
-            },
+            city: payload.city,
             address: payload.address,
             date: payload.date,
             time: payload.time

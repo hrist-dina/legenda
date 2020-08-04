@@ -1,7 +1,7 @@
 <template lang="pug">
     include ../../views/helpers/mixins
     transition(name='modal')
-        .modal-mask(v-show="showModal" @click="onMask" ref='modal-mask')
+        .modal-mask(v-if="showModal" @click="onMask" ref='modal-mask')
             .modal-wrapper
                 .modal-container
                     +icon('cross').modal-close(@click="$emit('close')")

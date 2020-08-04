@@ -121,9 +121,9 @@ export default {
             }
         },
         classInput() {
-            return { 'js-mask-phone': this.isMaskType }
+            return { 'js-mask-phone': this.isMaskPhone }
         },
-        isMaskType() {
+        isMaskPhone() {
             return this.mask === 'phone'
         },
         hasError() {
@@ -199,7 +199,7 @@ export default {
         }
     },
     mounted() {
-        if (this.isMaskType) {
+        if (this.isMaskPhone) {
             new Mask('.js-mask-phone').phone()
         }
     }

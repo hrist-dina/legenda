@@ -19,6 +19,7 @@ export default class HTTP {
             ) {
                 this.url = '/mock/lk-orders-2.json'
             }
+
             const response = await axios({
                 method,
                 url: this.url,
@@ -64,5 +65,8 @@ export const urlAjax = {
     // На проде будет один путь, запрос будет приходить с параметрами типа оплаты
     paymentCard: isProd ? '/api/payment' : '/mock/payment-card.json',
     paymentMoney: isProd ? '/api/payment' : '/mock/payment-money.json',
-    lkOrders: isProd ? '/api/lk/orders' : '/mock/lk-orders.json'
+    lkOrders: isProd ? '/api/lk/orders' : '/mock/lk-orders.json',
+    lkOrdersRepeat: isProd
+        ? '/api/lk/orders/repeat'
+        : '/mock/lk-orders-repeat.json'
 }

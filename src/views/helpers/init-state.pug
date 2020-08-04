@@ -1,0 +1,22 @@
+-
+    const state = {
+        cities: [
+            {
+                code: 'barnaul',
+                name: 'Барнаул',
+                isLocation: true
+            },
+            {
+                code: 'biysk',
+                name: 'Бийск',
+                isLocation: true
+            },
+            {
+                code: 'novoaltaisk',
+                name: 'Новоалтайск'
+            },
+        ]
+    }
+
+script.
+    window.__INITIAL_STATE__ = JSON.parse('!{JSON.stringify(state)}')

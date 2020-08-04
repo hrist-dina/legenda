@@ -3,7 +3,6 @@
     &-text {
         display: flex;
         position: relative;
-        padding-bottom: 24px;
         max-width: 100%;
 
         &__placeholder {
@@ -67,7 +66,8 @@
 
         &.error {
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            padding-bottom: 20px;
 
             &:before {
                 @include wh(24px);

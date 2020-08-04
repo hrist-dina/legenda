@@ -2,7 +2,13 @@ export default {
     getPerson: state => state.person,
     getDeliveryTypes: state => state.delivery.types,
     getPayment: state => state.payment,
-    getDeliveryItems: state => state.delivery.items,
+    getDeliveryItems: state =>
+        state.delivery.items.map(i => {
+            if (i.city.name) {
+                i.city.label = i.city.name
+            }
+            return i
+        }),
     getBonus: (state, getters) => getters.getPerson.bonus,
     getBottle: (state, getters) => getters.getPerson.bottle,
     getBalance: (state, getters) => getters.getPerson.balance,

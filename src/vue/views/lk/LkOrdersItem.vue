@@ -21,12 +21,16 @@
 
             .lk-orders-item__actions
                 .lk-orders-item__total {{ orderTotal | ruble }}
-                +link-icon('Повторить заказ', 'repeat').link--repeat.lk-orders-item__repeat
+                +link-icon('Повторить заказ', 'repeat')(
+                    @click.prevent="onRepeat"
+                ).link--repeat.lk-orders-item__repeat
 
 
 </template>
 
 <script>
+import HTTP, { urlAjax } from '%common%/http'
+
 export default {
     name: 'lk-orders-item',
     props: {
@@ -44,6 +48,11 @@ export default {
         },
         orderTotal() {
             return this.orderList.reduce((tot, i) => tot + i.totalPrice, 0)
+        }
+    },
+    methods: {
+        onRepeat() {
+            new HTTP(urlAjax.lkOrdersRepeat, { id: this.order.id }).get()
         }
     }
 }

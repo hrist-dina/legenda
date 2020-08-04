@@ -10,7 +10,9 @@
                     :data="item"
                 )
                     template(#actions)
-                        +link('Изменить', false, 'bordered')
+                        +link('Изменить', false, 'bordered')(
+                            @click.prevent="onEditAddress($event, index)"
+                        )
             .lk-center-message(v-else)
                 | Список адресов пуст
             .lk-address-add
@@ -21,6 +23,7 @@
             template(#header)
                 h3 Новый адрес
             delivery-form(
+                :show-title-and-city="true"
                 :show-date-time="false"
                 @submit="onSubmitModalAddress"
                 @isValid="onValidModalAddress"
@@ -34,7 +37,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 import LkAddressItem from '%vue%/views/lk/LkAddressItem'
 import AppModal from '%vue%/components/AppModal'
@@ -62,8 +65,15 @@ export default {
         ...mapActions('user', {
             handleDelivery: 'delivery'
         }),
-        onEditAddress() {
+        ...mapMutations('user', ['setSelectedDelivery']),
+        onEditAddress(e, index) {
             this.showModalAddress = !this.showModalAddress
+
+            if (typeof index !== 'undefined' && this.addressList[index]) {
+                this.setSelectedDelivery({
+                    selectDelivery: this.addressList[index]
+                })
+            }
         },
         onValidModalAddress(value) {
             this.isValidModalAddress = value

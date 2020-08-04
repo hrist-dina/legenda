@@ -27,7 +27,13 @@ const router = (base, routesData, redirectName) => {
     const router = new VueRouter({
         mode: 'history',
         base: base,
-        routes
+        routes,
+        scrollBehavior(to, from, savedPosition) {
+            if (from.meta && from.meta.notSavedPosition) {
+                return { x: 0, y: 0 }
+            }
+            return savedPosition
+        }
     })
     callbacks(router)
     return router

@@ -24,7 +24,8 @@ const routes = [
         path: '/#/cart',
         component: CartPage,
         meta: {
-            title: 'Корзина'
+            title: 'Корзина',
+            notSavedPosition: true // Параметр, если не нужно сохранять позицию скролла при переходе по страницам
         }
     },
     {

@@ -29,8 +29,8 @@ export default {
     computed: {
         city() {
             const city = this.data.city
-            return city && city.value
-                ? city.value
+            return city && city.name
+                ? city.name
                 : typeof city === 'string'
                 ? city
                 : 'Не указан'

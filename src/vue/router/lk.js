@@ -31,15 +31,16 @@ const routes = [
                 },
                 props: route => ({ currentPage: Number(route.params.id || 1) })
             },
-            {
-                name: LK_SERVICES,
-                path: LK_SERVICES,
-                component: LkServices,
-                meta: {
-                    title: getChildrenTitle('Услуги'),
-                    tabTitle: 'Услуги'
-                }
-            },
+            // TODO:: временно нет
+            // {
+            //     name: LK_SERVICES,
+            //     path: LK_SERVICES,
+            //     component: LkServices,
+            //     meta: {
+            //         title: getChildrenTitle('Услуги'),
+            //         tabTitle: 'Услуги'
+            //     }
+            // },
             {
                 name: LK_PERSONAL_DATA,
                 path: LK_PERSONAL_DATA,

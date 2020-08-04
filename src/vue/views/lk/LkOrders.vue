@@ -73,6 +73,9 @@ export default {
             fetchOrders: 'fetchOrders'
         }),
         updateOrders() {
+            if (this.lastPage && this.currentPage > this.lastPage) {
+                this.$router.push('/not-found')
+            }
             this.isLoading = true
             this.fetchOrders({ page: this.currentPage }).then(() => {
                 this.isLoading = false

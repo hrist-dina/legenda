@@ -9,6 +9,7 @@
             :key="item.name"
         )
             input-text(
+                v-if="item.type !== 'select'"
                 :required="item.required"
                 :name="item.name"
                 :value="item.value"
@@ -16,6 +17,14 @@
                 @validate="onValidate($event, item.name)"
                 :placeholder="item.placeholder"
             )
+            v-select(
+                v-else
+                :placeholder="item.placeholder"
+                @input="onChangeCity"
+                :options="item.options"
+                :value="item.value"
+            ).delivery-form__select
+                div(slot="no-options") Не найден
         delivery-datetime(
             v-if="showDateTime"
             :date="date"
@@ -54,7 +63,9 @@ export default {
                 name: 'city',
                 value: '',
                 required: true,
-                isValid: false
+                isValid: false,
+                type: 'select',
+                options: []
             },
             address: {
                 placeholder: 'Адрес(улица, дом, подъезд, квартира)',
@@ -80,6 +91,10 @@ export default {
     computed: {
         ...mapState('user', ['selectDelivery']),
         ...mapGetters('user', ['getDeliveryTypes']),
+        ...mapGetters('common', ['getCities']),
+        cities() {
+            return this.getCities.map(i => ({ ...i, label: i.name }))
+        },
         fields() {
             if (this.showTitleAndCity) {
                 return Object.values(this.inputs)
@@ -90,11 +105,17 @@ export default {
             return (
                 this.inputs.address.isValid &&
                 !!this.type.length &&
-                this.isValidDateTime
+                this.isValidDateTime &&
+                this.isValidTitleAndCity
             )
         },
         isValidDateTime() {
             return this.showDateTime ? !!this.date && !!this.time : true
+        },
+        isValidTitleAndCity() {
+            return this.showTitleAndCity
+                ? !!this.inputs.title.value && !!this.inputs.city.value
+                : true
         },
         deliveryTypes() {
             return this.getDeliveryTypes
@@ -130,13 +151,31 @@ export default {
         },
         onChangeTime(val) {
             this.time = val
+        },
+        onChangeCity(val) {
+            this.inputs.city.value = val
         }
     },
     created() {
         if (this.selectDelivery) {
             this.inputs.address.value = this.selectDelivery.address
+            this.inputs.title.value = this.selectDelivery.title
+            if (
+                this.selectDelivery.city &&
+                this.selectDelivery.city.name &&
+                this.selectDelivery.city.code &&
+                this.selectDelivery.city.label
+            ) {
+                this.inputs.city.value = this.selectDelivery.city
+            }
             this.date = this.selectDelivery.date
             this.time = this.selectDelivery.time
+        }
+
+        if (this.showTitleAndCity) {
+            if (this.cities) {
+                this.inputs.city.options = this.cities
+            }
         }
     },
     watch: {

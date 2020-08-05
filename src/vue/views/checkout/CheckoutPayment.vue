@@ -13,51 +13,14 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex'
 import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
-import AppSelectPayment from '%vue%/components/AppSelectPayment'
+import { selectPayment } from '%vue%/mixins/payment'
 
 export default {
     components: {
-        CheckoutBack,
-        AppSelectPayment
+        CheckoutBack
     },
-    data() {
-        return {
-            title: ''
-        }
-    },
-    props: {
-        customTitle: {
-            type: String
-        }
-    },
-    computed: {
-        ...mapState('checkout', ['activeStep']),
-        ...mapState('user', ['selectPaymentType']),
-        ...mapGetters('user', ['getPayment'])
-    },
-    methods: {
-        ...mapActions('checkout', {
-            getDataByName: 'getDataByName'
-        }),
-        ...mapActions('user', {
-            setPaymentType: 'setPaymentType'
-        }),
-        setType(val) {
-            this.setPaymentType(val)
-        },
-        onChange(val) {
-            this.setType(val)
-        }
-    },
-    created() {
-        if (!this.title) {
-            this.getDataByName(this.activeStep).then(data => {
-                this.title = !!this.customTitle ? this.customTitle : data
-            })
-        }
-    }
+    mixins: [selectPayment]
 }
 </script>
 

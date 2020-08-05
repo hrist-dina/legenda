@@ -4,7 +4,10 @@
             .checkout__header
                 h1.h1 Оформление заказа
             .checkout__nav(v-if="!isWelcome")
-                checkout-navigation(v-if="isWithoutLogin")
+                checkout-navigation(
+                    v-if="isWithoutLogin"
+                    :steps="withoutLogin"
+                )
             .checkout__body
                 .checkout__body-half
                     router-view
@@ -27,6 +30,10 @@ export default {
     computed: {
         ...mapState('checkout', ['steps', 'activeStep']),
         ...mapGetters('checkout', ['getHasLogin']),
+        ...mapState('checkout', ['steps']),
+        withoutLogin() {
+            return this.steps.withoutLogin
+        },
         isWelcome() {
             return this.activeStep === CHECKOUT_WELCOME
         },

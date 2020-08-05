@@ -25,20 +25,13 @@ export default {
         CheckoutBack
     },
     data: () => ({
-        title: '',
         isValidForm: false
     }),
-    props: {
-        customTitle: {
-            type: String
-        }
-    },
     computed: {
         ...mapState('checkout', ['hasLogin', 'activeStep'])
     },
     methods: {
         ...mapActions('checkout', {
-            getDataByName: 'getDataByName',
             onNext: 'next'
         }),
         ...mapActions('user', {
@@ -55,13 +48,6 @@ export default {
         },
         onValidForm(value) {
             this.isValidForm = value
-        }
-    },
-    created() {
-        if (!this.title) {
-            this.getDataByName(this.activeStep).then(data => {
-                this.title = !!this.customTitle ? this.customTitle : data
-            })
         }
     }
 }

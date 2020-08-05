@@ -2,21 +2,23 @@
     include ../../../blocks/components/ui-kit/ui-kit
     .auth-form.auth-form--register
         form(@submit.prevent="onSubmit")
-            input-text(
+            .field(
                 v-for="item in form"
                 :key="item.name"
-                :mask="item.mask"
-                :required="item.required"
-                :name="item.name"
-                :type="item.type"
-                :value="item.value"
-                @input="onInput($event, item.name)"
-                @validate="onValidate($event, item.name)"
-                :placeholder="item.placeholder"
-                :valid-type="item.validType"
-                :is-valid-type="item.isValidType"
-                :min-length="item.minLength"
             )
+                input-text(
+                    :mask="item.mask"
+                    :required="item.required"
+                    :name="item.name"
+                    :type="item.type"
+                    :value="item.value"
+                    @input="onInput($event, item.name)"
+                    @validate="onValidate($event, item.name)"
+                    :placeholder="item.placeholder"
+                    :valid-type="item.validType"
+                    :is-valid-type="item.isValidType"
+                    :min-length="item.minLength"
+                )
             .auth-form__agree
                 +field-checkbox-rounded('agree')(@change="onAgree")
                     span Согласен с условиями

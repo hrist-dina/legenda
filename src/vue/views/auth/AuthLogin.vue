@@ -2,20 +2,22 @@
     include ../../../blocks/components/ui-kit/ui-kit
     .auth-form.auth-form--login
         form(@submit.prevent="onSubmit")
-            input-text(
+            .field(
                 v-for="item in form"
                 :key="item.name"
-                :required="item.required"
-                :name="item.name"
-                :type="item.type"
-                :value="item.value"
-                @input="onInput($event, item.name)"
-                @validate="onValidate($event, item.name)"
-                :placeholder="item.placeholder"
-                :valid-type="item.validType"
-                :is-valid-type="item.isValidType"
-                :min-length="item.minLength"
             )
+                input-text(
+                    :required="item.required"
+                    :name="item.name"
+                    :type="item.type"
+                    :value="item.value"
+                    @input="onInput($event, item.name)"
+                    @validate="onValidate($event, item.name)"
+                    :placeholder="item.placeholder"
+                    :valid-type="item.validType"
+                    :is-valid-type="item.isValidType"
+                    :min-length="item.minLength"
+                )
             .auth-form__button
                 +button('default')(:disabled="!isValidForm") Войти
 

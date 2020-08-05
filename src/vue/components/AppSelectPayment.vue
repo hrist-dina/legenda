@@ -1,6 +1,6 @@
 <template lang="pug">
     v-select(
-        placeholder="Выберите способ оплаты"
+        :placeholder="placeholder"
         @input="$emit('change', $event)"
         :options="options"
         :value="value"
@@ -11,6 +11,10 @@
 <script>
 export default {
     props: {
+        placeholder: {
+            type: String,
+            default: 'Выберите способ оплаты'
+        },
         options: {
             type: Array, // [{code:'', label: ''}]
             required: true

@@ -2,12 +2,18 @@ import router from '%vue%/router/base'
 import AppLkView from '%vue%/views/lk/AppLkView'
 import LkOrders from '%vue%/views/lk/LkOrders'
 import LkServices from '%vue%/views/lk/LkServices'
+import LkReplenish from '%vue%/views/lk/LkReplenish'
 import LkPersonalData from '%vue%/views/lk/LkPersonalData'
 import LkAddress from '%vue%/views/lk/LkAddress'
+import LkReplenishPayment from '%vue%/views/lk/LkReplenishPayment'
+import LkReplenishDelivery from '%vue%/views/lk/LkReplenishDelivery'
 export const LK_ORDERS = 'orders'
 export const LK_SERVICES = 'services'
 export const LK_PERSONAL_DATA = 'persona-data'
 export const LK_ADDRESS = 'address'
+export const LK_REPLENISH = 'replenish'
+export const LK_REPLENISH_PAYMENT = 'payment'
+export const LK_REPLENISH_DELIVERY = 'delivery'
 
 const LK_TITLE = 'Личный кабинет'
 const getChildrenTitle = title => `${LK_TITLE} | ${title}`
@@ -41,6 +47,27 @@ const routes = [
             //         tabTitle: 'Услуги'
             //     }
             // },
+            {
+                name: LK_REPLENISH,
+                path: `${LK_REPLENISH}/${LK_REPLENISH_PAYMENT}`,
+                component: LkReplenish,
+                meta: {
+                    title: getChildrenTitle('Пополнить'),
+                    tabTitle: 'Пополнить'
+                },
+                children: [
+                    {
+                        name: LK_REPLENISH_PAYMENT,
+                        path: '',
+                        component: LkReplenishPayment
+                    },
+                    {
+                        name: LK_REPLENISH_DELIVERY,
+                        path: LK_REPLENISH_DELIVERY,
+                        component: LkReplenishDelivery
+                    }
+                ]
+            },
             {
                 name: LK_PERSONAL_DATA,
                 path: LK_PERSONAL_DATA,

@@ -2,10 +2,10 @@
     include ../../../views/helpers/mixins
     ul.checkout-nav
         router-link(
+            v-for="item in steps"
             :key="item.name"
             tag="li"
             :to="{name: item.name}"
-            v-for="item in withoutLogin"
             active-class="checkout-nav__item--active"
             :class="{'checkout-nav__item--done': isDone(item)}"
             exact
@@ -16,20 +16,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
+    props: {
+        steps: {
+            type: Array,
+            required: true
+        }
+    },
     computed: {
-        ...mapState('checkout', ['steps']),
-        withoutLogin() {
-            return this.steps.withoutLogin
-        },
         isDone() {
             return item => {
-                const withoutLogin = this.withoutLogin
-                const current = withoutLogin.findIndex(
+                const steps = this.steps
+                const current = steps.findIndex(
                     i => i.name === this.$route.name
                 )
-                return withoutLogin.slice(0, current).includes(item)
+                return steps.slice(0, current).includes(item)
             }
         }
     }

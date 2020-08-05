@@ -1,7 +1,7 @@
 <template lang="pug">
     include ../../../blocks/components/ui-kit/ui-kit
     include ../../../views/helpers/mixins
-    .personal-data__tab
+    .lk-tab
         .lk-personal-data
             .lk-personal-data__block(v-if="!showEditForm")
                 .lk-personal-data__box(v-if="!isEmptyData")

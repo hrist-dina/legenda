@@ -176,7 +176,7 @@ export default {
             this.time = this.selectDelivery.time
         }
 
-        if (!this.isNew && this.showTitleAndCity) {
+        if (this.showTitleAndCity) {
             if (this.cities) {
                 this.inputs.city.options = this.cities
             }

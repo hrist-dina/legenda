@@ -303,4 +303,24 @@
             margin-top: 30px;
         }
     }
+
+    &-section {
+        display: flex;
+
+        &-nav {
+            margin-bottom: 50px;
+        }
+
+        &__half {
+            width: 50%;
+        }
+    }
+
+    &-delivery, &-replenish {
+        max-width: 477px;
+
+        &__button {
+            margin-top: 36px;
+        }
+    }
 }

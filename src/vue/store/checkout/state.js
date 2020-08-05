@@ -37,5 +37,12 @@ export default {
                 title: 'Оплата'
             }
         ]
-    }
+    },
+    replenish: [
+        {
+            name: CHECKOUT_PAYMENT,
+            title: 'Способ оплаты'
+        },
+        { name: CHECKOUT_DELIVERY, title: 'Оплата на адрес' }
+    ]
 }

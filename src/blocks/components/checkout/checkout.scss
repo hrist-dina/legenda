@@ -1,7 +1,6 @@
 .checkout {
     margin-top: 42px;
 
-
     .button ~ &-back {
         margin-left: 16px;
     }
@@ -68,6 +67,15 @@
         margin-bottom: 42px;
     }
 
+    &__checkbox-list {
+        margin-top: 24px;
+    }
+    &__checkbox-item {
+        & + & {
+            margin-top: 20px;
+        }
+    }
+
     &-nav {
         display: flex;
         align-items: center;
@@ -118,6 +126,17 @@
             margin-left: 20px;
             width: #{calc(100% - 68px)};
         }
+
+        &--two &__item {
+            width: 60%;
+
+            &:last-child {
+                width: 40%;
+                &:after {
+                    content: none;
+                }
+            }
+        }
     }
 
     &-nav__item--done & {
@@ -134,8 +153,6 @@
     }
 
     &-nav__item--active & {
-
-
         &-nav__link {
             pointer-events: auto;
             cursor: pointer;
@@ -209,7 +226,7 @@
                 line-height: 36px;
                 color: #1b262c;
             }
-            
+
             &-bonus {
                 font-size: 16px;
                 line-height: 22px;
@@ -273,9 +290,6 @@
     }
 
     &-block {
-        & + & {
-            margin-top: 40px;
-        }
 
         &__title {
             font-weight: 500;
@@ -296,14 +310,8 @@
         &__edit {
             margin-left: 36px;
         }
-    }
-
-    &__checkbox-list {
-        margin-top: 24px;
-    }
-    &__checkbox-item {
         & + & {
-            margin-top: 20px;
+            margin-top: 40px;
         }
     }
 }

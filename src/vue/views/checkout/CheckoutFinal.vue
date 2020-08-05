@@ -74,7 +74,7 @@
             template(#header)
                 h3 Новый адрес
             delivery-form(
-                is-new="true"
+                :is-new="true"
                 :show-date-time="false"
                 @submit="onSubmitModalAddress"
                 @isValid="onValidModalAddress"
@@ -103,25 +103,17 @@ export default {
         DeliveryForm,
         PersonalDataForm
     },
-    data() {
-        return {
-            title: '',
-            errorMessage: '',
-            date: null,
-            time: null,
-            showModalPersonalData: false,
-            isValidModalPersonalData: false,
-            isSubmittingModalPersonalData: false,
-            showModalAddress: false,
-            isValidModalAddress: false,
-            isSubmittingModalAddress: false
-        }
-    },
-    props: {
-        customTitle: {
-            type: String
-        }
-    },
+    data: () => ({
+        errorMessage: '',
+        date: null,
+        time: null,
+        showModalPersonalData: false,
+        isValidModalPersonalData: false,
+        isSubmittingModalPersonalData: false,
+        showModalAddress: false,
+        isValidModalAddress: false,
+        isSubmittingModalAddress: false
+    }),
     computed: {
         ...mapGetters('user', ['getPerson']),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
@@ -247,12 +239,6 @@ export default {
         }
     },
     created() {
-        if (!this.title) {
-            this.getDataByName(this.activeStep).then(data => {
-                this.title = !!this.customTitle ? this.customTitle : data
-            })
-        }
-
         this.date = this.selectedDeliveryDate
         this.time = this.selectedDeliveryTime
         this.setDelivery({

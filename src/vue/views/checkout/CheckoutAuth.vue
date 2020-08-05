@@ -1,6 +1,6 @@
 <template lang="pug">
     .checkout-auth
-        .checkout__title.checkout__title--auth {{ title }}
+        .checkout__title.checkout__title--auth Авторизация
         form.form(@submit.prevent="onSubmit")
             .field(v-for="item in form")
                 input-text(
@@ -33,7 +33,6 @@ export default {
     },
     data() {
         return {
-            title: '',
             form: [
                 {
                     placeholder: 'Логин',
@@ -54,11 +53,6 @@ export default {
             ]
         }
     },
-    props: {
-        customTitle: {
-            type: String
-        }
-    },
     computed: {
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         isValidForm() {
@@ -67,7 +61,6 @@ export default {
     },
     methods: {
         ...mapActions('checkout', {
-            getDataByName: 'getDataByName',
             onNext: 'next'
         }),
         ...mapActions('user', { login: 'login' }),
@@ -91,13 +84,6 @@ export default {
         },
         onValidate(data, name) {
             this.form[this.getIndexByName(name)].isValid = data.isValid
-        }
-    },
-    created() {
-        if (!this.title) {
-            this.getDataByName(this.activeStep).then(data => {
-                this.title = !!this.customTitle ? this.customTitle : data
-            })
         }
     }
 }

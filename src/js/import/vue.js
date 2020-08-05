@@ -10,6 +10,7 @@ import routerOrder from '%vue%/router/order'
 import routerLk from '%vue%/router/lk'
 import routerAuth from '%vue%/router/auth'
 import AppAuth from '%vue%/views/AppAuth'
+import AppNotification from '%vue%/components/AppNotification'
 import Vue from 'vue'
 import vSelect from 'vue-select'
 
@@ -21,6 +22,7 @@ new ComponentVue('.js-vue-filter-item', FilterItem, false)
 new ComponentVue('.js-vue-location', Location, false)
 
 new ComponentVue('.js-vue-quantity', QuantityCounter)
+new ComponentVue('.js-vue-app-notification', AppNotification)
 new ComponentVue('.js-vue-app-order', AppOrder, true, { router: routerOrder })
 new ComponentVue('.js-vue-app-lk', AppLk, true, { router: routerLk })
 new ComponentVue('.js-vue-app-auth', AppAuth, true, { router: routerAuth })

@@ -11,6 +11,7 @@
 <script>
 import DatePicker from 'vue2-datepicker'
 export default {
+    name: 'app-time-picker',
     components: {
         DatePicker
     },

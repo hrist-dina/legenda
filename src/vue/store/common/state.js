@@ -1,3 +1,4 @@
 export default {
-    cities: []
+    cities: [],
+    notifications: []
 }

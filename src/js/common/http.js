@@ -1,13 +1,12 @@
 import axios from 'axios'
 
 export default class HTTP {
-    constructor(url, data, successCallback) {
+    constructor(url, data, successCallback, errorCallback) {
         this.url = url
         this.data = data
 
         this.successCallback = successCallback
-
-        this.errors = []
+        this.errorCallback = errorCallback
     }
     async request(method) {
         try {
@@ -28,10 +27,12 @@ export default class HTTP {
             const { data } = response
             if (data.status) {
                 this.successCallback ? this.successCallback(data.data) : ''
+            } else {
+                this.errorCallback ? this.errorCallback(data) : ''
             }
             return response
         } catch (error) {
-            this.errors.push(error)
+            this.errorCallback ? this.errorCallback(error) : ''
             console.error(error)
         }
     }

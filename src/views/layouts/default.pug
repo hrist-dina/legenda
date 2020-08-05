@@ -3,6 +3,7 @@ include ../helpers/mixins
 include ../../blocks/modules/inner-page/inner-page
 include ../../blocks/modules/header/header
 include ../../blocks/modules/footer/footer
+include ../../blocks/modules/notification/notification
 block variables
     include ../helpers/variables
 
@@ -23,6 +24,8 @@ html(lang="ru")
                         block content
             block footer
                 +footer
+            block notification
+                +notification
         block modals
             //include ../../blocks/modules/modals/modals
         block scripts

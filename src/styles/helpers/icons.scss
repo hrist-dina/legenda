@@ -216,6 +216,11 @@
     @include icon-bgc(icon-repeat());
 }
 
+.icon-notification {
+    @include wh(25px);
+    @include icon-bgc(icon-notification());
+}
+
 .icon-office {
     @include wh(40px);
     @include icon-bgc(icon-office());

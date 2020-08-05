@@ -1,4 +1,5 @@
 import HTTP, { urlAjax } from '%common%/http'
+import { showNotification } from '%vue%/store/common/helper'
 
 export default {
     add: async ({ getters, commit }, payload) => {
@@ -16,7 +17,8 @@ export default {
                         commit('add', payload)
                     }
                     commit('endProcessing', payload)
-                }
+                },
+                showNotification(commit)
             ).post()
         }
     },

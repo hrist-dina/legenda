@@ -8,5 +8,17 @@ export default {
             name: payload.code,
             isLocation: payload.isLocation
         })
+    },
+    setNotification(state, payload) {
+        state.notifications.push({
+            time: new Date(),
+            message: payload
+        })
+    },
+    deleteNotification(state, payload) {
+        const index = state.notifications.findIndex(
+            i => i.time.timestamp === payload.time.timestamp
+        )
+        state.notifications.splice(index, 1)
     }
 }

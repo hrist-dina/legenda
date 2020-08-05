@@ -83,7 +83,7 @@ export default {
         if (baseRoute) {
             this.tabNav = baseRoute.children.map((i, n) => ({
                 title: i.meta.tabTitle || `Таб №${n}`,
-                name: i.name
+                name: i.meta.tabName || i.name
             }))
         } else {
             console.error('Not set routes for LK')

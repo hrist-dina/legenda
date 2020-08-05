@@ -33,7 +33,8 @@ const routes = [
                 component: LkOrders,
                 meta: {
                     title: getChildrenTitle('Заказы'),
-                    tabTitle: 'Заказы'
+                    tabTitle: 'Заказы',
+                    tabName: LK_ORDERS
                 },
                 props: route => ({ currentPage: Number(route.params.id || 1) })
             },
@@ -48,17 +49,17 @@ const routes = [
             //     }
             // },
             {
-                name: LK_REPLENISH,
-                path: `${LK_REPLENISH}/${LK_REPLENISH_PAYMENT}`,
+                path: LK_REPLENISH,
                 component: LkReplenish,
                 meta: {
                     title: getChildrenTitle('Пополнить'),
-                    tabTitle: 'Пополнить'
+                    tabTitle: 'Пополнить',
+                    tabName: LK_REPLENISH_PAYMENT
                 },
                 children: [
                     {
                         name: LK_REPLENISH_PAYMENT,
-                        path: '',
+                        path: LK_REPLENISH_PAYMENT,
                         component: LkReplenishPayment
                     },
                     {
@@ -74,7 +75,8 @@ const routes = [
                 component: LkPersonalData,
                 meta: {
                     title: getChildrenTitle('Личные данные'),
-                    tabTitle: 'Личные данные'
+                    tabTitle: 'Личные данные',
+                    tabName: LK_PERSONAL_DATA
                 }
             },
             {
@@ -83,7 +85,8 @@ const routes = [
                 component: LkAddress,
                 meta: {
                     title: getChildrenTitle('Адреса'),
-                    tabTitle: 'Адреса'
+                    tabTitle: 'Адреса',
+                    tabName: LK_ADDRESS
                 }
             }
         ]

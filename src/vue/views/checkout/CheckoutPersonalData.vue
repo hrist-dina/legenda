@@ -1,7 +1,7 @@
 <template lang="pug">
     .checkout-personal-data
         .checkout__thanks
-            |Спасибо, что выбрали нас! При первом заказе Вам нужно один ввести необходимую информацию:
+            |Спасибо, что выбрали нас! При первом заказе Вам нужно один раз ввести необходимую информацию:
         personal-data-form(
             @submit="onSubmit"
             @isValid="onValidForm"

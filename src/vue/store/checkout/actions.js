@@ -48,7 +48,7 @@ export default {
         return backStep(steps, activeStep, commit)
     },
     nextReplenish({ state, commit }) {
-        return nextStep(state.replenish, state.activeStep, commit)
+        return nextStep(state.replenish, state.activeStep, commit, true)
     },
     backReplenish({ state, commit }) {
         return backStep(state.replenish, state.activeStep, commit)

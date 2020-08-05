@@ -1,8 +1,9 @@
-export const nextStep = (steps, activeStep, commit) => {
+export const nextStep = (steps, activeStep, commit, chekNext = false) => {
     let nameToNext = ''
     steps.forEach((item, i) => {
         let nextElem = steps[i + 1]
-        if (!nextElem) {
+
+        if (chekNext && !nextElem) {
             return
         }
 

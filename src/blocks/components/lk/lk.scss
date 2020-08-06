@@ -314,9 +314,17 @@
         &__half {
             width: 50%;
         }
+
+        &__title {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 25px;
+            color: #1b262c;
+            margin-bottom: 24px;
+        }
     }
 
-    &-delivery, &-replenish {
+    &-write-off, &-delivery, &-replenish {
         max-width: 477px;
 
         &__button {

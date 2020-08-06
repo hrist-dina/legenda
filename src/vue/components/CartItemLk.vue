@@ -12,9 +12,17 @@
                     quantity-counter(
                         @change-quantity='onChangeQuantity'
                         :quantity="quantity"
+                        :type="false"
+                        :limit="limit"
                     )
+                .cart-item__limit(v-if="limit")
+                    .cart-item__limit-text из
+                    +icon('bottle').cart-item__limit-icon
+                        span.cart-item__limit-value {{ limit }}
             .cart-item__delete
-                +icon('delete')(@click.prevent="removeFromLK" )
+                +icon('delete')(
+                    @click.prevent="removeFromLK"
+                )
 </template>
 
 <script>
@@ -48,18 +56,32 @@ export default {
         quantity: {
             type: Number,
             required: true
+        },
+        limit: {
+            type: Number,
+            default: null
         }
     },
     methods: {
-        ...mapActions('cart', {
-            updateBottle: 'updateBottle',
-            removeBottle: 'removeBottle'
-        }),
+        ...mapActions('cart', [
+            'updateBottle',
+            'removeBottle',
+            'updateBottleLimit',
+            'removeBottleLimit'
+        ]),
         onChangeQuantity(cnt) {
-            this.updateBottle({ id: this.id, cnt: cnt })
+            if (this.limit) {
+                this.updateBottleLimit({ id: this.id, cnt: cnt })
+            } else {
+                this.updateBottle({ id: this.id, cnt: cnt })
+            }
         },
         removeFromLK() {
-            this.removeBottle({ id: this.id })
+            if (this.limit) {
+                this.removeBottleLimit({ id: this.id })
+            } else {
+                this.removeBottle({ id: this.id })
+            }
         }
     }
 }

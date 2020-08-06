@@ -10,6 +10,7 @@ export default class Init {
         this.user()
         this.cites()
         this.bottles()
+        this.bottlesLimit()
     }
 
     user() {
@@ -26,15 +27,21 @@ export default class Init {
         }
     }
 
+    cites() {
+        if (this.data.cities) {
+            this.store.commit('common/setCities', this.data.cities)
+        }
+    }
+
     bottles() {
         if (this.data.bottles) {
             this.store.commit('cart/setBottles', this.data.bottles)
         }
     }
 
-    cites() {
-        if (this.data.cities) {
-            this.store.commit('common/setCities', this.data.cities)
+    bottlesLimit() {
+        if (this.data.bottlesLimit) {
+            this.store.commit('cart/setBottlesLimit', this.data.bottlesLimit)
         }
     }
 }

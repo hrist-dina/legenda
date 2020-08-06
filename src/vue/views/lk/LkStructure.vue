@@ -23,6 +23,7 @@
                     :img="bottle.img"
                     :desc="bottle.desc"
                     :quantity="bottle.cnt"
+                    :limit="bottle.limit"
                 )
 </template>
 
@@ -38,16 +39,29 @@ export default {
     data: () => ({
         agree: false
     }),
+    props: {
+        isLimit: {
+            type: Boolean,
+            default: false
+        }
+    },
     computed: {
         ...mapGetters('user', ['isValidPaymentType']),
-        ...mapGetters('cart', ['getBottles']),
+        ...mapGetters('cart', {
+            bottles: 'getBottles',
+            bottlesLimit: 'getBottlesLimit'
+        }),
+        getBottles() {
+            return this.isLimit ? this.bottlesLimit : this.bottles
+        },
         total() {
             return this.getBottles.reduce((tot, i) => tot + i.cnt, 0)
         },
+        isLimitValidate() {
+            return !this.isLimit ? this.isValidPaymentType : true
+        },
         canOrder() {
-            return (
-                this.isValidPaymentType && this.getBottles.length && this.agree
-            )
+            return this.isLimitValidate && this.getBottles.length && this.agree
         }
     },
     methods: {

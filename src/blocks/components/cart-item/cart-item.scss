@@ -204,11 +204,49 @@
         }
 
         &__data {
-            max-width: 214px;
+            max-width: 165px;
         }
         
         &__delete {
             margin-left: 10px;
+        }
+
+        &__order {
+            display: flex;
+            align-items: center;
+        }
+
+        &__limit {
+            display: flex;
+            align-items: center;
+
+            &-text {
+                font-size: 15px;
+                line-height: 20px;
+                color: #a7a7a7;
+                margin-right: 5px;
+            }
+
+            &-icon {
+                @include wh(48px);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+
+            &-value {
+                @include wh(30px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 14px auto auto;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 20px;
+                color: #343e44;
+            }
         }
     }
 

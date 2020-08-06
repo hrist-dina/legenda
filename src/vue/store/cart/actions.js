@@ -66,5 +66,11 @@ export default {
     },
     removeBottle({ commit }, payload) {
         commit('removeBottle', payload)
+    },
+    updateBottleLimit({ commit }, payload) {
+        commit('updateBottleLimit', payload)
+    },
+    removeBottleLimit({ commit }, payload) {
+        commit('removeBottleLimit', payload)
     }
 }

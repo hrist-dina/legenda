@@ -44,7 +44,7 @@
             padding-left: 5px;
         }
 
-        &:disabled .icon-minus {
+        &:disabled .icon-plus, &:disabled .icon-minus {
             cursor: not-allowed;
         }
     }
@@ -109,6 +109,10 @@
         &__input {
             text-align: center;
         }
+    }
+
+    &--type-empty {
+        min-width: 110px;
     }
 }
 /* stylelint-disable-next-line */

@@ -42,5 +42,6 @@ export default {
     canRemove: (state, getters) => payload =>
         getters.inCart(payload) && !getters.inProcessing(payload.id),
     isLoading: state => state.isLoading,
-    getBottles: state => state.bottles
+    getBottles: state => state.bottles,
+    getBottlesLimit: state => state.bottlesLimit
 }

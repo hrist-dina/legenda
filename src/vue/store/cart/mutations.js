@@ -45,5 +45,25 @@ export default {
             item => item.id.toString() === id.toString()
         )
         state.bottles.splice(ind, 1)
+    },
+    setBottlesLimit(state, payload) {
+        state.bottlesLimit = payload
+    },
+    updateBottleLimit(state, { id, cnt }) {
+        const ind = state.bottlesLimit.findIndex(
+            item => item.id.toString() === id.toString()
+        )
+        const item = state.bottlesLimit[ind]
+        if (item.limit < cnt) {
+            return
+        }
+        item.cnt = cnt
+        state.bottlesLimit.splice(ind, 1, item)
+    },
+    removeBottleLimit(state, { id }) {
+        const ind = state.bottlesLimit.findIndex(
+            item => item.id.toString() === id.toString()
+        )
+        state.bottlesLimit.splice(ind, 1)
     }
 }

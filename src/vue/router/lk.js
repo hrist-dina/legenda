@@ -7,6 +7,7 @@ import LkPersonalData from '%vue%/views/lk/LkPersonalData'
 import LkAddress from '%vue%/views/lk/LkAddress'
 import LkReplenishPayment from '%vue%/views/lk/LkReplenishPayment'
 import LkReplenishDelivery from '%vue%/views/lk/LkReplenishDelivery'
+import LkWriteOff from '%vue%/views/lk/LkWriteOff'
 export const LK_ORDERS = 'orders'
 export const LK_SERVICES = 'services'
 export const LK_PERSONAL_DATA = 'persona-data'
@@ -14,6 +15,7 @@ export const LK_ADDRESS = 'address'
 export const LK_REPLENISH = 'replenish'
 export const LK_REPLENISH_PAYMENT = 'payment'
 export const LK_REPLENISH_DELIVERY = 'delivery'
+export const LK_WRITE_OFF = 'write-off'
 
 const LK_TITLE = 'Личный кабинет'
 const getChildrenTitle = title => `${LK_TITLE} | ${title}`
@@ -68,6 +70,16 @@ const routes = [
                         component: LkReplenishDelivery
                     }
                 ]
+            },
+            {
+                name: LK_WRITE_OFF,
+                path: LK_WRITE_OFF,
+                component: LkWriteOff,
+                meta: {
+                    title: getChildrenTitle('Списать'),
+                    tabTitle: 'Списать',
+                    tabName: LK_WRITE_OFF
+                }
             },
             {
                 name: LK_PERSONAL_DATA,

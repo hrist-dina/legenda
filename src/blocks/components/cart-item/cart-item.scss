@@ -111,7 +111,7 @@
         }
     }
 
-    &--in-order {
+    &--lk, &--in-order {
         margin-bottom: 8px;
         &:last-child {
             margin-bottom: 0;
@@ -190,6 +190,25 @@
 
         &__delete {
             padding-top: 10px;
+        }
+    }
+
+    &--lk & {
+        &__inner {
+            padding: 12px 0;
+        }
+
+        &__img-link {
+            @include wh(72px);
+            margin-right: 20px;
+        }
+
+        &__data {
+            max-width: 214px;
+        }
+        
+        &__delete {
+            margin-left: 10px;
         }
     }
 

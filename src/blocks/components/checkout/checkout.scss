@@ -310,8 +310,38 @@
         &__edit {
             margin-left: 36px;
         }
+
         & + & {
             margin-top: 40px;
+        }
+
+        &__options {
+            display: flex;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            &-radio {
+                & + & {
+                    margin-left: 40px;
+                }
+            }
+        }
+
+        &__list {
+            list-style: none;
+            &-wrap {
+                margin-top: 32px;
+                margin-bottom: 16px;
+            }
+
+            &-item {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 20px;
+                color: #373737;
+                & + & {
+                    margin-top: 10px;
+                }
+            }
         }
     }
 }

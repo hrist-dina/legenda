@@ -3,5 +3,6 @@ export default {
     products:
         cartProducts && !!cartProducts.length ? JSON.parse(cartProducts) : [],
     processingId: [],
-    isLoading: false
+    isLoading: false,
+    bottles: [] // Бутыли в личном кабинете
 }

@@ -28,5 +28,22 @@ export default {
     },
     setIsLoading(state, payload) {
         state.isLoading = payload
+    },
+    setBottles(state, payload) {
+        state.bottles = payload
+    },
+    updateBottle(state, { id, cnt }) {
+        const ind = state.bottles.findIndex(
+            item => item.id.toString() === id.toString()
+        )
+        const item = state.bottles[ind]
+        item.cnt = cnt
+        state.bottles.splice(ind, 1, item)
+    },
+    removeBottle(state, { id }) {
+        const ind = state.bottles.findIndex(
+            item => item.id.toString() === id.toString()
+        )
+        state.bottles.splice(ind, 1)
     }
 }

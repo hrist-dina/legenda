@@ -9,6 +9,7 @@ export default class Init {
     process() {
         this.user()
         this.cites()
+        this.bottles()
     }
 
     user() {
@@ -22,6 +23,12 @@ export default class Init {
 
         if (user && user.person) {
             this.store.commit('user/setPersonalData', this.data.user.person)
+        }
+    }
+
+    bottles() {
+        if (this.data.bottles) {
+            this.store.commit('cart/setBottles', this.data.bottles)
         }
     }
 

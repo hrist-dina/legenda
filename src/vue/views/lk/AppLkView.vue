@@ -31,6 +31,7 @@
                         :key="tab.name"
                         :to="{name: tab.name}"
                         active-class="active"
+                        :class="{active: isActive(tab)}"
                     ).lk-nav__item {{ tab.title }}
                 .lk-tabs
                     router-view
@@ -54,7 +55,11 @@ export default {
         ...mapGetters('user', {
             person: 'getPerson',
             isAuth: 'isAuth'
-        })
+        }),
+        isActive: el => data => {
+            // Нужно чтобы определять вложенные элементы
+            return el.$route.path.includes(data.path)
+        }
     },
     methods: {
         ...mapActions('user', {
@@ -83,7 +88,8 @@ export default {
         if (baseRoute) {
             this.tabNav = baseRoute.children.map((i, n) => ({
                 title: i.meta.tabTitle || `Таб №${n}`,
-                name: i.meta.tabName || i.name
+                name: i.meta.tabName || i.name,
+                path: i.path
             }))
         } else {
             console.error('Not set routes for LK')

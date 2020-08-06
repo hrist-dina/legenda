@@ -40,6 +40,7 @@ import { mapActions } from 'vuex'
 import QuantityCounter from '%vue%/components/QuantityCounter'
 
 export default {
+    name: 'cart-item',
     components: { QuantityCounter },
     props: {
         id: {

@@ -323,4 +323,46 @@
             margin-top: 36px;
         }
     }
+
+    &-stucture {
+        box-sizing: border-box;
+        max-width: 580px;
+        padding: 55px 50px 35px;
+        background: #fff;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        margin-left: auto;
+
+        &__list {
+            .cart-item {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        &__total {
+            margin-bottom: 40px;
+
+            &-head {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            &-title {
+                font-size: 16px;
+                line-height: 25px;
+                color: #343e44;
+            }
+
+            &-value {
+                font-weight: 600;
+                font-size: 24px;
+                line-height: 32px;
+                color: #1b262c;
+            }
+        }
+
+        &__agree {
+            margin-top: 20px;
+        }
+    }
 }

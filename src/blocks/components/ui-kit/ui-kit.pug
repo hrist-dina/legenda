@@ -48,9 +48,9 @@ mixin field-checkbox-rounded(name, isChecked, additionalClass)
         .field-checkbox-rounded__text
             block
 
-mixin field-radio(name, value, text, isChecked)
-    label.field-radio&attributes(attributes)
-        input.field-radio__input(type="radio" name=name value=value checked!=isChecked)
+mixin field-radio(name, value, text, additionalClass, isChecked)
+    label.field-radio(class!=additionalClass)
+        input.field-radio__input(type="radio" name!=name value=value checked!=isChecked)&attributes(attributes)
         .field-radio__custom
         .field-radio__text=text
 

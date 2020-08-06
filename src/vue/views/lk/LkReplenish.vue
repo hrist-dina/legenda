@@ -11,16 +11,19 @@
                         router-view
             article.lk-section__half
                 .lk-section-order
+                    lk-structure
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
+import LkStructure from '%vue%/views/lk/LkStructure'
 
 export default {
     name: 'lk-replenish',
     components: {
-        CheckoutNavigation
+        CheckoutNavigation,
+        LkStructure
     },
     computed: {
         ...mapState('checkout', ['replenish', 'activeStep'])

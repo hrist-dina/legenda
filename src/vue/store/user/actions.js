@@ -119,5 +119,8 @@ export default {
             })
 
         return response.data
+    },
+    deliveryLk({ commit }, payload) {
+        // TODO:: как будет api
     }
 }

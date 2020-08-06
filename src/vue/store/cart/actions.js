@@ -60,5 +60,11 @@ export default {
                     return response
                 })
         }
+    },
+    updateBottle({ commit }, payload) {
+        commit('updateBottle', payload)
+    },
+    removeBottle({ commit }, payload) {
+        commit('removeBottle', payload)
     }
 }

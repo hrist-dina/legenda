@@ -374,25 +374,25 @@
                 bottom: 0;
                 left: 0;
                 margin: auto;
-                background: #f48a02;
+                background: #007bc2;
                 border-radius: 50%;
             }
         }
 
         &__custom {
             @include transitionEaseOutQuint(background);
-            @include wh(20px);
+            @include wh(22px);
             box-sizing: border-box;
-            border: 1px solid #c3c5c4;
+            border: 1px solid #ced8dd;
             background: #fff;
             border-radius: 50%;
         }
 
         &__text {
-            width: #{calc(100% - 32px)};
-            font-size: 15px;
-            line-height: 22px;
-            color: #3c3c3d;
+            width: #{calc(100% - 34px)};
+            font-size: 16px;
+            line-height: 20px;
+            color: #343e44;
             margin-left: 12px;
 
             & a {

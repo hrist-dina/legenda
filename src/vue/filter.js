@@ -10,7 +10,7 @@ import {
 } from '%common%/formatters'
 
 Vue.filter('ruble', function (value) {
-    return ruble(value)
+    return ruble(value) || 0
 })
 
 Vue.filter('thousand', function (value) {
@@ -18,7 +18,7 @@ Vue.filter('thousand', function (value) {
 })
 
 Vue.filter('bonus', function (value) {
-    return bonus(value)
+    return bonus(value) || 0
 })
 
 Vue.filter('bonusTitle', function (value) {

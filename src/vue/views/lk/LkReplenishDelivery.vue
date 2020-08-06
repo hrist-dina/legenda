@@ -7,14 +7,28 @@
                 +link('Добавить адрес', false, 'bordered')(
                     @click.prevent="onAddAddress"
                 ).checkout-block__edit
+            .checkout-block__options
+                +field-radio(false, 'all', 'Все адреса', 'checkout-block__options-radio')(
+                    v-model="type"
+                )
+                +field-radio(false, 'one', 'Выбрать один', 'checkout-block__options-radio')(
+                    v-model="type"
+                )
             .checkout-block__body
                 v-select(
+                    v-if="type === 'one'"
                     placeholder="Выберите адрес доставки"
-                    @input="$emit('change', $event)"
+                    @input="onSelectAddress"
                     :options="deliveryItems"
                     :value="selectedDeliveryItem"
                 )
                     div(slot="no-options") Не найден адрес доставки
+                .checkout-block__list-wrap(v-else)
+                    ul.checkout-block__list(v-if="deliveryItems.length")
+                        li.checkout-block__list-item(
+                            v-for="(item, i) in deliveryItems"
+                        ) {{ `${i + 1}. ${item.label}`}}
+                    span.checkout-block__list-item(v-else) Адресов нет
                 .lk-replenish__button
             +button('back')(
                 @click.prevent="backReplenish"
@@ -49,6 +63,7 @@ export default {
         DeliveryForm
     },
     data: () => ({
+        type: 'one',
         errorMessage: '',
         showModalAddress: false,
         isValidModalAddress: false,
@@ -84,8 +99,13 @@ export default {
     methods: {
         ...mapActions('checkout', ['backReplenish']),
         ...mapActions('user', {
-            handleDelivery: 'delivery'
+            handleDelivery: 'delivery',
+            handleDeliveryLk: 'deliveryLk'
         }),
+        onSelectAddress(val) {
+            // TODO:: как будет api
+            console.log(val)
+        },
         onAddAddress() {
             this.showModalAddress = !this.showModalAddress
         },

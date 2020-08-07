@@ -1,4 +1,5 @@
 import { personState } from '%vue%/store/user/state'
+import { pushToArray } from '%common%/helper'
 
 export default {
     setId(state, payload) {
@@ -34,7 +35,8 @@ export default {
         state.person = personState
     },
     setDeliveryItem(state, payload) {
-        state.delivery.items.push({
+        pushToArray(state.delivery.items, {
+            id: payload.id,
             type: payload.type,
             title: payload.title || '',
             city: payload.city,

@@ -41,3 +41,9 @@ export const formatDate = (value, separator = '.') => {
 
     return `${dd}${separator}${mm}${separator}${yy}`
 }
+
+export const getDeliveryLabel = delivery => {
+    const city =
+        delivery.city && delivery.city.name ? `${delivery.city.name}, ` : ''
+    return city + delivery.address
+}

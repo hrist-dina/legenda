@@ -55,6 +55,7 @@
 import { mapActions, mapGetters, mapState } from 'vuex'
 import AppModal from '%vue%/components/AppModal'
 import DeliveryForm from '%vue%/components/DeliveryForm'
+import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
     name: 'lk-replenish-delivery',
@@ -75,22 +76,15 @@ export default {
         deliveryItems() {
             return this.getDeliveryItems.map(i => ({
                 code: i.address,
-                label: this.getDeliveryLabel(i)
+                label: getDeliveryLabel(i)
             }))
-        },
-        getDeliveryLabel: () => delivery => {
-            const city =
-                delivery.city && delivery.city.name
-                    ? `${delivery.city.name}, `
-                    : ''
-            return city + delivery.address
         },
         selectedDeliveryItem() {
             const delivery = this.selectDelivery
             if (delivery && delivery.address) {
                 return {
                     code: delivery.address,
-                    label: this.getDeliveryLabel(delivery)
+                    label: getDeliveryLabel(delivery)
                 }
             }
             return this.deliveryItems ? this.deliveryItems[0] : {}

@@ -68,7 +68,7 @@ const routes = [
         ]
     },
     {
-        path: '/#/checkout/success/:number/',
+        path: `/#/checkout/${CHECKOUT_SUCCESS}/:number/`,
         name: CHECKOUT_SUCCESS,
         component: CheckoutSuccess,
         meta: {

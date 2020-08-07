@@ -9,6 +9,7 @@
             @input='onInput'
             @focus="onFocus"
             @blur="onBlur"
+            autocomplete="off"
         )
         span.input-text__eye-off(v-if="isPassword" @click.prevent="onShowPassword")
         transition(name='fade-in')

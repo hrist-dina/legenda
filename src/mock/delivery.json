@@ -1,4 +1,15 @@
 {
   "status": true,
-  "data": []
+  "data": {
+    "id": 1,
+    "city": {
+      "code": "barnaul",
+      "name": "Барнаул"
+    },
+    "address": "Ленина 1",
+    "type": "home",
+    "title": "Дом",
+    "date": "",
+    "time": ""
+  }
 }

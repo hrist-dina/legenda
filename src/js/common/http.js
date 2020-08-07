@@ -69,5 +69,6 @@ export const urlAjax = {
     lkOrders: isProd ? '/api/lk/orders' : '/mock/lk-orders.json',
     lkOrdersRepeat: isProd
         ? '/api/lk/orders/repeat'
-        : '/mock/lk-orders-repeat.json'
+        : '/mock/lk-orders-repeat.json',
+    lkOrdersLast: isProd ? '/api/lk/orders/last' : '/mock/lk-orders-last.json'
 }

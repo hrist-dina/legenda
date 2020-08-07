@@ -2,6 +2,9 @@ export default {
     add(state, payload) {
         state.products.push(payload)
     },
+    addMany(state, payload) {
+        state.products = payload
+    },
     update(state, { id, cnt }) {
         const ind = state.products.findIndex(
             item => item.id.toString() === id.toString()

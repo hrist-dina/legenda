@@ -1,4 +1,29 @@
 {
     "status": true,
-    "data": ["Нужно понять, что будет приходить в ответе"]
+    "data": {
+        "cart": [
+            {
+                "id": 1,
+                "cnt": 2
+            },
+            {
+                "id": 2,
+                "cnt": 4
+            },
+            {
+                "id": 3,
+                "cnt": 5
+            }
+        ],
+        "delivery": {
+            "id": 1,
+            "city": {
+                "code": "barnaul",
+                "name": "Барнаул"
+            },
+            "address": "Ленина 1",
+            "type": "home",
+            "title": "Дом"
+        }
+    }
 }

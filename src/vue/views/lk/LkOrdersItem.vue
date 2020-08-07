@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import HTTP, { urlAjax } from '%common%/http'
+import { LK_ORDER_REPEAT } from '%vue%/router/constants'
 
 export default {
     name: 'lk-orders-item',
@@ -52,7 +52,10 @@ export default {
     },
     methods: {
         onRepeat() {
-            new HTTP(urlAjax.lkOrdersRepeat, { id: this.order.id }).get()
+            this.$router.push({
+                name: LK_ORDER_REPEAT,
+                params: { number: this.order.id }
+            })
         }
     }
 }

@@ -33,6 +33,9 @@
                         active-class="active"
                         :class="{active: isActive(tab)}"
                     ).lk-nav__item {{ tab.title }}
+                    +link-icon('Повторить последний заказ', 'repeat')(
+                        @click.prevent="onRepeat"
+                    ).link--repeat.lk-nav__repeat
                 .lk-tabs
                     router-view
 </template>
@@ -40,8 +43,9 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import LkMeta from '%vue%/views/lk/LkMeta'
-import { LK_ORDERS } from '%vue%/router/lk'
+import { LK_ORDER_REPEAT, LK_ORDERS } from '%vue%/router/constants'
 import { toggleAdditionalProducts } from '%common%/helper'
+import { showNotification } from '%vue%/store/common/helper'
 
 export default {
     components: {
@@ -63,7 +67,8 @@ export default {
     },
     methods: {
         ...mapActions('user', {
-            logout: 'logout'
+            logout: 'logout',
+            getOrderLast: 'getOrderLast'
         }),
         onLogout() {
             this.logout().then(response => {
@@ -78,6 +83,22 @@ export default {
             } else {
                 toggleAdditionalProducts()
             }
+        },
+        onRepeat() {
+            this.getOrderLast().then(response => {
+                const data = response.data
+                if (response.status && data.order_id) {
+                    this.$router.push({
+                        name: LK_ORDER_REPEAT,
+                        params: { number: data.order_id }
+                    })
+                } else {
+                    showNotification(this.$store.commit)({
+                        status: false,
+                        error: 'Что-то пошло не так'
+                    })
+                }
+            })
         }
     },
     created() {

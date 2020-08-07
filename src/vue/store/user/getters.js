@@ -1,3 +1,5 @@
+import { getDeliveryLabel } from '%common%/formatters'
+
 export default {
     getPerson: state => state.person,
     getDeliveryTypes: state => state.delivery.types,
@@ -5,7 +7,7 @@ export default {
     getDeliveryItems: state =>
         state.delivery.items.map(i => {
             if (i.city.name) {
-                i.city.label = i.city.name
+                i.city.label = getDeliveryLabel(i)
             }
             return i
         }),
@@ -13,7 +15,8 @@ export default {
     getBottle: (state, getters) => getters.getPerson.bottle,
     getBalance: (state, getters) => getters.getPerson.balance,
     isAuth: state => !!state.token,
-    isValidAddress: state => !!state.selectDelivery.address,
+    isValidAddress: state =>
+        !!state.selectDelivery.id || !!state.selectDelivery.address,
     isValidDate: state => !!state.selectDelivery.date,
     isValidTime: state => !!state.selectDelivery.time,
     isValidPaymentType: state => !!state.selectPaymentType,

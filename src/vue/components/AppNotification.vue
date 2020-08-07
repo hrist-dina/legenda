@@ -7,7 +7,7 @@
             :key="item.time.timestamp"
         )
             .notification
-                +icon('notification').notification__icon !
+                +icon('notification').notification__icon
                 .notification__text {{ item.message }}
 </template>
 

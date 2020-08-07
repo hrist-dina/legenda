@@ -8,14 +8,17 @@ import LkAddress from '%vue%/views/lk/LkAddress'
 import LkReplenishPayment from '%vue%/views/lk/LkReplenishPayment'
 import LkReplenishDelivery from '%vue%/views/lk/LkReplenishDelivery'
 import LkWriteOff from '%vue%/views/lk/LkWriteOff'
-export const LK_ORDERS = 'orders'
-export const LK_SERVICES = 'services'
-export const LK_PERSONAL_DATA = 'persona-data'
-export const LK_ADDRESS = 'address'
-export const LK_REPLENISH = 'replenish'
-export const LK_REPLENISH_PAYMENT = 'payment'
-export const LK_REPLENISH_DELIVERY = 'delivery'
-export const LK_WRITE_OFF = 'write-off'
+import LkOrderRepeat from '%vue%/views/lk/LkOrderRepeat'
+import {
+    LK_ADDRESS,
+    LK_ORDER_REPEAT,
+    LK_ORDERS,
+    LK_PERSONAL_DATA,
+    LK_REPLENISH,
+    LK_REPLENISH_DELIVERY,
+    LK_REPLENISH_PAYMENT,
+    LK_WRITE_OFF
+} from '%vue%/router/constants'
 
 const LK_TITLE = 'Личный кабинет'
 const getChildrenTitle = title => `${LK_TITLE} | ${title}`
@@ -102,6 +105,14 @@ const routes = [
                 }
             }
         ]
+    },
+    {
+        path: `/#/order/${LK_ORDER_REPEAT}/:number/`,
+        name: LK_ORDER_REPEAT,
+        component: LkOrderRepeat,
+        meta: {
+            title: 'Повторить заказ'
+        }
     }
 ]
 

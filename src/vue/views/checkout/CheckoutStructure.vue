@@ -42,8 +42,10 @@ import {
     CHECKOUT_PAYMENT,
     CHECKOUT_WELCOME
 } from '%vue%/store/checkout/state'
+import { LK_ORDER_REPEAT } from '%vue%/router/constants'
 
 export default {
+    name: 'checkout-structure',
     components: {
         CartItem
     },
@@ -60,12 +62,15 @@ export default {
         isAuthFinalStep() {
             return this.isAuth && this.$route.name === CHECKOUT_FINAL
         },
+        isRepeat() {
+            return this.isAuth && this.$route.name === LK_ORDER_REPEAT
+        },
         isWelcome() {
             return this.$route.name === CHECKOUT_WELCOME
         },
         canOrder() {
-            if (this.isAuthFinalStep) {
-                return this.isEndStep && this.agree && this.isValidCheckoutFinal
+            if (this.isRepeat) {
+                return this.agree && this.isValidCheckoutFinal
             } else {
                 return this.isEndStep && this.agree && this.isValidCheckoutFinal
             }

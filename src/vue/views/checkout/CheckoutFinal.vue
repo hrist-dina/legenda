@@ -15,12 +15,13 @@
             .checkout-block__title
                 span Адрес доставки
                 +link('Добавить адрес', false, 'bordered')(
+                    v-if="isAddedAddress"
                     @click.prevent="onAddAddress"
                 ).checkout-block__edit
             .checkout-block__body
                 v-select(
                     placeholder="Выберите адрес доставки"
-                    @input="$emit('change', $event)"
+                    @input="onSelectAddress"
                     :options="deliveryItems"
                     :value="selectedDeliveryItem"
                 )
@@ -94,6 +95,7 @@ import AppModal from '%vue%/components/AppModal'
 import DeliveryForm from '%vue%/components/DeliveryForm'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
 import PersonalDataForm from '%vue%/components/PersonalDataForm'
+import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
     components: {
@@ -114,6 +116,12 @@ export default {
         isValidModalAddress: false,
         isSubmittingModalAddress: false
     }),
+    props: {
+        isAddedAddress: {
+            type: Boolean,
+            default: true
+        }
+    },
     computed: {
         ...mapGetters('user', ['getPerson']),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
@@ -134,16 +142,18 @@ export default {
         },
         deliveryItems() {
             return this.getDeliveryItems.map(i => ({
+                ...i,
                 code: i.address,
-                label: i.address
+                label: getDeliveryLabel(i)
             }))
         },
         selectedDeliveryItem() {
             const delivery = this.selectDelivery
             if (delivery && delivery.address) {
                 return {
+                    ...delivery,
                     code: delivery.address,
-                    label: delivery.address
+                    label: getDeliveryLabel(delivery)
                 }
             }
             return this.deliveryItems ? this.deliveryItems[0] : {}
@@ -180,6 +190,9 @@ export default {
         onChangeTime(val) {
             this.time = val
             this.setDelivery({ ...this.selectDelivery, time: val })
+        },
+        onSelectAddress(val) {
+            this.setDelivery({ ...this.selectDelivery, ...val })
         },
         onBonus() {
             this.setIsBonus(!this.isSpendBonus)

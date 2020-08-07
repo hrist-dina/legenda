@@ -30,7 +30,7 @@ import { mapGetters, mapActions } from 'vuex'
 import LkOrdersItem from '%vue%/views/lk/LkOrdersItem'
 import Loader from '%vue%/components/Loader'
 import AppPagination from '%vue%/components/AppPagination'
-import { LK_ORDERS } from '%vue%/router/lk'
+import { LK_ORDERS } from '%vue%/router/constants'
 
 export default {
     name: 'lk-orders',

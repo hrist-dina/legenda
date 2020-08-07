@@ -1,6 +1,7 @@
 import HTTP, { urlAjax } from '%common%/http'
 import router from '%vue%/router/order'
 import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
+import { showNotification } from '%vue%/store/common/helper'
 
 export default {
     register: async ({ commit }, payload) => {
@@ -60,7 +61,7 @@ export default {
                 city: payload.city
             },
             data => {
-                commit('setDeliveryItem', payload)
+                commit('setDeliveryItem', data)
                 commit('setSelectedDelivery', { selectDelivery: payload })
             }
         ).post()
@@ -85,10 +86,12 @@ export default {
             data => {
                 if (data.order) {
                     dispatch('cart/clean', null, { root: true }).then(() => {
-                        router.push({
+                        const path = router.resolve({
                             name: CHECKOUT_SUCCESS,
                             params: { number: data.order }
                         })
+                        // Делаем так, чтобы можно было сделать редирект из разных типов route (order, lk)
+                        window.location = path.href
                     })
                 }
             }
@@ -117,6 +120,30 @@ export default {
                 }
                 return response
             })
+
+        return response.data
+    },
+    getOrderLast: async ({ commit }, payload) => {
+        const response = await new HTTP(
+            urlAjax.lkOrdersLast,
+            payload,
+            () => {},
+            showNotification(commit)
+        ).post()
+
+        return response.data
+    },
+    orderRepeat: async ({ commit }, payload) => {
+        const response = await new HTTP(
+            urlAjax.lkOrdersRepeat,
+            payload,
+            data => {
+                commit('cart/addMany', data.cart, { root: true })
+                commit('setDeliveryItem', data.delivery)
+                commit('setSelectedDelivery', { selectDelivery: data.delivery })
+            },
+            showNotification(commit)
+        ).get()
 
         return response.data
     },

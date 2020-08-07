@@ -28,3 +28,13 @@ export const checkPhone = string => {
         /^\+7\s([0-9]{3})\s([0-9]{3})-([0-9]{2})-([0-9]{2})$/i
     )
 }
+
+export const pushToArray = (arr, obj) => {
+    const index = arr.findIndex(e => e.id === obj.id)
+
+    if (index === -1) {
+        arr.push(obj)
+    } else {
+        arr[index] = obj
+    }
+}

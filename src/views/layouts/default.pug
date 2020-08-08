@@ -15,8 +15,8 @@ html(lang="ru")
         .wrapper
             .main-content
                 block header
-                    +header
-                main(class={'inner-page': isInnerPage})
+                    +header(!isInnerPage)
+                main(class={'inner-page': isInnerPage, 'main-page': !isInnerPage})
                     if isInnerPage
                         +inner-page(showTitle)
                         block content

@@ -5,8 +5,10 @@ include ../../components/search/search
 include ../../components/location/location
 include ../../components/phone/phone
 
-mixin header
-    header.header
+mixin header(isMain)
+    header.header(
+            class={'header-main': isMain}
+        )&attributes(attributes)
         +container
             .__inner
                 .__logo
@@ -21,3 +23,9 @@ mixin header
                         +search
                 .__action
                     +cart
+            if isMain
+                .__slider-container
+                    .__slider-wrap
+                        .__slider
+                            img(src='img/header/slider-1.jpg')
+

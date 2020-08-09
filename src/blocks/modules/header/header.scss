@@ -8,9 +8,41 @@
         @include row-flex();
     }
 
+    &__menu {
+        @include from(1450px) {
+            left: #{calc(((100% - 1200px) / 2) - 120px)};
+        }
+        @include from(1360px) {
+            position: absolute;
+            left: #{calc(((100% - 1200px) / 2) - 70px)};
+        }
+        @include to(1359px) {
+            @include col;
+            @include size(.8);
+        }
+
+        &-icon {
+            @include from(1450px) {
+                @include wh(70px);
+            }
+            @include wh(60px);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+
     &__logo {
         @include col;
         @include size(3);
+        @include to(1359px) {
+            @include size(2.5);
+        }
     }
 
     &__center {
@@ -23,6 +55,9 @@
     &__action {
         @include col;
         @include size(4);
+        @include to(1359px) {
+            @include size(3.7);
+        }
         box-sizing: border-box;
         display: flex;
         align-self: flex-end;
@@ -58,20 +93,14 @@
         }
     }
 
+    &__menu-block {
+        display: none;
+    }
+
     &-main {
         box-sizing: border-box;
         padding-bottom: #{calc(45.1% - 118px)};
         border-bottom: 0;
-
-        & .logo {
-            & svg path {
-                fill: #fff;
-            }
-
-            & svg .logo-subtitle {
-                fill: #f1f6fc;
-            }
-        }
         & .cart__data-empty, & .cart__data-title, & .cart__data-value, & .location__name, & .phone-title, & .phone--header {
             color: #fff;
         }
@@ -94,8 +123,49 @@
             background-image: url(icon-cart('fff'));
         }
 
+        & .icon-person {
+            background-image: url(icon-person('fff'));
+        }
+
         & .search {
             background: rgba(255, 255, 255, 0.75);
+        }
+    }
+
+    &.menu-opened, &-main {
+        & .logo {
+            & svg path {
+                fill: #fff;
+            }
+
+            & svg .logo-subtitle {
+                fill: #f1f6fc;
+            }
+        }
+    }
+
+    &.menu-opened & {
+
+        &__logo {
+            position: relative;
+            z-index: 1001;
+        }
+
+        &__menu {
+            position: absolute;
+            z-index: 1001;
+        }
+
+        &__menu-block {
+            @include wh(100%);
+            padding-top: 225px;
+            box-sizing: border-box;
+            display: block;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            background: #229bd7;
         }
     }
 }

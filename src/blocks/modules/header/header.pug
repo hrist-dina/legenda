@@ -4,13 +4,17 @@ include ../../components/cart/cart
 include ../../components/search/search
 include ../../components/location/location
 include ../../components/phone/phone
+include ../../components/menu/menu
 
 mixin header(isMain)
-    header.header(
+    header#header.header(
             class={'header-main': isMain}
         )&attributes(attributes)
         +container
             .__inner
+                .__menu
+                    .__menu-icon#header-menu-open
+                        +icon('burger')
                 .__logo
                     +logo
                 .__center
@@ -23,6 +27,9 @@ mixin header(isMain)
                         +search
                 .__action
                     +cart
+            .__menu-block
+                +container
+                    +menu
             if isMain
                 .__slider-container
                     .__slider-wrap

@@ -1,0 +1,16 @@
+
+mixin menu
+    include data
+    nav.menu
+        +menu-list(menu)
+
+mixin menu-list(list)
+    if list
+        ul.menu-list
+            for item in list
+                li.menu-item
+                    a(href='#').menu-link=item.name
+                    if item.children
+                        +icon('arrow-menu').menu-arrow
+                        +menu-list(item.children)
+

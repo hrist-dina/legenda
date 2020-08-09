@@ -9,33 +9,32 @@
 }
 
 .icon-burger {
-    @include icon-mobile-menu(2px, 15px);
+    @include icon-mobile-menu(2px, 30px);
     cursor: pointer;
-    background-color: #fff;
-    margin: auto 3px;
+    background-color: #ef5026;
     border-radius: 2px;
 
     &:before {
-        @include icon-mobile-menu-before(2px, 15px, -6px);
+        @include icon-mobile-menu-before(2px, 30px, -9px, #ef5026);
         border-radius: 2px;
     }
 
     &:after {
-        @include icon-mobile-menu-after(2px, 15px, 6px);
+        @include icon-mobile-menu-after(2px, 30px, 9px, #ef5026);
         border-radius: 2px;
     }
 
-    &.active {
+    .menu-opened &, &.active {
         transition: 0.5s;
         background: transparent;
 
         &:before {
-            width: 28px;
+            width: 30px;
             transform: rotateZ(45deg) translate(6px, 7px);
         }
 
         &:after {
-            width: 28px;
+            width: 30px;
             transform: rotateZ(-45deg) translate(6px, -7px);
         }
     }
@@ -112,6 +111,11 @@
 
 .icon-arrow-product-next {
     @include rotate();
+}
+
+.icon-arrow-menu {
+    @include wh(20px);
+    @include icon-bgc(icon-arrow-menu());
 }
 
 @mixin soc-icon {

@@ -16,6 +16,10 @@ body {
 html,
 body {
     height: 100%;
+
+    &.o-hidden{
+        padding-right: 15px;
+    }
 }
 
 main {

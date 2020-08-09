@@ -1,0 +1,55 @@
+.menu {
+    margin-left: -24px;
+
+    &-list {
+        list-style: none;
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        &:before {
+            @include wh(100px, 100%);
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: -100px;
+        }
+    }
+
+    &-item {
+        @include transitionEaseOutQuint(background);
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-radius: 28px;
+
+        &:hover {
+            background: #198fc9;
+        }
+    }
+
+    &-item > &-list {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: -420px;
+    }
+
+    &-item:hover > &-list {
+        display: block;
+    }
+
+    &-link {
+        width: calc(100% - 36px);
+        padding: 12px 5px 12px 24px;
+        text-decoration: none;
+        font-size: 20px;
+        line-height: 32px;
+        color: #fff;
+    }
+
+    &-arrow {
+        margin-right: 16px;
+    }
+}

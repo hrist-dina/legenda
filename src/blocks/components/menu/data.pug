@@ -1,0 +1,42 @@
+-
+    const getMenuItem = (name, children) => ({name, children})
+    const menu = [
+        getMenuItem('Акции и предложения'),
+        getMenuItem('Каталог', [
+            getMenuItem('Вода питьевая'),
+            getMenuItem('Оборудование для воды', [
+                getMenuItem('Настольные кулеры'),
+                getMenuItem('Напольные кулеры'),
+                getMenuItem('Помпы'),
+                getMenuItem('Товары для офиса'),
+                getMenuItem('Прочее')
+            ]),
+            getMenuItem('Свежая выпечка', [
+                getMenuItem('test Настольные кулеры'),
+                getMenuItem('test Напольные кулеры'),
+                getMenuItem('test Помпы'),
+                getMenuItem('test Товары для офиса'),
+                getMenuItem('test Прочее')
+            ]),
+            getMenuItem('Продукты питания'),
+            getMenuItem('Хозяйственные товары'),
+            getMenuItem('Дистилированная вода')
+        ]),
+        getMenuItem('Доставка и оплата'),
+        getMenuItem('Услуги', [
+            getMenuItem('test 2 Вода питьевая'),
+            getMenuItem('test 2 Оборудование для воды'),
+            getMenuItem('test 2 Продукты питания'),
+            getMenuItem('test 2 Хозяйственные товары'),
+            getMenuItem('test 2 Дистилированная вода')
+        ]),
+        getMenuItem('Изменим мир к лучшему'),
+        getMenuItem('О компании', [
+            getMenuItem('test 3 Вода питьевая'),
+            getMenuItem('test 3 Оборудование для воды'),
+            getMenuItem('test 3 Продукты питания'),
+            getMenuItem('test 3 Хозяйственные товары'),
+            getMenuItem('test 3 Дистилированная вода')
+        ]),
+        getMenuItem('Контакты'),
+    ]

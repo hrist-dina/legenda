@@ -1,0 +1,31 @@
+include ../address/address
+include ../map/map
+include ../phone/phone
+
+//- Блок с адресами и картой
+
+mixin contacts
+    include data
+    section.contacts
+        +container
+            .__inner
+                .__phone
+                    +phone-header
+                ul.__nav
+                    for item in contactsNav
+                        li.__nav-item(class={active: item.active})
+                            a(href='#').__nav-link=item.name
+                .__map
+                    +contacts-map
+
+
+
+
+mixin contacts-map
+    section.contacts-map
+        .contacts-map__inner
+            article.contacts-map__address
+                +address
+            article.contacts-map__box
+                +map('contacts')
+

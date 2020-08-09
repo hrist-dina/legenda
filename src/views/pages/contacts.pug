@@ -1,0 +1,16 @@
+extends ../layouts/default
+
+include ../../blocks/modules/inner-page/inner-page
+
+block variables
+	- const title = 'Контакты'
+	- const h1 = title
+	- isInnerPage = true
+	include ../data/inner
+
+block head-script
+	script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript")
+block content
+	include ../../blocks/components/contacts/contacts
+	+contacts
+

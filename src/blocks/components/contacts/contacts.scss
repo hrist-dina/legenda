@@ -1,0 +1,82 @@
+.contacts {
+
+    &__phone {
+        margin-bottom: 40px;
+
+        & .phone-row {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        & .phone-title {
+            margin-right: 0;
+            margin-bottom: 8px;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        margin-bottom: 44px;
+
+        &-item {
+            padding: 12px 24px;
+            margin-right: 20px;
+            font-size: 16px;
+            line-height: 21px;
+
+            &.active {
+                border-radius: 57px;
+                background: #f1f6fc;
+            }
+        }
+
+        &-link {
+            text-decoration: none;
+            border-bottom: 1px dashed #343e44;
+            color: #343e44;
+        }
+
+        &-item.active &-link {
+            border-bottom: transparent;
+            color: #004f91;
+            font-weight: 500;
+        }
+    }
+
+
+    &-map {
+        &__inner {
+            @include row-flex;
+            position: relative;
+            min-height: 536px;
+        }
+
+        &__address {
+            @include lg-block {
+                max-width: 443px;
+                margin: 0;
+            }
+            @include col();
+            @include size(12);
+            z-index: 1;
+            width: 100%;
+        }
+
+        &__box {
+            @include col();
+            @include size-lg(9);
+            @include shift-lg-left(3);
+            @include size(12);
+            @include lg-block {
+                position: absolute;
+                z-index: 0;
+                top: 48px;
+                left: 0;
+            }
+        }
+    }
+}

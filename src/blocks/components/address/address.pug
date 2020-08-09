@@ -1,0 +1,50 @@
+include ../phone/phone
+//- Блок адресов на страницу контактов
+
+mixin address
+    .address.js-map-data(
+        data-map-id='map-contacts',
+        data-center-x='53.32387907112886',
+        data-center-y='83.64198349999995',
+        data-zoom='16'
+    )
+        +address-item(
+            'Пятерочка, ул. Взлетная, д. 2м',
+            '53.339199071110336', '83.6901059999999'
+        )
+        +address-item(
+            'Пятерочка, пр. Ленина, д. 132',
+            '53.37290207108115', '83.75029349999988'
+        )
+        +address-item(
+            'Пятерочка, ул. Э. Алексеевой, д. 3',
+            '53.38224857107619', '83.73758199999993'
+        )
+        +address-item(
+            'Пятерочка, ул. Солнечная поляна, 5',
+            '53.37344457111146', '83.66511499999993'
+        )
+        +address-item(
+            'Пятерочка, ул. Мусоргского, 21',
+            '53.251940071175355', '83.69729249999995'
+        )
+        +address-item(
+            'Пятерочка, ул. Взлетная, д. 2м',
+            '53.339199071110336', '83.6901059999999'
+        )
+
+mixin address-item(name, locationX, locationY)
+    .address__item.js-map-data-item(
+        data-location-x=locationX
+        data-location-y=locationY
+        data-hint=name
+    )
+        .address__item-head
+            +icon('arrow').address__item-icon
+            .address__item-name=name
+        .address__item-data
+            .address__item-worktime Пн-вс (08:00 - 20:00)
+            .address__item-email
+                a(href='mailto:water@777-777.org ') water@777-777.org
+            .address__item-phones
+                +phone('+7 (3852) 36-46-66')

@@ -4,6 +4,6 @@ mixin search
     include ../ui-kit/ui-kit
     .search
         form(action='' method='GET').__form
-            input.__input(name='q' placeholder='Поиск')
+            input.__input(name='q' placeholder='Поиск' autocomplete='off')
             +button('', '', 'submit').__button
                 +icon('search')

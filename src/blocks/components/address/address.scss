@@ -1,0 +1,50 @@
+.address {
+
+    @mixin address-text {
+        font-size: 16px;
+        line-height: 20px;
+        color: #242322;
+        text-decoration: none;
+    }
+    @include md-block {
+        padding: 48px 48px 50px 72px;
+    }
+    box-sizing: border-box;
+    padding: 28px 20px 28px 38px;
+    background: #fff;
+
+    &__item {
+        @include address-text;
+        margin-bottom: 26px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        & a {
+            @include address-text;
+        }
+    }
+
+    &__item-city {
+        position: relative;
+        margin-bottom: 10px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: -24px;
+            @extend .icon-pin;
+        }
+    }
+
+    &__item-email {
+        margin-top: 10px;
+
+        & a {
+            line-height: 1;
+            border-bottom: 1px solid #a7afb4;
+        }
+    }
+}

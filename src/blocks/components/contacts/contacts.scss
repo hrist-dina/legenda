@@ -52,31 +52,22 @@
         &__inner {
             @include row-flex;
             position: relative;
-            min-height: 536px;
+            height: 587px;
         }
 
         &__address {
-            @include lg-block {
-                max-width: 443px;
-                margin: 0;
-            }
             @include col();
-            @include size(12);
+            @include size(4);
             z-index: 1;
-            width: 100%;
+            max-height: 587px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 21px;
         }
 
         &__box {
             @include col();
-            @include size-lg(9);
-            @include shift-lg-left(3);
-            @include size(12);
-            @include lg-block {
-                position: absolute;
-                z-index: 0;
-                top: 48px;
-                left: 0;
-            }
+            @include size(8);
         }
     }
 }

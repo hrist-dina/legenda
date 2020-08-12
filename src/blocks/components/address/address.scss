@@ -1,50 +1,67 @@
 .address {
-
-    @mixin address-text {
-        font-size: 16px;
-        line-height: 20px;
-        color: #242322;
-        text-decoration: none;
-    }
-    @include md-block {
-        padding: 48px 48px 50px 72px;
-    }
-    box-sizing: border-box;
-    padding: 28px 20px 28px 38px;
-    background: #fff;
+    overflow-y: auto;
 
     &__item {
-        @include address-text;
-        margin-bottom: 26px;
+        margin-bottom: 24px;
+        box-sizing: border-box;
 
-        &:last-child {
-            margin-bottom: 0;
+        &.active {
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(34, 155, 215, 0.15);
         }
 
-        & a {
-            @include address-text;
+        &-head {
+            margin-bottom: 12px;
+            display: flex;
+            cursor: pointer;
         }
-    }
 
-    &__item-city {
-        position: relative;
-        margin-bottom: 10px;
-
-        &:before {
-            content: "";
-            position: absolute;
-            top: 4px;
-            left: -24px;
-            @extend .icon-pin;
+        &-icon {
+            @include wh(24px);
+            @include transitionEaseOutQuint(transform);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(34, 155, 215, 0.15);
+            padding: 4px;
+            margin-right: 12px;
+            background-color: #fff;
+            border-radius: 50%;
         }
-    }
 
-    &__item-email {
-        margin-top: 10px;
+        &.active &-icon {
+            @include rotate();
+        }
 
-        & a {
-            line-height: 1;
-            border-bottom: 1px solid #a7afb4;
+        &-name {
+            font-size: 16px;
+            line-height: 24px;
+            color: #424f56;
+            width: #{calc(100% - 36px)};
+        }
+
+        &.active &-name {
+            font-weight: $bold;
+            color: #004f91;
+        }
+
+        &-data {
+            font-size: 16px;
+            line-height: 21px;
+            color: #373737;
+            padding-left: 36px;
+
+            & a {
+                text-decoration: none;
+                color: #373737;
+            }
+        }
+
+        &-value {
+            & + & {
+                margin-top: 12px;
+            }
         }
     }
 }

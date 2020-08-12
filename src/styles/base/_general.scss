@@ -109,3 +109,20 @@ h2, .h2 {
         outline: 1px solid slategrey;
     }
 }
+
+.scroll-custom-map {
+    /* Firefox */
+    scrollbar-color: #5BC5F2 #EFEFEF;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #EFEFEF;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #5BC5F2;
+    }
+}

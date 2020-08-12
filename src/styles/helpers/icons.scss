@@ -118,6 +118,11 @@
     @include icon-bgc(icon-arrow-menu());
 }
 
+.icon-arrow-down {
+    @include wh(16px);
+    @include icon-bgc(icon-arrow-down());
+}
+
 @mixin soc-icon {
     @include wh(40px);
     border-radius: 50%;

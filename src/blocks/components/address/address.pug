@@ -40,11 +40,13 @@ mixin address-item(name, locationX, locationY)
         data-hint=name
     )
         .address__item-head
-            +icon('arrow').address__item-icon
+            .address__item-icon
+                +icon('arrow-down')
             .address__item-name=name
         .address__item-data
-            .address__item-worktime Пн-вс (08:00 - 20:00)
-            .address__item-email
+            .address__item-value
+                span Пн-вс (08:00 - 20:00)
+            .address__item-value
                 a(href='mailto:water@777-777.org ') water@777-777.org
-            .address__item-phones
+            .address__item-value
                 +phone('+7 (3852) 36-46-66')

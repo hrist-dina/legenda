@@ -242,6 +242,14 @@
             "desc": "Настольный кулер",
             "price": 5000,
             "img": "/img/product/item-18.png"
+        },
+        {
+            "id": 26,
+            "link": "#",
+            "title": "Помпа механическая",
+            "desc": "Компактная модель",
+            "price": 700,
+            "img": "/img/product/item-19.png"
         }
     ]
 }

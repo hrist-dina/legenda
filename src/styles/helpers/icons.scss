@@ -123,6 +123,24 @@
     @include icon-bgc(icon-arrow-down());
 }
 
+.icon-arrow-round-right {
+    @include icon-bgc(icon-arrow-slide-right());
+    @extend .icon-arrow-slide;
+}
+
+.icon-arrow-round-left {
+    @include icon-bgc(icon-arrow-slide-left());
+    @extend .icon-arrow-slide;
+}
+
+.icon-arrow-slide {
+    @include wh(48px);
+    border-radius: 50%;
+    background-size: 20px 16px;
+    background-color: #fff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
 @mixin soc-icon {
     @include wh(40px);
     border-radius: 50%;

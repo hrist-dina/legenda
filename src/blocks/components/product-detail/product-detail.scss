@@ -57,6 +57,61 @@
         }
     }
 
+    &__tabs {
+        margin-top: 24px;
+        margin-bottom: 40px;
+        &-nav {
+            display: flex;
+            align-items: center;
+            margin-bottom: 26px;
+
+            &-item {
+                padding: 12px 24px;
+                margin-right: 12px;
+                cursor: pointer;
+                font-size: 16px;
+                line-height: 21px;
+                color: #343e44;
+                border-radius: 57px;
+
+                &.active {
+                    background: #f1f6fc;
+                    font-size: 16px;
+                    line-height: 21px;
+                    color: #004f91;
+                    & span {
+                        border-bottom-color: #f1f6fc;
+                    }
+                }
+
+                & span {
+                    border-bottom: 1px dashed #343e44;
+                }
+            }
+        }
+
+        &-content {
+            font-size: 16px;
+            line-height: 25px;
+            color: #373737;
+
+            &-list {
+                max-width: 310px;
+                & ul {
+                    list-style: none;
+                }
+
+                & li {
+                    margin-bottom: 15px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
     &__share {
         margin-top: 28px;
     }

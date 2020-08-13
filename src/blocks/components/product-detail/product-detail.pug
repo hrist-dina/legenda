@@ -15,7 +15,6 @@ mixin product-detail
                 article.__content
                     .__data.js-vue-product
                         h1.h1.__title(itemprop="name")=h1
-                        .__tabs(itemprop="description") Таб
                         .__offer(itemprop="offers" itemscope itemtype="http://schema.org/Offer")
                             .__price(itemprop="price") !{ruble(190)}
                             .__currency.hide(itemprop="priceCurrency") RUB
@@ -36,5 +35,23 @@ mixin product-detail
                                     @click.prevent="toggleToFavorite"
                                     :class="classInFavorite"
                                 )
+                        .__tabs(itemprop="description")
+                            .__tabs-nav
+                                .__tabs-nav-item(data-tab='benefit')
+                                    span Польза
+                                .__tabs-nav-item.active(data-tab='composition')
+                                    span Состав
+                                .__tabs-nav-item(data-tab='how-to-order')
+                                    span Как заказать
+                            .__tabs-content
+                                .__tabs-content-item(data-tab='benefit')
+                                .__tabs-content-item.active(data-tab='composition')
+                                    .__tabs-content-list
+                                        ul
+                                            li 40-60 мкг/л – йода
+                                            li 0,8-1,2 мг/л – фтора
+                                            li 5-10 мкг/л – селена
+                                            li 19 л – природной артезианской воды высшей категории качества
+                                .__tabs-content-item(data-tab='how-to-order')
                     .__share
                         +share

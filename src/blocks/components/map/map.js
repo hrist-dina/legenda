@@ -1,5 +1,7 @@
 /* global ymaps */
 
+import { DOMAnimations } from '%common%/helper'
+
 export default class Map {
     constructor(id, options) {
         this.map = id
@@ -8,6 +10,7 @@ export default class Map {
         this.options = options
         this.classData = '.js-map-data'
         this.classDataItem = `${this.classData}-item`
+        this.classDataItemToggle = `${this.classDataItem}-toggle`
 
         this.items = []
 
@@ -22,13 +25,22 @@ export default class Map {
         document.querySelectorAll(this.classData).forEach(dataMap => {
             this.mapData(dataMap)
             document.querySelectorAll(this.classDataItem).forEach(item => {
+                this.initEvents(item)
                 this.items.push(this.itemData(item))
             })
-            console.log(this.map)
-            console.log(document.getElementById(this.map))
             if (document.getElementById(this.map)) {
                 this.initMap()
             }
+        })
+    }
+
+    initEvents(el) {
+        el.addEventListener('click', ({ target }) => {
+            const node = target.closest(this.classDataItem)
+            node.classList.toggle('active')
+            DOMAnimations.slideToggle(
+                node.querySelector(this.classDataItemToggle, 400)
+            )
         })
     }
 

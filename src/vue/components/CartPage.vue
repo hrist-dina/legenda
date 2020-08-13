@@ -13,7 +13,7 @@ include ../../blocks/components/ui-kit/ui-kit
                     v-if="hasProducts"
                 ).cart-page__clean Очистить корзину
         .cart-page__products
-            template(v-if="isLoadingProducts || isLoading")
+            template(v-if="showSkeleton")
                 .cart-page__list
                     cart-item-skeleton(
                         v-for="product in products"
@@ -86,7 +86,8 @@ export default {
             value: '',
             validation: [],
             disabledButton: true
-        }
+        },
+        isLoadData: false
     }),
     computed: {
         ...mapState('cart', ['products']),
@@ -110,6 +111,11 @@ export default {
         },
         isSendPromocode() {
             return { 'is-loading': this.isLoading }
+        },
+        showSkeleton() {
+            return (
+                !this.isLoadData && (this.isLoadingProducts || this.isLoading)
+            )
         }
     },
     methods: {
@@ -147,6 +153,13 @@ export default {
     },
     created() {
         toggleAdditionalProducts(false)
+    },
+    watch: {
+        isLoadingProducts() {
+            if (!this.isLoadData) {
+                this.isLoadData = true
+            }
+        }
     }
 }
 </script>

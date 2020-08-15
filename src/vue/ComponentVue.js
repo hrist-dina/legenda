@@ -15,22 +15,26 @@ export default class ComponentVue {
 
     init() {
         document.addEventListener('DOMContentLoaded', () => {
-            let options = this.options
-            if (this.needRender) {
-                options = { ...options, render: h => h(this.component) }
+            this.initVue()
+        })
+    }
+
+    initVue() {
+        let options = this.options
+        if (this.needRender) {
+            options = { ...options, render: h => h(this.component) }
+        }
+        {
+            options = {
+                ...options,
+                ...this.component
             }
-            {
-                options = {
-                    ...options,
-                    ...this.component
-                }
-            }
-            document.querySelectorAll(this.selector).forEach(node => {
-                new Vue({
-                    store,
-                    ...options
-                }).$mount(node)
-            })
+        }
+        document.querySelectorAll(this.selector).forEach(node => {
+            new Vue({
+                store,
+                ...options
+            }).$mount(node)
         })
     }
 }

@@ -2,7 +2,6 @@ import QuantityCounter from '%vue%/components/QuantityCounter'
 import Product from '%vue%/components/Product'
 import Cart from '%vue%/components/Cart'
 import ComponentVue from '%vue%/ComponentVue'
-import FilterItem from '%vue%/components/FilterItem'
 import Location from '%vue%/components/Location'
 import AppOrder from '%vue%/views/AppOrder'
 import AppLk from '%vue%/views/AppLk'
@@ -13,12 +12,12 @@ import AppAuth from '%vue%/views/AppAuth'
 import AppNotification from '%vue%/components/AppNotification'
 import Vue from 'vue'
 import vSelect from 'vue-select'
+import { SELECTOR_PRODUCT } from '%vue%/component-selectors'
 
 Vue.component('v-select', vSelect)
 
-new ComponentVue('.js-vue-product', Product, false)
+new ComponentVue(SELECTOR_PRODUCT, Product, false)
 new ComponentVue('.js-vue-cart', Cart, false)
-new ComponentVue('.js-vue-filter-item', FilterItem, false)
 new ComponentVue('.js-vue-location', Location, false)
 
 new ComponentVue('.js-vue-quantity', QuantityCounter)

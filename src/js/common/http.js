@@ -51,6 +51,7 @@ export const isProd = process.env.NODE_ENV === 'production'
 export const urlAjax = {
     location: isProd ? '/api/location' : '/mock/location.json',
     products: isProd ? '/api/products' : '/mock/products.json',
+    filter: isProd ? '/api/filter' : '/mock/filter.json',
     basketAdd: isProd ? '/api/basket/add' : '/mock/basket.json',
     basketRemove: isProd ? '/api/basket/remove' : '/mock/basket.json',
     basketClean: isProd ? '/api/basket/clean' : '/mock/basket.json',
@@ -71,4 +72,27 @@ export const urlAjax = {
         ? '/api/lk/orders/repeat'
         : '/mock/lk-orders-repeat.json',
     lkOrdersLast: isProd ? '/api/lk/orders/last' : '/mock/lk-orders-last.json'
+}
+
+export const PRODUCTS_AJAX = '.js-products-ajax'
+
+export const setParams = data => {
+    if (typeof data !== 'undefined' && typeof data !== 'object') {
+        return
+    }
+
+    let url = new URL(window.location.href)
+    const params = new URLSearchParams(url.search)
+
+    for (const key of Object.keys(data)) {
+        if (data[key] == 0) {
+            params.delete(key)
+        } else {
+            params.set(key, data[key])
+        }
+    }
+
+    url.search = params
+    url = url.toString()
+    window.history.replaceState({ url: url }, null, url)
 }

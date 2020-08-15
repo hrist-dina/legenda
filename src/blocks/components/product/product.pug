@@ -39,15 +39,15 @@ mixin product(data, isCategory, toOrder)
                         | #{toOrder ? '+ К заказу' : data.isInCart ? 'В корзине' : 'В корзину'}
 
 mixin product-banner(data)
-    acticle.product.product--banner
+    article.product.product--banner
         a(href='#').__img-link
             img(src=data.banner alt=data.title title=data.title).__img
 
-mixin product-list
+mixin product-list(isAjax)
     include data
     section.product-list-section
         +container
-            .product-list
+            .product-list(class={'js-products-ajax': isAjax})
                  for item in products
                      if item.banner
                          +product-banner(item)

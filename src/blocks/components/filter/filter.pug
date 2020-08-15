@@ -2,24 +2,26 @@
 
 mixin filter
     include data
-    section.filter
+    section.filter.js-filter
         +container
             .__inner
                 for item in filter
                     +filter-item(item)
+                .__clean.js-filter-clear
+                    a(href='javascript:void(0)').__clean-link Сбросить фильтры
 
 
 mixin filter-item(data)
     include ../ui-kit/ui-kit
-    .filter-item.js-vue-filter-item(:class="isActive")&attributes(attributes)
+    .filter-item.js-filter-item(data-type=data.type)&attributes(attributes)
         .__inner
-            .__head(@click.prevent="open")
-                .__title(:data-count="count" :class="hasCount")=data.title
+            .__head.js-filter-open
+                .__title.js-filter-title(data-count="0")=data.title
                 +icon('arrow-filter').__arrow
             .__drop
                 .__list
                     for item in data.list
-                        +field-checkbox(item.name, item.isChecked).__checkbox(@change="change")
+                        +field-checkbox(item.name, item.isChecked).js-filter-change.__checkbox
                             | #{item.text}
 
 

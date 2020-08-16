@@ -100,6 +100,7 @@
     }
 
     &--category {
+        @include size-xl(4);
         @include size-lg(4);
         @include md-block {
             max-width: 373px;
@@ -117,7 +118,7 @@
             @include md-block {
                 padding: 26px 30px 34px 32px;
             }
-            padding: 0 30px 0 32px;
+            padding: 0 30px 5px 32px;
         }
 
         &__favorite {
@@ -170,14 +171,16 @@
 
         &__actions {
             @include to($break_md) {
-                margin-top: 10px;
+                margin-top: auto;
             }
         }
     }
 
     &:not(&--banner) {
-        &:hover {
-            box-shadow: 0 2px 40px rgba(34, 155, 215, 0.15);
+        @include md-block {
+            &:hover {
+                box-shadow: 0 2px 40px rgba(34, 155, 215, 0.15);
+            }
         }
     }
 
@@ -187,11 +190,10 @@
 
         .section--category & {
             flex-wrap: nowrap;
-            padding: 0 15px;
         }
 
         &--category {
-            margin-bottom: -40px;
+            margin-bottom: -35px;
             padding-top: 0;
         }
 
@@ -254,7 +256,7 @@
             }
 
             .section--category & {
-                left: 0;
+                left: -16px;
                 & .icon {
                     left: 16px;
                 }
@@ -278,6 +280,7 @@
             }
 
             .section--category & {
+                right: -16px;
 
                 & .icon {
                     @include rotate();

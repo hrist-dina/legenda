@@ -25,6 +25,10 @@
         }
         margin-top: 16px;
         margin-bottom: 12px;
+
+        & .container {
+            padding: 0 16px;
+        }
     }
 
     &--category {
@@ -32,15 +36,17 @@
             margin-bottom: 96px;
         }
         margin-bottom: 56px;
+
+        & .container {
+            padding: 0 16px;
+        }
+        
         &:last-child {
             margin-bottom: 0;
         }
     }
 
     &--category & {
-        &__head {
-            padding: 0 16px;
-        }
         &__title {
             @include md-block {
                 width: #{calc(100%  - 200px)};

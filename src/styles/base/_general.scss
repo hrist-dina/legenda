@@ -58,13 +58,10 @@ main {
 }
 
 .container {
-    @include container();
     max-width: 1200px;
-    //padding: 0 20px;
-    //@include sm(max-width, rem(510));
-    //@include md(max-width, rem(690));
-    //@include lg(max-width, rem(930));
-    //@include xl(max-width, rem(1110));
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 h1, .h1 {

@@ -9,18 +9,27 @@
 }
 
 .icon-burger {
-    @include icon-mobile-menu(2px, 30px);
+    @include md-block {
+        @include icon-mobile-menu(2px, 30px);
+    }
+    @include icon-mobile-menu(2px, 24px);
     cursor: pointer;
     background-color: #ef5026;
     border-radius: 2px;
 
     &:before {
-        @include icon-mobile-menu-before(2px, 30px, -9px, #ef5026);
+        @include md-block {
+            @include icon-mobile-menu-before(2px, 30px, -9px, #ef5026);
+        }
+        @include icon-mobile-menu-before(2px, 24px, -9px, #ef5026);
         border-radius: 2px;
     }
 
     &:after {
-        @include icon-mobile-menu-after(2px, 30px, 9px, #ef5026);
+        @include md-block {
+            @include icon-mobile-menu-after(2px, 30px, 9px, #ef5026);
+        }
+        @include icon-mobile-menu-after(2px, 24px, 9px, #ef5026);
         border-radius: 2px;
     }
 

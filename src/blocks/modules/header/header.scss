@@ -1,11 +1,18 @@
 .header {
+    @include md-block {
+        padding-top: 33px;
+        padding-bottom: 35px;
+    }
     position: relative;
-    padding-top: 33px;
-    padding-bottom: 35px;
     border-bottom: 1px solid rgba(34, 155, 215, 0.15);
 
     &__inner {
-        @include row-flex();
+        @include xl-block {
+            align-items: flex-start;
+        }
+        display: flex;
+        align-items: center;
+        width: 100%;
     }
 
     &__menu {
@@ -14,63 +21,118 @@
         }
         @include from(1360px) {
             position: absolute;
-            left: #{calc(((100% - 1200px) / 2) - 70px)};
+            left: #{calc(((100% - 1200px) / 2) - 80px)};
         }
-        @include to(1359px) {
+        @include lg-block {
             @include col;
             @include size(.8);
         }
+        margin-left: 16px;
 
         &-icon {
             @include from(1450px) {
                 @include wh(70px);
             }
-            @include wh(60px);
+            @include xl-block {
+                @include wh(60px);
+                background: #fff;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                border-radius: 50%;
+            }
+            @include md-block {
+                @include wh(50px);
+            }
+            @include wh(24px);
             box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fff;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
             cursor: pointer;
         }
     }
 
     &__logo {
-        @include col;
-        @include size(3);
-        @include to(1359px) {
+        @include xl-block {
             @include size(2.5);
         }
+        @include lg-block {
+            @include size(3);
+            @include col;
+        }
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
     }
 
     &__center {
         @include col;
+        @include header-tablet {
+            @include size(5);
+        }
+        @include xl-block {
+            @include size(6);
+            padding-bottom: 10px;
+        }
         @include size(5);
-        padding-bottom: 10px;
         box-sizing: border-box;
     }
 
     &__action {
-        @include col;
-        @include size(4);
         @include to(1359px) {
             @include size(3.7);
         }
+        @include to($header-tablet - 1px) {
+            @include size(2.7);
+        }
+        @include xl-block {
+            @include size(4);
+            padding-bottom: 25px;
+            align-self: flex-end;
+        }
+        @include to($break_lg) {
+            @include size(9);
+        }
+        @include md-block {
+            @include col;
+        }
+        margin-left: auto;
         box-sizing: border-box;
         display: flex;
-        align-self: flex-end;
+        align-items: center;
         justify-content: flex-end;
-        padding-bottom: 20px;
     }
 
     &__search {
-        margin-top: 24px;
+        @include xl-block {
+            margin-top: 24px;
+        }
+        max-width: 486px;
+
+        & .search {
+            @include lg-block {
+                display: flex;
+            }
+            display: none;
+        }
+
+        &-icon {
+            @include lg-block {
+                display: none;
+            }
+            display: inline-block;
+            margin-left: auto;
+        }
+
+        &-link {
+            display: flex;
+        }
     }
 
     &__top {
-        display: flex;
+        @include xl-block {
+            display: flex;
+        }
+        display: none;
         align-items: center;
         justify-content: space-between;
     }
@@ -98,8 +160,10 @@
     }
 
     &-main {
+        @include md-block {
+            padding-bottom: #{calc(45.1% - 118px)};
+        }
         box-sizing: border-box;
-        padding-bottom: #{calc(45.1% - 118px)};
         border-bottom: 0;
         & .cart__data-empty, & .cart__data-title, & .cart__data-value, & .location__name, & .phone-title, & .phone--header {
             color: #fff;
@@ -127,8 +191,47 @@
             background-image: url(icon-person('fff'));
         }
 
+        & .icon-burger {
+            @include to($break_xl) {
+                background-color: #fff;
+                &:before, &:after {
+                    background-color: #fff;
+                }
+            }
+        }
+
         & .search {
             background: rgba(255, 255, 255, 0.75);
+        }
+    }
+
+    &-main &__search {
+        &-icon {
+            &.icon-search {
+                background-image: url(icon-search('fff'));
+            }
+        }
+    }
+
+    & .logo {
+        display: inline-flex;
+        & svg {
+            @include md-block {
+                max-width: 100%;
+            }
+            width: 100%;
+            min-width: 84px;
+            max-width: 150px;
+            height: 100%;
+            min-height: 35px;
+            margin-bottom: -10px;
+
+            & .logo-subtitle {
+                @include xl-block {
+                    display: inline-block;
+                }
+                display: none;
+            }
         }
     }
 

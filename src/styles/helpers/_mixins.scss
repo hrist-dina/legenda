@@ -8,26 +8,40 @@
     background-size: contain;
 }
 
+@mixin header-tablet {
+    @media screen and (min-width: $header-tablet){
+        @content;
+    }
+}
+
 @mixin icon-counted() {
     position: relative;
     margin-right: 20px;
     &.has-count {
         &:before{
+            @include md-block {
+                @include wh(24px);
+                top: -6px;
+                right: -20px;
+                font-size: 13px;
+                font-style: normal;
+                line-height: 16px;
+            }
             content: attr(data-cnt);
             position: absolute;
-            top: -6px;
-            right: -20px;
+            top: -16px;
+            right: -10px;
             border-radius: 50%;
-            @include wh(24px);
-            font-size: 13px;
-            font-style: normal;
-            line-height: 16px;
+            @include wh(20px);
             display: flex;
             align-items: center;
             text-align: center;
             justify-content: center;
             color: #fff;
             background: #EF5026;
+            font-size: 11px;
+            font-style: normal;
+            line-height: 16px;
         }
     }
 }

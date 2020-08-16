@@ -1,5 +1,30 @@
 .breadcrumbs {
+
+    @include to($break_md) {
+        &__item {
+            display: none;
+
+            &:nth-last-child(2) {
+                display: inline-flex;
+                &:after {
+                    content: none;
+                }
+
+                &:before {
+                    @include wh(11px, 18px);
+                    content: "";
+                    position: relative;
+                    margin-right: 8px;
+                    background-image: url(icon-arrow-breadcrumbs());
+                    background-size: 9px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
     list-style-type: none;
+    padding: 0 16px;
 
     &__link {
         text-decoration: none;

@@ -1,5 +1,9 @@
 .infographic {
 
+    & .container {
+        padding: 0 16px;
+    }
+
     &__list {
         @include row-flex;
         margin-bottom: -20px;
@@ -8,8 +12,7 @@
     &__item {
         @include col;
         @include size-md(3);
-        @include size-sm(6);
-        @include size(12);
+        @include size(6);
         @include to($break_sm) {
             margin-left: auto;
             margin-right: auto;
@@ -22,11 +25,27 @@
         max-width: 280px;
     }
 
+    &__img {
+        @include md-block {
+            @include wh(auto);
+        }
+        @include wh(72px);
+
+        & svg {
+            @include wh(100%);
+        }
+    }
+
     &__text {
-        margin-top: 38px;
-        font-size: 18px;
-        line-height: 27px;
+        @include md-block {
+            margin-top: 38px;
+            font-size: 18px;
+            line-height: 27px;
+        }
         text-align: center;
         color: #1b262c;
+        margin-top: 28px;
+        font-size: 15px;
+        line-height: 20px;
     }
 }

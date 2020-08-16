@@ -127,7 +127,7 @@
         justify-content: center;
         position: relative;
 
-        & .icon {
+        & .icon-cart {
             @include to($break_md) {
                 margin-right: 0;
                 background-image: url(icon-cart('fff'));

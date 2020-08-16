@@ -6,8 +6,7 @@ include ../../components/breadcrumbs/breadcrumbs
 mixin inner-page(showTitle = true, title)
     if breadcrumbs
         +section(false).section--inner-page
-            +container
-                +breadcrumbs(breadcrumbs).section__breadcrumbs
+            +breadcrumbs(breadcrumbs).section__breadcrumbs
     if showTitle
         section.section-title
             +container

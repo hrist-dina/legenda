@@ -100,17 +100,24 @@
     }
 
     &--category {
-        @include size-xl(4);
         @include size-lg(4);
-        max-width: 373px;
-        height: 450px;
-        margin-top: 45px;
-        margin-bottom: 40px;
+        @include md-block {
+            max-width: 373px;
+            height: 450px;
+            border: 1px solid rgba(34, 155, 215, 0.15);
+            margin-top: 45px;
+        }
+        height: 345px;
+        border: none;
+        margin-bottom: 35px;
     }
 
     &--category & {
         &__inner {
-            padding: 26px 30px 34px 32px;
+            @include md-block {
+                padding: 26px 30px 34px 32px;
+            }
+            padding: 0 30px 0 32px;
         }
 
         &__favorite {
@@ -118,14 +125,53 @@
         }
 
         &__top {
-            top: 26px;
+            @include md-block {
+                top: 26px;
+            }
+            top: 0;
             right: 30px;
         }
 
         &__img-link {
-            @include wh(220px, 304px);
-            margin-top: -70px;
-            margin-left: 10px;
+            @include md-block {
+                @include wh(220px, 304px);
+                margin-top: -70px;
+                margin-left: 10px;
+            }
+            @include wh(176px);
+        }
+
+        &__data {
+            @include to($break_md) {
+                margin-top: 30px;
+            }
+        }
+
+        &__title {
+            @include to($break_md) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        &__desc {
+            @include to($break_md) {
+                font-size: 15px;
+                line-height: 20px;
+            }
+        }
+
+        &__price {
+            @include to($break_md) {
+                font-size: 20px;
+                line-height: 27px;
+            }
+        }
+
+        &__actions {
+            @include to($break_md) {
+                margin-top: 10px;
+            }
         }
     }
 
@@ -139,6 +185,11 @@
         @include row-flex();
         margin-bottom: -24px;
 
+        .section--category & {
+            flex-wrap: nowrap;
+            padding: 0 15px;
+        }
+
         &--category {
             margin-bottom: -40px;
             padding-top: 0;
@@ -151,6 +202,7 @@
 
     &-list-slider {
         position: relative;
+
         &__prev, &__next {
             display: none;
             position: absolute;
@@ -158,6 +210,22 @@
             top: 0;
             width: 79px;
             height: 100%;
+
+            .section--category & {
+                width: 32px;
+
+                &:before {
+                    content: none;
+                }
+                & .icon {
+                    @include wh(14px, 72px);
+                    background-image: url(icon-arrow-triangle-thin());
+                    background-color: transparent;
+                    background-size: 14px, 72px;
+                    box-shadow: none;
+                    margin-top: -36px;
+                }
+            }
 
             & .icon {
                 position: absolute;
@@ -176,9 +244,6 @@
 
         &__prev {
             left: -24px;
-            & .icon {
-                left: 0;
-            }
 
             &:before {
                 content: "";
@@ -187,20 +252,41 @@
                 height: 100%;
                 background: linear-gradient(90deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 142.41%);
             }
+
+            .section--category & {
+                left: 0;
+                & .icon {
+                    left: 16px;
+                }
+            }
+
+            & .icon {
+                left: 0;
+            }
         }
 
         &__next {
             right: 0;
 
-            & .icon {
-                right: 0;
-            }
             &:before {
                 content: "";
                 position: absolute;
+                right: 0;
                 width: 79px;
                 height: 100%;
                 background: linear-gradient(270deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 142.41%);
+            }
+
+            .section--category & {
+
+                & .icon {
+                    @include rotate();
+                    right: 16px;
+                }
+            }
+
+            & .icon {
+                right: 0;
             }
         }
     }

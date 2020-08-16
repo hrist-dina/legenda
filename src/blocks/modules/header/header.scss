@@ -163,6 +163,9 @@
         @include md-block {
             padding-bottom: #{calc(45.1% - 118px)};
         }
+        @include xs-block {
+            padding-bottom: #{calc(45.1% - 118px)};
+        }
         box-sizing: border-box;
         border-bottom: 0;
         & .cart__data-empty, & .cart__data-title, & .cart__data-value, & .location__name, & .phone-title, & .phone--header {

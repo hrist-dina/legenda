@@ -105,6 +105,31 @@
             margin-right: 8px;
         }
     }
+    &--in-cart-big {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        border: 1px solid rgba(0, 123, 194, 0.5);
+        padding: 15px 40px;
+        border-radius: 36px;
+        font-size: 18px;
+        line-height: 24px;
+        color: #007bc2;
+        background: #fff;
+        &.in-cart {
+            background: #007bc2;
+            border-radius: 36px;
+            color: #fff;
+            & .icon {
+                background-image: url(icon-cart('fff'));
+            }
+        }
+
+        & .icon {
+            @include wh(32px);
+            margin-right: 10px;
+        }
+    }
 }
 
 .link {

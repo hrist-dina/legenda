@@ -92,6 +92,16 @@ h2, .h2 {
     margin-bottom: 10px;
 }
 
+.tabs {
+
+    &-content {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}
+
 .scroll-custom {
     /* Firefox */
     scrollbar-color: #f0f0f0 #fff;

@@ -19,8 +19,12 @@ mixin product-detail
                             .__price(itemprop="price") !{ruble(190)}
                             .__currency.hide(itemprop="priceCurrency") RUB
                         .__actions
-                            quantity-counter(@change-quantity='onChangeQuantity' :quantity="cnt" :is-detail="true").__quantity
-                            +button('in-cart', 'button')(
+                            quantity-counter(
+                                @change-quantity='onChangeQuantity'
+                                :quantity="cnt"
+                                :is-detail="true"
+                            ).__quantity
+                            +button('in-cart-big', 'button')(
                                 :class='classInCart'
                                 @click='addToCart'
                                 :disabled='isDisabled'
@@ -28,30 +32,40 @@ mixin product-detail
                                 data-in-cart-text='В корзине'
                                 ref='product-button'
                             ).__button
-                                +icon('product-cart')
+                                +icon('cart')
                                 span(ref='product-button-text') В корзину
                             .__favorite
                                 +icon('favorite').__favorite-icon(
                                     @click.prevent="toggleToFavorite"
                                     :class="classInFavorite"
                                 )
-                        .__tabs(itemprop="description")
-                            .__tabs-nav
-                                .__tabs-nav-item(data-tab='benefit')
-                                    span Польза
-                                .__tabs-nav-item.active(data-tab='composition')
-                                    span Состав
-                                .__tabs-nav-item(data-tab='how-to-order')
-                                    span Как заказать
-                            .__tabs-content
-                                .__tabs-content-item(data-tab='benefit')
-                                .__tabs-content-item.active(data-tab='composition')
-                                    .__tabs-content-list
-                                        ul
-                                            li 40-60 мкг/л – йода
-                                            li 0,8-1,2 мг/л – фтора
-                                            li 5-10 мкг/л – селена
-                                            li 19 л – природной артезианской воды высшей категории качества
-                                .__tabs-content-item(data-tab='how-to-order')
+                    .__tabs.tabs.js-tabs(itemprop="description")
+                        .__tabs-nav
+                            .__tabs-nav-item.js-tabs-item(data-tab='benefit')
+                                span Польза
+                            .__tabs-nav-item.js-tabs-item.active(data-tab='composition')
+                                span Состав
+                            .__tabs-nav-item.js-tabs-item(data-tab='how-to-order')
+                                span Как заказать
+                        .__tabs-content.js-tabs-content
+                            .__tabs-content-item.tabs-content(data-tab='benefit')
+                                .__tabs-content-list
+                                    ul
+                                        li benefit
+                                        li benefit 2
+                                        li benefit 3
+                            .__tabs-content-item.tabs-content.active(data-tab='composition')
+                                .__tabs-content-list
+                                    ul
+                                        li 40-60 мкг/л – йода
+                                        li 0,8-1,2 мг/л – фтора
+                                        li 5-10 мкг/л – селена
+                                        li 19 л – природной артезианской воды высшей категории качества
+                            .__tabs-content-item.tabs-content(data-tab='how-to-order')
+                                .__tabs-content-list
+                                    ul
+                                        li how-to-order
+                                        li how-to-order 2
+                                        li how-to-order 3
                     .__share
                         +share

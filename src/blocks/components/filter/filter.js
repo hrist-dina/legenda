@@ -22,6 +22,9 @@ export default class Filter extends ComponentBase {
 
     initEvent() {
         this.filter = document.querySelector(this.selector)
+        if (!this.filter) {
+            return
+        }
         this.items = this.filter.querySelectorAll(this.classItem)
 
         this.updateEvent()
@@ -35,11 +38,8 @@ export default class Filter extends ComponentBase {
     }
 
     getInputs(el, isChecked = false) {
-        return [
-            ...el.querySelectorAll([
-                `input[type=checkbox]${isChecked ? ':checked' : ''} `
-            ])
-        ]
+        const checked = isChecked ? ':checked' : ''
+        return [...el.querySelectorAll([`input[type=checkbox]${checked}`])]
     }
 
     getData() {

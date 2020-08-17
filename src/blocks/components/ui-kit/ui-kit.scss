@@ -82,7 +82,7 @@
         @include sm-block {
             padding: 12px 16px;
             &:before {
-                contain: none;
+                content: none;
             }
         }
         box-sizing: border-box;

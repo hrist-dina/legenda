@@ -230,14 +230,7 @@
             margin-bottom: -24px;
         }
         @include u-row-flex(4px);
-
-        @include to($break_md) {
-            &__inner {
-                padding: 12px;
-            }
-        }
         margin-bottom: -4px;
-
 
         .section--category & {
             flex-wrap: nowrap;
@@ -265,6 +258,17 @@
                 top: 12px;
                 right: 12px;
                 left: 12px;
+            }
+        }
+
+        @include to(21.25rem) { // 340
+            &__inner {
+                padding: 8px;
+            }
+            &__top {
+                top: 8px;
+                right: 8px;
+                left: 8px;
             }
         }
     }

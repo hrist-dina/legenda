@@ -1,5 +1,8 @@
 .product-composition {
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
     &__item {
         @include sm-block {
             margin-bottom: 12px;

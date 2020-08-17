@@ -57,7 +57,7 @@
 }
 
 .icon-favorite {
-    @include wh(26px, 23px);
+    @include wh(24px);
     @include icon-bgc(icon-favorite());
     &.in-favorite {
         @include icon-bgc(icon-favorite("229BD7", "229BD7"));

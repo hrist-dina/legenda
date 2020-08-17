@@ -1,12 +1,17 @@
 .product-label {
     text-align: right;
     &__item {
+        @include sm-block {
+            padding: 4px 12px;
+            font-size: 14px;
+            line-height: 18px;
+        }
         display: inline-block;
         width: auto;
-        padding: 4px 12px;
+        padding: 4px 8px;
         font-weight: 800;
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 13px;
+        line-height: 15px;
         color: #fff;
         background: #ef5026;
         text-align: center;

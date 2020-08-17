@@ -1,9 +1,14 @@
 .filter {
-    margin-bottom: 20px;
-    min-height: 65px;
+    @include md-block {
+        margin-bottom: 20px;
+        min-height: 65px;
+    }
 
     &__inner {
-        display: flex;
+        @include md-block {
+            display: flex;
+        }
+        display: none;
         align-items: flex-start;
         margin-left: -28px;
     }
@@ -18,6 +23,10 @@
             text-decoration: none;
             color: #9db2c6;
         }
+    }
+
+    & .container {
+        @include container-padding;
     }
 
     &-item {

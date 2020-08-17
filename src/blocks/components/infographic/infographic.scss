@@ -1,7 +1,7 @@
 .infographic {
 
     & .container {
-        padding: 0 16px;
+        @include container-padding;
     }
 
     &__list {

@@ -1,16 +1,22 @@
 .product {
-    @include col();
     @include size-xl(3);
     @include size-lg(4);
     @include size-sm(6);
-    @include size(12);
+    @include sm-block {
+        @include col();
+        margin-bottom: 24px;
+        height: 426px;
+        border-radius: 12px;
+    }
+    @include u-size(6, $columns, 4px);
     @include transitionEaseOutQuint(box-shadow);
+    margin-left: 2px;
+    margin-right: 2px;
     box-sizing: border-box;
-    height: 426px;
     border: 1px solid rgba(34, 155, 215, 0.15);
     background: #fff;
-    border-radius: 12px;
-    margin-bottom: 24px;
+    border-radius: 8px;
+    margin-bottom: 4px;
 
     &__inner {
         box-sizing: border-box;
@@ -36,7 +42,10 @@
     }
 
     &__label {
-        margin-bottom: 8px;
+        @include sm-block {
+            margin-bottom: 8px;
+        }
+        margin-bottom: 4px;
     }
 
     &__img {
@@ -45,11 +54,15 @@
     }
 
     &__img-link {
+        @include sm-block {
+            height: 215px;
+            margin-top: 0;
+        }
         display: flex;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 215px;
+        margin-top: 12px;
     }
 
     &__data {
@@ -57,9 +70,13 @@
     }
 
     &__title {
+        @include sm-block {
+            font-size: 18px;
+            line-height: 25px;
+        }
         font-weight: 500;
-        font-size: 18px;
-        line-height: 25px;
+        font-size: 15px;
+        line-height: 18px;
         color: #343e44;
         text-decoration: none;
         max-height: 42px;
@@ -67,28 +84,42 @@
     }
 
     &__desc {
+        @include sm-block {
+            font-size: 16px;
+            line-height: 21px;
+            margin-top: 8px;
+            max-height: 42px;
+        }
         display: flex;
-        align-items: flex-end;
-        font-size: 16px;
-        line-height: 21px;
+        align-items: flex-start;
+        font-size: 14px;
+        line-height: 18px;
         color: #acacac;
-        margin-top: 8px;
-        max-height: 42px;
+        margin-top: 4px;
+        max-height: 40px;
         overflow: hidden;
     }
 
     &__price {
+        @include sm-block {
+            font-size: 22px;
+            line-height: 25px;
+        }
         font-weight: 500;
-        font-size: 22px;
-        line-height: 25px;
+        font-size: 16px;
+        line-height: 22px;
         color: #1b262c;
     }
 
     &__actions {
+        @include sm-block {
+            margin-top: auto;
+            padding-top: 0;
+        }
+        padding-top: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: auto;
     }
 
     &--banner {
@@ -194,8 +225,19 @@
     }
 
     &-list {
-        @include row-flex();
-        margin-bottom: -24px;
+        @include sm-block {
+            @include row-flex();
+            margin-bottom: -24px;
+        }
+        @include u-row-flex(4px);
+
+        @include to($break_md) {
+            &__inner {
+                padding: 12px;
+            }
+        }
+        margin-bottom: -4px;
+
 
         .section--category & {
             flex-wrap: nowrap;
@@ -210,6 +252,20 @@
 
         &--recommendation {
             flex-wrap: nowrap;
+        }
+    }
+
+    &-list & {
+        @include to($break_md) {
+            &__inner {
+                padding: 12px;
+            }
+
+            &__top {
+                top: 12px;
+                right: 12px;
+                left: 12px;
+            }
         }
     }
 
@@ -311,6 +367,12 @@
             & .icon {
                 right: 0;
             }
+        }
+    }
+
+    &-list-section {
+        & .container {
+            @include container-padding;
         }
     }
 }

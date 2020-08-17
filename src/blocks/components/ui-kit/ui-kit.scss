@@ -79,16 +79,31 @@
     }
 
     &--in-cart {
+        @include sm-block {
+            padding: 12px 16px;
+            &:before {
+                contain: none;
+            }
+        }
         box-sizing: border-box;
         display: flex;
         align-items: center;
         border: 1px solid rgba(0, 123, 194, 0.5);
-        padding: 12px 16px;
+        padding: 6px 10px;
         border-radius: 28px;
         font-size: 15px;
         line-height: 20px;
         color: #007bc2;
         background: #fff;
+
+        &:before {
+            @include wh(24px);
+            content: "";
+            position: relative;
+            background-image: url(icon-plus('229BD7'));
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
         &.in-cart {
             box-sizing: border-box;
@@ -99,12 +114,26 @@
             & .icon {
                 background-image: url(icon-product-cart('fff'));
             }
+
+            &:before {
+                background-image: url(icon-plus('fff'));
+            }
         }
 
         & .icon {
-            margin-right: 8px;
+            @include sm-block {
+                margin-right: 8px;
+            }
+        }
+
+        & span {
+            @include sm-block {
+                display: inline;
+            }
+            display: none;
         }
     }
+
     &--in-cart-big {
         box-sizing: border-box;
         display: flex;

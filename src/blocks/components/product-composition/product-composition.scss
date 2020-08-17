@@ -1,7 +1,11 @@
 .product-composition {
     text-align: right;
     &__item {
+        @include sm-block {
+            margin-bottom: 12px;
+        }
         box-sizing: border-box;
+        display: inline-block;
         border: 1px solid #e8f2f7;
         padding: 6px 12px;
         border-radius: 8px;
@@ -9,7 +13,7 @@
         line-height: 15px;
         color: #657a87;
         text-align: center;
-        margin-bottom: 12px;
+        margin-bottom: 4px;
         background: rgba(255, 255, 255, 0.5);
 
         &:last-child {

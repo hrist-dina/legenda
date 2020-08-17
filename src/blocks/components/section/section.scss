@@ -27,7 +27,7 @@
         margin-bottom: 12px;
 
         & .container {
-            padding: 0 16px;
+            @include container-padding;
         }
     }
 
@@ -38,7 +38,7 @@
         margin-bottom: 56px;
 
         & .container {
-            padding: 0 16px;
+            @include container-padding;
         }
         
         &:last-child {
@@ -66,7 +66,7 @@
         vertical-align: middle;
 
         & .container {
-            padding: 0 16px;
+            @include container-padding;
         }
 
         .inner-page & {

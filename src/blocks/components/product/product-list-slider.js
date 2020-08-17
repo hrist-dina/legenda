@@ -7,22 +7,22 @@ export default class ProductListSlider extends SwiperBase {
 
     bindOptions(options, item) {
         this.classSection = `${this.selector}-section`
-        this.nextEl = `${this.selector}-next`
-        this.prevEl = `${this.selector}-prev`
-        this.screenWidht = false
+        const section = item.closest(this.classSection)
+        if (!section) return
+        const nextEl = section.querySelector(`${this.selector}-next`)
+        const prevEl = section.querySelector(`${this.selector}-prev`)
+        if (nextEl) {
+            nextEl.classList.add('init')
+        }
+        if (prevEl) {
+            prevEl.classList.add('init')
+        }
+        this.screenWidht = 1200
         super.bindOptions(
             {
                 navigation: {
-                    nextEl: this.nextEl,
-                    prevEl: this.prevEl
-                },
-                on: {
-                    init: () => {
-                        const section = item.closest(this.classSection)
-                        if (!section) return
-                        section.querySelector(this.nextEl).classList.add('init')
-                        section.querySelector(this.prevEl).classList.add('init')
-                    }
+                    nextEl,
+                    prevEl
                 }
             },
             item

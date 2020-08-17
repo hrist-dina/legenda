@@ -20,9 +20,10 @@ export default class SwiperBase {
             this.bindOptions({}, item)
             this.instances.push({
                 el: item,
-                instance: this.initSwiper(item)
+                instance: this.initSwiper(item, this.options)
             })
         })
+        window.dispatchEvent(new Event('resize'))
     }
 
     bindOptions(options, item) {
@@ -33,14 +34,14 @@ export default class SwiperBase {
         return item
     }
 
-    initSwiper(element) {
+    initSwiper(element, options) {
         if (!element) {
             element = this.selector
         }
 
         if (element || element.length) {
             if (!this.screenWidht) {
-                return new Swiper(element, this.options)
+                return new Swiper(element, options)
             }
 
             let mySwiper = undefined
@@ -59,7 +60,7 @@ export default class SwiperBase {
                             : screenWidth < this.screenWidht
 
                         if (conditionOn && mySwiper === undefined) {
-                            mySwiper = new Swiper(element, this.options)
+                            mySwiper = new Swiper(element, options)
                         } else if (conditionOff && mySwiper !== undefined) {
                             mySwiper.destroy(true, false)
                             mySwiper = undefined

@@ -102,15 +102,21 @@
     &--category {
         @include size-xl(4);
         @include size-lg(4);
+        @include size-sm(7);
         @include md-block {
             max-width: 373px;
             height: 450px;
             border: 1px solid rgba(34, 155, 215, 0.15);
             margin-top: 45px;
         }
-        height: 345px;
+        height: auto;
         border: none;
         margin-bottom: 35px;
+        margin-right: 40px;
+        margin-left: 0;
+        &:last-child {
+            margin-right: 0;
+        }
     }
 
     &--category & {
@@ -118,7 +124,10 @@
             @include md-block {
                 padding: 26px 30px 34px 32px;
             }
-            padding: 0 30px 5px 32px;
+            @include sm-block {
+                padding: 0 30px 5px 32px;
+            }
+            padding: 0;
         }
 
         &__favorite {
@@ -171,13 +180,13 @@
 
         &__actions {
             @include to($break_md) {
-                margin-top: auto;
+                margin-top: 10px;
             }
         }
     }
 
     &:not(&--banner) {
-        @include md-block {
+        @include xl-block {
             &:hover {
                 box-shadow: 0 2px 40px rgba(34, 155, 215, 0.15);
             }
@@ -194,6 +203,8 @@
 
         &--category {
             margin-bottom: -35px;
+            margin-right: 0;
+            margin-left: 0;
             padding-top: 0;
         }
 
@@ -204,6 +215,12 @@
 
     &-list-slider {
         position: relative;
+
+        &__container {
+            @include xl-block {
+                overflow: inherit;
+            }
+        }
 
         &__prev, &__next {
             display: none;
@@ -236,6 +253,9 @@
             }
 
             &.init {
+                @include xl-block {
+                    display: none;
+                }
                 display: block;
             }
 

@@ -13,6 +13,7 @@ export default class Tabs extends ComponentBase {
 
     initClick() {
         const items = this.selector.querySelectorAll(this.classItem)
+        if (!items) return
         items.forEach(item => {
             item.addEventListener('click', ({ target }) => {
                 items.forEach(i => i.classList.remove('active'))

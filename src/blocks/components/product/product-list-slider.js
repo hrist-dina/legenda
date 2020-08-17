@@ -19,6 +19,7 @@ export default class ProductListSlider extends SwiperBase {
                 on: {
                     init: () => {
                         const section = item.closest(this.classSection)
+                        if (!section) return
                         section.querySelector(this.nextEl).classList.add('init')
                         section.querySelector(this.prevEl).classList.add('init')
                     }

@@ -11,6 +11,7 @@ export default class Header extends ComponentBase {
             `${this.selector}-menu-open`
         )
 
+        if (!headerMenuOpen) return
         headerMenuOpen.addEventListener('click', () => {
             header.classList.toggle('menu-opened')
             document.querySelector('body').classList.toggle('o-hidden')

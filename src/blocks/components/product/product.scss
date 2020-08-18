@@ -128,37 +128,49 @@
 
     &--banner &__img-link {
         height: 100%;
+        margin-top: 0;
     }
 
-    &--category {
+    body &--category {
         @include size-xl(4);
         @include size-lg(4);
         @include size-sm(7);
+        @include lg-block {
+            height: 450px;
+        }
         @include md-block {
             max-width: 373px;
-            height: 450px;
+            height: auto;
             border: 1px solid rgba(34, 155, 215, 0.15);
             margin-top: 45px;
         }
+        @include sm-block {
+            margin-right: 40px;
+        }
+        width: 100%;
         height: auto;
         border: none;
         margin-bottom: 35px;
-        margin-right: 40px;
+        margin-right: 10px;
         margin-left: 0;
         &:last-child {
             margin-right: 0;
         }
     }
 
-    &--category & {
+    body &--category & {
         &__inner {
-            @include md-block {
+            @include lg-block {
                 padding: 26px 30px 34px 32px;
             }
             @include sm-block {
-                padding: 0 30px 5px 32px;
+                padding: 0 36px 0 36px;
             }
-            padding: 0;
+
+            @include from(21.25rem) { // 340
+                padding: 0 32px 0 32px;
+            }
+            padding: 0 22px 0 22px;
         }
 
         &__favorite {
@@ -237,10 +249,13 @@
         }
 
         &--category {
-            margin-bottom: -35px;
-            margin-right: 0;
-            margin-left: 0;
-            padding-top: 0;
+            @include sm-block {
+                justify-content: space-between;
+                margin-bottom: -35px;
+                margin-right: 0;
+                margin-left: 0;
+                padding-top: 0;
+            }
         }
 
         &--recommendation {

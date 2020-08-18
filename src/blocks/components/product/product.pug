@@ -3,7 +3,9 @@ include ../product-label/product-label
 include ../product-composition/product-composition
 
 mixin product(data, isCategory, toOrder)
-    article.product.js-vue-product(class={'product--category swiper-slide': isCategory})&attributes(attributes)
+    article.product.js-vue-product(
+            class={'product--category swiper-slide': isCategory, 'product--simple':!isCategory}
+        )&attributes(attributes)
         .__inner
             .__top
                 if !isCategory
@@ -25,7 +27,7 @@ mixin product(data, isCategory, toOrder)
                 .__desc=data.desc
             .__actions
                 .__price=ruble(data.price)
-                +button('in-cart', 'button')(
+                +button(isCategory ? 'in-cart-category' : 'in-cart', 'button')(
                     :class='classInCart'
                     class={'in-cart': data.isInCart}
                     @click='addToCart'

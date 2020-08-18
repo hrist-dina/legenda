@@ -1,19 +1,124 @@
 .filter {
     @include md-block {
         margin-bottom: 20px;
-        min-height: 65px;
+    }
+
+    &__button {
+        @include md-block {
+            display: none;
+        }
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #5bc5f2;
+        padding: 12px;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &-text {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            color: #1b262c;
+            margin-left: 12px;
+        }
+    }
+
+    &__wrap {
+        @include md-block {
+            &.active {
+                position: relative;
+                overflow-y: inherit;
+            }
+        }
+        background: #fff;
+        display: none;
+        overflow-y: auto;
+        &.active {
+            display: block;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__action {
+        margin-bottom: 8px;
+    }
+
+    &__main {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 100%;
+    }
+
+    &__head {
+        @include md-block {
+            display: none;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(34, 155, 215, 0.15);
+        padding: 21px 16px 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-bottom: 16px;
+
+        &-title {
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 27px;
+            color: #1b262c;
+        }
+    }
+
+    &__body {
+        @include md-block {
+            margin-bottom: 0;
+        }
+        margin-bottom: 21px;
+    }
+
+    &__footer {
+        @include md-block {
+            display: none;
+        }
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-height: 94px;
+        padding: 20px 16px;
+        background: #fff;
+        box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-top: auto;
     }
 
     &__inner {
         @include md-block {
             display: flex;
+            flex-direction: row;
+            margin-left: -28px;
+            min-height: 65px;
         }
-        display: none;
+        display: flex;
+        flex-direction: column;
         align-items: flex-start;
-        margin-left: -28px;
     }
 
     &__clean {
+        @include md-block {
+            display: inline-block;
+        }
+        display: none;
         padding-left: 15px;
         margin-left: auto;
         align-self: center;
@@ -27,14 +132,53 @@
 
     & .container {
         @include container-padding;
+        height: 100%;
     }
 
     &-item {
+        @include md-block {
+            width: auto;
+            border-bottom: none;
+        }
         position: relative;
+        width: 100%;
+        border-bottom: 1px solid rgba(34, 155, 215, 0.15);
 
         &__checkbox +  &__checkbox {
             margin-top: 16px;
         }
+
+        &__checkbox {
+            &:nth-child(n + 5) {
+                display: none;
+            }
+
+            .show-all & {
+                display: flex;
+            }
+        }
+
+        &__checkbox:nth-child(5) ~ &__show {
+            display: flex;
+        }
+
+        &__show {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #004f91;
+            margin-top: 16px;
+            display: none;
+            align-items: center;
+
+            &-icon {
+                margin-left: 8px;
+                .show-all & {
+                    display: none;
+                }
+            }
+        }
+
 
         &__head {
             display: flex;
@@ -74,7 +218,15 @@
 
         &__arrow {
             @include transitionEaseOutQuint(transform);
-            margin-left: 8px;
+            @include md-block {
+                margin-left: 8px;
+            }
+            @include to($break_md) {
+                @include wh(24px);
+                background-image: url(icon-arrow-triangle-small('25282b'));
+                background-size: 12px 6px;
+            }
+            margin-left: auto;
         }
 
         &__list {
@@ -82,24 +234,34 @@
         }
 
         &__inner {
+            @include md-block {
+                padding: 19px 28px;
+            }
             position: relative;
-            padding: 20px 28px;
+            padding: 0 12px 20px;
         }
 
         &__drop {
+            @include md-block {
+                display: none;
+                width: auto;
+            }
             display: none;
+            width: 100%;
             min-width: 150px;
         }
 
         &.active & {
 
             &__inner {
-                position: absolute;
-                z-index: 5;
-                top: 0;
-                left: 0;
-                background: #fff;
-                box-shadow: 0 4px 16px rgba(0, 123, 194, 0.12);
+                @include md-block {
+                    position: absolute;
+                    z-index: 5;
+                    top: 0;
+                    left: 0;
+                    background: #fff;
+                    box-shadow: 0 4px 16px rgba(0, 123, 194, 0.12);
+                }
             }
 
             &__arrow {
@@ -120,5 +282,9 @@
     }
 
     &-item + &-item {
+        @include md-block {
+            margin-top: 0;
+        }
+        margin-top: 20px;
     }
 }

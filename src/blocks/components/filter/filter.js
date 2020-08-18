@@ -12,9 +12,14 @@ export default class Filter extends ComponentBase {
     init() {
         this.classItem = `${this.selector}-item`
         this.classOpen = `${this.selector}-open`
+        this.classOpenModal = `${this.selector}-open-modal`
         this.classClear = `${this.selector}-clear`
+        this.classSend = `${this.selector}-send`
         this.classTitle = `${this.selector}-title`
         this.classChange = `${this.selector}-change`
+        this.classWrap = `${this.selector}-wrap`
+        this.classCloseModal = `${this.selector}-close-modal`
+        this.classShow = `${this.selector}-show`
         this.isDerty = false
 
         this.initEvent()
@@ -32,9 +37,13 @@ export default class Filter extends ComponentBase {
             this.calcCount(el)
             this.openEvent(el)
             this.changeEvent(el)
+            this.showMoreEvent(el)
         })
+        this.sendEvent()
         this.clearEvent()
         this.closeEvent()
+        this.openModalEvent()
+        this.closeModalEvent()
     }
 
     getInputs(el, isChecked = false) {
@@ -85,6 +94,7 @@ export default class Filter extends ComponentBase {
     }
 
     closeEvent() {
+        this.eventClose = new Event('close')
         document.addEventListener('click', ({ target }) => {
             const el = target.closest(this.classItem)
             if (!el) {
@@ -94,6 +104,52 @@ export default class Filter extends ComponentBase {
                 }
             }
             this.isDerty = false
+        })
+
+        this.filter.addEventListener('close', () => {
+            const wrap = this.filter.querySelector(this.classWrap)
+            wrap.classList.remove('active')
+            document.querySelector('body').classList.remove('o-hidden')
+            if (this.isDerty) {
+                this.filter.dispatchEvent(this.eventUpdate)
+            }
+            this.isDerty = false
+        })
+    }
+
+    openModalEvent() {
+        const open = this.filter.querySelector(this.classOpenModal)
+        const wrap = this.filter.querySelector(this.classWrap)
+        if (!open || !wrap) return
+        open.addEventListener('click', () => {
+            wrap.classList.add('active')
+            document.querySelector('body').classList.add('o-hidden')
+        })
+    }
+
+    closeModalEvent() {
+        const close = this.filter.querySelector(this.classCloseModal)
+        if (!close) return
+        close.addEventListener('click', () => {
+            this.filter.dispatchEvent(this.eventClose)
+        })
+    }
+
+    showMoreEvent(el) {
+        const show = el.querySelector(this.classShow)
+        if (!show) return
+        const text = show.querySelector('[data-text]')
+        const hideText = text.dataset['text']
+        const showText = text.textContent || text.innerText
+        show.addEventListener('click', ({ target }) => {
+            const item = target.closest(this.classItem)
+            if (item.classList.contains('show-all')) {
+                item.classList.remove('show-all')
+                text.textContent = showText
+            } else {
+                item.classList.add('show-all')
+                text.textContent = hideText
+            }
         })
     }
 
@@ -121,9 +177,8 @@ export default class Filter extends ComponentBase {
     }
 
     clearEvent() {
-        this.filter
-            .querySelector(this.classClear)
-            .addEventListener('click', () => {
+        this.filter.querySelectorAll(this.classClear).forEach(el => {
+            el.addEventListener('click', () => {
                 this.items.forEach(item => {
                     const inputs = this.getInputs(item, true)
                     if (inputs.length) {
@@ -137,6 +192,15 @@ export default class Filter extends ComponentBase {
                 }
                 this.isDerty = false
             })
+        })
+    }
+
+    sendEvent() {
+        this.filter.querySelectorAll(this.classSend).forEach(el => {
+            el.addEventListener('click', () => {
+                this.filter.dispatchEvent(this.eventClose)
+            })
+        })
     }
 
     changeEvent(el) {

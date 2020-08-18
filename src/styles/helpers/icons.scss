@@ -257,6 +257,16 @@
     @include icon-bgc(icon-notification());
 }
 
+.icon-filter {
+    @include wh(24px);
+    @include icon-bgc(icon-filter());
+}
+
+.icon-round-plus {
+    @include wh(13px);
+    @include icon-bgc(icon-round-plus());
+}
+
 .icon-office {
     @include wh(40px);
     @include icon-bgc(icon-office());

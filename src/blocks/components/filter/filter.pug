@@ -1,14 +1,32 @@
 
 
 mixin filter
+    include ../ui-kit/ui-kit
     include data
     section.filter.js-filter
-        +container
-            .__inner
-                for item in filter
-                    +filter-item(item)
-                .__clean.js-filter-clear
-                    a(href='javascript:void(0)').__clean-link Сбросить фильтры
+        .__action
+            +container
+                .__button.js-filter-open-modal
+                    +icon('filter').__button-icon
+                    .__button-text Фильтр
+        .__wrap.js-filter-wrap
+            +container
+                .__main
+                    .__head
+                        .__head-title Фильтр
+                        .__head-close.js-filter-close-modal
+                            +icon('cross')
+                    .__body
+                        .__inner
+                            for item in filter
+                                +filter-item(item)
+
+                            .__clean.js-filter-clear
+                                a(href='javascript:void(0)').__clean-link Сбросить фильтры
+                    .__footer
+                            +button-link(false, false, 'back').js-filter-clear Сбросить
+                            +button-link(false, false, 'default').js-filter-send Показать
+
 
 
 mixin filter-item(data)
@@ -23,5 +41,8 @@ mixin filter-item(data)
                     for item in data.list
                         +field-checkbox(item.name, item.isChecked).js-filter-change.__checkbox
                             | #{item.text}
+                    .filter-item__show.js-filter-show
+                        .filter-item__show-text(data-text='Скрыть') Показать все
+                        +icon('round-plus').filter-item__show-icon
 
 

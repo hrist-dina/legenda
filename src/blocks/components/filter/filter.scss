@@ -29,8 +29,8 @@
         @include md-block {
             &.active {
                 position: relative;
-                overflow-y: inherit;
             }
+            overflow-y: inherit;
             display: block;
         }
         background: #fff;
@@ -150,6 +150,12 @@
         }
 
         &__checkbox {
+
+            @include md-block {
+                &:nth-child(n + 5) {
+                    display: flex;
+                }
+            }
             &:nth-child(n + 5) {
                 display: none;
             }
@@ -160,10 +166,16 @@
         }
 
         &__checkbox:nth-child(5) ~ &__show {
+            @include md-block {
+                display: none;
+            }
             display: flex;
         }
 
         &__show {
+            @include md-block {
+                display: none;
+            }
             font-weight: 500;
             font-size: 14px;
             line-height: 18px;

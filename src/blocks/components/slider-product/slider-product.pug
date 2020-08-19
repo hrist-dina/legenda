@@ -8,6 +8,7 @@ mixin slider-product
         .__list.swiper-wrapper
             for slide in sliderProduct
                 .__item.swiper-slide
-                    img(src=slide alt='' itemprop="image").__img
+                    .__inner
+                        img(src=slide alt='' itemprop="image").__img
         +icon('arrow-product-next').__arrow-next.swiper-button-next.js-slider-product-next
         .__pagination.swiper-pagination

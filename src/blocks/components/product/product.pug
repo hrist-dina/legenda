@@ -2,7 +2,7 @@ include ../ui-kit/ui-kit
 include ../product-label/product-label
 include ../product-composition/product-composition
 
-mixin product(data, isCategory, toOrder)
+mixin product(data, isCategory, toOrder, isRecommendation)
     article.product.js-vue-product(
             class={'product--category swiper-slide': isCategory, 'product--simple':!isCategory}
         )&attributes(attributes)
@@ -27,7 +27,7 @@ mixin product(data, isCategory, toOrder)
                 .__desc=data.desc
             .__actions
                 .__price=ruble(data.price)
-                +button(isCategory ? 'in-cart-category' : 'in-cart', 'button')(
+                +button(isCategory || isRecommendation ? 'in-cart-category' : 'in-cart', 'button')(
                     :class='classInCart'
                     class={'in-cart': data.isInCart}
                     @click='addToCart'
@@ -67,6 +67,17 @@ mixin product-list-slider(data, isCategory = true)
         .product-list-slider__next.js-product-list-slider-next
             +icon('arrow-round-right')
 
+mixin product-recommendation-slider(data, isCategory = true)
+    section.product-recommendation-slider.js-product-recommendation-slider-section
+        .__prev.js-product-recommendation-slider-prev
+            +icon('arrow-round-left')
+        .__container.swiper-container.js-product-recommendation-slider
+            .product-list.swiper-wrapper&attributes(attributes)
+                for item in data
+                    +product(item, isCategory, false, true).swiper-slide
+        .product-recommendation-slider__next.js-product-recommendation-slider-next
+            +icon('arrow-round-right')
+
 
 mixin product-section(title, data)
     +section(title, 'Все товары').section--category
@@ -74,7 +85,7 @@ mixin product-section(title, data)
 
 mixin product-section-recommendation(title, data)
     +section(title || 'Рекомендуем посмотреть').section--recommendation
-        +product-list-slider(data, false).product-list--recommendation
+        +product-recommendation-slider(data, false).product-list--recommendation
 
 mixin product-add-to-cart-section(title, data, linkTitle = 'Все товары')
     +section(title, linkTitle).section--category&attributes(attributes)

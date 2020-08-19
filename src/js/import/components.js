@@ -10,6 +10,10 @@ import Tabs, { SELECTOR_TABS } from '%classes%/Tabs'
 new App().init(() => {
     new SliderProduct()
     new ProductListSlider()
+    new ProductListSlider('.js-product-recommendation-slider', {
+        screenWidth: false,
+        notHasInitArrow: true
+    })
     new Mask().init()
     new Map()
     new Filter()

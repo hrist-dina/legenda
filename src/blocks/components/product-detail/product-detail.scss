@@ -1,7 +1,12 @@
 .product-detail {
-    margin-top: 54px;
-    padding-bottom: 80px;
-    margin-bottom: 80px;
+    @include md-block {
+        margin-top: 54px;
+        padding-bottom: 80px;
+        margin-bottom: 80px;
+    }
+    margin-top: 10px;
+    padding-bottom: 50px;
+    margin-bottom: 32px;
     border-bottom: 1px solid rgba(34, 155, 215, 0.15);
 
     &__title {
@@ -10,17 +15,45 @@
 
     &__inner {
         @include row-flex();
+        @include md-block {
+            position: initial;
+        }
+        position: relative;
+    }
+
+    &__body {
+        position: relative;
+        min-height: 615px;
+    }
+
+    &__head {
+        @include col;
+        @include shift-xl-left(5);
+        @include size-xl(7);
+        @include size(12);
     }
 
     &__slider {
         @include col;
-        @include size(5);
+        @include size-xl(5);
+        @include size(12);
+        @include xl-block {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        @include md-block {
+            margin-bottom: 0;
+        }
+        margin-bottom: 20px;
         position: relative;
     }
 
     &__content {
         @include col;
-        @include size(7);
+        @include shift-xl-left(5);
+        @include size-xl(7);
+        @include size(12);
     }
 
     &__composition {
@@ -31,11 +64,20 @@
     }
 
     &__price {
-        font-weight: 500;
-        font-size: 40px;
-        line-height: 44px;
+        @include md-block {
+            font-weight: 500;
+            font-size: 40px;
+            line-height: 44px;
+            color: #343e44;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        font-weight: $bold;
+        font-size: 25px;
+        line-height: 30px;
         color: #343e44;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
+        text-align: center;
     }
 
     &__actions {
@@ -44,14 +86,29 @@
     }
 
     &__quantity {
-        margin-right: 20px;
+        @include md-block {
+            margin-right: 20px;
+        }
+        margin-right: 12px;
     }
 
     &__button {
-        margin-right: 24px;
+        @include md-block {
+            margin-right: 24px;
+        }
     }
 
     &__favorite {
+        @include md-block {
+            position: relative;
+            top: auto;
+            right: auto;
+        }
+        display: flex;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 16px;
         &-icon {
             @include wh(28px);
         }
@@ -61,7 +118,10 @@
         margin-top: 24px;
         margin-bottom: 40px;
         &-nav {
-            display: flex;
+            @include md-block {
+                display: flex;
+            }
+            display: none;
             align-items: center;
             margin-bottom: 26px;
 
@@ -95,8 +155,52 @@
             line-height: 25px;
             color: #373737;
 
+            &-head {
+                @include md-block {
+                    display: none;
+                    background: transparent;
+                }
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 14px 16px 16px;
+
+                .active & {
+                    background: #f1f6fc;
+                }
+            }
+
+            &-title {
+                font-size: 16px;
+                line-height: 21px;
+                color: #004f91;
+
+                .active & {
+                    color: #343e44;
+                }
+            }
+
+            &-icon {
+                @include transitionEaseOutQuint(transform);
+                .active & {
+                    @include rotate();
+                }
+            }
+
             &-list {
+                @include md-block {
+                    display: block;
+                    padding: 0;
+                }
+                box-sizing: border-box;
+                display: none;
                 max-width: 310px;
+                padding: 20px 16px 32px;
+
+                .active & {
+                    display: block;
+                }
                 & ul {
                     list-style: none;
                 }
@@ -109,10 +213,40 @@
                     }
                 }
             }
+
+            &-item {
+                @include md-block {
+                    border: none;
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+                margin-left: -16px;
+                margin-right: -16px;
+                border-top: 1px solid #f1f6fc;
+                box-sizing: border-box;
+
+                &:last-child {
+                    border-bottom: 1px solid #f1f6fc;
+                }
+
+                &.tabs-content {
+                    @include md-block {
+                        display: none;
+                    }
+                    &.active {
+                        display: block;
+                    }
+                    display: block;
+                }
+            }
         }
     }
 
     &__share {
         margin-top: 28px;
+    }
+
+    & .container {
+        @include container-padding;
     }
 }

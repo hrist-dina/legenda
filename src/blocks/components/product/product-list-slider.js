@@ -1,8 +1,8 @@
 import SwiperBase from '%classes%/SwiperBase'
 
 export default class ProductListSlider extends SwiperBase {
-    constructor(selector = '.js-product-list-slider') {
-        super(selector)
+    constructor(selector = '.js-product-list-slider', options) {
+        super(selector, options)
     }
 
     bindOptions(options, item) {
@@ -11,13 +11,21 @@ export default class ProductListSlider extends SwiperBase {
         if (!section) return
         const nextEl = section.querySelector(`${this.selector}-next`)
         const prevEl = section.querySelector(`${this.selector}-prev`)
-        if (nextEl) {
-            nextEl.classList.add('init')
+
+        if (!this.options.notHasInitArrow) {
+            if (nextEl) {
+                nextEl.classList.add('init')
+            }
+            if (prevEl) {
+                prevEl.classList.add('init')
+            }
         }
-        if (prevEl) {
-            prevEl.classList.add('init')
+
+        let screenWidth = 1200
+        if (typeof this.options.screenWidth === 'boolean') {
+            screenWidth = this.options.screenWidth
         }
-        this.screenWidht = 1200
+        this.screenWidth = screenWidth
         super.bindOptions(
             {
                 navigation: {

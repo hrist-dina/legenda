@@ -39,7 +39,8 @@ export default class Map {
             const node = target.closest(this.classDataItem)
             node.classList.toggle('active')
             DOMAnimations.slideToggle(
-                node.querySelector(this.classDataItemToggle, 400)
+                node.querySelector(this.classDataItemToggle),
+                400
             )
         })
     }

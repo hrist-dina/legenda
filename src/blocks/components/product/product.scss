@@ -258,8 +258,10 @@
             }
         }
 
-        &--recommendation {
+        body &--recommendation {
             flex-wrap: nowrap;
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 
@@ -288,36 +290,31 @@
         }
     }
 
-    &-list-slider {
+    &-recommendation-slider, &-list-slider {
         position: relative;
 
-        &__container {
-            @include xl-block {
-                overflow: inherit;
-            }
-        }
-
         &__prev, &__next {
-            display: none;
             position: absolute;
             z-index: 2;
             top: 0;
             width: 79px;
             height: 100%;
 
-            .section--category & {
+            .section--recommendation &, .section--category & {
+                @include to($break_md) {
+                    & .icon {
+                        @include wh(14px, 72px);
+                        background-image: url(icon-arrow-triangle-thin());
+                        background-color: transparent;
+                        background-size: 14px, 72px;
+                        box-shadow: none;
+                        margin-top: -36px;
+                    }
+                }
                 width: 32px;
 
                 &:before {
                     content: none;
-                }
-                & .icon {
-                    @include wh(14px, 72px);
-                    background-image: url(icon-arrow-triangle-thin());
-                    background-color: transparent;
-                    background-size: 14px, 72px;
-                    box-shadow: none;
-                    margin-top: -36px;
                 }
             }
 
@@ -327,20 +324,12 @@
                 margin-top: -24px;
             }
 
-            &.init {
-                @include xl-block {
-                    display: none;
-                }
-                display: block;
-            }
-
             &.swiper-button-disabled {
                 display: none;
             }
         }
 
         &__prev {
-            left: -24px;
 
             &:before {
                 content: "";
@@ -350,7 +339,7 @@
                 background: linear-gradient(90deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 142.41%);
             }
 
-            .section--category & {
+            .section--recommendation &, .section--category & {
                 left: -16px;
                 & .icon {
                     left: 16px;
@@ -374,17 +363,137 @@
                 background: linear-gradient(270deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 142.41%);
             }
 
-            .section--category & {
+            .section--recommendation &, .section--category & {
                 right: -16px;
 
                 & .icon {
-                    @include rotate();
+                    @include to($break_md) {
+                        @include rotate();
+                    }
                     right: 16px;
                 }
             }
 
             & .icon {
                 right: 0;
+            }
+        }
+    }
+
+    &-list-slider {
+        &__container {
+            @include xl-block {
+                overflow: inherit;
+            }
+        }
+
+        &__prev, &__next {
+            display: none;
+
+            &.init {
+                @include xl-block {
+                    display: none;
+                }
+                display: block;
+            }
+        }
+
+        &__prev {
+            left: -24px;
+        }
+    }
+
+    &-recommendation-slider {
+        @include to($break_md) {
+            overflow: hidden;
+            margin-left: -16px;
+            margin-right: -16px;
+            .section--recommendation & {
+                &__prev {
+                    left: 0;
+                }
+                &__next {
+                    right: 0;
+                }
+            }
+        }
+
+        &__container {
+            @include xl-block {
+                margin: -50px -8px;
+                padding: 50px 8px;
+            }
+        }
+    }
+
+    &-recommendation-slider & {
+        @include to($break_md) {
+            height: auto;
+        }
+
+        @include to($break_sm) {
+            width: 100%;
+            max-width: 330px;
+            height: auto;
+            border: none;
+            margin-right: 0;
+            margin-left: 0;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &__inner {
+            @include to($break_sm) {
+                margin: 0 36px;
+                padding: 0;
+            }
+            @include to(21.25rem) { // 340
+                margin: 0 20px;
+                padding: 0;
+            }
+        }
+
+        &__favorite {
+            display: none;
+        }
+
+        &__img-link {
+            @include to($break_md) {
+                @include wh(176px);
+            }
+        }
+
+        &__data {
+            @include to($break_md) {
+                margin-top: 30px;
+            }
+        }
+
+        &__title {
+            @include to($break_md) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        &__desc {
+            @include to($break_md) {
+                font-size: 15px;
+                line-height: 20px;
+            }
+        }
+
+        &__price {
+            @include to($break_md) {
+                font-size: 20px;
+                line-height: 27px;
+            }
+        }
+
+        &__actions {
+            @include to($break_sm) {
+                margin-top: 10px;
             }
         }
     }

@@ -8,7 +8,7 @@ export default class SliderProduct extends SwiperBase {
     bindOptions() {
         this.nextEl = `${this.selector}-next`
         this.prevEl = `${this.selector}-prev`
-        this.screenWidht = false
+        this.screenWidth = false
         super.bindOptions({
             loop: true,
             pagination: {

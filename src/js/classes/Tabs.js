@@ -1,4 +1,5 @@
 import ComponentBase from '%classes%/ComponentBase'
+import { DOMAnimations } from '%common%/helper'
 
 export const SELECTOR_TABS = '.js-tabs'
 
@@ -7,8 +8,12 @@ export default class Tabs extends ComponentBase {
         const tab = SELECTOR_TABS
         this.classItem = `${tab}-item`
         this.classContent = `${tab}-content`
+        this.classContentItem = `${this.classContent}-item`
+        this.classToggle = `${tab}-toggle`
+        this.classList = `${tab}-list`
 
         this.initClick()
+        this.initToggle()
     }
 
     initClick() {
@@ -28,6 +33,18 @@ export default class Tabs extends ComponentBase {
                         i.classList.remove('active')
                     }
                 })
+            })
+        })
+    }
+
+    initToggle() {
+        const toggles = this.selector.querySelectorAll(this.classToggle)
+        if (!toggles) return
+        toggles.forEach(item => {
+            item.addEventListener('click', ({ target }) => {
+                const el = target.closest(this.classContentItem)
+                DOMAnimations.slideToggle(el.querySelector(this.classList), 400)
+                el.classList.toggle('active')
             })
         })
     }

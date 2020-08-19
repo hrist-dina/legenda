@@ -163,14 +163,23 @@
     }
 
     &--in-cart-big {
+        @include md-block {
+            padding: 15px 40px;
+        }
+        @include from(360px) {
+            padding: 13px 24px;
+            font-size: 18px;
+            line-height: 24px;
+        }
         box-sizing: border-box;
         display: flex;
         align-items: center;
+        min-height: 52px;
         border: 1px solid rgba(0, 123, 194, 0.5);
-        padding: 15px 40px;
+        padding: 13px 14px;
         border-radius: 36px;
-        font-size: 18px;
-        line-height: 24px;
+        font-size: 14px;
+        line-height: 20px;
         color: #007bc2;
         background: #fff;
         &.in-cart {
@@ -183,7 +192,10 @@
         }
 
         & .icon {
-            @include wh(32px);
+            @include md-block {
+                @include wh(32px);
+            }
+            @include wh(24px);
             margin-right: 10px;
         }
     }

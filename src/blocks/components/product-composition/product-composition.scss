@@ -33,12 +33,21 @@
     }
 
     &--detail &__item {
+        @include md-block {
+            padding: 6px 16px;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 16px;
+            color: #657a87;
+        }
         display: inline-block;
         width: auto;
-        padding: 6px 16px;
-        font-size: 16px;
-        line-height: 24px;
-        margin-bottom: 16px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 15px;
+        margin-bottom: 9px;
+        color: #007bc2;
+
         &:last-child {
             margin-bottom: 0;
         }

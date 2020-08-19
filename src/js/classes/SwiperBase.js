@@ -5,7 +5,7 @@ import { debounce } from '%common%/helper'
 export default class SwiperBase {
     constructor(selector, options = {}) {
         this.selector = selector
-        this.screenWidht = 768 // При достижении этой точки включится слайдер из десктопа в мобильный
+        this.screenWidth = 768 // При достижении этой точки включится слайдер из десктопа в мобильный
         this.atDesctopToMobile = true
         this.needRemoveStyles = true
         this.options = options
@@ -40,7 +40,7 @@ export default class SwiperBase {
         }
 
         if (element || element.length) {
-            if (!this.screenWidht) {
+            if (!this.screenWidth) {
                 return new Swiper(element, options)
             }
 
@@ -53,11 +53,11 @@ export default class SwiperBase {
                         let screenWidth = window.innerWidth
 
                         const conditionOn = this.atDesctopToMobile
-                            ? screenWidth <= this.screenWidht
-                            : screenWidth >= this.screenWidht
+                            ? screenWidth <= this.screenWidth
+                            : screenWidth >= this.screenWidth
                         const conditionOff = this.atDesctopToMobile
-                            ? screenWidth > this.screenWidht
-                            : screenWidth < this.screenWidht
+                            ? screenWidth > this.screenWidth
+                            : screenWidth < this.screenWidth
 
                         if (conditionOn && mySwiper === undefined) {
                             mySwiper = new Swiper(element, options)

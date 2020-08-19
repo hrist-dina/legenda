@@ -127,6 +127,12 @@
     @include icon-bgc(icon-arrow-menu());
 }
 
+.icon-arrow-tab {
+    @include wh(20px);
+    @include icon-bgc(icon-arrow-tab());
+    background-size: 12px 6px;
+}
+
 .icon-arrow-down {
     @include wh(16px);
     @include icon-bgc(icon-arrow-down());

@@ -61,11 +61,11 @@
         border-radius: 32px;
 
         & .icon-minus {
-            background-image: url(icon-minus('343E44'));
+            background-image: url(icon-minus('007BC2'));
         }
 
         & .icon-plus {
-            background-image: url(icon-plus('343E44'));
+            background-image: url(icon-plus('007BC2'));
         }
     }
 
@@ -83,6 +83,10 @@
         }
 
         &__button {
+            @include md-block {
+                padding: 22px 12px;
+            }
+            padding: 16px 12px;
             &:disabled .icon-minus {
                 cursor: not-allowed;
                 background-image: url(icon-minus('AEAEAE'));

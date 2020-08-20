@@ -1,10 +1,15 @@
 .hint {
     position: relative;
     &-icon {
-        @include wh(27px);
+        @include xl-block {
+            @include wh(27px);
+            font-size: 16px;
+            line-height: 21px;
+        }
+        @include wh(20px);
         font-weight: 500;
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 14px;
+        line-height: 18px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -15,12 +20,19 @@
     }
 
     &-content {
+        @include xl-block {
+            left: 35px;
+        }
+        @include sm-block {
+            right: auto;
+            left: 30px;
+        }
         @include transitionEaseOutQuint((opacity, visibility), .3s);
         box-sizing: border-box;
         position: absolute;
         z-index: -1;
-        right: auto;
-        left: 35px;
+        right: 30px;
+        left: auto;
         min-width: 196px;
         border: 2px solid #5bc5f2;
         padding: 8px 12px;
@@ -35,12 +47,15 @@
         &:before {
             @include wh(8px);
             @include rotate(-45deg);
+            @include sm-block {
+                left: -4px;
+            }
             content: "";
             position: absolute;
             z-index: -3;
             top: 50%;
             margin-top: -4px;
-            left: -4px;
+            right: -4px;
             background: #5bc5f2;
         }
 

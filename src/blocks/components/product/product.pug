@@ -56,14 +56,14 @@ mixin product-list(isAjax)
                      else
                          +product(item)
 
-mixin product-list-slider(data, isCategory = true)
+mixin product-list-slider(data, isCategory = true, toOrder = false)
     section.product-list-slider.js-product-list-slider-section
         .__prev.js-product-list-slider-prev
             +icon('arrow-round-left')
         .__container.swiper-container.js-product-list-slider
             .product-list.swiper-wrapper&attributes(attributes)
                 for item in data
-                    +product(item, isCategory).swiper-slide
+                    +product(item, isCategory, toOrder).swiper-slide
         .product-list-slider__next.js-product-list-slider-next
             +icon('arrow-round-right')
 
@@ -88,7 +88,5 @@ mixin product-section-recommendation(title, data)
         +product-recommendation-slider(data, false).product-list--recommendation
 
 mixin product-add-to-cart-section(title, data, linkTitle = 'Все товары')
-    +section(title, linkTitle).section--category&attributes(attributes)
-        .product-list.product-list--category
-            for item in data
-                +product(item, true, true)
+    +section(title, linkTitle).section--category.section--add-to-cart&attributes(attributes)
+        +product-list-slider(data, true, true)

@@ -28,12 +28,15 @@
     }
 
     &__button {
+        @include md-block {
+            padding: 22px 12px;
+        }
         box-sizing: border-box;
         display: inline-flex;
         align-self: center;
         justify-content: center;
         border: none;
-        padding: 22px 12px;
+        padding: 12px;
         background: transparent;
 
         &--minus {

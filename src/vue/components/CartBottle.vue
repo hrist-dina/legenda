@@ -18,7 +18,7 @@
                         )
                     .cart-bottle__price {{ 200 | ruble }}
             .cart-bottle__buy
-                +button('in-cart', 'button')
+                +button('for-bottle', 'button')
                     +icon('product-cart')
                     span + К заказу
 

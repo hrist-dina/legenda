@@ -46,6 +46,20 @@
         }
     }
 
+    &--add-to-cart & {
+
+        @include to($break_md) {
+            &__link {
+                display: none;
+            }
+
+            &__title {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    }
+
     &--category & {
         &__title {
             @include md-block {

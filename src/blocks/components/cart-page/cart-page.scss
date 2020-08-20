@@ -1,18 +1,31 @@
 .cart-page {
-    margin-top: 50px;
+    @include md-block {
+        margin-top: 50px;
+    }
+    margin-top: 24px;
     margin-bottom: 56px;
 
     &__header {
         @include row-flex;
+        align-items: center;
+
+        &-left, &-right {
+            @include size(6);
+        }
 
         &-left, &-center, &-right {
-            @include size(4);
             @include col;
+            @include size-lg(4);
         }
 
         &-center {
+            @include lg-block {
+                order: 0;
+            }
+            @include size(12);
             display: flex;
             justify-content: center;
+            order: 1;
         }
 
         &-right {
@@ -23,23 +36,38 @@
     }
 
     &__products {
-        margin-top: 32px;
+        @include md-block {
+            margin-top: 32px;
+        }
+        margin-top: 28px;
     }
 
     &__list {
-        @include row-flex;
+        @include md-block {
+            @include row-flex;
+        }
+        margin-left: -16px;
+        margin-right: -16px;
     }
 
     &__footer {
         @include row-flex;
-        margin-top: 32px;
+        @include lg-block {
+            margin-top: 32px;
+        }
+        margin-top: 16px;
 
         &-right, &-left {
-            @include size(6);
+            @include size-lg(6);
+            @include size(12);
             @include col;
         }
 
         &-right {
+            @include lg-block {
+                margin-top: 0;
+            }
+            margin-top: 16px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -47,48 +75,80 @@
     }
 
     &__clean {
-        font-size: 18px;
-        line-height: 27px;
+        @include md-block {
+            font-size: 18px;
+            line-height: 27px;
+        }
+        font-size: 14px;
+        line-height: 18px;
         color: #9db2c6;
         text-decoration: none;
     }
 
     &__title {
+        @include md-block {
+            font-size: 58px;
+            line-height: 64px;
+        }
         font-family: $ff-Tavolga;
         font-style: normal;
         font-weight: 500;
-        font-size: 58px;
-        line-height: 64px;
+        font-size: 28px;
+        line-height: 36px;
         color: #004f91;
+        white-space: nowrap;
     }
 
     &__order {
+        @include md-block {
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            width: auto;
+        }
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: space-between;
+        width: 100%;
     }
 
     &__total {
+        @include md-block {
+            align-items: flex-end;
+            text-align: right;
+            margin-right: 36px;
+            margin-bottom: 0;
+        }
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        text-align: right;
+        margin-right: 10px;
+        margin-bottom: 10px;
 
         &-title {
-            font-size: 16px;
-            line-height: 25px;
+            @include md-block {
+                font-size: 16px;
+                line-height: 25px;
+            }
+            font-size: 15px;
+            line-height: 20px;
             color: #343e44;
         }
 
         &-value {
+            @include md-block {
+                font-size: 32px;
+                line-height: 36px;
+            }
+            @include sm-block {
+                font-size: 22px;
+                line-height: 28px;
+            }
             font-weight: 600;
-            font-size: 32px;
-            line-height: 36px;
-            color: #000000;
+            font-size: 20px;
+            line-height: 24px;
+            color: #000;
+            white-space: nowrap;
         }
-    }
-
-    &__to-order {
-        margin-left: 36px;
     }
 
     &__promocode {
@@ -100,9 +160,16 @@
     }
 
     &__promocode &__promocode-input {
-        width: 100%;
-        max-width: 245px;
-        margin-right: 16px;
+        @include lg-block {
+            width: 100%;
+            max-width: 245px;
+            margin-right: 16px;
+        }
+        @include md-block {
+            width: #{calc(100% - 160px)};
+        }
+        width: #{calc(100% - 135px)};
+        margin-right: 10px;
         &.error {
             margin-bottom: 0;
         }
@@ -111,5 +178,24 @@
             padding-top: 16px;
             padding-bottom: 16px;
         }
+
+        & .input-text__placeholder {
+            @include to($break_md) {
+                font-size: 15px;
+                line-height: 20px;
+            }
+        }
+    }
+
+    &__promocode-button {
+        @include to($break_md) {
+            font-size: 15px;
+            line-height: 20px;
+            padding: 12px 24px;
+        }
+    }
+
+    & .container {
+        @include container-padding;
     }
 }

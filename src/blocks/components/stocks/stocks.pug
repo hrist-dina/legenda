@@ -11,5 +11,6 @@ mixin stocks-item(item)
     a(href="#").stocks__item
         .stocks__img(style=`background-image:url(${item.img})`)
         .stocks__information
-            span.stocks__date=item.date
+            if item.date
+                span.stocks__date=item.date
             .stocks__title=item.title

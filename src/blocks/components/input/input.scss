@@ -1,12 +1,15 @@
 .input {
 
     &-text {
+        box-sizing: border-box;
         display: flex;
         position: relative;
         max-width: 100%;
+        overflow: hidden;
 
         &__placeholder {
             @include transitionEaseOutQuint(top);
+            box-sizing: border-box;
             position: absolute;
             top: 14px;
             left: 0;
@@ -14,18 +17,21 @@
             font-size: 16px;
             line-height: 20px;
             color: #909fab;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 10px;
         }
 
         &__error {
             position: absolute;
             bottom: 0;
             left: 0;
+            overflow: hidden;
             font-size: 13px;
             line-height: 18px;
             color: #f85471;
             white-space: nowrap;
             text-overflow: ellipsis;
-            overflow: hidden;
         }
 
         &__eye-off {
@@ -59,9 +65,9 @@
         }
         
         &.focus &__placeholder {
+            top: -8px;
             font-size: 14px;
             line-height: 18px;
-            top: -8px;
         }
 
         &.error {

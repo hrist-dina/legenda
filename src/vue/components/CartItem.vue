@@ -18,7 +18,7 @@
                         span.cart-item__price-value {{ price | ruble }}
                         span.cart-item__price-type / шт.
             template(v-else)
-                .cart-item__price(v-if="!inOrder")
+                .cart-item__price.cart-item__price--desktop(v-if="!inOrder")
                     span.cart-item__price-value {{ price | ruble }}
                     span.cart-item__price-type / шт.
                 .cart-item__order(v-if="!inOrder")
@@ -30,7 +30,11 @@
             .cart-item__result(v-if="inOrder")
                 .cart-item__result-quantity {{ quantity }} шт.
                 .cart-item__result-total {{ total | ruble }}
-            .cart-item__total(v-else) {{ total | ruble }}
+            .cart-item__total(v-else)
+                span {{ total | ruble }}
+                .cart-item__total-price
+                    span.cart-item__price-value {{ price | ruble }}
+                    span.cart-item__price-type / шт.
             .cart-item__delete(v-if="!inOrder")
                 +icon('delete')(@click.prevent="removeFromCart" )
 </template>

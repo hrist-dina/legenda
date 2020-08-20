@@ -18,6 +18,13 @@
     border-radius: 8px;
     margin-bottom: 4px;
 
+    .section--add-to-cart & {
+        @include md-block {
+            @include col();
+            margin-bottom: 45px;
+        }
+    }
+
     &__inner {
         box-sizing: border-box;
         display: flex;
@@ -135,22 +142,20 @@
         @include size-xl(4);
         @include size-lg(4);
         @include size-sm(7);
-        @include lg-block {
-            height: 450px;
-        }
         @include md-block {
             max-width: 373px;
-            height: auto;
+            height: 450px;
             border: 1px solid rgba(34, 155, 215, 0.15);
             margin-top: 45px;
         }
         @include sm-block {
             margin-right: 40px;
+            margin-bottom: 35px;
         }
         width: 100%;
         height: auto;
         border: none;
-        margin-bottom: 35px;
+        margin-bottom: 4px;
         margin-right: 10px;
         margin-left: 0;
         &:last-child {
@@ -160,7 +165,7 @@
 
     body &--category & {
         &__inner {
-            @include lg-block {
+            @include md-block {
                 padding: 26px 30px 34px 32px;
             }
             @include sm-block {
@@ -245,6 +250,14 @@
         margin-bottom: -4px;
 
         .section--category & {
+            flex-wrap: nowrap;
+        }
+
+        .section--add-to-cart & {
+            @include row-flex();
+            @include xl-block {
+                flex-wrap: wrap;
+            }
             flex-wrap: nowrap;
         }
 

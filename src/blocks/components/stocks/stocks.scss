@@ -1,9 +1,10 @@
 .stocks {
     &__item {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        @include col();
+        @include size(6);
         text-decoration: none;
+        margin-left: 10px;
+        margin-bottom: 40px;
     }
 
     &__date {
@@ -19,11 +20,25 @@
         color: #373737;
     }
 
-    &__meta {
+    &__information {
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        margin-top: 24px;
+    }
+
+    &__list {
+        @include row-flex();
+    }
+
+    &__img {
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 210px;
+        border-radius: 8px;
     }
 }

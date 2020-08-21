@@ -1,8 +1,15 @@
 include stocks-data
 
 mixin stocks
+    include ../menu-nav/menu-nav
     section.stocks
         +container
+            .__nav
+                +menu-nav([
+                    {name: 'Все', active: true},
+                    {name: 'Новым клиентам'},
+                    {name: 'Постоянным клиентам'}]
+                )
             .__list
                 for item in stocks
                     +stocks-item(item)
@@ -13,4 +20,7 @@ mixin stocks-item(item)
         .stocks__information
             if item.date
                 span.stocks__date=item.date
+            else
+                .stocks__pin
+                    +icon('pin-round')
             .stocks__title=item.title

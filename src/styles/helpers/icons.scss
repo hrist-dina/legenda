@@ -273,6 +273,19 @@
     @include icon-bgc(icon-round-plus());
 }
 
+.icon-pin-round {
+    @include md-block {
+        @include wh(45px);
+        background-size: 20px;
+    }
+    @include wh(40px);
+    @include icon-bgc(icon-pin());
+    background-color: #ef5026;
+    background-size: 17px;
+    border-radius: 50%;
+    box-shadow: 0 12px 20px rgba(34, 155, 215, 0.2);
+}
+
 .icon-office {
     @include wh(40px);
     @include icon-bgc(icon-office());

@@ -86,6 +86,7 @@ mixin product-section(title, data)
 mixin product-section-recommendation(title, data)
     +section(title || 'Рекомендуем посмотреть').section--recommendation
         +product-recommendation-slider(data, false).product-list--recommendation
+        block
 
 mixin product-add-to-cart-section(title, data, linkTitle = 'Все товары')
     +section(title, linkTitle).section--category.section--add-to-cart&attributes(attributes)

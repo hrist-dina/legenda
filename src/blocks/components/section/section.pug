@@ -11,3 +11,20 @@ mixin section(title, link)
                     if link
                         +link(link, '/catalog-category.html', 'all').section__link
             block
+
+
+mixin section-hr
+    section.section-hr
+
+mixin section-nav(title)
+    nav.section-nav
+        a(href='#').__all
+            +icon('arrow-back').__all-icon
+            span.__all-text=title || 'Все акции'
+        .__arrow-list
+            a(href='#').__arrow
+                +icon('arrow-nav-prev').__arrow-icon-prev
+                span.__arrow-text Предыдущая
+            a(href='#').__arrow
+                span.__arrow-text Следующая
+                +icon('arrow-nav-next').__arrow-icon-next

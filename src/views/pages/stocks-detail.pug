@@ -1,0 +1,34 @@
+extends ../layouts/default
+
+block variables
+    - const title = "Помпа - в подарок!";
+    - const h1 = title
+    - isInnerPage = true
+    include ../data/stocks
+
+block content
+    include ../../blocks/components/section/section
+    include ../../blocks/components/content/content
+    include ../../blocks/components/share/share
+    +content
+        .content-head
+            .content-date
+                span.content-date__title Сроки акции:
+                span.content-date__value с 21 мая по 30 июня 2020
+        img(src='img/content/stock.jpg' alt=title).content-preview
+        .content-text
+            ol
+                li Внесите предоплату (единовременно) за 5 бутылей воды «Легенда жизни» с добавлением йода, фтора и селена
+                li Получите новую помпу в подарок!
+            p Подробности акции у наших консультантов по телефонам 777-777 и 222-222.
+            p Акция действует для новых клиентов физических и юридических лиц. Постоянные клиенты, могут участвовать в акции 1 раз в год.
+            p Тара оплачивается Клиентом на время сотрудничества с Компанией, в случае расторжения договора сумма 350 руб. возвращается Клиенту
+        .content-footer
+            +share
+    +section-hr
+    +section('Купить по акции')
+        .content__inner
+            +section-nav
+
+
+

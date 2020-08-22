@@ -133,6 +133,22 @@
     background-size: 12px 6px;
 }
 
+.icon-arrow-nav-next {
+    @include wh(33px, 11px);
+    @include icon-bgc(icon-arrow-nav());
+}
+
+.icon-arrow-nav-prev {
+    @include wh(33px, 11px);
+    @include icon-bgc(icon-arrow-nav());
+    @include rotate();
+}
+
+.icon-arrow-back {
+    @include wh(19px);
+    @include icon-bgc(icon-arrow-back());
+}
+
 .icon-arrow-down {
     @include wh(16px);
     @include icon-bgc(icon-arrow-down());

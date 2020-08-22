@@ -273,6 +273,7 @@
 
         body &--recommendation {
             flex-wrap: nowrap;
+            width: auto;
             margin-left: 0;
             margin-right: 0;
         }
@@ -315,6 +316,7 @@
 
             .section--recommendation &, .section--category & {
                 @include to($break_md) {
+                    width: 32px;
                     & .icon {
                         @include wh(14px, 72px);
                         background-image: url(icon-arrow-triangle-thin());
@@ -324,7 +326,6 @@
                         margin-top: -36px;
                     }
                 }
-                width: 32px;
 
                 &:before {
                     content: none;
@@ -353,9 +354,12 @@
             }
 
             .section--recommendation &, .section--category & {
-                left: -16px;
+                @include slider-screen {
+                    left: -24px;
+                }
+                left: -10px;
                 & .icon {
-                    left: 16px;
+                    left: 0;
                 }
             }
 
@@ -377,13 +381,15 @@
             }
 
             .section--recommendation &, .section--category & {
-                right: -16px;
+                @include slider-screen {
+                    right: -24px;
+                }
+                right: -10px;
 
                 & .icon {
                     @include to($break_md) {
                         @include rotate();
                     }
-                    right: 16px;
                 }
             }
 
@@ -419,8 +425,6 @@
     &-recommendation-slider {
         @include to($break_md) {
             overflow: hidden;
-            margin-left: -16px;
-            margin-right: -16px;
             .section--recommendation & {
                 &__prev {
                     left: 0;
@@ -433,8 +437,23 @@
 
         &__container {
             @include xl-block {
-                margin: -50px -8px;
-                padding: 50px 8px;
+                margin: -50px -16px;
+                padding: 50px 16px;
+            }
+        }
+
+        & .product-list .product {
+            @include xl-block {
+                width: 100%;
+                max-width: 282px;
+                margin-left: 0;
+                margin-right: 24px;
+            }
+            margin-left: 12px;
+            margin-right: 12px;
+
+            &:last-child {
+                margin-right: 0;
             }
         }
     }

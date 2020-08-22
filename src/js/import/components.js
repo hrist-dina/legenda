@@ -6,6 +6,8 @@ import Map from '%components%/map/map'
 import Filter from '%components%/filter/filter'
 import Component from '%classes%/Component'
 import Tabs, { SELECTOR_TABS } from '%classes%/Tabs'
+import TabsScroll from '%classes%/TabsScroll'
+import InfoCardSlider from '%components%/info-card/info-card-slider'
 
 new App().init(() => {
     new SliderProduct()
@@ -14,8 +16,10 @@ new App().init(() => {
         screenWidth: false,
         notHasInitArrow: true
     })
+    new InfoCardSlider()
     new Mask().init()
     new Map()
     new Filter()
     new Component(SELECTOR_TABS, Tabs)
+    new TabsScroll()
 })

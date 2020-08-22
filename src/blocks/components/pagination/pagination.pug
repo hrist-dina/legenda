@@ -1,0 +1,7 @@
+
+mixin pagination(count = 5)
+    section.pagination&attributes(attributes)
+        - let i = 1
+        while (i <= count)
+            a(href='#' class={current: i === 1}).__item=i
+            - i++

@@ -1,9 +1,9 @@
 
 
 mixin menu-nav(data)
-    nav.menu-nav&attributes(attributes)
-        ul.__list
+    nav.menu-nav.swiper-container.js-tabs-scroll&attributes(attributes)
+        ul.__list.swiper-wrapper
             for item in data
-                li.__item
+                li.__item.swiper-slide
                     a(href='#' class={active: item.active}).__link
                         span=item.name

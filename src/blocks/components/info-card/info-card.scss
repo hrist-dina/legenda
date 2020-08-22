@@ -1,0 +1,64 @@
+.info-card {
+    @include transitionEaseOutQuint(box-shadow);
+    @include xl-block {
+        &:hover {
+            box-shadow: 0 2px 40px rgba(34, 155, 215, 0.15);
+        }
+    }
+    box-sizing: border-box;
+    border: 1px solid rgba(34, 155, 215, 0.15);
+    background: #fff;
+    border-radius: 16px;
+    padding: 10px 13px;
+    text-decoration: none;
+
+    &__pic {
+        border-radius: 8px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 190px;
+        overflow: hidden;
+    }
+
+    &__title {
+        @include md-block {
+            font-size: 20px;
+            line-height: 30px;
+            margin-top: 20px;
+            min-height: 64px;
+        }
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #343e44;
+        margin-top: 12px;
+        min-height: 32px;
+        text-decoration: none;
+    }
+
+    &-section {
+
+        &__inner {
+            display: flex;
+        }
+
+        &--blog-head {
+            @include xl-block {
+                box-sizing: initial;
+                margin: -25px;
+                padding: 25px;
+            }
+            
+            & .info-card {
+                max-width: 384px;
+                margin-right: 24px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

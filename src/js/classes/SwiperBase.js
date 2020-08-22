@@ -44,47 +44,48 @@ export default class SwiperBase {
                 return new Swiper(element, options)
             }
 
-            let mySwiper = undefined
-
+            let swiper = undefined
             window.addEventListener(
                 'resize',
                 debounce(
                     () => {
-                        let screenWidth = window.innerWidth
-
-                        const conditionOn = this.atDesctopToMobile
-                            ? screenWidth <= this.screenWidth
-                            : screenWidth >= this.screenWidth
-                        const conditionOff = this.atDesctopToMobile
-                            ? screenWidth > this.screenWidth
-                            : screenWidth < this.screenWidth
-
-                        if (conditionOn && mySwiper === undefined) {
-                            mySwiper = new Swiper(element, options)
-                        } else if (conditionOff && mySwiper !== undefined) {
-                            mySwiper.destroy(true, false)
-                            mySwiper = undefined
-
-                            if (this.needRemoveStyles) {
-                                element.removeAttribute('style')
-                                element
-                                    .querySelectorAll(
-                                        '.swiper-slide:not(.cloned)'
-                                    )
-                                    .forEach(item =>
-                                        item.removeAttribute('style')
-                                    )
-                            }
-                        }
+                        swiper = this.initHandler(swiper, element, options)
                     },
                     200,
                     false
                 ),
                 false
             )
-
-            return mySwiper
+            swiper = this.initHandler(swiper, element, options)
+            return swiper
         }
+    }
+
+    initHandler(swiper, element, options) {
+        let screenWidth = window.innerWidth
+
+        const conditionOn = this.atDesctopToMobile
+            ? screenWidth <= this.screenWidth
+            : screenWidth >= this.screenWidth
+        const conditionOff = this.atDesctopToMobile
+            ? screenWidth > this.screenWidth
+            : screenWidth < this.screenWidth
+
+        if (conditionOn && swiper === undefined) {
+            swiper = new Swiper(element, options)
+        } else if (conditionOff && swiper !== undefined) {
+            swiper.destroy(true, false)
+            swiper = undefined
+
+            if (this.needRemoveStyles) {
+                element.removeAttribute('style')
+                element
+                    .querySelectorAll('.swiper-slide:not(.cloned)')
+                    .forEach(item => item.removeAttribute('style'))
+            }
+        }
+
+        return swiper
     }
 
     filterByInstance(el) {

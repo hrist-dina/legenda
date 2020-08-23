@@ -74,7 +74,8 @@
         height: 116px;
         border-radius: 8px;
     }
-    & .container {
+    
+    &-section .container, & .container {
         @include container-padding;
     }
 }

@@ -24,3 +24,14 @@ mixin stocks-item(item)
                 .stocks__pin
                     +icon('pin-round')
             .stocks__title=item.title
+
+
+mixin stocks-section
+    +section('Акции').stocks-section
+        .stocks__list
+            for item in stocksSimple
+                +stocks-item-simple(item)
+
+mixin stocks-item-simple(item)
+    a(href="#").stocks__item.stocks__item--simple
+        .stocks__img(style=`background-image:url(${item.img})`)

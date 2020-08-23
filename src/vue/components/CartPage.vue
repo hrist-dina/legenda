@@ -32,11 +32,11 @@ include ../../blocks/components/ui-kit/ui-kit
                         :price="product.price"
                         :quantity="product.cnt"
                     )
-                .card-page__empty(v-else)
+                .cart-page__empty(v-else)
                     p Корзина пуста! Перейдите в
                         |
                         |
-                        a(href="/catalog.html") каталог
+                        a(href="/catalog.html").link каталог
             .cart-page__footer(v-if="hasProducts")
                 .cart-page__footer-left
                     cart-bottle

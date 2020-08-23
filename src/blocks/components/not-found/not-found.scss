@@ -1,0 +1,98 @@
+.not-found {
+    @include md-block {
+        margin-top: 54px;
+    }
+    margin-top: 24px;
+
+    & .container {
+        @include container-padding;
+    }
+
+    &__inner {
+        text-align: center;
+    }
+
+    &__title {
+        @include md-block {
+            margin-bottom: 24px;
+            font-size: 27px;
+            line-height: 32px;
+        }
+        font-weight: $bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #1b262c;
+        margin-bottom: 16px;
+    }
+
+    &__desc {
+        @include md-block {
+            margin: 0 auto 32px;
+            font-size: 16px;
+            line-height: 27px;
+        }
+        font-size: 14px;
+        line-height: 24px;
+        color: #1b262c;
+        max-width: 387px;
+        margin: 0 auto 18px;
+    }
+
+    &__img {
+        @include md-block {
+            margin: 54px auto 0;
+        }
+        width: 100%;
+        max-width: 1054px;
+        margin: 24px auto 0;
+
+        & svg {
+            max-width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+    }
+
+    &-front-wave {
+        animation: 6s wave infinite;
+    }
+
+    &-sign-wave {
+        animation: 6s sign-wave infinite;
+    }
+}
+
+@include keyframes(sign-wave) {
+    0% {
+        transform: translateY(20px);
+    }
+    25% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    75% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px);
+    }
+}
+@include keyframes(wave) {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(20px, 50px);
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+    75% {
+        transform: translate(50px, 20px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}

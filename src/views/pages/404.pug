@@ -1,1 +1,8 @@
-h3 Page not found
+extends ../layouts/default
+
+block variables
+    - const title = 'Страница не найдена'
+
+block content
+    include ../../blocks/components/not-found/not-found
+    +not-found

@@ -85,6 +85,13 @@
         text-decoration: none;
     }
 
+    &__empty {
+        &, & a {
+            font-size: 22px;
+            line-height: 28px;
+        }
+    }
+
     &__title {
         @include md-block {
             font-size: 58px;

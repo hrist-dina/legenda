@@ -85,27 +85,34 @@
         margin-bottom: 22px;
         vertical-align: middle;
 
-        & .container {
-            @include container-padding;
-        }
-
         .inner-page & {
             margin-bottom: 20px;
+        }
+
+        & .container {
+            @include container-padding;
         }
     }
 
     &-nav {
+        @include sm-block {
+            margin-top: 48px;
+        }
         display: flex;
         align-items: center;
-        margin-top: 48px;
+        margin-top: 24px;
 
         &__all {
+            @include sm-block {
+                margin-bottom: 0;
+            }
             display: flex;
             align-items: center;
             font-size: 16px;
             line-height: 21px;
             color: #007bc2;
             text-decoration: none;
+            margin-bottom: 10px;
 
             &-icon {
                 margin-right: 12px;
@@ -121,7 +128,10 @@
             text-decoration: none;
 
             & + & {
-                margin-left: 40px;
+                @include sm-block {
+                    margin-left: 40px;
+                }
+                margin-left: 20px;
             }
 
             &-list {
@@ -129,6 +139,13 @@
                 align-items: center;
                 margin-left: auto;
                 padding-left: 15px;
+            }
+
+            &-text {
+                @include sm-block {
+                    display: inline-block;
+                }
+                display: none;
             }
 
             &-icon-prev {
@@ -142,8 +159,12 @@
     }
 
     &-hr {
-        margin-top: 64px;
+        @include sm-block {
+            margin-top: 64px;
+            margin-bottom: 56px;
+        }
+        margin-top: 48px;
         border-bottom: 1px solid rgba(34, 155, 215, 0.15);
-        margin-bottom: 56px;
+        margin-bottom: 48px;
     }
 }

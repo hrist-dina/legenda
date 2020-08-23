@@ -1,0 +1,46 @@
+
+
+mixin product-stock(test)
+    include ../product/data
+    include ../ui-kit/ui-kit
+    section.product-stock
+        +product-stock-item({
+            img: getProductImg(2),
+            title: '«Легенда жизни» 19 л',
+            desc: 'Йод, фтор и селен',
+            price: 210
+        })
+        .product-stock-sign +
+        +product-stock-item({
+            img: getProductImg(19),
+            title: 'Помпа механическая'
+        })
+        .product-stock-sign =
+        .product-stock-result
+            .product-stock-total
+                .product-stock-price
+                    .product-stock-price__old=formatThousand(1750)
+                    .product-stock-price__value=ruble(1050)
+                .product-stock-desc Цена за комплект
+            .product-stock-button
+                +button('buy-all', 'button') Купить все
+
+mixin product-stock-item(data)
+    .product-stock-item
+        a(href='#').__img-link
+            img(
+                src=data.img
+                alt=data.title
+                title=data.title
+            ).__img
+        .__data
+            a(href='#').__title=data.title
+            if data.desc
+                .__desc=data.desc
+        .__total
+            if data.price
+                .__price 5 x #{ruble(data.price)}
+            else
+                .__price.product-stock-item__price--free Бесплатно
+
+

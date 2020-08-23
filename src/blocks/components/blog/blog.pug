@@ -9,9 +9,10 @@ mixin blog-head
     include ../info-card/info-card
     include ../menu-nav/menu-nav
     section.blog-head
+        +container.__container-list
+            +info-card-section(blogCategory).__list.info-card-section--blog-head
         +container
             .__inner
-                +info-card-section(blogCategory).__list.info-card-section--blog-head
             .__text
                 p ООО «Барнаульская водяная компания» заботится о здоровье своих клиентов, обеспечивая их полезной питьевой водой высшей категории качества «Легенда жизни».
                 p Для производства «Легенды» мы добываем воду из артезианских скважин с глубины 240 и 280 метров. Водоподготовка и розлив «Легенды» происходят непосредственно у источника. Вода разливается в бутыли объемом 19,11,4 литров, а также в мелкую тару 0,33-5 литров и доставляется клиентам домой, на работу, в детские сады и школы.

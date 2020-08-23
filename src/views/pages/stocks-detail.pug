@@ -10,6 +10,7 @@ block content
     include ../../blocks/components/section/section
     include ../../blocks/components/content/content
     include ../../blocks/components/share/share
+    include ../../blocks/components/product-stock/product-stock
     +content
         .content-head
             .content-date
@@ -26,8 +27,9 @@ block content
         .content-footer
             +share
     +section-hr
-    +section('Купить по акции')
-        .content__inner
+    +section('Купить по акции').product-stock-section
+        .product-stock-wrap
+            +product-stock
             +section-nav
 
 

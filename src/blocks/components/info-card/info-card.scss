@@ -124,10 +124,16 @@
             }
             
             & .info-card {
-                max-width: 384px;
+                @include sm-block {
+                    max-width: 384px;
+                }
+                max-width: 288px;
                 margin-right: 24px;
 
                 &:last-child {
+                    @include to($break_md) {
+                        margin-right: 32px;
+                    }
                     margin-right: 0;
                 }
             }

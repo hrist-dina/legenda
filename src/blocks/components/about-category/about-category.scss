@@ -1,6 +1,10 @@
 .about-category {
-    margin-top: 140px;
-    margin-bottom: 90px;
+    @include md-block {
+        margin-top: 140px;
+        margin-bottom: 90px;
+    }
+    margin-top: 48px;
+    margin-bottom: 48px;
 
     & .container {
         @include md-block {

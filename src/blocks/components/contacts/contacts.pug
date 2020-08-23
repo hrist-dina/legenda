@@ -1,7 +1,7 @@
 include ../address/address
 include ../map/map
 include ../phone/phone
-
+include ../menu-nav/menu-nav
 //- Блок с адресами и картой
 
 mixin contacts
@@ -11,10 +11,7 @@ mixin contacts
             .__inner
                 .__phone
                     +phone-header
-                ul.__nav
-                    for item in contactsNav
-                        li.__nav-item(class={active: item.active})
-                            a(href='#').__nav-link=item.name
+                +menu-nav(contactsNav).__nav
                 .__map
                     +contacts-map
 

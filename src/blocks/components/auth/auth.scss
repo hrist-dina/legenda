@@ -1,13 +1,27 @@
 .auth {
-    margin-top: 48px;
+    @include md-block {
+        margin-top: 48px;
+    }
+    margin-top: 24px;
+
+    & .container {
+        @include container-padding;
+    }
 
     &__nav {
-        margin-bottom: 40px;
+        @include md-block {
+            margin-bottom: 40px;
+        }
+        margin-bottom: 24px;
 
         &-item {
+            @include sm-block {
+                margin-right: 24px;
+                padding: 12px 24px;
+            }
+            margin-right: 4px;
             text-decoration: none;
-            padding: 12px 24px;
-            margin-right: 24px;
+            padding: 8px 16px;
             border-radius: 57px;
 
             &.active {
@@ -16,8 +30,12 @@
         }
 
         &-text {
-            font-size: 16px;
-            line-height: 21px;
+            @include sm-block {
+                font-size: 16px;
+                line-height: 21px;
+            }
+            font-size: 14px;
+            line-height: 19px;
             color: #343e44;
             border-bottom: 1px dashed #343e44;
         }

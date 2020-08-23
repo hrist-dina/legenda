@@ -468,10 +468,15 @@
         }
 
         &__text {
+            @include sm-block {
+                font-size: 15px;
+                line-height: 22px;
+            }
             display: inline-flex;
+            flex-wrap: wrap;
             width: #{calc(100% - 38px)};
-            font-size: 15px;
-            line-height: 22px;
+            font-size: 14px;
+            line-height: 18px;
             color: #acacac;
             margin-left: 16px;
 
@@ -480,10 +485,14 @@
             }
 
             & a {
+                @include sm-block {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
                 display: inline;
                 text-decoration: underline;
-                font-size: 16px;
-                line-height: 22px;
+                font-size: 14px;
+                line-height: 18px;
                 color: #004f91;
 
                 &:hover {

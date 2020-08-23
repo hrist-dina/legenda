@@ -1,7 +1,10 @@
 .contacts {
 
     &__phone {
-        margin-bottom: 40px;
+        @include md-block {
+            margin-bottom: 40px;
+        }
+        margin-bottom: 24px;
 
         & .phone-row {
             display: flex;
@@ -17,34 +20,38 @@
     }
 
     &__nav {
-        display: flex;
-        align-items: center;
-        list-style: none;
-        margin-bottom: 44px;
-
-        &-item {
-            padding: 12px 24px;
-            margin-right: 20px;
-            font-size: 16px;
-            line-height: 21px;
-
-            &.active {
-                border-radius: 57px;
-                background: #f1f6fc;
-            }
+        @include md-block {
+            margin-bottom: 44px;
+            margin-left: 0;
+            margin-right: 0;
         }
+        margin-left: -16px;
+        margin-right: -16px;
+        margin-bottom: 24px;
 
-        &-link {
-            text-decoration: none;
-            border-bottom: 1px dashed #343e44;
-            color: #343e44;
-        }
-
-        &-item.active &-link {
-            border-bottom: transparent;
-            color: #004f91;
+        & .active {
             font-weight: 500;
         }
+
+
+        & .swiper-wrapper {
+            @include md-block {
+                padding: 0;
+            }
+            padding-right: 48px;
+        }
+        & .swiper-slide {
+            &:last-child {
+                @include md-block {
+                    margin-right: 0;
+                }
+                margin-right: 48px;
+            }
+        }
+    }
+
+    & .container {
+        @include container-padding;
     }
 
 
@@ -52,22 +59,29 @@
         &__inner {
             @include row-flex;
             position: relative;
-            height: 587px;
+            min-height: 587px;
         }
 
         &__address {
             @include col();
-            @include size(4);
+            @include size-lg(4);
+            @include size(12);
+            @include lg-block {
+                margin-bottom: 0;
+            }
             z-index: 1;
             max-height: 587px;
             overflow-y: auto;
             overflow-x: hidden;
             padding-right: 21px;
+            margin-bottom: 20px;
         }
 
         &__box {
             @include col();
-            @include size(8);
+            @include size-lg(8);
+            @include size(12);
+            min-height: 500px;
         }
     }
 }

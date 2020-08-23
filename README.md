@@ -1,6 +1,8 @@
-# gulp-pug-starter
+# «Легенда жизни»
 
 ## Особенности
+* используется для ЛК и оформления заказа [Vue.js](https://vuejs.org/), [Vuex](https://vuex.vuejs.org/), [Vue Router](https://router.vuejs.org/)
+* слайдер [Swiper](https://swiperjs.com/)
 * именование классов по [БЭМ](https://ru.bem.info/)
 * используется БЭМ-структура
 * используются препроцессоры [Pug](https://pugjs.org/) и [SCSS](https://sass-lang.com/)
@@ -36,6 +38,7 @@ gulp-pug-starter
 │   ├── js
 │   ├── styles
 │   ├── views
+│   ├── vue
 │   └── .htaccess
 ├── gulpfile.babel.js
 ├── webpack.config.js

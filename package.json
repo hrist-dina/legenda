@@ -1,11 +1,7 @@
 {
     "name": "legenda",
-    "description": "Frontend form Let's Rock",
+    "description": "Frontend from Let's Rock",
     "author": "Dina Hrist",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/andreyalexeich/gulp-pug-starter.git"
-    },
     "license": "MIT",
     "scripts": {
         "dev": "gulp",

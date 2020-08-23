@@ -1,0 +1,10 @@
+.about-category {
+    margin-top: 140px;
+    margin-bottom: 90px;
+
+    & .container {
+        @include md-block {
+            @include container-padding;
+        }
+    }
+}

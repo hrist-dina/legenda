@@ -41,7 +41,79 @@
     &-section {
 
         &__inner {
+            @include md-block {
+                padding-left: 0;
+            }
             display: flex;
+            padding-left: 16px;
+            padding-right: 32px;
+        }
+
+        &__prev, &__next {
+
+            display: none;
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            width: 79px;
+            height: 100%;
+
+            &:before {
+                @include md-block {
+                    width: 79px;
+                }
+                content: "";
+                position: absolute;
+                width: 48px;
+                height: 100%;
+            }
+
+            .swiper-container-initialized & {
+                display: block;
+            }
+
+            & .icon {
+                @include xl-block {
+                    top: 105px;
+                }
+                @include to($break_md) {
+                    @include wh(32px);
+                    background-size: 14px 12px;
+                }
+                position: absolute;
+                z-index: 3;
+                top: 88px;
+            }
+
+            &.swiper-button-disabled {
+                display: none;
+            }
+        }
+
+        &__prev {
+            left: 0;
+
+            &:before {
+                left: -16px;
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 142.41%);
+            }
+
+            & .icon {
+                left: 16px;
+            }
+        }
+
+        &__next {
+            right: 0;
+
+            &:before {
+                right: -16px;
+                background: linear-gradient(270deg, rgba(255, 255, 255, 0.75) 0%, rgba(255, 255, 255, 0) 142.41%);
+            }
+
+            & .icon {
+                right: 16px;
+            }
         }
 
         &--blog-head {
@@ -56,6 +128,26 @@
                 margin-right: 24px;
 
                 &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        &--category {
+            @include xl-block {
+                box-sizing: initial;
+                margin: -24px;
+                padding: 24px;
+            }
+
+            & .info-card {
+                max-width: 282px;
+                margin-right: 24px;
+
+                &:last-child {
+                    @include to($break_md) {
+                        margin-right: 16px;
+                    }
                     margin-right: 0;
                 }
             }

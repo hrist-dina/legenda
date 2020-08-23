@@ -1,9 +1,13 @@
 
 mixin info-card-section(data)
     section.info-card-section.swiper-container.js-info-card-slider&attributes(attributes)
+            .__prev.info-card-section__nav.js-info-card-slider-prev
+                +icon('arrow-round-left')
             .__inner.swiper-wrapper
                 for item in data
                     +info-card(item)
+            .__next.info-card-section__nav.js-info-card-slider-next
+                +icon('arrow-round-right')
 
 mixin info-card(data)
     a(href='#').info-card.swiper-slide&attributes(attributes)

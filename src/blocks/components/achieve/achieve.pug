@@ -1,0 +1,17 @@
+
+mixin achieve-section
+    include data
+    +section('Достижения').achieve-section
+        .achieve-list
+            for item in achieves
+                +achieve(item)
+
+mixin achieve(data)
+    acticle.achieve
+        .__img-block
+            img(src=data.img alt=data.title).__img
+        .__data
+            .__title=data.title
+            .__desc
+                for item in data.desc
+                    p=item

@@ -1,7 +1,28 @@
 .content {
 
+    & .container {
+        @include container-padding;
+    }
+
     &__inner {
         max-width: 792px;
+    }
+
+    &__row {
+        @include row-flex;
+    }
+
+    &__half {
+        @include col;
+        @include size-lg(6);
+        @include size(12);
+
+        &:last-child {
+            @include lg-block {
+                order: 0;
+            }
+            order: -1;
+        }
     }
 
     &-date {
@@ -24,6 +45,13 @@
 
     & img {
         max-width: 100%;
+        max-height: 100%;
+    }
+
+    & svg {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
         max-height: 100%;
     }
 

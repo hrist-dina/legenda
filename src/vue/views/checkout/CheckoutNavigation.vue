@@ -10,9 +10,15 @@
             :class="{'checkout-nav__item--done': isDone(item)}"
             exact
         ).checkout-nav__item
-            a.checkout-nav__link
-                +icon.checkout-nav__icon(:class="`icon-${item.name}`")
-                span.checkout-nav__text {{ item.title }}
+            .checkout-nav__inner
+                .checkout-nav__head
+                    a.checkout-nav__link
+                        +icon.checkout-nav__icon(:class="`icon-${item.name}`")
+                        span.checkout-nav__text {{ item.title }}
+                .checkout-nav__body(v-if="isCurrent(item)")
+                    slot(name="body")
+
+
 </template>
 
 <script>
@@ -31,6 +37,11 @@ export default {
                     i => i.name === this.$route.name
                 )
                 return steps.slice(0, current).includes(item)
+            }
+        },
+        isCurrent() {
+            return item => {
+                return item.name === this.$route.name
             }
         }
     }

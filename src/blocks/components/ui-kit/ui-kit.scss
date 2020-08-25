@@ -32,11 +32,16 @@
     }
 
     &--bordered {
+        @include md-block {
+            padding: 15px 40px;
+            font-size: 18px;
+            line-height: 24px;
+        }
         box-sizing: border-box;
         border: 1px solid rgba(0, 123, 194, 0.5);
-        padding: 15px 40px;
-        font-size: 18px;
-        line-height: 24px;
+        padding: 15px 32px;
+        font-size: 15px;
+        line-height: 20px;
         color: #007bc2;
         border-radius: 36px;
         background: #fff;
@@ -75,9 +80,14 @@
     }
 
     &--order {
-        padding: 16px 48px;
-        font-size: 22px;
-        line-height: 34px;
+        @include md-block {
+            padding: 16px 48px;
+            font-size: 22px;
+            line-height: 34px;
+        }
+        padding: 8px 21px;
+        font-size: 16px;
+        line-height: 30px;
         color: #fff;
         background: #229bd7;
         border-radius: 36px;
@@ -471,14 +481,17 @@
             @include sm-block {
                 font-size: 15px;
                 line-height: 22px;
+                margin-top: 0;
+                margin-left: 16px;
             }
+            margin-top: 2px;
             display: inline-flex;
             flex-wrap: wrap;
             width: #{calc(100% - 38px)};
             font-size: 14px;
             line-height: 18px;
             color: #acacac;
-            margin-left: 16px;
+            margin-left: 10px;
 
             & span {
                 margin-right: 5px;
@@ -498,10 +511,6 @@
                 &:hover {
                     text-decoration: none;
                 }
-            }
-
-            & b {
-                margin-left: 5px;
             }
         }
 

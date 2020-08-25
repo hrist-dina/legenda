@@ -227,6 +227,35 @@
     }
 
     &--in-order & {
+
+        @include to($break_md) {
+            &__img-link {
+                margin-right: 12px;
+                max-width: 40px;
+                height: 40px;
+            }
+
+            &__data {
+                width: #{calc(100% - 52px)};
+                padding-right: 0;
+                max-width: 200px;
+            }
+        }
+
+        @include to($break_sm) {
+            &__result {
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                margin-left: 0;
+
+                &-quantity {
+                    margin-bottom: 0;
+                }
+            }
+        }
         &__inner {
             padding: 12px 0;
         }
@@ -366,9 +395,19 @@
         }
 
         &__img-link {
-            @include wh(80px);
+            @include md-block {
+                max-width: 80px;
+                height: 80px;
+            }
+            width: 100%;
+            max-width: 48px;
+            height: 48px;
             background: $skeleton-color;
             border-radius: 50%;
+        }
+
+        &__data {
+
         }
 
         &__title {
@@ -387,6 +426,7 @@
         }
 
         &__price {
+            order: 0;
             width: 100%;
             max-width: 140px;
             height: 40px;
@@ -394,16 +434,30 @@
             border-radius: 5px;
         }
 
+        &__order {
+            display: none;
+        }
+
         &__total {
+            @include md-block {
+                max-width: 140px;
+            }
+            order: 0;
             width: 100%;
-            max-width: 140px;
+            max-width: 80px;
             height: 18px;
             background: $skeleton-color;
             border-radius: 5px;
         }
 
+        &__result {
+            display: none;
+        }
+
         &__delete {
-            @include wh(20px);
+            width: 100%;
+            max-width: 20px;
+            height: 20px;
             background: $skeleton-color;
             border-radius: 5px;
         }

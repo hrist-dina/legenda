@@ -25,13 +25,17 @@
 }
 
 .modal-container {
+    @include md-block {
+        padding: 48px;
+    }
+
     box-sizing: border-box;
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 518px;
     margin: 0 auto;
-    padding: 48px;
+    padding: 24px;
     transition: all 0.3s ease;
     background-color: #fff;
 }
@@ -41,20 +45,32 @@
     top: 28px;
     right: 28px;
 }
-
+.modal-header {
+    padding-right: 35px;
+}
 .modal-header h3 {
+    @include md-block {
+        font-size: 30px;
+        line-height: 40px;
+    }
     font-weight: 500;
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 20px;
+    line-height: 28px;
     color: #1b262c;
 }
 
 .modal-body {
-    margin-top: 40px;
+    @include md-block {
+        margin-top: 40px;
+    }
+    margin-top: 20px;
 }
 
 .modal-footer {
-    margin-top: 50px;
+    @include md-block {
+        margin-top: 50px;
+    }
+    margin-top: 25px;
 }
 
 .modal-default-button {
@@ -97,4 +113,15 @@
     &-leave-active {
         opacity: 0;
     }
+}
+
+.fade-slide-enter-active, .fade-slide-leave-active {
+    transition-duration: 1s;
+    transition-property: height, opacity;
+    transition-timing-function: ease;
+    overflow: hidden;
+}
+
+.fade-slide-enter, .fade-slide-leave-active {
+    opacity: 0;
 }

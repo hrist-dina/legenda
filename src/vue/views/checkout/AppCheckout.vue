@@ -3,14 +3,21 @@
         .container
             .checkout__header
                 h1.h1 Оформление заказа
-            .checkout__nav(v-if="!isWelcome")
+            .checkout__nav(v-if="!isWelcome && isWithoutLogin")
                 checkout-navigation(
                     v-if="isWithoutLogin"
                     :steps="withoutLogin"
                 )
             .checkout__body
                 .checkout__body-half
-                    router-view
+                    template(v-if="isWithoutLogin")
+                        checkout-navigation(
+                            :steps="withoutLogin"
+                        )
+                            template(slot="body")
+                                router-view
+                    template(v-else)
+                        router-view
                 .checkout__body-half
                     checkout-structure
 </template>

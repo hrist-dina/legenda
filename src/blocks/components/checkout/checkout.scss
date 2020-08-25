@@ -1,21 +1,46 @@
 .checkout {
-    margin-top: 42px;
+    @include md-block {
+        margin-top: 42px;
+    }
+    margin-top: 26px;
 
     .button ~ &-back {
         margin-left: 16px;
     }
 
     &__header {
-        margin-bottom: 51px;
+        @include md-block {
+            margin-bottom: 51px;
+        }
+        margin-bottom: 23px;
     }
 
     &__body {
         @include row-flex;
-        margin-top: 53px;
+        @include md-block {
+            margin-top: 53px;
+        }
+        margin-top: 23px;
 
         &-half {
-            @include size(6);
+            @include size(12);
             @include col;
+            @include lg-block {
+                & + & {
+                    margin-top: 0;
+                }
+            }
+            &:first-child {
+                @include size-xl(6);
+                @include size-lg(5);
+            }
+            &:last-child {
+                @include size-xl(6);
+                @include size-lg(7);
+            }
+            & + & {
+                margin-top: 36px;
+            }
         }
     }
 
@@ -49,69 +74,116 @@
         margin-bottom: 20px;
         font-size: 18px;
         line-height: 21px;
-        color: #000000;
+        color: #000;
     }
 
     &__thanks {
+        @include md-block {
+            margin-bottom: 28px;
+        }
         font-size: 16px;
         line-height: 25px;
         color: #343e44;
-        margin-bottom: 28px;
+        margin-bottom: 20px;
     }
 
     &__button {
-        margin-top: 36px;
+        @include md-block {
+            margin-top: 36px;
+        }
+        margin-top: 30px;
     }
 
     &__nav {
+        @include md-block {
+            display: block;
+        }
+        display: none;
         margin-bottom: 42px;
     }
 
     &__checkbox-list {
         margin-top: 24px;
     }
+
     &__checkbox-item {
         & + & {
             margin-top: 20px;
         }
     }
 
+    & .container {
+        @include container-padding;
+    }
+
     &-nav {
+        @include md-block {
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
+        flex-direction: column;
+
+        &__inner {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__head {
+            @include md-block {
+                display: none;
+            }
+            @include md-block {
+                &:before {
+                    content: none;
+                }
+            }
+            display: flex;
+            flex-direction: column;
+            &:before {
+                content: "";
+                position: relative;
+                width: 1px;
+                height: 20px;
+                background: rgba(34, 155, 215, 0.15);
+                margin: 8px 15px;
+            }
+        }
+
+        &__body {
+            @include to($break_md) {
+                margin-top: 12px;
+                margin-bottom: 5px;
+            }
+        }
 
         &__item {
-            display: flex;
-            align-items: center;
             position: relative;
-            width: #{calc(100% / 3)};
             list-style: none;
+        }
 
-            &:after {
-                content: "";
-                display: flex;
-                flex: 1 1 auto;
-                position: relative;
-                width: auto;
-                height: 1px;
-                background: rgba(34, 155, 215, 0.15);
-                margin-right: 16px;
-                margin-left: 16px;
+        &__item:first-child &__head {
+            &:before {
+                content: none;
             }
         }
 
         &__link {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             cursor: not-allowed;
             pointer-events: none;
             text-decoration: none;
+            width: 100%;
         }
 
         &__icon {
+            @include to($break_md) {
+                @include wh(30px);
+                background-size: 18px;
+            }
             @include wh(48px);
             border-radius: 50%;
             background-repeat: no-repeat;
@@ -119,12 +191,17 @@
         }
 
         &__text {
+            @include md-block {
+                font-size: 18px;
+                line-height: 22px;
+                margin-left: 20px;
+                width: #{calc(100% - 68px)};
+            }
             font-weight: 500;
-            font-size: 18px;
-            line-height: 22px;
+            font-size: 16px;
+            line-height: 20px;
             color: #ced8dd;
-            margin-left: 20px;
-            width: #{calc(100% - 68px)};
+            margin-left: 12px;
         }
 
         &--two &__item {
@@ -137,6 +214,33 @@
                 }
             }
         }
+    }
+
+    &__nav &-nav__item {
+        @include md-block {
+            display: flex;
+            align-items: center;
+            width: #{calc(100% / 3)};
+            &:after {
+                content: "";
+                display: flex;
+                flex: 1 1 auto;
+                position: relative;
+                width: auto;
+                height: 1px;
+                background: rgba(34, 155, 215, 0.15);
+                margin-right: 16px;
+                margin-left: 16px;
+            }
+        }
+    }
+
+    &__nav &-nav {
+        justify-content: space-between;
+    }
+
+    &__nav &-nav__head {
+        display: block;
     }
 
     &-nav__item--done & {
@@ -168,75 +272,127 @@
     }
 
     &-subtitle {
+        @include md-block {
+            font-size: 32px;
+            line-height: 40px;
+            margin-bottom: 32px;
+        }
         font-family: $ff-Tavolga;
         font-weight: 500;
-        font-size: 32px;
-        line-height: 40px;
+        font-size: 28px;
+        line-height: 32px;
         color: #1b262c;
-        margin-bottom: 32px;
+        margin-bottom: 18px;
     }
 
     &-desc {
-        font-size: 18px;
-        line-height: 24px;
+        @include md-block {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+        font-size: 16px;
+        line-height: 22px;
         color: #343e44;
-        margin-bottom: 24px;
+        margin-bottom: 18px;
     }
 
     &-stucture {
+        @include md-block {
+            padding: 40px 50px 70px;
+        }
+        @include sm-block {
+            padding: 24px;
+        }
         box-sizing: border-box;
-        padding: 40px 50px 70px;
+        padding: 24px 12px;
         background: #fff;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 
         &__title {
+            @include md-block {
+                font-size: 24px;
+                line-height: 32px;
+            }
             font-weight: 500;
-            font-size: 24px;
-            line-height: 32px;
+            font-size: 18px;
+            line-height: 28px;
             color: #004f91;
         }
 
         &__edit {
-            margin-left: 24px;
+            @include md-block {
+                margin-left: 24px;
+            }
+            margin-left: 20px;
         }
 
         &__head {
-            margin-bottom: 28px;
+            @include md-block {
+                margin-bottom: 28px;
+            }
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
         }
 
         &__total {
-            margin-bottom: 52px;
+            @include md-block {
+                margin-bottom: 52px;
+            }
+            margin-bottom: 24px;
 
             &-head {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
             }
 
+            &-data {
+                margin-bottom: 5px;
+                margin-right: 5px;
+            }
+
             &-title {
-                font-size: 16px;
-                line-height: 25px;
+                @include md-block {
+                    font-size: 16px;
+                    line-height: 25px;
+                    margin-bottom: 0;
+                }
+                font-size: 13px;
+                line-height: 16px;
                 color: #343e44;
+                margin-bottom: 6px;
             }
 
             &-value {
+                @include md-block {
+                    font-size: 32px;
+                    line-height: 36px;
+                }
                 font-weight: 600;
-                font-size: 32px;
-                line-height: 36px;
+                font-size: 25px;
+                line-height: 27px;
                 color: #1b262c;
             }
 
             &-bonus {
-                font-size: 16px;
-                line-height: 22px;
+                @include md-block {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+                font-size: 14px;
+                line-height: 20px;
                 color: #fb6565;
                 margin-top: 4px;
             }
         }
 
         &__agree {
-            margin-top: 20px;
+            @include md-block {
+                margin-top: 20px;
+            }
+            margin-top: 14px;
         }
     }
 
@@ -292,27 +448,34 @@
     &-block {
 
         &__title {
+            @include md-block {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 23px;
+            }
             font-weight: 500;
-            font-size: 18px;
-            line-height: 24px;
+            font-size: 16px;
+            line-height: 22px;
             color: #000;
-            margin-bottom: 23px;
+            margin-bottom: 14px;
         }
 
         &__row {
+            @include md-block {
+                margin-bottom: 12px;
+            }
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             &:last-child {
                 margin-bottom: 0;
             }
         }
 
         &__edit {
-            margin-left: 36px;
-        }
-
-        & + & {
-            margin-top: 40px;
+            @include md-block {
+                margin-left: 36px;
+            }
+            margin-left: 12px;
         }
 
         &__options {
@@ -342,6 +505,13 @@
                     margin-top: 10px;
                 }
             }
+        }
+
+        & + & {
+            @include md-block {
+                margin-top: 40px;
+            }
+            margin-top: 20px;
         }
     }
 }

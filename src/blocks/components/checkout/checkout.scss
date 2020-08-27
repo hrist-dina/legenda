@@ -122,7 +122,6 @@
             align-items: center;
             margin-bottom: 20px;
         }
-
         display: flex;
         flex-direction: column;
 
@@ -162,6 +161,7 @@
         &__item {
             position: relative;
             list-style: none;
+            width: 100%;
         }
 
         &__item:first-child &__head {
@@ -203,17 +203,6 @@
             color: #ced8dd;
             margin-left: 12px;
         }
-
-        &--two &__item {
-            width: 60%;
-
-            &:last-child {
-                width: 40%;
-                &:after {
-                    content: none;
-                }
-            }
-        }
     }
 
     &__nav &-nav__item {
@@ -241,6 +230,27 @@
 
     &__nav &-nav__head {
         display: block;
+    }
+
+    &-nav--two &-nav__item {
+        @include md-block {
+            width: 100%;
+        }
+        width: 100%;
+
+        &:last-child {
+            @include xl-block {
+                min-width: 40%;
+            }
+            @include md-block {
+                width: auto;
+                min-width: 30%;
+            }
+            width: 100%;
+            &:after {
+                content: none;
+            }
+        }
     }
 
     &-nav__item--done & {
@@ -397,13 +407,27 @@
     }
 
     &-success {
-        margin-top: 64px;
+        @include sm-block {
+            margin-top: 64px;
+        }
+        margin-top: 16px;
         &__inner {
+            @include sm-block {
+                padding: 72px 112px 130px;
+            }
+            @include to($break_sm) {
+                background-size: contain;
+                padding: 55px 50px 70px;
+            }
+            @include to(rem(420)) {
+                background-size: cover;
+                padding: 32px 30px 100px;
+            }
             box-sizing: border-box;
             width: 100%;
             max-width: 554px;
             margin: 0 auto;
-            padding: 72px 112px 130px;
+            padding: 32px 50px 70px;
             background-image: url(pattern-order());
             background-position: center;
             background-repeat: no-repeat;
@@ -411,27 +435,43 @@
         }
 
         &__title {
+            @include sm-block {
+                font-size: 40px;
+                line-height: 48px;
+                margin-bottom: 24px;
+            }
             font-family: $ff-Tavolga;
             font-weight: 500;
-            font-size: 40px;
-            line-height: 48px;
+            font-size: 24px;
+            line-height: 32px;
             color: #004f91;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         &__number {
-            font-size: 22px;
-            line-height: 30px;
+            @include sm-block {
+                font-size: 22px;
+                line-height: 30px;
+                margin-bottom: 24px;
+            }
+            font-size: 18px;
+            line-height: 22px;
             color: #373737;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
+            white-space: nowrap;
         }
 
         &__desc {
-            font-size: 16px;
-            line-height: 25px;
+            @include sm-block {
+                font-size: 16px;
+                line-height: 25px;
+                margin: auto auto 32px;
+            }
+            font-size: 14px;
+            line-height: 21px;
             color: #373737;
-            margin-bottom: 32px;
             max-width: 295px;
+            margin: auto auto 16px;
         }
     }
 
@@ -479,12 +519,21 @@
         }
 
         &__options {
+            @include md-block {
+                flex-direction: row;
+                margin-top: 32px;
+            }
             display: flex;
-            margin-top: 32px;
+            flex-direction: column;
+            margin-top: 24px;
             margin-bottom: 16px;
             &-radio {
                 & + & {
-                    margin-left: 40px;
+                    @include md-block {
+                        margin-left: 40px;
+                        margin-top: 0;
+                    }
+                    margin-top: 12px;
                 }
             }
         }

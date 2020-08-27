@@ -389,17 +389,25 @@
         max-width: 477px;
 
         &__item {
-            font-size: 16px;
-            line-height: 20px;
+            @include sm-block {
+                margin-bottom: 20px;
+                font-size: 16px;
+                line-height: 20px;
+            }
+            font-size: 14px;
+            line-height: 18px;
             color: #373737;
-            margin-bottom: 20px;
+            margin-bottom: 14px;
             &:last-child {
                 margin-bottom: 0;
             }
         }
 
         &__edit {
-            margin-top: 32px;
+            @include md-block {
+                margin-top: 32px;
+            }
+            margin-top: 24px;
         }
 
         &__cancel {
@@ -429,7 +437,10 @@
             width: 100%;
 
             &__head {
-                padding: 0 32px 14px;
+                @include md-block {
+                    padding: 0 32px 14px;
+                }
+                padding: 0 8px 12px;
             }
 
             &__type {
@@ -447,24 +458,35 @@
                 font-weight: 500;
                 font-size: 16px;
                 line-height: 18px;
-                color: #000000;
+                color: #000;
             }
 
             &__body {
+                @include md-block {
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 24px 32px;
+                }
                 box-sizing: border-box;
                 display: flex;
-                align-items: center;
-                padding: 24px 32px;
+                flex-direction: column;
+                padding: 16px;
                 background: #fff;
                 box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
             }
 
             &__data, &__actions {
-                width: 50%;
+                @include md-block {
+                    width: 50%;
+                }
             }
 
             &__actions {
-                text-align: right;
+                @include md-block {
+                    text-align: right;
+                    margin-top: 0;
+                }
+                margin-top: 12px;
             }
 
             &__city, &__value {
@@ -476,6 +498,7 @@
             &__city {
                 margin-bottom: 12px;
             }
+
             & + & {
                 margin-top: 40px;
             }
@@ -487,10 +510,24 @@
     }
 
     &-section {
+        @include lg-block {
+            flex-direction: row;
+            justify-content: space-between;
+        }
         display: flex;
+        flex-direction: column;
 
         &__half {
-            width: 50%;
+            @include lg-block {
+                width: #{calc(50% - 15px)};
+            }
+            width: 100%;
+            &:last-child {
+                @include lg-block {
+                    margin-top: 0;
+                }
+                margin-top: 32px;
+            }
         }
 
         &__title {
@@ -502,7 +539,30 @@
         }
 
         &-nav {
+            @include lg-block {
+                display: flex;
+            }
+            //display: none;
             margin-bottom: 50px;
+
+            //&--mobile {
+            //    @include lg-block {
+            //        display: none;
+            //    }
+            //    display: block;
+            //}
+
+            &--mobile .checkout-nav__item:not(.checkout-nav__item--active) {
+                @include md-block {
+                    display: none;
+                }
+            }
+
+            &-wrap {
+                @include to($break_lg) {
+                    margin-bottom: 2px;
+                }
+            }
         }
     }
 
@@ -510,14 +570,25 @@
         max-width: 477px;
 
         &__button {
-            margin-top: 36px;
+            @include md-block {
+                margin-top: 36px;
+            }
+            margin-top: 24px;
         }
     }
 
     &-stucture {
+        @include xl-block {
+            padding: 55px 50px 35px;
+        }
+        @include lg-block {
+            max-width: 580px;
+        }
+        @include md-block {
+            padding: 32px;
+        }
         box-sizing: border-box;
-        max-width: 580px;
-        padding: 55px 50px 35px;
+        padding: 24px 12px 20px;
         background: #fff;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
         margin-left: auto;
@@ -530,10 +601,20 @@
         }
 
         &__total {
-            margin-bottom: 40px;
+            @include md-block {
+                margin-bottom: 40px;
+            }
+            margin-bottom: 24px;
+            
+            &-data {
+                margin-right: 12px;
+                margin-bottom: 12px;
+            }
 
             &-head {
                 display: flex;
+                flex-wrap: wrap;
+                align-items: center;
                 justify-content: space-between;
             }
 

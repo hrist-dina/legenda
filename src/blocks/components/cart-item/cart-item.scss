@@ -335,16 +335,33 @@
         }
 
         &__img-link {
-            @include wh(72px);
+
+            @include md-block {
+                max-width: 72px;
+                height: 72px;
+            }
+            width: 100%;
+            max-width: 48px;
+            height: 48px;
             margin-right: 20px;
         }
 
         &__data {
-            max-width: 165px;
+            @include lg-block {
+                max-width: 165px;
+            }
+            max-width: 350px;
+            padding-right: 30px;
         }
         
         &__delete {
-            margin-left: 10px;
+            @include md-block {
+                margin-left: 10px;
+                top: 0;
+                right: 16px;
+            }
+            top: 16px;
+            right: 0;
         }
 
         &__order {

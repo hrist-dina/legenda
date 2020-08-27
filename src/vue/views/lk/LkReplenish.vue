@@ -3,12 +3,17 @@
     .lk-tab
         section.lk-section
             article.lk-section__half
-                checkout-navigation(
-                    :steps="replenish"
-                ).checkout-nav--two.lk-section-nav
+                .lk-section-nav-wrap.checkout__nav
+                    checkout-navigation(
+                        :steps="replenish"
+                    ).checkout-nav--two.lk-section-nav
                 .lk-section-body
-                    .lk-replenish
-                        router-view
+                    checkout-navigation(
+                        :steps="replenish"
+                    ).lk-section-nav--mobile
+                        template(slot="body")
+                            .lk-replenish
+                                    router-view
             article.lk-section__half
                 .lk-section-order
                     lk-structure

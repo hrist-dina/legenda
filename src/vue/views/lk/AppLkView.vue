@@ -25,14 +25,19 @@
                     |
                     a(href="/auth/#/login").link войдите
             .lk-body(v-if="isAuth")
-                .lk-nav
-                    router-link(
-                        v-for="tab in tabNav"
-                        :key="tab.name"
-                        :to="{name: tab.name}"
-                        active-class="active"
-                        :class="{active: isActive(tab)}"
-                    ).lk-nav__item {{ tab.title }}
+                .lk-repeat
+                    +link-icon('Повторить последний заказ', 'repeat')(
+                        @click.prevent="onRepeat"
+                    ).link--repeat
+                .lk-nav.swiper-container.js-tabs-scroll
+                    .lk-nav__list.swiper-wrapper
+                        router-link(
+                            v-for="tab in tabNav"
+                            :key="tab.name"
+                            :to="{name: tab.name}"
+                            active-class="active"
+                            :class="{active: isActive(tab)}"
+                        ).swiper-slide.lk-nav__item {{ tab.title }}
                     +link-icon('Повторить последний заказ', 'repeat')(
                         @click.prevent="onRepeat"
                     ).link--repeat.lk-nav__repeat
@@ -46,6 +51,7 @@ import LkMeta from '%vue%/views/lk/LkMeta'
 import { LK_ORDER_REPEAT, LK_ORDERS } from '%vue%/router/constants'
 import { toggleAdditionalProducts } from '%common%/helper'
 import { showNotification } from '%vue%/store/common/helper'
+import TabsScroll from '%classes%/TabsScroll'
 
 export default {
     components: {
@@ -121,6 +127,9 @@ export default {
         $route() {
             this.toggleAdditional()
         }
+    },
+    mounted() {
+        new TabsScroll()
     }
 }
 </script>

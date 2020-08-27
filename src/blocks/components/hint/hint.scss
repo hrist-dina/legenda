@@ -76,4 +76,23 @@
         opacity: 1;
         z-index: 5;
     }
+
+    &--mobile-bottom & {
+        @include to($break_sm) {
+            &-content {
+                top: 30px;
+                right: 0;
+                left: 0;
+                transform: translateX(-50%);
+
+                &:before {
+                    top: -4px;
+                    right: auto;
+                    left: 52%;
+                    margin-top: 0;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
 }

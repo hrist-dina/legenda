@@ -4,7 +4,7 @@
     .lk-meta
         .lk-meta__head
             .lk-meta__title Вам доступно
-            +hint.lk-meta__hint
+            +hint.hint--mobile-bottom.lk-meta__hint
                 span Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, illo, sunt. Adipisci corporis cumque dolorem expedita fugit illum nemo nulla odio repudiandae! Incidunt libero quam similique ut! Laborum, quisquam totam.
         .lk-meta__list
             .lk-meta__item

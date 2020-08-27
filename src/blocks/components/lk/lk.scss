@@ -1,29 +1,62 @@
 .lk {
+
+    & .container {
+        @include container-padding;
+    }
+
     &-additional {
         margin-top: 90px;
     }
 
     &-header {
         &__top {
+            @include md-block {
+                margin-bottom: 32px;
+            }
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
         }
 
         &__meta {
-            margin-bottom: 48px;
+            @include md-block {
+                margin-bottom: 48px;
+            }
+            margin-bottom: 20px;
+        }
+
+        & .button {
+            @include to($break_md) {
+                padding: 12px 16px;
+                font-size: 14px;
+                line-height: 18px;
+            }
         }
     }
 
+    &-repeat {
+        @include lg-block {
+            display: none;
+        }
+        text-align: center;
+        margin: 20px auto;
+    }
+
     &-meta {
+        @include md-block {
+            padding: 28px 48px 32px;
+        }
         box-sizing: border-box;
-        padding: 28px 48px 32px;
+        padding: 14px 17px 24px;
         background: #fff;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 
         &__head {
-            margin-bottom: 19px;
+            @include md-block {
+                margin-bottom: 19px;
+            }
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
         }
@@ -40,43 +73,93 @@
         }
 
         &__list {
+            @include sm-block {
+                flex-direction: row;
+                align-items: center;
+            }
             display: flex;
-            align-items: center;
+            flex-direction: column;
         }
 
         &__item {
-            margin-right: 60px;
+            @include sm-block {
+                margin-right: 60px;
+                margin-bottom: 0;
+            }
+            margin-bottom: 12px;
             display: flex;
+            &:last-child {
+                margin-bottom: 0;
+            }
 
             &-icon {
-                @include wh(48px);
+                @include md-block {
+                    @include wh(48px);
+                }
+                @include wh(32px);
                 margin-right: 4px;
                 cursor: default;
             }
 
+            &-data {
+                @include sm-block {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                display: flex;
+                align-items: center;
+            }
+
             &-value {
+                @include sm-block {
+                    font-size: 28px;
+                    line-height: 35px;
+                }
                 font-weight: $bold;
-                font-size: 28px;
-                line-height: 35px;
-                color: #000000;
+                font-size: 20px;
+                line-height: 32px;
+                color: #000;
                 margin-bottom: 4px;
             }
 
             &-title {
-                font-size: 16px;
-                line-height: 25px;
+                @include sm-block {
+                    font-size: 16px;
+                    line-height: 25px;
+                    margin-left: 0;
+                }
+                font-size: 15px;
+                line-height: 22px;
                 color: #555555;
+                margin-left: 4px;
             }
         }
     }
 
     &-nav {
+        @include lg-block {
+            margin-bottom: 32px;
+            padding: 0 0 9px;
+            border-top: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
         display: flex;
-        padding-bottom: 9px;
+        border-top: 1px solid rgba(34, 155, 215, 0.5);
         border-bottom: 1px solid rgba(34, 155, 215, 0.5);
-        margin-bottom: 32px;
+        margin-bottom: 27px;
+        padding: 8px 16px;
+        margin-left: -16px;
+        margin-right: -16px;
+
+        &__list {
+            @include lg-block {
+                width: auto;
+            }
+        }
 
         &__item {
+            width: auto;
             font-weight: 500;
             font-size: 16px;
             line-height: 32px;
@@ -95,45 +178,88 @@
         }
 
         &__repeat {
+            @include lg-block {
+                display: inline-flex;
+                align-items: center;
+            }
+            display: none;
             margin-left: auto;
         }
     }
 
     &-orders {
         &__pagination {
-            margin-top: 52px;
+            @include lg-block {
+                margin-top: 52px;
+            }
+            margin-top: 32px;
+
+            & .pagination {
+                @include lg-block {
+                    justify-content: flex-start;
+                }
+                justify-content: center;
+            }
         }
 
         &-item {
-            margin-bottom: 40px;
-            &:last-child {
-                margin-bottom: 0;
+            @include lg-block {
+                margin-bottom: 40px;
             }
+            margin-bottom: 32px;
 
             &__head {
+                @include lg-block {
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0 32px 12px;
+                }
                 display: flex;
-                align-items: center;
-                padding: 0 32px 12px;
+                flex-direction: column;
+                position: relative;
+                padding: 0 8px 10px;
             }
 
             &__data {
-                font-size: 14px;
-                line-height: 18px;
+                @include lg-block {
+                    margin-right: 42px;
+                    margin-bottom: 0;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+
+                font-size: 13px;
+                line-height: 16px;
                 color: #767676;
-                margin-right: 42px;
+                margin-bottom: 8px;
+
 
                 &--number {
+                    @include lg-block {
+                        font-size: 14px;
+                        line-height: 18px;
+                    }
+                    font-size: 15px;
+                    line-height: 20px;
                     font-weight: $bold;
-                    color: #000000;
+                    color: #000;
                 }
             }
 
             &__status {
+                @include lg-block {
+                    position: relative;
+                    font-size: 14px;
+                    line-height: 18px;
+                    padding-left: 5px;
+                    margin-left: auto;
+                }
+                position: absolute;
+                top: 0;
+                right: 0;
                 font-weight: 500;
-                font-size: 14px;
+                font-size: 15px;
                 line-height: 18px;
-                padding-left: 5px;
-                margin-left: auto;
                 color: #004f91;
 
                 &--success {
@@ -142,16 +268,23 @@
             }
 
             &__body {
+                @include lg-block {
+                    flex-direction: row;
+                    padding: 25px 32px;
+                }
                 box-sizing: border-box;
                 display: flex;
-                padding: 25px 32px;
+                flex-direction: column;
+                padding: 16px 12px;
                 background: #fff;
                 box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
             }
 
             &__list {
+                @include lg-block {
+                    max-width: 654px;
+                }
                 width: 100%;
-                max-width: 654px;
             }
 
             &__row {
@@ -163,48 +296,91 @@
             }
 
             &__title {
+                @include lg-block {
+                    max-width: 490px;
+                }
                 width: 100%;
-                max-width: 490px;
             }
 
             &__link {
-                font-size: 16px;
-                line-height: 21px;
+                @include sm-block {
+                    font-size: 16px;
+                    line-height: 21px;
+                }
+                font-size: 15px;
+                line-height: 20px;
                 text-decoration: none;
                 color: #373737;
             }
 
             &__count {
+                @include sm-block {
+                    font-size: 16px;
+                    line-height: 21px;
+                    min-width: 70px;
+                }
                 box-sizing: border-box;
-                min-width: 70px;
-                font-size: 16px;
-                line-height: 21px;
+                min-width: 60px;
+                font-size: 15px;
+                line-height: 20px;
                 color: #666666;
                 padding-left: 5px;
                 text-align: right;
             }
 
             &__price {
+                @include sm-block {
+                    min-width: 90px;
+                    font-size: 16px;
+                    line-height: 21px;
+                }
+                box-sizing: border-box;
+                min-width: 80px;
                 font-weight: 500;
-                font-size: 16px;
-                line-height: 21px;
+                font-size: 15px;
+                line-height: 20px;
                 color: #000;
-                min-width: 90px;
                 padding-left: 5px;
                 text-align: right;
             }
 
             &__actions {
-                text-align: right;
-                width: #{calc(100% - 654px)};
+                @include lg-block {
+                    flex-direction: column;
+                    align-items: flex-end;
+                    justify-content: flex-start;
+                    width: #{calc(100% - 654px)};
+                    border: none;
+                    text-align: right;
+                    padding-top: 0;
+                    margin-top: 0;
+                }
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                padding-top: 16px;
+                margin-top: 20px;
+                border-top: 1px solid rgba(34, 155, 215, 0.15);
             }
 
             &__total {
+                @include lg-block {
+                    margin-bottom: 16px;
+                    margin-left: 0;
+                }
+
+                @include sm-block {
+                    font-size: 20px;
+                    line-height: 26px;
+                }
                 font-weight: $bold;
-                font-size: 20px;
-                line-height: 26px;
+                font-size: 18px;
+                line-height: 28px;
                 color: #000;
-                margin-bottom: 16px;
+                margin-left: 12px;
+            }
+            &:last-child {
+                margin-bottom: 0;
             }
         }
     }
@@ -251,9 +427,6 @@
     &-address {
         &-item {
             width: 100%;
-            & + & {
-                margin-top: 40px;
-            }
 
             &__head {
                 padding: 0 32px 14px;
@@ -303,6 +476,9 @@
             &__city {
                 margin-bottom: 12px;
             }
+            & + & {
+                margin-top: 40px;
+            }
         }
 
         &-add {
@@ -312,10 +488,6 @@
 
     &-section {
         display: flex;
-
-        &-nav {
-            margin-bottom: 50px;
-        }
 
         &__half {
             width: 50%;
@@ -327,6 +499,10 @@
             line-height: 25px;
             color: #1b262c;
             margin-bottom: 24px;
+        }
+
+        &-nav {
+            margin-bottom: 50px;
         }
     }
 

@@ -12,7 +12,8 @@ export default class Mask {
     phone() {
         new Inputmask({
             mask: '+7 (999) 999 99-99',
-            showMaskOnHover: false
+            showMaskOnHover: false,
+            autoUnmask: true
         }).mask(this.selector)
     }
 }

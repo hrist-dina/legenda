@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { checkEmail } from '%common%/helper'
+import { checkEmail, checkPhone } from '%common%/helper'
 import { declOfNum } from '%common%/formatters'
 import Mask from '%classes%/Mask'
 
@@ -78,6 +78,14 @@ export default {
                         email: true,
                         valid: checkEmail,
                         message: 'Адрес содержит недопустимые символы'
+                    })
+                }
+
+                if (this.validType === 'phone') {
+                    valArray.push({
+                        phone: true,
+                        valid: checkPhone,
+                        message: 'Номер телефона некорректный'
                     })
                 }
 
@@ -148,6 +156,13 @@ export default {
                     error = rule.message
                 }
                 if (
+                    rule.phone &&
+                    this.value.length > 0 &&
+                    rule.valid(this.value)
+                ) {
+                    error = rule.message
+                }
+                if (
                     rule.password &&
                     this.value.length > 0 &&
                     this.isValidType
@@ -202,7 +217,7 @@ export default {
     },
     mounted() {
         if (this.isMaskPhone) {
-            new Mask('.js-mask-phone').phone()
+            new Mask(this.$el.querySelector('input')).phone()
         }
     }
 }

@@ -25,7 +25,7 @@ export const checkEmail = string => {
 
 export const checkPhone = string => {
     return !!string.search(
-        /^\+7\s([0-9]{3})\s([0-9]{3})-([0-9]{2})-([0-9]{2})$/i
+        /^\+7\s\(([0-9]{3})\)\s([0-9]{3})\s([0-9]{2})-([0-9]{2})$/i
     )
 }
 

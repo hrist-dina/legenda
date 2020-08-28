@@ -144,17 +144,23 @@
         width: 690px;
         max-height: 444px;
         &:before {
+            @include xl-block {
+                top: -30px;
+                height: 30px;
+            }
             content: "";
             position: absolute;
-            top: -30px;
+            top: -42px;
             right: 0;
             width: 100%;
-            height: 30px;
+            height: 42px;
         }
     }
 
     &__order:hover &__mini {
-        display: block;
+        @include md-block {
+            display: block;
+        }
     }
 
     &-mini {

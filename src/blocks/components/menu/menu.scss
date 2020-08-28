@@ -74,18 +74,24 @@
             right: -420px;
         }
         @include to($break_lg) {
-            @include transitionSomeProps((background, transform), .4s, 0s, ease);
+            @include transitionSomeProps((visibility, opacity, transform), .4s, 0s, ease);
             display: block;
+            z-index: -1;
             right: 0;
             transform: translateX(-500px);
+            opacity: 0;
+            visibility: hidden;
+            background: #229bd7;
             &.active {
                 display: block;
+                z-index: 2;
                 right: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
                 transform: translateX(0);
-                background: #229bd7;
+                opacity: 1;
+                visibility: visible;
             }
         }
         display: none;

@@ -255,17 +255,20 @@
                 fill: #f1f6fc;
             }
         }
+    }
 
-        & .icon-burger {
-            &:before, &:after {
-                background-color: #dbe8f9;
+    &.menu-opened {
+        @include to($break_lg) {
+            & .icon-burger {
+                &:before, &:after {
+                    background-color: #dbe8f9;
+                }
+                background-color: transparent;
             }
-            background-color: transparent;
         }
     }
 
     &.menu-opened & {
-
         &__logo {
             @include to($break_lg) {
                 display: none;

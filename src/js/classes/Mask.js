@@ -9,8 +9,9 @@ export default class Mask {
         new Mask('.js-mask-phone').phone()
     }
 
-    phone() {
-        new Inputmask({
+    phone(options) {
+        return new Inputmask({
+            ...options,
             mask: '+7 (999) 999 99-99',
             showMaskOnHover: false,
             autoUnmask: true

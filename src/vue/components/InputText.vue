@@ -26,7 +26,8 @@ export default {
         return {
             showPassword: false,
             isActive: this.value !== '',
-            isFocus: this.value !== ''
+            isFocus: this.value !== '',
+            isMaskComplete: false
         }
     },
     props: {
@@ -84,7 +85,6 @@ export default {
                 if (this.validType === 'phone') {
                     valArray.push({
                         phone: true,
-                        valid: checkPhone,
                         message: 'Номер телефона некорректный'
                     })
                 }
@@ -114,6 +114,9 @@ export default {
     },
     computed: {
         getType() {
+            if (this.isMaskPhone) {
+                return 'tel'
+            }
             if (this.isPassword) {
                 return this.showPassword ? 'text' : 'password'
             }
@@ -158,7 +161,7 @@ export default {
                 if (
                     rule.phone &&
                     this.value.length > 0 &&
-                    rule.valid(this.value)
+                    !this.isMaskComplete
                 ) {
                     error = rule.message
                 }
@@ -188,9 +191,9 @@ export default {
                 value: target.value.trim()
             })
         },
-        onValidChange() {
+        onValidChange(valid) {
             if (this.isActive) {
-                this.$emit('validate', { isValid: this.isValid })
+                this.$emit('validate', { isValid: valid ?? this.isValid })
             }
         },
         onFocus() {
@@ -208,6 +211,11 @@ export default {
     watch: {
         isValid() {
             this.onValidChange()
+        },
+        value() {
+            if (this.isMaskComplete) {
+                this.isMaskComplete = false
+            }
         }
     },
     created() {
@@ -217,7 +225,17 @@ export default {
     },
     mounted() {
         if (this.isMaskPhone) {
-            new Mask(this.$el.querySelector('input')).phone()
+            new Mask(this.$el.querySelector('input')).phone({
+                oncomplete: () => {
+                    this.isMaskComplete = true
+                },
+                onincomplete: () => {
+                    this.isMaskComplete = true
+                },
+                oncleared: () => {
+                    this.isMaskComplete = false
+                }
+            })
         }
     }
 }

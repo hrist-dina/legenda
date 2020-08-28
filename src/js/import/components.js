@@ -8,6 +8,7 @@ import Component from '%classes%/Component'
 import Tabs, { SELECTOR_TABS } from '%classes%/Tabs'
 import TabsScroll from '%classes%/TabsScroll'
 import InfoCardSlider from '%components%/info-card/info-card-slider'
+import Menu from '%components%/menu/menu'
 
 new App().init(() => {
     new SliderProduct()
@@ -22,4 +23,5 @@ new App().init(() => {
     new Filter()
     new Component(SELECTOR_TABS, Tabs)
     new TabsScroll()
+    new Menu()
 })

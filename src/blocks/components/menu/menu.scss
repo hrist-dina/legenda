@@ -1,20 +1,60 @@
 .menu {
-    margin-left: -24px;
+    @include from(1360px) {
+        margin-left: -24px;
+        margin-top: 0;
+    }
+    margin-top: 10px;
+
+    &-head {
+        @include lg-block {
+            display: none;
+        }
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        padding: 20px 16px;
+        &.hide {
+            display: none;
+        }
+    }
+
+    &-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+    }
+
+    &-title {
+        width: #{calc(100% - 64px)};
+        text-align: center;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+        color: #fff;
+    }
 
     &-list {
+        @include lg-block {
+            max-width: 320px;
+            &:before {
+                @include wh(100px, 100%);
+                content: "";
+                display: block;
+                position: absolute;
+                z-index: 0;
+                top: 0;
+                left: -100px;
+            }
+        }
         list-style: none;
         position: relative;
         width: 100%;
-        max-width: 320px;
-        &:before {
-            @include wh(100px, 100%);
-            content: "";
-            display: block;
-            position: absolute;
-            z-index: 0;
-            top: 0;
-            left: -100px;
-        }
     }
 
     &-item {
@@ -30,22 +70,49 @@
     }
 
     &-item > &-list {
+        @include xl-block {
+            right: -420px;
+        }
+        @include to($break_lg) {
+            @include transitionSomeProps((background, transform), .4s, 0s, ease);
+            display: block;
+            right: 0;
+            transform: translateX(-500px);
+            &.active {
+                display: block;
+                right: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transform: translateX(0);
+                background: #229bd7;
+            }
+        }
         display: none;
         position: absolute;
         top: 0;
-        right: -420px;
+        right: -360px;
     }
 
     &-item:hover > &-list {
-        display: block;
+        @include lg-block {
+            display: block;
+        }
     }
 
     &-link {
-        width: calc(100% - 36px);
-        padding: 12px 5px 12px 24px;
+        @include xl-block {
+            width: calc(100% - 36px);
+            padding: 12px 5px 12px 24px;
+            text-decoration: none;
+            font-size: 20px;
+            line-height: 32px;
+        }
+        width: calc(100% - 32px);
+        padding: 10px 4px 10px 22px;
         text-decoration: none;
-        font-size: 20px;
-        line-height: 32px;
+        font-size: 18px;
+        line-height: 28px;
         color: #fff;
     }
 

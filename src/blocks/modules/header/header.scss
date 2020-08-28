@@ -160,6 +160,10 @@
 
     &__menu-block {
         display: none;
+
+        & .container {
+            @include container-padding;
+        }
     }
 
     &-main {
@@ -251,23 +255,47 @@
                 fill: #f1f6fc;
             }
         }
+
+        & .icon-burger {
+            &:before, &:after {
+                background-color: #dbe8f9;
+            }
+            background-color: transparent;
+        }
     }
 
     &.menu-opened & {
 
         &__logo {
+            @include to($break_lg) {
+                display: none;
+            }
             position: relative;
             z-index: 1001;
         }
 
         &__menu {
-            position: absolute;
+            @include from(1360px) {
+                position: absolute;
+            }
             z-index: 1001;
+        }
+
+        &__menu-icon {
+            @include to($break_lg) {
+                @include wh(24px);
+                position: absolute;
+                top: 21px;
+                right: 16px;
+            }
         }
 
         &__menu-block {
             @include wh(100%);
-            padding-top: 225px;
+            @include lg-block {
+                padding-top: 225px;
+            }
+            padding-top: 64px;
             box-sizing: border-box;
             display: block;
             position: fixed;
@@ -275,6 +303,13 @@
             top: 0;
             left: 0;
             background: #229bd7;
+
+            & .container {
+                @include lg-block {
+                    border: none;
+                }
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
         }
     }
 }

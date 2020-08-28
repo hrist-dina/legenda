@@ -1,16 +1,20 @@
 
 mixin menu
     include data
-    nav.menu
+    nav.menu.js-menu
+        .menu-head.js-menu-head.hide
+            .menu-back
+                +icon('arrow-menu-back').js-menu-back
+            .menu-title.js-menu-title
         +menu-list(menu)
 
 mixin menu-list(list)
     if list
-        ul.menu-list
+        ul.menu-list.js-menu-list
             for item in list
-                li.menu-item
-                    a(href='#').menu-link=item.name
+                li.menu-item.js-menu-item
+                    a(href='#').menu-link.js-menu-link=item.name
                     if item.children
-                        +icon('arrow-menu').menu-arrow
+                        +icon('arrow-menu').menu-arrow.js-menu-arrow
                         +menu-list(item.children)
 

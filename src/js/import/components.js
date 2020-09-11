@@ -9,6 +9,7 @@ import Tabs, { SELECTOR_TABS } from '%classes%/Tabs'
 import TabsScroll from '%classes%/TabsScroll'
 import InfoCardSlider from '%components%/info-card/info-card-slider'
 import Menu from '%components%/menu/menu'
+import UiKit from '%components%/ui-kit/ui-kit'
 
 new App().init(() => {
     new SliderProduct()
@@ -24,4 +25,5 @@ new App().init(() => {
     new Component(SELECTOR_TABS, Tabs)
     new TabsScroll()
     new Menu()
+    new UiKit()
 })

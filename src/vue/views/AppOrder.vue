@@ -3,5 +3,11 @@
 </template>
 
 <script>
-export default {}
+import UiKit from '%components%/ui-kit/ui-kit'
+
+export default {
+    updated() {
+        new UiKit()
+    }
+}
 </script>

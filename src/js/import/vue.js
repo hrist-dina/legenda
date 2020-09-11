@@ -10,6 +10,7 @@ import routerLk from '%vue%/router/lk'
 import routerAuth from '%vue%/router/auth'
 import AppAuth from '%vue%/views/AppAuth'
 import AppNotification from '%vue%/components/AppNotification'
+import FavoritePage from '%vue%/components/FavoritePage'
 import Vue from 'vue'
 import vSelect from 'vue-select'
 import { SELECTOR_PRODUCT } from '%vue%/component-selectors'
@@ -21,6 +22,8 @@ new ComponentVue('.js-vue-cart', Cart, false)
 new ComponentVue('.js-vue-location', Location, false)
 
 new ComponentVue('.js-vue-quantity', QuantityCounter)
+new ComponentVue('.js-vue-favorite-page', FavoritePage)
+
 new ComponentVue('.js-vue-app-notification', AppNotification)
 new ComponentVue('.js-vue-app-order', AppOrder, true, { router: routerOrder })
 new ComponentVue('.js-vue-app-lk', AppLk, true, { router: routerLk })

@@ -6,7 +6,7 @@ mixin cart
                 +icon('person').__icon
             a(href='/auth' v-else :class="setLoaded").__link.cart__link--auth
                 +icon('login').__icon
-            a(href='#').__link
+            a(href='/favorite').__link
                 +icon('favorite-cart').icon--counted.__icon(
                     :class="classHasFavorites"
                     :data-cnt="cntFavorites"

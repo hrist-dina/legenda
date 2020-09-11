@@ -3,6 +3,7 @@ include ../product-label/product-label
 include ../product-composition/product-composition
 
 mixin product(data, isCategory, toOrder, isRecommendation)
+    //- Дублирование шаблона в src/vue/components/Product.vue (переиспользовать не удалось)
     article.product.js-vue-product(
             class={'product--category swiper-slide': isCategory, 'product--simple':!isCategory}
         )&attributes(attributes)

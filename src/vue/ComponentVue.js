@@ -23,11 +23,11 @@ export default class ComponentVue {
         let options = this.options
         if (this.needRender) {
             options = { ...options, render: h => h(this.component) }
-        }
-        {
+        } else {
             options = {
                 ...options,
-                ...this.component
+                ...this.component,
+                render: false
             }
         }
         document.querySelectorAll(this.selector).forEach(node => {

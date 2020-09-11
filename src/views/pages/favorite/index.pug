@@ -1,0 +1,10 @@
+extends ../../layouts/default
+
+block variables
+	- const title = "Избранное";
+	- const h1 = title
+	- isInnerPage = true
+	include ../../data/inner
+
+block content
+	.js-vue-favorite-page

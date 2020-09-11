@@ -60,6 +60,14 @@ mixin product-list(isAjax)
                          +product-banner(item)
                      else
                          +product(item)
+mixin product-list-three
+    include data
+    section.product-list-section
+        +container
+            .product-list.product-list--three
+                 for item in products
+                     if !item.banner
+                         +product(item)
 
 mixin product-list-slider(data, isCategory = true, toOrder = false)
     section.product-list-slider.js-product-list-slider-section

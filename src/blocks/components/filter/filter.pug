@@ -44,5 +44,16 @@ mixin filter-item(data)
                     .filter-item__show.js-filter-show
                         .filter-item__show-text(data-text='Скрыть') Показать все
                         +icon('round-plus').filter-item__show-icon
+mixin filter-item-simple(data)
+    include ../ui-kit/ui-kit
+    .filter-item.filter-item--simple.active(data-type=data.type)&attributes(attributes)
+        .__inner
+            .__head
+                .__title=data.title
+            .__drop
+                .__list
+                    for item in data.list
+                        +field-checkbox(item.name, item.isChecked).js-filter-change.__checkbox
+                            | #{item.text}
 
 

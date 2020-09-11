@@ -121,11 +121,15 @@ h2, .h2 {
     }
     &::-webkit-scrollbar-track {
         background: #fff;
+        border: none;
+        box-sizing: border-box;
     }
 
     &::-webkit-scrollbar-thumb {
         background-color: #f0f0f0;
-        outline: 1px solid slategrey;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
     }
 }
 
@@ -139,10 +143,15 @@ h2, .h2 {
     }
     &::-webkit-scrollbar-track {
         background: #EFEFEF;
+        border: none;
+        box-sizing: border-box;
     }
 
     &::-webkit-scrollbar-thumb {
         background-color: #5BC5F2;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
     }
 }
 

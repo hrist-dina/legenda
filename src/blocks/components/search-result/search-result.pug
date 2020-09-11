@@ -1,0 +1,16 @@
+include ../product/product
+include ../product/data
+include ../filter/filter
+include ../filter/data
+
+mixin search-result
+    section.search-result
+        +container
+            .__meta
+                .__count 18 товаров
+            section.__block
+                article.__sidebar
+                    +container
+                        +filter-item-simple(filterSearch)
+                article.__content
+                    +product-list-three

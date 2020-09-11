@@ -73,7 +73,10 @@
     }
 
     &__data {
-        margin-top: 24px;
+        @include sm-block {
+            margin-top: 24px;
+        }
+        margin-top: 18px;
     }
 
     &__title {
@@ -238,6 +241,31 @@
             &:hover {
                 box-shadow: 0 2px 40px rgba(34, 155, 215, 0.15);
             }
+        }
+    }
+
+    &-list--three {
+        @include sm-block {
+            @include row-flex();
+            margin-bottom: -24px;
+        }
+        @include u-row-flex(4px);
+        margin-bottom: -4px;
+
+        & .product {
+            @include xl-block {
+                @include u-size(3, 9, $offset);
+            }
+            @include lg-block {
+                @include u-size(4.5, 9, $offset);
+            }
+            @include sm-block {
+                @include size(6);
+                @include col;
+            }
+            @include u-size(6, $columns, 4px);
+            margin-left: 2px;
+            margin-right: 2px;
         }
     }
 

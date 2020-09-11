@@ -1,0 +1,58 @@
+.search-result {
+
+    & > .container {
+        @include container-padding;
+    }
+
+    &__meta {
+        @include row-flex;
+        @include md-block {
+            margin-bottom: 36px;
+        }
+        margin-bottom: 24px;
+    }
+
+    &__count {
+        @include col;
+        @include size(12);
+        @include md-block {
+            font-size: 18px;
+            line-height: 25px;
+        }
+        font-size: 16px;
+        line-height: 22px;
+        color: #343e44;
+    }
+
+    &__block {
+        @include row-flex;
+    }
+
+    &__sidebar {
+        @include col;
+        @include size-lg(3);
+        @include size(12);
+        @include lg-block {
+            margin-bottom: 0;
+        }
+        @include md-block {
+            margin-bottom: 36px;
+        }
+        margin-bottom: 24px;
+
+        & .container {
+            position: sticky;
+            top: 24px;
+        }
+    }
+
+    &__content {
+        @include col;
+        @include size-lg(9);
+        @include size(12);
+
+        & .container {
+            padding: 0;
+        }
+    }
+}

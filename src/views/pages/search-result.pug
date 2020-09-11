@@ -1,0 +1,11 @@
+extends ../layouts/default
+
+block variables
+	- const title = "Результаты поиска";
+	- const h1 = title
+	- isInnerPage = true
+	include ../../views/data/inner
+
+block content
+	include ../../blocks/components/search-result/search-result
+	+search-result

@@ -274,7 +274,7 @@
         }
         box-sizing: border-box;
         padding: 8px 16px;
-        background: #229bd7;
+        background-color: #229bd7;
         border-radius: 32px;
         font-size: 14px;
         line-height: 18px;
@@ -291,7 +291,7 @@
         box-sizing: border-box;
         display: inline-block;
         padding: 16px 20px;
-        background: #229bd7;
+        background-color: #229bd7;
         border-radius: 40px;
         font-weight: 500;
         font-size: 16px;
@@ -600,7 +600,7 @@
         height: 320px;
         transform: translate(-50%);
         transition: all 1s;
-        animation: wave 5s infinite linear;
+        animation: wave-button 5s infinite linear;
         border-radius: 130px;
         background-color: #229bd7;
     }
@@ -610,7 +610,49 @@
     }
 }
 
-@include keyframes(wave) {
+body .on-hover, .on-hover-reverse, {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    animation: wave-button-text 1s ease;
+    color: #fff;
+
+    &:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -10px;
+        left: 50%;
+        width: 320px;
+        height: 320px;
+        transform: translate(-50%);
+        transition: all 1s;
+        border-radius: 130px;
+        background-color: #229bd7;
+        animation: wave-button-full 1s linear;
+    }
+}
+
+body .on-hover {
+    & .icon-product-cart {
+        animation: wave-button-icon 2s ease;
+    }
+}
+
+body .on-hover-reverse {
+    animation: wave-button-text-reverse 2s ease;
+    color: #007bc2;
+    &:after {
+        transform: translate(-50%, 20%);
+        animation: wave-button-full-reverse 1s linear;
+    }
+
+    & .icon-product-cart {
+        animation: wave-button-icon-reverse 2s ease;
+    }
+}
+
+@include keyframes(wave-button) {
     0% {
         transform: translate(-50%) rotate(-180deg);
     }
@@ -618,6 +660,61 @@
         transform: translate(-50%) rotate(360deg);
     }
 }
+
+@include keyframes(wave-button-full) {
+    0% {
+        transform: translate(-50%, 20%) rotate(0);
+    }
+    100% {
+        transform: translate(-50%) rotate(180deg);
+    }
+}
+
+@include keyframes(wave-button-full-reverse) {
+    0% {
+        transform: translate(-50%) rotate(180deg);
+    }
+    100% {
+        transform: translate(-50%, 20%) rotate(-180deg);
+    }
+}
+
+@include keyframes(wave-button-text) {
+    0% {
+        color: #007bc2;
+    }
+    100% {
+        color: #fff;
+    }
+}
+
+@include keyframes(wave-button-text-reverse) {
+    0% {
+        color: #fff;
+    }
+    100% {
+        color: #007bc2;
+    }
+}
+
+@include keyframes(wave-button-icon) {
+    0% {
+        background-image: url(icon-product-cart('229BD7'));
+    }
+    100% {
+        background-image: url(icon-product-cart('fff'));
+    }
+}
+
+@include keyframes(wave-button-icon-reverse) {
+    0% {
+        background-image: url(icon-product-cart('fff'));
+    }
+    100% {
+        background-image: url(icon-product-cart('229BD7'));
+    }
+}
+
 
 .test {
     &-row {

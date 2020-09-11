@@ -151,18 +151,18 @@
         }
 
         &__checkbox {
-
             @include md-block {
                 &:nth-child(n + 5) {
                     display: flex;
                 }
             }
 
-            .show-all & {
-                display: flex;
-            }
             &:nth-child(n + 5) {
                 display: none;
+            }
+
+            .show-all & {
+                display: flex;
             }
         }
 
@@ -184,6 +184,7 @@
             margin-top: 16px;
             display: none;
             align-items: center;
+            cursor: pointer;
 
             &-icon {
                 margin-left: 8px;

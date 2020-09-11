@@ -285,6 +285,7 @@
         }
 
         &__menu-icon {
+            @include outline-none();
             @include to($break_lg) {
                 @include wh(24px);
                 position: absolute;

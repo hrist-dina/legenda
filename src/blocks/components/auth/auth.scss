@@ -15,6 +15,7 @@
         margin-bottom: 24px;
 
         &-item {
+            @include outline-none();
             @include sm-block {
                 margin-right: 24px;
                 padding: 12px 24px;

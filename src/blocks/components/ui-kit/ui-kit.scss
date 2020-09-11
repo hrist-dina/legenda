@@ -109,7 +109,7 @@
         display: flex;
         align-items: center;
         border: 1px solid rgba(0, 123, 194, 0.5);
-        padding: 6px 10px;
+        padding: 5px 10px;
         border-radius: 28px;
         font-size: 15px;
         line-height: 20px;
@@ -259,6 +259,7 @@
 }
 
 .link {
+    @include outline-none();
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
@@ -378,6 +379,7 @@
     }
 
     &-checkbox {
+        @include outline-none();
         display: flex;
         align-items: flex-start;
         cursor: pointer;
@@ -438,6 +440,7 @@
     }
 
     &-checkbox-rounded {
+        @include outline-none();
         display: flex;
         align-items: flex-start;
         cursor: pointer;
@@ -525,6 +528,7 @@
     }
 
     &-radio {
+        @include outline-none();
         display: flex;
         align-items: flex-start;
         cursor: pointer;

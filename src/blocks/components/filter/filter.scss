@@ -4,6 +4,7 @@
     }
 
     &__button {
+        @include outline-none();
         @include md-block {
             display: none;
         }
@@ -194,6 +195,7 @@
 
 
         &__head {
+            @include outline-none();
             display: flex;
             cursor: pointer;
         }

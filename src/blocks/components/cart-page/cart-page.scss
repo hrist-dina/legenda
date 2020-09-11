@@ -75,6 +75,7 @@
     }
 
     &__clean {
+        @include outline-none();
         @include md-block {
             font-size: 18px;
             line-height: 27px;

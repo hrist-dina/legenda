@@ -8,6 +8,7 @@ export default class Init {
 
     process() {
         this.user()
+        this.cart()
         this.cites()
         this.bottles()
         this.bottlesLimit()
@@ -23,7 +24,14 @@ export default class Init {
         }
 
         if (user && user.person) {
-            this.store.commit('user/setPersonalData', this.data.user.person)
+            this.store.commit('user/setPersonalData', user.person)
+        }
+    }
+
+    cart() {
+        const cart = this.data.cart
+        if (cart) {
+            this.store.commit('cart/addMany', cart)
         }
     }
 

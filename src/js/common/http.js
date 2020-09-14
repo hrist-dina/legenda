@@ -22,10 +22,7 @@ export default class HTTP {
             const response = await axios({
                 method,
                 url: this.url,
-                [method === 'get' ? 'params' : 'data']: this.data,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                [method === 'get' ? 'params' : 'data']: this.data
             })
             const { data } = response
             if (data.status) {

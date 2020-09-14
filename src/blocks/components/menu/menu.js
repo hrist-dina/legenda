@@ -14,7 +14,7 @@ export default class Menu extends ComponentBase {
         this.classBack = `${this.selector}-back`
         this.classList = `${this.selector}-list`
 
-        const arrow = this.menuItem.querySelectorAll(this.classArrow)
+        const arrow = this.menuItem?.querySelectorAll(this.classArrow)
         if (arrow) {
             arrow.forEach(item => {
                 item.addEventListener(
@@ -34,22 +34,22 @@ export default class Menu extends ComponentBase {
     }
 
     get headItem() {
-        return this.menuItem.querySelector(this.classHead)
+        return this.menuItem?.querySelector(this.classHead)
     }
 
     get backItem() {
-        return this.menuItem.querySelector(this.classBack)
+        return this.menuItem?.querySelector(this.classBack)
     }
 
     get titleItem() {
-        return this.menuItem.querySelector(this.classTitle)
+        return this.menuItem?.querySelector(this.classTitle)
     }
 
     onClickMobileItem(e) {
         e.preventDefault()
         const target = e.target
         const item = target.closest(this.classItem)
-        this.titleItem.innerText = item.querySelector(
+        this.titleItem.innerText = item?.querySelector(
             this.classLink
         ).textContent
         this.headItem.classList.remove('hide')
@@ -60,7 +60,7 @@ export default class Menu extends ComponentBase {
         e.preventDefault()
         this.titleItem.innerText = ''
         this.headItem.classList.add('hide')
-        const lists = this.menuItem.querySelectorAll(this.classList)
+        const lists = this.menuItem?.querySelectorAll(this.classList)
         lists.forEach(item => item.classList.remove('active'))
     }
 }

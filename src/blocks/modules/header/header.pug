@@ -5,6 +5,7 @@ include ../../components/search/search
 include ../../components/location/location
 include ../../components/phone/phone
 include ../../components/menu/menu
+include ../../components/menu-soc/menu-soc
 
 mixin header(isMain)
     header#header.header(
@@ -31,7 +32,12 @@ mixin header(isMain)
                     +cart
             .__menu-block
                 +container
+                    a(href='/favorite').__menu-favorite.js-vue-cart
+                        span.__menu-favorite-text Избранное
+                        span.__menu-favorite-cnt(v-if="hasInFavorites") {{ cntFavorites }}
                     +menu
+                +container.__menu-soc
+                    +menu-soc
             if isMain
                 .__slider-container
                     .__slider-wrap

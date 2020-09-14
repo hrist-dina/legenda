@@ -1,0 +1,13 @@
+.menu-soc {
+    margin-left: 20px;
+    margin-top: 32px;
+
+    &__item {
+        margin-right: 24px;
+        display: inline-block;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

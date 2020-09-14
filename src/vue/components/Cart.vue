@@ -20,11 +20,14 @@ export default {
         hasInCart() {
             return this.cnt > 0
         },
+        hasInFavorites() {
+            return this.cntFavorites > 0
+        },
         classHasInCart() {
             return { 'has-count': this.hasInCart }
         },
         classHasFavorites() {
-            return { 'has-count': this.cntFavorites > 0 }
+            return { 'has-count': this.hasInFavorites }
         },
         setLoaded() {
             return { loaded: this.loaded }

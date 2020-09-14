@@ -215,6 +215,36 @@
     }
 }
 
+@mixin menu-soc-icon {
+    @include wh(40px);
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.icon-menu-soc-vk {
+    @include icon-bgc(icon-vk("597DA3"));
+    @include menu-soc-icon;
+    background-size: 21px 12px;
+}
+
+.icon-menu-soc-ok {
+    @include icon-bgc(icon-ok("F57C1F"));
+    @include menu-soc-icon;
+    background-size: 12px 20px;
+}
+
+.icon-menu-soc-inst {
+    @include icon-bgc(icon-inst-gradient());
+    @include menu-soc-icon;
+    background-size: 32px;
+}
+
+.icon-menu-soc-youtube {
+    @include icon-bgc(icon-youtube());
+    @include menu-soc-icon;
+    background-size: 24px;
+}
+
 .icon-personal-data {
     @include wh(24px);
     @include icon-bgc(icon-personal-data());

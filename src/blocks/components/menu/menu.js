@@ -29,6 +29,7 @@ export default class Menu extends ComponentBase {
             back.addEventListener('click', this.onClickBack.bind(this))
         }
     }
+
     get menuItem() {
         return document.querySelector(this.selector)
     }
@@ -45,22 +46,49 @@ export default class Menu extends ComponentBase {
         return this.menuItem?.querySelector(this.classTitle)
     }
 
+    get header() {
+        return document.getElementById('header')
+    }
+
     onClickMobileItem(e) {
         e.preventDefault()
         const target = e.target
         const item = target.closest(this.classItem)
-        this.titleItem.innerText = item?.querySelector(
-            this.classLink
-        ).textContent
+        const text = item?.querySelector(this.classLink).textContent
+        this.titleItem.innerText = text
         this.headItem.classList.remove('hide')
-        item.querySelector(this.classList).classList.add('active')
+        const list = item.querySelector(this.classList)
+        list.classList.add('active')
+        list.setAttribute('data-title', text)
+        const header = this.header
+        if (header) {
+            header.classList.add('menu-activated')
+        }
     }
 
     onClickBack(e) {
         e.preventDefault()
-        this.titleItem.innerText = ''
-        this.headItem.classList.add('hide')
         const lists = this.menuItem?.querySelectorAll(this.classList)
-        lists.forEach(item => item.classList.remove('active'))
+        const listActivated = [...lists].filter(i => {
+            return [...i.classList].includes('active')
+        })
+
+        const countList = listActivated?.length
+        if (countList) {
+            listActivated[countList - 1].classList.remove('active')
+            const prevItem = listActivated[countList - 2]
+            if (prevItem) {
+                this.titleItem.innerText = prevItem.dataset['title'] || ''
+            }
+
+            if (countList === 1) {
+                this.titleItem.innerText = ''
+                this.headItem.classList.add('hide')
+                const header = this.header
+                if (header) {
+                    header.classList.remove('menu-activated')
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,27 @@
+<svg width="1165" height="1031" viewBox="0 0 1165 1031" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path opacity="0.4" d="M61.5 592.5C41 384 137 200.5 347.001 129.882C583.471 50.362 703 318.118 894 311C1113 316.118 1114.05 483.827 1112.5 575.882C1112.5 792.882 896.893 933.679 618 939C346.865 944.177 82 801 61.5 592.5Z" fill="#006029"/>
+<path opacity="0.55" d="M125 613.5C91.0003 400.5 128.939 264.971 326 181.5C574.5 76.2396 758.393 388.383 925.5 378.5C1018.5 373 1085.05 458.089 1094.5 536.5C1108.32 651.144 1040.89 826.362 804.5 863.5C574.69 899.608 159 826.5 125 613.5Z" fill="#2D9D46"/>
+<path d="M157.857 513.503C157.857 513.503 148.5 256.816 371 195.5C555.884 144.551 614.5 288.5 744 360.5C873.5 432.5 1048 420.5 1062.5 570.5C1073.83 742.999 875.268 839.431 661 847C452.691 854.361 156.719 775.876 157.857 513.503Z" fill="#5EBB5E"/>
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="207" y="219" width="835" height="604">
+<path d="M211.636 448.659C211.636 448.659 251.159 240.321 430.427 220.042C609.697 199.762 728.289 482.285 868.494 471.905C1008.7 461.525 1051.19 552.714 1040.41 615.405C1024.63 707.066 787.082 844.493 586.857 820.159C392.2 796.505 172.168 692.314 211.636 448.659Z" fill="#F1F6FC"/>
+</mask>
+<g mask="url(#mask0)">
+<rect x="204" y="38" width="855" height="850" fill="url(#pattern0)"/>
+</g>
+<mask id="mask1" mask-type="alpha" maskUnits="userSpaceOnUse" x="537" y="143" width="450" height="507">
+<rect x="537" y="143" width="450" height="507" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask1)">
+<rect x="204" y="38" width="855" height="850" fill="url(#pattern1)"/>
+</g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0" transform="translate(-0.000202288) scale(0.000625253)"/>
+</pattern>
+<pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image1" transform="scale(0.00100015)"/>
+</pattern>
+<image id="image0" width="1600" height="1590" xlink:href=""/>
+<image id="image1" width="1000" height="994" xlink:href=""/>
+</defs>
+</svg>

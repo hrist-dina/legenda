@@ -6,6 +6,7 @@ include ../../components/location/location
 include ../../components/phone/phone
 include ../../components/menu/menu
 include ../../components/menu-soc/menu-soc
+include ../../components/slider-main/slider-main
 
 mixin header(isMain)
     header#header.header(
@@ -39,8 +40,5 @@ mixin header(isMain)
                 +container.__menu-soc
                     +menu-soc
             if isMain
-                .__slider-container
-                    .__slider-wrap
-                        .__slider
-                            img(src='img/header/slider-1.jpg')
+                +slider-main.__slider-container
 

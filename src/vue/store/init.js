@@ -1,3 +1,5 @@
+import { isProd } from '%common%/http'
+
 export default class Init {
     constructor(store, data) {
         this.store = store
@@ -30,7 +32,7 @@ export default class Init {
 
     cart() {
         const cart = this.data.cart
-        if (cart) {
+        if (cart && isProd) {
             this.store.commit('cart/addMany', cart)
         }
     }

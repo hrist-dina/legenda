@@ -1,0 +1,60 @@
+
+mixin slider-main
+    section.slider-main.swiper-container.js-slider-main&attributes(attributes)
+        .__wrapper.swiper-wrapper
+            .__item.swiper-slide
+                .__item-inner(style='background: radial-gradient(75.72% 133.81% at 31.35% 38.61%, #5BC5F2 11.46%, #169FDB 45.83%, #007BC2 90.62%);')
+                    .__pattern
+                        img(src='img/slider-main/pattern-1.svg', alt='pattern')
+                    +container.__message-container
+                        .__message
+                            | Мы заботимся о здоровье каждого человека с первого дня жизни, производя и доставляя полезную воду Алтая «Легенда жизни»
+                    .__pic
+                        svg(width='1293', height='1030', viewBox='0 0 1293 1030', fill='none', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                            path(opacity='0.15', d='M475.599 274.528C106.974 316.839 45.4824 482.02 31.4529 533.476C-8.0367 678.313 397.342 791.594 679.811 873.737C962.281 955.88 1010.15 1063.98 1121.2 994.91C1232.25 925.843 1284.93 733.162 1219.02 402.618C1158.41 98.6038 1024.83 74.0523 930.696 63.9718C801.132 50.0977 583.549 262.137 475.599 274.528Z', fill='#CCF0FF')
+                            path(opacity='0.55', d='M508.12 324.489C194.266 394.987 156.507 543.051 149.163 588.702C128.492 717.198 488.389 777.429 739.464 822.164C990.538 866.899 1041.78 955.661 1131.13 885.874C1220.48 816.088 1248.1 645.132 1160.78 366.282C1080.47 109.813 963.062 100.979 880.984 100.979C768.018 100.979 600.031 303.843 508.12 324.489Z', fill='#5BC5F2')
+                            path(d='M553.554 346.423C212.546 459.743 238.577 566.983 235.43 607.648C225.503 744.257 502.113 745.203 715.138 769.69C928.164 794.177 1059.38 865.996 1129.56 799.186C1199.74 732.375 1240.2 542.1 1109.2 361.044C978.193 179.989 943.04 146.703 832.942 143.802C738.136 141.304 640.666 317.475 553.554 346.423Z', fill='#229BD7')
+                            mask#mask0(mask-type='alpha', maskUnits='userSpaceOnUse', x='286', y='217', width='894', height='599')
+                                path(d='M555.068 362.311C332.385 451.866 295.118 527.481 288.228 561.267C265.678 674.827 521.243 700.166 715.735 739.583C910.228 779 1068.08 848.449 1139.48 798.708C1210.89 748.968 1185.52 583.791 1082.17 420.492C978.817 257.192 932.777 229.981 831.303 217.78C743.922 207.274 633.052 330.948 555.068 362.311Z', fill='#999999')
+                            g(mask='url(#mask0)')
+                                rect(x='-42.2285', y='-12.7852', width='1289.68', height='861.487', fill='url(#pattern0)')
+                            mask#mask1(mask-type='alpha', maskUnits='userSpaceOnUse', x='476', y='117', width='621', height='563')
+                                rect(x='476.912', y='117', width='619.289', height='562.061', fill='#C4C4C4')
+                            g(mask='url(#mask1)')
+                                rect(x='-42.2285', y='-12.7852', width='1289.68', height='861.487', fill='url(#pattern1)')
+                            defs
+                                pattern#pattern0(patternContentUnits='objectBoundingBox', width='1', height='1')
+                                    use(xlink:href='#image0', transform='translate(-0.000208909) scale(0.000521051 0.000780031)')
+                                pattern#pattern1(patternContentUnits='objectBoundingBox', width='1', height='1')
+                                    use(xlink:href='#image1', transform='translate(-0.000208909) scale(0.000521051 0.000780031)')
+                                image#image0(width='1920', height='1282', xlink:href='img/slider-main/bg-1.jpg')
+                                image#image1(width='1920', height='1282', xlink:href='img/slider-main/item-1.png')
+            .__item.swiper-slide
+                .__item-inner(style='background: radial-gradient(75.72% 133.81% at 31.35% 38.61%, #5EBB5E 11.46%, #2D9D46 45.83%, #007E37 90.62%);')
+                    .__pattern
+                        img(src='img/slider-main/pattern-2.svg', alt='pattern')
+                    +container.__message-container
+                        .__message
+                            | Полезная вода Алтая для активных людей
+                    .__pic
+                        svg(width='1165', height='1031', viewBox='0 0 1165 1031', fill='none', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink')
+                            path(opacity='0.4', d='M61.5 592.5C41 384 137 200.5 347.001 129.882C583.471 50.362 703 318.118 894 311C1113 316.118 1114.05 483.827 1112.5 575.882C1112.5 792.882 896.893 933.679 618 939C346.865 944.177 82 801 61.5 592.5Z', fill='#006029')
+                            path(opacity='0.55', d='M125 613.5C91.0003 400.5 128.939 264.971 326 181.5C574.5 76.2396 758.393 388.383 925.5 378.5C1018.5 373 1085.05 458.089 1094.5 536.5C1108.32 651.144 1040.89 826.362 804.5 863.5C574.69 899.608 159 826.5 125 613.5Z', fill='#2D9D46')
+                            path(d='M157.857 513.503C157.857 513.503 148.5 256.816 371 195.5C555.884 144.551 614.5 288.5 744 360.5C873.5 432.5 1048 420.5 1062.5 570.5C1073.83 742.999 875.268 839.431 661 847C452.691 854.361 156.719 775.876 157.857 513.503Z', fill='#5EBB5E')
+                            mask#mask3(mask-type='alpha', maskUnits='userSpaceOnUse', x='207', y='219', width='835', height='604')
+                                path(d='M211.636 448.659C211.636 448.659 251.159 240.321 430.427 220.042C609.697 199.762 728.289 482.285 868.494 471.905C1008.7 461.525 1051.19 552.714 1040.41 615.405C1024.63 707.066 787.082 844.493 586.857 820.159C392.2 796.505 172.168 692.314 211.636 448.659Z', fill='#F1F6FC')
+                            g(mask='url(#mask3)')
+                                rect(x='204', y='38', width='855', height='850', fill='url(#pattern3)')
+                            mask#mask4(mask-type='alpha', maskUnits='userSpaceOnUse', x='537', y='143', width='450', height='507')
+                                rect(x='537', y='143', width='450', height='507', fill='#C4C4C4')
+                            g(mask='url(#mask4)')
+                                rect(x='204', y='38', width='855', height='850', fill='url(#pattern4)')
+                            defs
+                                pattern#pattern3(patternContentUnits='objectBoundingBox', width='1', height='1')
+                                    use(xlink:href='#image3', transform='translate(-0.000202288) scale(0.000625253)')
+                                pattern#pattern4(patternContentUnits='objectBoundingBox', width='1', height='1')
+                                    use(xlink:href='#image4', transform='scale(0.00100015)')
+                                image#image3(width='1600', height='1590', xlink:href='img/slider-main/bg-2.jpg')
+                                image#image4(width='1000', height='994', xlink:href='img/slider-main/item-2.png')
+
+        .__pagination.swiper-pagination

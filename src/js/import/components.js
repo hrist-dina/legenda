@@ -1,5 +1,6 @@
 import App from '%classes%/App'
 import SliderProduct from '%components%/slider-product/slider-product'
+import SliderMain from '%components%/slider-main/slider-main'
 import ProductListSlider from '%components%/product/product-list-slider'
 import Mask from '%classes%/Mask'
 import Map from '%components%/map/map'
@@ -13,6 +14,7 @@ import UiKit from '%components%/ui-kit/ui-kit'
 
 new App().init(() => {
     new SliderProduct()
+    new SliderMain()
     new ProductListSlider()
     new ProductListSlider('.js-product-recommendation-slider', {
         screenWidth: false,

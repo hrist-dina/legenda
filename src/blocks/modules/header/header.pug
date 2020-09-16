@@ -2,6 +2,7 @@
 include ../../components/logo/logo
 include ../../components/cart/cart
 include ../../components/search/search
+include ../../components/search-mobile/search-mobile
 include ../../components/location/location
 include ../../components/phone/phone
 include ../../components/menu/menu
@@ -28,7 +29,7 @@ mixin header(isMain)
                     .__search
                         +search
                 .__action
-                    a(href='javascript:void(0)').__search-link
+                    a(href='javascript:void(0)').__search-link#header-search-open
                         +icon('search').cart__icon.__search-icon
                     +cart
             .__menu-block
@@ -41,4 +42,8 @@ mixin header(isMain)
                     +menu-soc
             if isMain
                 +slider-main.__slider-container
+            +search-mobile.__search-mobile#header-search-mobile
+
+
+
 

@@ -279,6 +279,16 @@
         width: 100%;
     }
 
+    &__search-mobile {
+        &.active {
+            @include lg-block {
+                display: none;
+            }
+            display: block;
+        }
+        display: none;
+    }
+
     & .logo {
         display: inline-flex;
         & svg {

@@ -65,7 +65,10 @@ export default {
             type: String
         },
         success: {
-            type: Array
+            type: Array,
+            default: function () {
+                return []
+            }
         },
         validation: {
             type: Array,
@@ -226,6 +229,22 @@ export default {
         },
         onShowPassword() {
             this.showPassword = !this.showPassword
+        },
+        initMask() {
+            if (this.isMaskPhone) {
+                const mask = new Mask(this.$el.querySelector('input')).phone({
+                    oncomplete: () => {
+                        this.isMaskComplete = true
+                    },
+                    oncleared: () => {
+                        this.isMaskComplete = false
+                    }
+                })
+
+                if (mask.isComplete()) {
+                    this.isMaskComplete = true
+                }
+            }
         }
     },
     watch: {
@@ -244,19 +263,7 @@ export default {
         }
     },
     mounted() {
-        if (this.isMaskPhone) {
-            new Mask(this.$el.querySelector('input')).phone({
-                oncomplete: () => {
-                    this.isMaskComplete = true
-                },
-                onincomplete: () => {
-                    this.isMaskComplete = true
-                },
-                oncleared: () => {
-                    this.isMaskComplete = false
-                }
-            })
-        }
+        this.initMask()
     }
 }
 </script>

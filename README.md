@@ -3,6 +3,7 @@
 ## Особенности
 * используется для ЛК и оформления заказа [Vue.js](https://vuejs.org/), [Vuex](https://vuex.vuejs.org/), [Vue Router](https://router.vuejs.org/)
 * слайдер [Swiper](https://swiperjs.com/)
+* фото-галерея [PhotoSwipe](https://photoswipe.com/)
 * именование классов по [БЭМ](https://ru.bem.info/)
 * используется БЭМ-структура
 * используются препроцессоры [Pug](https://pugjs.org/) и [SCSS](https://sass-lang.com/)

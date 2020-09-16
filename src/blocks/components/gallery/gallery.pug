@@ -1,0 +1,37 @@
+//- Шаблон для библиотеки, разместить там, где будет использоваться js-gallery
+
+mixin gallery
+    //- Root element of PhotoSwipe. Must have class pswp.
+    .pswp(tabindex='-1', role='dialog', aria-hidden='true')
+        //-
+          Background of PhotoSwipe.
+          It's a separate element as animating opacity is faster than rgba().
+        .pswp__bg
+        //- Slides wrapper with overflow:hidden.
+        .pswp__scroll-wrap
+            //-
+              Container that holds slides.
+              PhotoSwipe keeps only 3 of them in the DOM to save memory.
+              Don't modify these 3 pswp__item elements, data is added later on.
+            .pswp__container
+                .pswp__item
+                .pswp__item
+                .pswp__item
+            //- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed.
+            .pswp__ui.pswp__ui--hidden
+                .pswp__top-bar
+                    //- Controls are self-explanatory. Order can be changed.
+                    .pswp__counter
+                    button.pswp__button.pswp__button--close(title='Закрыть (Esc)')
+                    button.pswp__button.pswp__button--fs(title='Во весь экран')
+                    button.pswp__button.pswp__button--zoom(title='Увеличить/уменьшить')
+
+                    //- element will get class pswp__preloader--active when preloader is running
+                    .pswp__preloader
+                        .pswp__preloader__icn
+                            .pswp__preloader__cut
+                                .pswp__preloader__donut
+                button.pswp__button.pswp__button--arrow--left(title='Предыдущий')
+                button.pswp__button.pswp__button--arrow--right(title='Следующий')
+                .pswp__caption
+                    .pswp__caption__center

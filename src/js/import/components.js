@@ -11,6 +11,7 @@ import TabsScroll from '%classes%/TabsScroll'
 import InfoCardSlider from '%components%/info-card/info-card-slider'
 import Menu from '%components%/menu/menu'
 import UiKit from '%components%/ui-kit/ui-kit'
+import Gallery from '%components%/gallery/gallery'
 
 new App().init(() => {
     new SliderProduct()
@@ -28,4 +29,5 @@ new App().init(() => {
     new TabsScroll()
     new Menu()
     new UiKit()
+    new Gallery()
 })

@@ -3,12 +3,13 @@ include slider-product-data
 //- Слайдер на детальной карточки товара
 
 mixin slider-product
-    .slider-product.swiper-container.js-slider-product
+    .slider-product.swiper-container.js-slider-product.js-gallery(itemscope itemtype="http://schema.org/ImageGallery")
         +icon('arrow-product-prev').__arrow-prev.swiper-button-prev.js-slider-product-prev
         .__list.swiper-wrapper
             for slide in sliderProduct
-                .__item.swiper-slide
-                    .__inner
+                figure(itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject').__item.swiper-slide
+                    // data-size - оригинальный размер большого изображения
+                    a(href=slide itemprop="contentUrl" data-size="440x552").__inner
                         img(src=slide alt='' itemprop="image").__img
         +icon('arrow-product-next').__arrow-next.swiper-button-next.js-slider-product-next
         .__pagination.swiper-pagination

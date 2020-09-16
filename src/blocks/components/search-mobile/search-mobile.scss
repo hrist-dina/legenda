@@ -8,6 +8,10 @@
     min-height: 100%;
     background-color: #fff;
 
+    .header & .search {
+        background: #f9f9f9;
+    }
+
     &__head {
         @include container-padding;
         box-sizing: border-box;

@@ -37,10 +37,15 @@
         align-items: flex-end;
 
         &--auth {
-            @include wh(32px);
+            @include md-block {
+                @include wh(32px);
+                margin-right: 32px;
+                border-radius: 10px;
+            }
+            @include wh(24px);
             background: $skeleton-color;
-            border-radius: 10px;
-            margin-right: 32px;
+            border-radius: 8px;
+            margin-right: 20px;
             &:not(.loaded) {
                 @include skeleton-loader;
                 & + & {

@@ -564,6 +564,12 @@
                 }
             }
         }
+
+        &-body {
+            & .checkout-nav__item {
+                width: 100%;
+            }
+        }
     }
 
     &-write-off, &-delivery, &-replenish {

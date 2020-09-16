@@ -1,4 +1,7 @@
 {
-  "status": false,
-  "error": "Неверный промокод"
+  "status": true,
+  "data": {
+    "message": "Промокод применен",
+    "sale": 170
+  }
 }

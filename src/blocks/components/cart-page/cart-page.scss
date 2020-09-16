@@ -157,6 +157,17 @@
             color: #000;
             white-space: nowrap;
         }
+
+        &-sale {
+            @include sm-block {
+                font-size: 13px;
+                line-height: 18px;
+            }
+            font-size: 12px;
+            line-height: 16px;
+            color: #ef5026;
+            margin-top: 4px;
+        }
     }
 
     &__promocode {

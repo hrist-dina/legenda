@@ -14,6 +14,7 @@
         span.input-text__eye-off(v-if="isPassword" @click.prevent="onShowPassword")
         transition(name='fade-in')
             span.input-text__error(v-if='hasError') {{ validate }}
+            span.input-text__success(v-if='hasSuccess') {{ successValue }}
 </template>
 
 <script>
@@ -62,6 +63,9 @@ export default {
         },
         mask: {
             type: String
+        },
+        success: {
+            type: Array
         },
         validation: {
             type: Array,
@@ -129,6 +133,7 @@ export default {
             return {
                 focus: this.isFocus,
                 error: this.hasError,
+                success: this.hasSuccess,
                 password: this.isPassword,
                 'show-password': this.showPassword
             }
@@ -141,6 +146,9 @@ export default {
         },
         hasError() {
             return this.isActive && !this.isValid
+        },
+        hasSuccess() {
+            return this.isActive && this.successValue.length
         },
         isValid() {
             return !this.validate.length
@@ -182,6 +190,18 @@ export default {
                 }
             })
             return error
+        },
+        successValue() {
+            let message = ''
+            this.success.forEach(rule => {
+                if (!rule.required && this.value.length !== 0) {
+                    message = rule.message
+                }
+                if (rule.response && this.value.length !== 0) {
+                    message = rule.message
+                }
+            })
+            return message
         }
     },
     methods: {

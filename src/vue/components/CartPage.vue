@@ -49,6 +49,7 @@ include ../../blocks/components/ui-kit/ui-kit
                             @input="onInputPromocode($event)"
                             :placeholder="promocode.placeholder"
                             :validation="promocode.validation"
+                            :success="promocode.success"
                         ).cart-page__promocode-input
                         +button('bordered-md', 'button')(
                             @click.prevent="onClickPromocodeSend"
@@ -59,6 +60,7 @@ include ../../blocks/components/ui-kit/ui-kit
                         .cart-page__total
                             .cart-page__total-title Итого:
                             .cart-page__total-value {{ total | ruble }}
+                            .cart-page__total-sale(v-if="sale") Скидка {{ sale | ruble }}
                         .cart-page__to-order
                             router-link(:to="toOrder").link.link--big К оформлению заказа
 </template>
@@ -85,9 +87,11 @@ export default {
             name: 'promocode',
             value: '',
             validation: [],
+            success: [],
             disabledButton: true
         },
-        isLoadData: false
+        isLoadData: false,
+        sale: null
     }),
     computed: {
         ...mapState('cart', ['products']),
@@ -140,7 +144,15 @@ export default {
                 promocode: this.promocode.value
             }).then(response => {
                 const data = response.data
-                if (!data.status) {
+                if (data.status) {
+                    this.sale = data.data.sale
+                    this.promocode.success = [
+                        {
+                            response: true,
+                            message: data.data.message
+                        }
+                    ]
+                } else {
                     this.promocode.validation = [
                         {
                             response: true,

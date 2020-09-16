@@ -24,16 +24,24 @@
             padding-right: 10px;
         }
 
-        &__error {
+        &__success, &__error {
             position: absolute;
             bottom: 0;
             left: 0;
             overflow: hidden;
             font-size: 13px;
             line-height: 18px;
-            color: #f85471;
+
             white-space: nowrap;
             text-overflow: ellipsis;
+        }
+
+        &__error {
+            color: #f85471;
+        }
+
+        &__success {
+            color: #2d9d46;
         }
 
         &__eye-off {
@@ -72,7 +80,7 @@
             line-height: 18px;
         }
 
-        &.error {
+        &.success, &.error {
             position: relative;
             margin-bottom: 10px;
             padding-bottom: 20px;
@@ -86,14 +94,25 @@
                 bottom: auto;
                 left: auto;
                 margin: auto;
-                background-image: url(icon-warning());
                 background-size: 24px;
                 background-position: center;
                 background-repeat: no-repeat;
             }
+        }
+
+        &.error {
+            &:before {
+                background-image: url(icon-warning());
+            }
 
             & input {
                 color: #f85471;
+            }
+        }
+
+        &.success {
+            &:before {
+                background-image: url(icon-check('2D9D46'));
             }
         }
 

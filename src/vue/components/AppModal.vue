@@ -4,7 +4,10 @@
         .modal-mask(v-if="showModal" @click="onMask" ref='modal-mask')
             .modal-wrapper
                 .modal-container
-                    +icon('cross').modal-close(@click="$emit('close')")
+                    +icon('cross').modal-close(
+                        v-if="showCross"
+                        @click="$emit('close')"
+                    )
                     .modal-header(v-if="hasHeader")
                         slot(name='header')
                     .modal-body(v-if="hasDefault")
@@ -21,6 +24,10 @@ export default {
         showModal: {
             type: Boolean,
             default: false
+        },
+        showCross: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {

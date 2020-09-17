@@ -43,11 +43,32 @@
                     ).link--repeat.lk-nav__repeat
                 .lk-tabs
                     router-view
+        app-modal(:show-modal="isEmptyEmail" :show-cross="false")
+            template(#header)
+                h4 Чтобы продолжить укажите электронную почту
+            form(@submit.prevent="onSendEmail")
+                .field
+                    input-text(
+                        :required="email.required"
+                        :name="email.name"
+                        :value="email.value"
+                        @input="onInputEmail($event)"
+                        @validate="onValidateEmail($event)"
+                        :placeholder="email.placeholder"
+                        :valid-type="email.validType"
+                    )
+                .error-message(v-if="!!errorMessage") {{ errorMessage }}
+                +button('default')(
+                    :disabled="false"
+                    :class="{'is-loading': false}"
+                ) Сохранить
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import LkMeta from '%vue%/views/lk/LkMeta'
+import AppModal from '%vue%/components/AppModal'
+import InputText from '%vue%/components/InputText'
 import { LK_ORDER_REPEAT, LK_ORDERS } from '%vue%/router/constants'
 import { toggleAdditionalProducts } from '%common%/helper'
 import { showNotification } from '%vue%/store/common/helper'
@@ -55,11 +76,22 @@ import TabsScroll from '%classes%/TabsScroll'
 
 export default {
     components: {
+        AppModal,
+        InputText,
         LkMeta
     },
     data: () => ({
         tabNav: null,
-        baseRout: null
+        baseRout: null,
+        errorMessage: '',
+        email: {
+            placeholder: 'Электронная почта',
+            name: 'email',
+            value: '',
+            required: true,
+            isValid: false,
+            validType: 'email'
+        }
     }),
     computed: {
         ...mapGetters('user', {
@@ -69,12 +101,16 @@ export default {
         isActive: el => data => {
             // Нужно чтобы определять вложенные элементы
             return el.$route.path.includes(data.path)
+        },
+        isEmptyEmail() {
+            return !this.person.email.length && this.isAuth
         }
     },
     methods: {
         ...mapActions('user', {
             logout: 'logout',
-            getOrderLast: 'getOrderLast'
+            getOrderLast: 'getOrderLast',
+            editPersonalData: 'editPersonalData'
         }),
         onLogout() {
             this.logout().then(response => {
@@ -105,6 +141,21 @@ export default {
                     })
                 }
             })
+        },
+        onSendEmail() {
+            this.editPersonalData({
+                email: this.email.value
+            }).then(response => {
+                if (!response.status) {
+                    this.errorMessage = response.error
+                }
+            })
+        },
+        onInputEmail(data) {
+            this.email.value = data.value
+        },
+        onValidateEmail(data) {
+            this.email.isValid = data.isValid
         }
     },
     created() {

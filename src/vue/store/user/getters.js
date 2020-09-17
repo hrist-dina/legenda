@@ -1,7 +1,12 @@
 import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
-    getPerson: state => state.person,
+    getPerson: state => ({
+        ...state.person,
+        bonus: state.person.bonus || 0,
+        bottle: state.person.bottle || 0,
+        balance: state.person.balance || 0
+    }),
     getDeliveryTypes: state => state.delivery.types,
     getPayment: state => state.payment,
     getDeliveryItems: state =>

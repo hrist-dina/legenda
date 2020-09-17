@@ -6,7 +6,7 @@
     "person": {
       "fio": "Иванов Иван Иванович",
       "phone": "79997775544",
-      "email": "test@test.test",
+      "email": "",
       "bonus": 500,
       "bottle": 4,
       "balance": 73

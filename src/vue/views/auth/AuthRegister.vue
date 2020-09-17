@@ -51,7 +51,8 @@ export default {
                 value: '',
                 required: true,
                 isValid: false,
-                mask: 'phone'
+                mask: 'phone',
+                validType: 'phone'
             },
             {
                 placeholder: 'Электронная почта',

@@ -20,10 +20,12 @@
                 )
             .auth-form__button
                 +button('default')(:disabled="!isValidForm") Войти
+                router-link(:to="linkToRestore").link.link--default.auth-form__restore Забыли пароль?
 
 </template>
 
 <script>
+import { AUTH_RESTORE } from '%vue%/router/auth'
 import InputText from '%vue%/components/InputText'
 import { mapActions } from 'vuex'
 
@@ -56,6 +58,9 @@ export default {
     computed: {
         isValidForm() {
             return !this.form.filter(el => !el.isValid).length
+        },
+        linkToRestore() {
+            return { name: AUTH_RESTORE }
         }
     },
     methods: {

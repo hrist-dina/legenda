@@ -2,9 +2,15 @@ import router from '%vue%/router/base'
 import AppNav from '%vue%/views/auth/AppNav'
 import AuthRegister from '%vue%/views/auth/AuthRegister'
 import AuthLogin from '%vue%/views/auth/AuthLogin'
+import AuthRestore from '%vue%/views/auth/AuthRestore'
+
+export const AUTH_REGISTER = 'register'
+export const AUTH_LOGIN = 'login'
+export const AUTH_RESTORE = 'restore'
 
 const routes = [
     {
+        baseRoute: true,
         path: '',
         component: AppNav,
         meta: {
@@ -12,14 +18,25 @@ const routes = [
         },
         children: [
             {
-                name: 'register',
+                name: AUTH_REGISTER,
                 path: '/#/register',
-                component: AuthRegister
+                component: AuthRegister,
+                meta: {
+                    title: 'Регистрация'
+                }
             },
             {
-                name: 'login',
+                name: AUTH_LOGIN,
                 path: '/#/login',
-                component: AuthLogin
+                component: AuthLogin,
+                meta: {
+                    title: 'Войти с паролем'
+                }
+            },
+            {
+                name: AUTH_RESTORE,
+                path: '/#/restore',
+                component: AuthRestore
             }
         ]
     }

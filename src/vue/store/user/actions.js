@@ -33,6 +33,11 @@ export default {
 
         return response.data
     },
+    restore: async ({ commit }, payload) => {
+        const response = await new HTTP(urlAjax.restore, payload).post()
+
+        return response.data
+    },
     logout: async ({ commit, state }) => {
         const response = await new HTTP(
             urlAjax.logout,

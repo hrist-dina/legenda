@@ -62,6 +62,7 @@ export const urlAjax = {
     register: isProd ? '/api/register' : '/mock/register.json',
     editPersonalData: isProd ? '/api/person/edit' : '/mock/person-edit.json',
     login: isProd ? '/api/login' : '/mock/login.json',
+    restore: isProd ? '/api/restore' : '/mock/restore.json',
     logout: isProd ? '/api/logout' : '/mock/logout.json',
     delivery: isProd ? '/api/delivery' : '/mock/delivery.json',
     // На проде будет один путь, запрос будет приходить с параметрами типа оплаты

@@ -22,12 +22,19 @@
     }
 
     &--default {
+        @include md-block {
+            padding: 16px 32px;
+            background: #229bd7;
+            border-radius: 32px;
+            font-size: 15px;
+            line-height: 20px;
+        }
         box-sizing: border-box;
-        padding: 16px 32px;
+        padding: 14px 22px;
         background: #229bd7;
         border-radius: 32px;
-        font-size: 15px;
-        line-height: 20px;
+        font-size: 14px;
+        line-height: 18px;
         color: #fff;
     }
 
@@ -131,12 +138,12 @@
             background: #007bc2;
             border-radius: 28px;
             color: #fff;
-            & .icon {
-                background-image: url(icon-product-cart('fff'));
-            }
 
             &:before {
                 background-image: url(icon-plus('fff'));
+            }
+            & .icon {
+                background-image: url(icon-product-cart('fff'));
             }
         }
 

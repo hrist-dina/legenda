@@ -232,18 +232,23 @@ export default {
         },
         initMask() {
             if (this.isMaskPhone) {
-                const mask = new Mask(this.$el.querySelector('input')).phone({
-                    oncomplete: () => {
-                        this.isMaskComplete = true
-                    },
-                    oncleared: () => {
-                        this.isMaskComplete = false
-                    }
-                })
+                // При инициализации в цикле, не задаются events в inputmask, поэтому установлен setTimeout
+                setTimeout(() => {
+                    const mask = new Mask(
+                        this.$el.querySelector('input')
+                    ).phone({
+                        oncomplete: () => {
+                            this.isMaskComplete = true
+                        },
+                        oncleared: () => {
+                            this.isMaskComplete = false
+                        }
+                    })
 
-                if (mask.isComplete()) {
-                    this.isMaskComplete = true
-                }
+                    if (mask.isComplete()) {
+                        this.isMaskComplete = true
+                    }
+                }, 100)
             }
         }
     },

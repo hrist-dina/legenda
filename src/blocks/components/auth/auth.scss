@@ -17,13 +17,19 @@
         &-item {
             @include outline-none();
             @include sm-block {
-                margin-right: 24px;
                 padding: 12px 24px;
+                margin-right: 24px;
             }
+            box-sizing: border-box;
+            width: auto;
+            padding: 8px 16px;
             margin-right: 4px;
             text-decoration: none;
-            padding: 8px 16px;
             border-radius: 57px;
+
+            &:last-child {
+                margin-right: 16px;
+            }
 
             &.active {
                 background: #f1f6fc;
@@ -57,6 +63,20 @@
 
         &__button {
             margin-top: 15px;
+        }
+
+        &__message {
+            @include md-block {
+                font-size: 16px;
+                line-height: 22px;
+            }
+            font-size: 14px;
+            line-height: 20px;
+            color: #2d9d46;
+        }
+
+        &__restore {
+            margin-left: 48px;
         }
     }
 }

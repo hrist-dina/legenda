@@ -1,8 +1,13 @@
 .phone {
+    @include transitionEaseOutQuint((color, opacity));
     font-size: 15px;
     line-height: 22px;
     text-decoration: none;
     color: $base-color;
+
+    &:hover {
+        opacity: .7;
+    }
 
     &--footer {
         font-weight: 500;

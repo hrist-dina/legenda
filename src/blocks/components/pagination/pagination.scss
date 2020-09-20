@@ -3,6 +3,7 @@
     align-items: center;
 
     &__item {
+        @include transitionEaseOutQuint((color, background));
         @include wh(38px);
         box-sizing: border-box;
         display: flex;
@@ -23,6 +24,11 @@
         &.current {
             color: #fff;
             background: #007bc2;
+        }
+
+        &:hover {
+            color: #fff;
+            background-color: rgba(0, 123, 194, .5);
         }
     }
 

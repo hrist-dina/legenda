@@ -125,10 +125,14 @@
         margin-left: auto;
         align-self: center;
         &-link {
+            @include transitionEaseOutQuint(color);
             font-size: 16px;
             line-height: 27px;
             text-decoration: none;
             color: #9db2c6;
+            &:hover {
+                color: #7a8899;
+            }
         }
     }
 
@@ -157,12 +161,12 @@
                 }
             }
 
-            &:nth-child(n + 5) {
-                display: none;
-            }
-
             .show-all & {
                 display: flex;
+            }
+
+            &:nth-child(n + 5) {
+                display: none;
             }
         }
 
@@ -242,6 +246,22 @@
                 background-size: 12px 6px;
             }
             margin-left: auto;
+        }
+
+        &:not(.active) &__head:hover &__arrow {
+            @include keyframes(arrow-jump) {
+                0% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(5px);
+                }
+                100% {
+                    transform: translateY(0);
+                }
+            }
+
+            animation: arrow-jump 1s ease;
         }
 
         &__list {

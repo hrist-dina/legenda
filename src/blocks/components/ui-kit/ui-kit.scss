@@ -22,6 +22,7 @@
     }
 
     &--default {
+        @include transitionEaseOutQuint(background);
         box-sizing: border-box;
         padding: 16px 32px;
         background: #229bd7;
@@ -29,6 +30,10 @@
         font-size: 15px;
         line-height: 20px;
         color: #fff;
+
+        &:hover {
+            background-color: #007bc2;
+        }
     }
 
     &--bordered {
@@ -266,7 +271,15 @@
     line-height: 22px;
     color: #004f91;
 
+    &--default {
+        @include transitionEaseOutQuint(opacity);
+        &:hover {
+            opacity: .8;
+        }
+    }
+
     &--all {
+        @include transitionEaseOutQuint(background);
         @include md-block {
             padding: 16px 32px;
             font-size: 15px;
@@ -279,9 +292,14 @@
         font-size: 14px;
         line-height: 18px;
         color: #fff;
+
+        &:hover {
+            background-color: #007bc2;
+        }
     }
 
     &--big {
+        @include transitionEaseOutQuint(background);
         @include xl-block {
             font-size: 24px;
             line-height: 36px;
@@ -298,9 +316,13 @@
         line-height: 22px;
         white-space: nowrap;
         color: #fff;
+        &:hover {
+            background-color: #007bc2;
+        }
     }
 
     &--bordered {
+        @include transitionEaseOutQuint((background, border, color));
         box-sizing: border-box;
         display: inline-block;
         border: 1px solid rgba(0, 123, 194, 0.25);
@@ -309,9 +331,16 @@
         font-size: 13px;
         line-height: 15px;
         color: #007bc2;
+
+        &:hover {
+            background-color: #007bc2;
+            border-color: #007bc2;
+            color: #fff;
+        }
     }
 
     &--bordered-md {
+        @include transitionEaseOutQuint((background, border, color));
         box-sizing: border-box;
         display: inline-block;
         border: 1px solid rgba(34, 155, 215, 0.15);
@@ -320,15 +349,25 @@
         font-size: 16px;
         line-height: 21px;
         color: #007bc2;
+        &:hover {
+            background-color: #007bc2;
+            border-color: #007bc2;
+            color: #fff;
+        }
     }
 
     &--repeat {
+        @include transitionEaseOutQuint(opacity);
         font-size: 15px;
         line-height: 20px;
         color: #007bc2;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
+
+        &:hover {
+            opacity: .8;
+        }
 
         & .icon {
             margin-right: 10px;
@@ -408,7 +447,7 @@
         }
 
         &__custom {
-            @include transitionEaseOutQuint(background);
+            @include transitionEaseOutQuint((background, border));
             @include wh(22px);
             box-sizing: border-box;
             display: inline-flex;
@@ -422,6 +461,7 @@
         }
 
         &__text {
+            @include transitionEaseOutQuint(color);
             display: inline-flex;
             width: #{calc(100% - 34px)};
             font-size: 16px;
@@ -436,6 +476,13 @@
                 line-height: 22px;
                 color: #343e44;
             }
+        }
+
+        &:hover &__text {
+            color: #007bc2;
+        }
+        &:hover &__custom {
+            border-color: #007bc2;
         }
     }
 

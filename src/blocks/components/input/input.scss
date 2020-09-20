@@ -7,7 +7,7 @@
         max-width: 100%;
 
         &__placeholder {
-            @include transitionEaseOutQuint(top);
+            @include transitionEaseOutQuint((top, border, font-size));
             box-sizing: border-box;
             display: inline-block;
             position: absolute;
@@ -65,6 +65,7 @@
         }
 
         & input {
+            @include transitionEaseOutQuint(color);
             @include outline-none;
             box-sizing: border-box;
             width: 100%;
@@ -78,6 +79,11 @@
             top: -8px;
             font-size: 14px;
             line-height: 18px;
+            color: #343e44;
+        }
+
+        &.focus input {
+            border-bottom-color: #343e44;
         }
 
         &.success, &.error {

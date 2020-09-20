@@ -139,6 +139,7 @@
     }
 
     &__legal-info {
+        @include transitionEaseOutQuint(opacity);
         @include sm-block {
             font-size: 15px;
             line-height: 25px;
@@ -150,6 +151,9 @@
         line-height: 18px;
         color: #1b262c;
         text-decoration: none;
+        &:hover {
+            opacity: .6;
+        }
     }
 
     & .phone-list {

@@ -134,6 +134,15 @@
         justify-content: space-between;
     }
 
+    &__favorite {
+        &-icon {
+            @include transitionEaseOutQuint(transform);
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
     &--banner {
         border: none;
     }

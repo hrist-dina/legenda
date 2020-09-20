@@ -11,6 +11,7 @@
     }
 
     &__icon {
+        @include transitionEaseOutQuint(opacity);
         @include xl-block {
             margin-right: 53px;
         }
@@ -28,6 +29,9 @@
         }
         background-size: 24px;
         margin-right: 20px;
+        &:hover {
+            opacity: .7;
+        }
     }
 
     &__link {

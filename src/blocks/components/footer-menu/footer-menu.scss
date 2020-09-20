@@ -19,9 +19,15 @@
     }
 
     &__link {
+        @include transitionEaseOutQuint(color);
         font-size: 16px;
         line-height: 25px;
         color: #004f91;
         text-decoration: none;
+
+
+        &:hover {
+            color: #229bd7;
+        }
     }
 }

@@ -8,7 +8,14 @@ export default class UiKit extends ComponentBase {
 
 class ButtonHover extends ComponentBase {
     constructor(
-        selector = '.button--back, .button--bordered, .button--in-cart:not(.in-cart)'
+        selector = [
+            '.button--back',
+            '.button--for-bottle',
+            '.button--bordered',
+            '.button--bordered-md',
+            '.button--in-cart:not(.in-cart)',
+            '.button--in-cart-category:not(.in-cart)'
+        ]
     ) {
         super(selector)
     }
@@ -18,11 +25,13 @@ class ButtonHover extends ComponentBase {
         buttons.forEach(item => {
             item.addEventListener('mouseover', ({ target }) => {
                 const button = target.closest(this.selector)
+                if (!button) return
                 button.classList.add('on-hover')
                 button.classList.remove('on-hover-reverse')
             })
             item.addEventListener('mouseout', ({ target }) => {
                 const button = target.closest(this.selector)
+                if (!button) return
                 button.classList.remove('on-hover')
                 button.classList.add('on-hover-reverse')
             })

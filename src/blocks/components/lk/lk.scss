@@ -175,6 +175,10 @@
                 color: #004f91;
                 padding: 0;
             }
+
+            &:not(.active):hover {
+                color: rgba(0, 79, 145, 0.6);
+            }
         }
 
         &__repeat {
@@ -207,6 +211,13 @@
                 margin-bottom: 40px;
             }
             margin-bottom: 32px;
+
+            &:hover & {
+
+                &__body {
+                    box-shadow: 0 15px 72px rgba(0, 0, 0, 0.15);
+                }
+            }
 
             &__head {
                 @include lg-block {
@@ -268,6 +279,7 @@
             }
 
             &__body {
+                @include transitionEaseOutQuint(box-shadow);
                 @include lg-block {
                     flex-direction: row;
                     padding: 25px 32px;
@@ -542,15 +554,7 @@
             @include lg-block {
                 display: flex;
             }
-            //display: none;
             margin-bottom: 50px;
-
-            //&--mobile {
-            //    @include lg-block {
-            //        display: none;
-            //    }
-            //    display: block;
-            //}
 
             &--mobile .checkout-nav__item:not(.checkout-nav__item--active) {
                 @include md-block {

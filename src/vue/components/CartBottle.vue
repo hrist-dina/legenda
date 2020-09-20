@@ -27,10 +27,14 @@
 
 <script>
 import QuantityCounter from '%vue%/components/QuantityCounter'
+import UiKit from '%components%/ui-kit/ui-kit'
 
 export default {
     components: {
         QuantityCounter
+    },
+    mounted() {
+        new UiKit()
     }
 }
 </script>

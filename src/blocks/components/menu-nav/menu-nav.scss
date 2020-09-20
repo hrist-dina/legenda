@@ -37,4 +37,9 @@
             border-bottom: 1px dashed #343e44;
         }
     }
+
+    &__item:hover &__link span {
+        border-bottom-style: solid;
+        opacity: .8;
+    }
 }

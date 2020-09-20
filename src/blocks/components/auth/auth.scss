@@ -51,6 +51,11 @@
             color: #004f91;
             border-bottom: transparent;
         }
+
+        &-item:hover &-text {
+            border-bottom-style: solid;
+            opacity: .8;
+        }
     }
 
     &-form {

@@ -43,11 +43,16 @@
                 @include wh(50px);
             }
             @include wh(24px);
+            @include transitionEaseOutQuint((background, box-shadow));
             box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            &:hover {
+                background: #eefafd;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            }
         }
     }
 

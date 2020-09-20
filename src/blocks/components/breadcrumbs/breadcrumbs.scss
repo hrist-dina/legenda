@@ -34,12 +34,21 @@
     }
 
     &__item, &__item &__link {
+        @include transitionEaseOutQuint(color);
         display: inline-block;
         align-items: flex-end;
         position: relative;
         font-size: 14px;
         line-height: 18px;
         color: #9db2c6;
+
+        &:hover {
+            color: #7a8899;
+
+            &:after {
+                color: #9db2c6;
+            }
+        }
     }
 
     &__item:not(:last-child):after {

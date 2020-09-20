@@ -300,6 +300,11 @@
             flex-wrap: nowrap;
         }
 
+        &__loader {
+            margin-top: 60px;
+            text-align: center;
+        }
+
         &--category {
             @include sm-block {
                 justify-content: space-between;

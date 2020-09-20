@@ -149,6 +149,7 @@ export default {
     },
     mounted() {
         this.buttonEl = this.$refs['product-button']
+        if (!this.buttonEl) return
         this.id = this.initId || this.buttonEl.dataset.id
         const data = this.dataById(this.id)
         if (data) {

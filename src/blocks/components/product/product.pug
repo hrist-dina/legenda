@@ -52,14 +52,18 @@ mixin product-banner(data)
 
 mixin product-list(isAjax)
     include data
-    section.product-list-section
+    section.product-list-section(class={'js-scroll-loading': isAjax})
         +container
-            .product-list(class={'js-products-ajax': isAjax})
+            .product-list(class={'js-products-ajax js-scroll-loading-data': isAjax})
                  for item in products
                      if item.banner
                          +product-banner(item)
                      else
                          +product(item)
+            if isAjax
+                .product-list__loader-block
+                    .product-list__loader.js-scroll-loading-loader(data-url='/mock/filter.json')
+
 mixin product-list-three
     include data
     section.product-list-section

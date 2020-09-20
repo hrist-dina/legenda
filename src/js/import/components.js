@@ -12,6 +12,7 @@ import InfoCardSlider from '%components%/info-card/info-card-slider'
 import Menu from '%components%/menu/menu'
 import UiKit from '%components%/ui-kit/ui-kit'
 import Gallery from '%components%/gallery/gallery'
+import ScrollLoading from '%classes%/ScrollLoading'
 
 new App().init(() => {
     new SliderProduct()
@@ -30,4 +31,5 @@ new App().init(() => {
     new Menu()
     new UiKit()
     new Gallery()
+    new ScrollLoading()
 })

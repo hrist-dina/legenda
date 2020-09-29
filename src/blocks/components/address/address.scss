@@ -2,11 +2,12 @@
     overflow-y: auto;
 
     &__item {
-        margin-bottom: 24px;
+        padding-bottom: 24px;
         box-sizing: border-box;
-
+        transition: all ease .5s;
+        margin-bottom: 0;
         &.active {
-            padding-bottom: 25px;
+            margin-bottom: 25px;
             border-bottom: 1px solid rgba(34, 155, 215, 0.15);
         }
 

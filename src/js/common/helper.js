@@ -109,6 +109,7 @@ export const DOMAnimations = {
                 element.style.removeProperty('overflow')
                 element.style.removeProperty('transition-duration')
                 element.style.removeProperty('transition-property')
+                resolve(true)
             }, duration)
         })
     },
@@ -126,5 +127,16 @@ export const DOMAnimations = {
         } else {
             return this.slideUp(element, duration)
         }
+    }
+}
+
+export const on = (selector, eventType, childSelector, eventHandler) => {
+    const elements = document.querySelectorAll(selector)
+    for (let element of elements) {
+        element.addEventListener(eventType, eventOnElement => {
+            if (eventOnElement.target.matches(childSelector)) {
+                eventHandler(eventOnElement)
+            }
+        })
     }
 }

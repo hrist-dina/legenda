@@ -1,6 +1,6 @@
 /* global ymaps */
 
-import { DOMAnimations } from '%common%/helper'
+import { DOMAnimations, on } from '%common%/helper'
 
 export default class Map {
     constructor(id, options) {
@@ -11,6 +11,7 @@ export default class Map {
         this.classData = '.js-map-data'
         this.classDataItem = `${this.classData}-item`
         this.classDataItemToggle = `${this.classDataItem}-toggle`
+        this.classBalloonLink = '.js-map-balloon-link'
 
         this.items = []
 
@@ -19,6 +20,7 @@ export default class Map {
 
     init() {
         this.initGetDataOptions()
+        this.initClickOnBalloon()
     }
 
     initGetDataOptions() {
@@ -34,14 +36,48 @@ export default class Map {
         })
     }
 
+    initClickOnBalloon() {
+        on(`#${this.map}`, 'click', this.classBalloonLink, e => {
+            e.preventDefault()
+            e.stopPropagation()
+            const dataItemList = document.querySelector(this.classData)
+            const item = e.target
+            const id = item.dataset['id']
+            const itemData = dataItemList.querySelector(`[data-id="${id}"]`)
+            if (!itemData) {
+                console.error('Not set data id')
+                return
+            }
+            const itemDataToggle = itemData.querySelector(
+                this.classDataItemToggle
+            )
+            if (
+                itemData &&
+                itemDataToggle &&
+                window.getComputedStyle(itemDataToggle).display === 'none'
+            ) {
+                this.itemShow(itemData, itemDataToggle)
+            }
+        })
+    }
+
+    itemShow(node, dataItem) {
+        node.classList.add('active')
+        DOMAnimations.slideToggle(dataItem, 500)
+    }
+
     initEvents(el) {
         el.addEventListener('click', ({ target }) => {
             const node = target.closest(this.classDataItem)
-            node.classList.toggle('active')
-            DOMAnimations.slideToggle(
-                node.querySelector(this.classDataItemToggle),
-                400
-            )
+            const dataItem = node.querySelector(this.classDataItemToggle)
+            if (window.getComputedStyle(dataItem).display === 'none') {
+                this.itemShow(node, dataItem)
+            } else {
+                const data = this.itemData(node)
+                this.mapObject.setCenter([data.locationX, data.locationY])
+                this.mapObject.setZoom(this.options.zoom || 16)
+                //node.classList.remove('active')
+            }
         })
     }
 
@@ -56,6 +92,7 @@ export default class Map {
 
     itemData(element) {
         return {
+            id: element.dataset['id'],
             locationX: element.dataset['locationX'],
             locationY: element.dataset['locationY'],
             hint: element.dataset['hint']
@@ -108,7 +145,7 @@ export default class Map {
 
     initMap() {
         this.destroyMap()
-        ymaps.ready().then(() => {
+        return ymaps.ready().then(() => {
             try {
                 let map = new ymaps.Map(this.map, {
                     center: this.center,
@@ -130,6 +167,8 @@ export default class Map {
                     if (map.getZoom() > 15) map.setZoom(15)
                 })
 
+                this.initBalloonTemplate()
+
                 map.controls.add(this.initZoomControl(), this.controlOptions)
                 this.mapObject = map
             } catch (e) {
@@ -138,18 +177,45 @@ export default class Map {
         })
     }
 
+    initBalloonTemplate() {
+        const balloonOptions = {
+            balloonContentLayoutClass: ymaps.templateLayoutFactory.createClass(
+                `<div class="map-balloon-content">
+                    <b>{{properties.balloonText}}</b>
+                    <a 
+                        class="js-map-balloon-link map-balloon-link" 
+                        href="javascript:void(0)" 
+                        data-id="{{properties.pointIndex}}"
+                    >Телефоны и режим работы</a>
+                </div>`
+            ),
+            balloonLayoutClass: ymaps.templateLayoutFactory.createClass(
+                '<div class="map-balloon">{% include custom#balloonLayoutContent %}</div>'
+            )
+        }
+
+        ymaps.layout.storage.add(
+            'custom#balloonLayoutContent',
+            balloonOptions.balloonContentLayoutClass
+        )
+        ymaps.layout.storage.add(
+            'custom#balloonLayout',
+            balloonOptions.balloonLayoutClass
+        )
+    }
+
     getPlaceMark() {
         try {
             // Создадим коллекцию геообъектов.
             let collection = new ymaps.GeoObjectCollection(null, {
-                // Запретим появление балуна.
-                hasBalloon: false
+                hasBalloon: true
             })
 
             // Добавляем метки с городами
             this.items.forEach(item => {
                 collection.add(
                     this.createPlaceMark(
+                        item.id,
                         [item.locationX, item.locationY],
                         item.hint
                     )
@@ -161,11 +227,14 @@ export default class Map {
             console.error(e)
         }
     }
-    createPlaceMark(location = false, hint = false) {
+    createPlaceMark(id, location = false, hint = false) {
+        const text = hint ? hint : this.hint
         return new ymaps.Placemark(
             location ? location : this.location,
             {
-                hintContent: hint ? hint : this.hint
+                pointIndex: id,
+                balloonText: text,
+                hintContent: text
             },
             {
                 // Опции.
@@ -174,12 +243,18 @@ export default class Map {
                 // Своё изображение иконки метки.
                 iconImageHref: document.getElementById(this.map).dataset['img']
                     ? document.getElementById(this.map).dataset['img']
-                    : 'img/map/placemark.svg',
+                    : '/img/map/placemark.svg',
                 // Размеры метки.
                 iconImageSize: [38, 52],
                 // Смещение левого верхнего угла иконки относительно
                 // её "ножки" (точки привязки).
-                iconImageOffset: [-19, -30]
+                iconImageOffset: [-19, -30],
+                balloonContentLayout: 'custom#balloonLayoutContent',
+                balloonCloseButton: true,
+                balloonMaxWidth: 255,
+                balloonMapAutoPan: true,
+                balloonOffset: [-1, -28],
+                hideIconOnBalloonOpen: false
             }
         )
     }

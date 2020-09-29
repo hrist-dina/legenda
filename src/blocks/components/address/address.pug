@@ -9,32 +9,39 @@ mixin address
         data-zoom='16'
     )
         +address-item(
+            1,
             'Пятерочка, ул. Взлетная, д. 2м',
             '53.339199071110336', '83.6901059999999'
         )
         +address-item(
+            2,
             'Пятерочка, пр. Ленина, д. 132',
             '53.37290207108115', '83.75029349999988'
         )
         +address-item(
+            3,
             'Пятерочка, ул. Э. Алексеевой, д. 3',
             '53.38224857107619', '83.73758199999993'
         )
         +address-item(
+            4,
             'Пятерочка, ул. Солнечная поляна, 5',
             '53.37344457111146', '83.66511499999993'
         )
         +address-item(
+            5,
             'Пятерочка, ул. Мусоргского, 21',
             '53.251940071175355', '83.69729249999995'
         )
         +address-item(
+            6,
             'Пятерочка, ул. Взлетная, д. 2м',
-            '53.339199071110336', '83.6901059999999'
+            '53.339199071110336', '83.8'
         )
 
-mixin address-item(name, locationX, locationY)
+mixin address-item(id, name, locationX, locationY)
     .address__item.js-map-data-item(
+        data-id=id
         data-location-x=locationX
         data-location-y=locationY
         data-hint=name

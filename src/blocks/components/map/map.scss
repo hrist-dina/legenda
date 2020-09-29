@@ -9,6 +9,18 @@
         background: #c4c4c4;
     }
 
+    &-balloon {
+
+        &-link {
+            display: block;
+            font-size: 13px;
+            line-height: 16px;
+            color: #004f91;
+            text-decoration: none;
+            margin-top: 5px;
+        }
+    }
+
     &-zoom {
         @include lg-block {
             width: 42px;

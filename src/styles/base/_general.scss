@@ -1,4 +1,10 @@
-h1, h2, h3, h4, h5, h6, ul {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
     margin: 0;
     padding: 0;
 }
@@ -17,7 +23,7 @@ html,
 body {
     height: 100%;
 
-    &.o-hidden{
+    &.o-hidden {
         padding-right: 15px;
     }
 }
@@ -70,7 +76,8 @@ main {
     padding-right: 0;
 }
 
-h1, .h1 {
+h1,
+.h1 {
     @include md-block {
         font-size: 58px;
         line-height: 64px;
@@ -80,10 +87,11 @@ h1, .h1 {
     font-weight: 500;
     font-size: 28px;
     line-height: 36px;
-    color: #004F91;
+    color: #004f91;
 }
 
-h2, .h2 {
+h2,
+.h2 {
     @include md-block {
         font-size: 44px;
         line-height: 56px;
@@ -92,7 +100,7 @@ h2, .h2 {
     font-weight: 500;
     font-size: 22px;
     line-height: 27px;
-    color: #004F91;
+    color: #004f91;
 }
 
 .error-message {
@@ -135,20 +143,20 @@ h2, .h2 {
 
 .scroll-custom-map {
     /* Firefox */
-    scrollbar-color: #5BC5F2 #EFEFEF;
+    scrollbar-color: #5bc5f2 #efefef;
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
         width: 4px;
     }
     &::-webkit-scrollbar-track {
-        background: #EFEFEF;
+        background: #efefef;
         border: none;
         box-sizing: border-box;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #5BC5F2;
+        background-color: #5bc5f2;
         outline: none;
         border: none;
         box-sizing: border-box;
@@ -160,45 +168,3 @@ h2, .h2 {
         margin-top: 20px;
     }
 }
-//
-//:root {
-//    --size: 10rem;
-//}
-//.wave-many {
-//    overflow: hidden;
-//    &:hover {
-//        position: relative;
-//        animation: wave-many 3.5s infinite linear;
-//        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -15 100 100'%3E%3Cpath fill='lightblue' d='M0,50 C0,50 25,25 50,50 C50,50 75,75 100,50 V100 H0 Z' /%3E%3C/svg%3E");
-//
-//        &::before, &::after {
-//            content: "";
-//            display: block;
-//            position: absolute;
-//            top: 0;
-//            left: 0;
-//            width: 100%;
-//            height: 100%;
-//            background-image: inherit;
-//        }
-//
-//        &::before {
-//            animation: wave-many 4.18s infinite -2.5s linear;
-//            opacity: 0.5;
-//        }
-//
-//        &::after {
-//            animation: wave-many 4.91s infinite -1.6s linear;
-//            opacity: 0.3;
-//        }
-//    }
-//}
-//@include keyframes(wave-many) {
-//    from {
-//        background-position-x: 0;
-//    }
-//
-//    to {
-//        background-position-x: var(--size);
-//    }
-//}

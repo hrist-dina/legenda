@@ -1,6 +1,6 @@
 /* global ymaps */
 
-import { DOMAnimations, on } from '%common%/helper'
+import { DOMAnimations, on, scrollToElm } from '%common%/helper'
 
 export default class Map {
     constructor(id, options) {
@@ -58,6 +58,11 @@ export default class Map {
             ) {
                 this.itemShow(itemData, itemDataToggle)
             }
+            scrollToElm(
+                dataItemList.closest('.scroll-custom-map'),
+                itemData,
+                1500
+            )
         })
     }
 

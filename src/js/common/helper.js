@@ -140,3 +140,76 @@ export const on = (selector, eventType, childSelector, eventHandler) => {
         })
     }
 }
+
+export const smoothScroll = (target, duration) => {
+    const tg =
+        typeof target === 'string' ? document.querySelector(target) : target
+    const tgPositionOfTop = tg.getBoundingClientRect().top
+    const startPosition = window.pageYOffset
+    const distance = tgPositionOfTop - startPosition
+    let startTime = null
+
+    function animationScroll(currentTime) {
+        if (startTime === null) {
+            startTime = currentTime
+        }
+        const timeElapsed = currentTime - startTime
+        const run = ease(timeElapsed, startPosition, distance, duration)
+        window.scrollTo(0, run)
+        if (timeElapsed < duration) requestAnimationFrame(animationScroll)
+    }
+
+    function ease(t, b, c, d) {
+        t /= d / 2
+        if (t < 1) return (c / 2) * t * t + b
+        t--
+        return (-c / 2) * (t * (t - 2) - 1) + b
+    }
+
+    requestAnimationFrame(animationScroll)
+}
+
+export const scrollToElm = (container, elm, duration) => {
+    function getRelativePos(elm) {
+        const pPos = elm.parentNode.getBoundingClientRect(), // parent pos
+            cPos = elm.getBoundingClientRect(), // target pos
+            pos = {}
+
+        pos.top = cPos.top - pPos.top + elm.parentNode.scrollTop
+        pos.right = cPos.right - pPos.right
+        pos.bottom = cPos.bottom - pPos.bottom
+        pos.left = cPos.left - pPos.left
+
+        return pos
+    }
+
+    function easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+    }
+
+    function scrollTo(element, to, duration, onDone) {
+        let start = element.scrollTop,
+            change = to - start,
+            startTime = performance.now(),
+            val,
+            now,
+            elapsed,
+            t
+
+        function animateScroll() {
+            now = performance.now()
+            elapsed = now - startTime
+            t = elapsed / duration
+
+            element.scrollTop = start + change * easeInOutQuad(t)
+
+            if (t < 1) window.requestAnimationFrame(animateScroll)
+            else onDone && onDone()
+        }
+
+        animateScroll()
+    }
+
+    const pos = getRelativePos(elm)
+    scrollTo(container, pos.top, duration)
+}

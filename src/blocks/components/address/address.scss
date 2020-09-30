@@ -11,6 +11,12 @@
             border-bottom: 1px solid rgba(34, 155, 215, 0.15);
         }
 
+        &:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
         &-head {
             margin-bottom: 12px;
             display: flex;

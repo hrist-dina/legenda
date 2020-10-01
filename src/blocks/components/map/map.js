@@ -1,6 +1,12 @@
 /* global ymaps */
 
-import { DOMAnimations, on, scrollToElm } from '%common%/helper'
+import {
+    DOMAnimations,
+    getCoords,
+    on,
+    scrollToElm,
+    smoothScroll
+} from '%common%/helper'
 
 export default class Map {
     constructor(id, options) {
@@ -10,7 +16,9 @@ export default class Map {
         this.options = options
         this.classData = '.js-map-data'
         this.classDataItem = `${this.classData}-item`
+        this.classDataItemTitle = `${this.classDataItem}-title`
         this.classDataItemToggle = `${this.classDataItem}-toggle`
+        this.classDataItemShow = `${this.classDataItem}-show`
         this.classBalloonLink = '.js-map-balloon-link'
 
         this.items = []
@@ -38,12 +46,14 @@ export default class Map {
 
     initClickOnBalloon() {
         on(`#${this.map}`, 'click', this.classBalloonLink, e => {
-            e.preventDefault()
-            e.stopPropagation()
+            if (!this.isMobile()) {
+                e.preventDefault()
+                e.stopPropagation()
+            }
             const dataItemList = document.querySelector(this.classData)
             const item = e.target
             const id = item.dataset['id']
-            const itemData = dataItemList.querySelector(`[data-id="${id}"]`)
+            const itemData = dataItemList.querySelector(`#${id}`)
             if (!itemData) {
                 console.error('Not set data id')
                 return
@@ -56,34 +66,51 @@ export default class Map {
                 itemDataToggle &&
                 window.getComputedStyle(itemDataToggle).display === 'none'
             ) {
-                this.itemShow(itemData, itemDataToggle)
+                this.itemShowToggle(itemData, itemDataToggle, true)
             }
-            scrollToElm(
-                dataItemList.closest('.scroll-custom-map'),
-                itemData,
-                1500
-            )
+            const scrollBLock = dataItemList.closest('.scroll-custom-map')
+            scrollToElm(scrollBLock, itemData, 1500)
+            this.itemFocusedToggle(itemData)
         })
     }
 
-    itemShow(node, dataItem) {
-        node.classList.add('active')
+    itemFocusedToggle(el) {
+        el.classList.add('focused')
+        setTimeout(() => {
+            el.classList.remove('focused')
+        }, 4000)
+    }
+
+    itemShowToggle(node, dataItem, flag) {
+        flag ? node.classList.add('active') : node.classList.remove('active')
         DOMAnimations.slideToggle(dataItem, 500)
     }
 
     initEvents(el) {
-        el.addEventListener('click', ({ target }) => {
-            const node = target.closest(this.classDataItem)
-            const dataItem = node.querySelector(this.classDataItemToggle)
-            if (window.getComputedStyle(dataItem).display === 'none') {
-                this.itemShow(node, dataItem)
-            } else {
+        const title = el.querySelector(this.classDataItemTitle)
+        if (title) {
+            title.addEventListener('click', ({ target }) => {
+                const node = target.closest(this.classDataItem)
+                const dataItem = node.querySelector(this.classDataItemToggle)
+                this.itemShowToggle(
+                    node,
+                    dataItem,
+                    window.getComputedStyle(dataItem).display === 'none'
+                )
+            })
+        }
+
+        const show = el.querySelector(this.classDataItemShow)
+        if (show) {
+            show.addEventListener('click', ({ target }) => {
+                const node = target.closest(this.classDataItem)
                 const data = this.itemData(node)
                 this.mapObject.setCenter([data.locationX, data.locationY])
                 this.mapObject.setZoom(this.options.zoom || 16)
-                //node.classList.remove('active')
-            }
-        })
+                const map = document.querySelector(`#${this.map}`)
+                smoothScroll(map, 1000, getCoords(map).top)
+            })
+        }
     }
 
     mapData(map) {
@@ -97,7 +124,7 @@ export default class Map {
 
     itemData(element) {
         return {
-            id: element.dataset['id'],
+            id: element.id,
             locationX: element.dataset['locationX'],
             locationY: element.dataset['locationY'],
             hint: element.dataset['hint']
@@ -189,7 +216,7 @@ export default class Map {
                     <b>{{properties.balloonText}}</b>
                     <a 
                         class="js-map-balloon-link map-balloon-link" 
-                        href="javascript:void(0)" 
+                        href="#{{properties.pointIndex}}"
                         data-id="{{properties.pointIndex}}"
                     >Телефоны и режим работы</a>
                 </div>`

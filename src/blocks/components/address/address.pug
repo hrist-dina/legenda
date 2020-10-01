@@ -40,13 +40,13 @@ mixin address
         )
 
 mixin address-item(id, name, locationX, locationY)
+    - attributes.id = `address-id-${id}`
     .address__item.js-map-data-item(
-        data-id=id
         data-location-x=locationX
         data-location-y=locationY
         data-hint=name
-    )
-        .address__item-head
+    )&attributes(attributes)
+        .address__item-head.js-map-data-item-title
             .address__item-icon
                 +icon('arrow-down')
             .address__item-name=name
@@ -57,3 +57,5 @@ mixin address-item(id, name, locationX, locationY)
                 a(href='mailto:water@777-777.org ') water@777-777.org
             .address__item-value
                 +phone('+7 (3852) 36-46-66')
+            .address__item-value
+                a.address__item-link.js-map-data-item-show(href='javascript:void(0)') На карте

@@ -141,10 +141,10 @@ export const on = (selector, eventType, childSelector, eventHandler) => {
     }
 }
 
-export const smoothScroll = (target, duration) => {
+export const smoothScroll = (target, duration, topPosition) => {
     const tg =
         typeof target === 'string' ? document.querySelector(target) : target
-    const tgPositionOfTop = tg.getBoundingClientRect().top
+    const tgPositionOfTop = topPosition || tg.getBoundingClientRect().top
     const startPosition = window.pageYOffset
     const distance = tgPositionOfTop - startPosition
     let startTime = null
@@ -212,4 +212,25 @@ export const scrollToElm = (container, elm, duration) => {
 
     const pos = getRelativePos(elm)
     scrollTo(container, pos.top, duration)
+}
+
+export const getCoords = elem => {
+    const box = elem.getBoundingClientRect()
+
+    const body = document.body
+    const docEl = document.documentElement
+
+    const scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop
+    const scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft
+
+    const clientTop = docEl.clientTop || body.clientTop || 0
+    const clientLeft = docEl.clientLeft || body.clientLeft || 0
+
+    const top = box.top + scrollTop - clientTop
+    const left = box.left + scrollLeft - clientLeft
+
+    return {
+        top: top,
+        left: left
+    }
 }

@@ -18,6 +18,10 @@
             color: #004f91;
             text-decoration: none;
             margin-top: 5px;
+            
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 

@@ -14,6 +14,7 @@ export default class Init {
         this.cites()
         this.bottles()
         this.bottlesLimit()
+        this.warningMessages()
     }
 
     user() {
@@ -52,6 +53,15 @@ export default class Init {
     bottlesLimit() {
         if (this.data.bottlesLimit) {
             this.store.commit('cart/setBottlesLimit', this.data.bottlesLimit)
+        }
+    }
+
+    warningMessages() {
+        if (this.data.cartWarningMessages) {
+            this.store.commit(
+                'cart/addWarningMessages',
+                this.data.cartWarningMessages
+            )
         }
     }
 }

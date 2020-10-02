@@ -4,28 +4,33 @@
     }
     margin-top: 24px;
     margin-bottom: 56px;
+    min-height: 50vh;
 
     &__header {
         @include row-flex;
         align-items: center;
+        justify-content: space-between;
 
         &-left, &-right {
-            @include size(6);
-        }
-
-        &-left, &-center, &-right {
             @include col;
-            @include size-lg(4);
+            @include size-lg(3.5);
+            @include size(6);
         }
 
         &-center {
             @include lg-block {
+                @include size-lg(5);
                 order: 0;
+                margin-top: 0;
+            }
+            @include md-block {
+                margin-bottom: 0;
             }
             @include size(12);
             display: flex;
             justify-content: center;
             order: 1;
+            margin: 32px auto 50px;
         }
 
         &-right {

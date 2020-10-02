@@ -68,5 +68,8 @@ export default {
             item => item.id.toString() === id.toString()
         )
         state.bottlesLimit.splice(ind, 1)
+    },
+    addWarningMessages(state, payload) {
+        state.warningMessages = payload
     }
 }

@@ -9,5 +9,6 @@ export default {
     processingId: [],
     isLoading: false,
     bottles: [], // Бутыли в личном кабинете в табе "Пополнить"
-    bottlesLimit: [] // Бутыли в личном кабинете в табе "Списать"
+    bottlesLimit: [], // Бутыли в личном кабинете в табе "Списать"
+    warningMessages: [] // Уведомления в корзине
 }

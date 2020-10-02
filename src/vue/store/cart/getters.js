@@ -43,5 +43,6 @@ export default {
         getters.inCart(payload) && !getters.inProcessing(payload.id),
     isLoading: state => state.isLoading,
     getBottles: state => state.bottles,
-    getBottlesLimit: state => state.bottlesLimit
+    getBottlesLimit: state => state.bottlesLimit,
+    warningMessages: state => state.warningMessages
 }

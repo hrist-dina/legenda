@@ -1,11 +1,19 @@
 <template lang="pug">
 include ../../blocks/components/ui-kit/ui-kit
+include ../../views/helpers/mixins
 .cart-page
     .container
         .cart-page__header
             .cart-page__header-left
                 h2.cart-page__title Корзина
-            .cart-page__header-center
+            .cart-page__header-center(v-if="warningMessages.length")
+                .notification
+                    +icon('notification').notification__icon
+                    .notification__text
+                        .notification__text-item(
+                            v-for="(message, key) in warningMessages"
+                            :key="key"
+                        ) {{ message }}
             .cart-page__header-right
                 a(
                     href='javascript:void(0)'
@@ -102,7 +110,8 @@ export default {
             'cnt',
             'total',
             'productsDetailed',
-            'isLoading'
+            'isLoading',
+            'warningMessages'
         ]),
         ...mapGetters('user', ['isAuth']),
         hasProducts() {

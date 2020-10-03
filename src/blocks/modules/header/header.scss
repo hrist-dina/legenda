@@ -296,7 +296,10 @@
     }
 
     & .logo {
-        display: block;
+        @include md-block {
+            display: block;
+        }
+        display: inline-flex;
         & svg {
             @include md-block {
                 max-width: 100%;
@@ -372,6 +375,7 @@
 
         &__center {
             @include to($break_lg) {
+                display: block;
                 z-index: 1002;
             }
             display: none;

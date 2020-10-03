@@ -2,8 +2,9 @@
 
 mixin location(name)
     include data
+    include ../ui-kit/ui-kit
     .location.js-vue-location(:class="{'active': active}")&attributes(attributes)
-        a(href='javascript:void()' @click.prevent="open").__link
+        a(href='javascript:void(0)' @click.prevent="open").__link
             +icon('location').__icon
             span.__name(
                 ref='title'
@@ -13,9 +14,20 @@ mixin location(name)
             .__title Ваш город:
             ul.__list
                 for item in location
-                    li.__item(data-code=item.code @click.prevent="onItem")=item.name
-
-
-
-
-
+                    li.__item(
+                        data-code=item.code
+                        data-delivery=item.delivery ? item.delivery.toString() : false
+                        @click.prevent="onItem"
+                    )=item.name
+        .__modal
+            app-modal(:show-modal="showModal" @close="closeModal")
+                <template #header>
+                    h3 Внимание!
+                </template>
+                template
+                    p Товары для дома и продукты доставляются только по г. Барнаулу и г. Новоалтайску.
+                    p При смене города товары будут удалены из корзины. Сменить город?
+                <template #footer>
+                    +button('default')(@click.prevent="onChangeLocation") Да
+                    +button('bordered-md')(@click.prevent="closeModal") Нет
+                </template>

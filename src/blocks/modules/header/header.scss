@@ -41,18 +41,18 @@
             }
             @include md-block {
                 @include wh(50px);
+                @include transitionEaseOutQuint((background, box-shadow));
+                &:hover {
+                    background: rgba(238, 250, 253, .4);
+                    box-shadow: 0 8px 35px rgba(0, 0, 0, .2);
+                }
             }
             @include wh(24px);
-            @include transitionEaseOutQuint((background, box-shadow));
             box-sizing: border-box;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            &:hover {
-                background: #eefafd;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            }
         }
     }
 
@@ -296,7 +296,7 @@
     }
 
     & .logo {
-        display: inline-flex;
+        display: block;
         & svg {
             @include md-block {
                 max-width: 100%;
@@ -342,6 +342,7 @@
             }
         }
         @include to($break_lg) {
+            padding-top: 0;
             & .phone-row {
                 flex-direction: column;
                 align-items: flex-start;
@@ -373,6 +374,7 @@
             @include to($break_lg) {
                 z-index: 1002;
             }
+            display: none;
         }
         &__inner {
             @include to($break_lg) {

@@ -17,6 +17,7 @@ export default {
         ...mapGetters('favorite', {
             cntFavorites: 'cnt'
         }),
+        ...mapState('products', ['isLoading']),
         hasInCart() {
             return this.cnt > 0
         },
@@ -41,7 +42,7 @@ export default {
             getItems: 'getItems'
         }),
         loadProducts() {
-            if (this.products.length) {
+            if (this.products.length && !this.isLoading) {
                 this.getItems({ ids: this.products.map(item => item.id) })
             }
         }

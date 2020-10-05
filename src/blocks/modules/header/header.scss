@@ -437,7 +437,7 @@
         }
     }
 
-    &.menu-activated & {
+    &.menu-opened.menu-activated & {
         &__menu-favorite, &__menu-soc, &__center {
             display: none;
         }

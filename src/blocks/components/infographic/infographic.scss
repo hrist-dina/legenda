@@ -1,11 +1,11 @@
 .infographic {
 
-    & .container {
-        @include container-padding;
-    }
-
     &__list {
         @include row-flex;
+        & svg:not(.done-draw) * {
+            fill: none;
+            stroke: currentColor;
+        }
         margin-bottom: -20px;
     }
 
@@ -23,6 +23,7 @@
         justify-content: center;
         margin-bottom: 20px;
         max-width: 280px;
+        color: #007bc2;
     }
 
     &__img {
@@ -47,5 +48,20 @@
         margin-top: 28px;
         font-size: 15px;
         line-height: 20px;
+    }
+
+    #polaroid {
+        float: left;
+        width: 400px;
+        height: 320px;
+        stroke: #f9f9f9;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    & .container {
+        @include container-padding;
     }
 }

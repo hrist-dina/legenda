@@ -13,6 +13,7 @@ import Menu from '%components%/menu/menu'
 import UiKit from '%components%/ui-kit/ui-kit'
 import Gallery from '%components%/gallery/gallery'
 import ScrollLoading from '%classes%/ScrollLoading'
+import Infographic from '%components%/infographic/infographic'
 
 new App().init(() => {
     new SliderProduct()
@@ -32,4 +33,5 @@ new App().init(() => {
     new UiKit()
     new Gallery()
     new ScrollLoading()
+    new Infographic()
 })

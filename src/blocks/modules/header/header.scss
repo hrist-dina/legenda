@@ -15,6 +15,10 @@
         width: 100%;
     }
 
+    &__location {
+        margin-right: 10px;
+    }
+
     &__menu {
         @include from(1450px) {
             left: #{calc(((100% - 1200px) / 2) - 120px)};

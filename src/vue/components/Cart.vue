@@ -10,12 +10,14 @@ export default {
         loaded: false
     }),
     computed: {
-        ...mapState('user', ['token']),
         ...mapState('cart', ['products']),
         ...mapGetters('cart', ['cnt', 'total', 'productsDetailed']),
         ...mapState('favorite', ['favorites']),
         ...mapGetters('favorite', {
             cntFavorites: 'cnt'
+        }),
+        ...mapGetters('user', {
+            isAuth: 'isAuth'
         }),
         ...mapState('products', ['isLoading']),
         hasInCart() {
@@ -32,9 +34,6 @@ export default {
         },
         setLoaded() {
             return { loaded: this.loaded }
-        },
-        isAuth() {
-            return this.token
         }
     },
     methods: {

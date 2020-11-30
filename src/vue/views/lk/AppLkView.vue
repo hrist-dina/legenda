@@ -57,7 +57,7 @@
                         :placeholder="email.placeholder"
                         :valid-type="email.validType"
                     )
-                .error-message(v-if="!!errorMessage") {{ errorMessage }}
+                .error-message(v-if="!!errorMessage" v-html="errorMessage")
                 +button('default')(
                     :disabled="false"
                     :class="{'is-loading': false}"
@@ -83,7 +83,7 @@ export default {
     data: () => ({
         tabNav: null,
         baseRout: null,
-        errorMessage: '',
+        errorMessage: null,
         email: {
             placeholder: 'Электронная почта',
             name: 'email',
@@ -153,6 +153,10 @@ export default {
         },
         onInputEmail(data) {
             this.email.value = data.value
+
+            if (this.errorMessage) {
+                this.errorMessage = null
+            }
         },
         onValidateEmail(data) {
             this.email.isValid = data.isValid

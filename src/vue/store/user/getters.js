@@ -19,7 +19,7 @@ export default {
     getBonus: (state, getters) => getters.getPerson.bonus,
     getBottle: (state, getters) => getters.getPerson.bottle,
     getBalance: (state, getters) => getters.getPerson.balance,
-    isAuth: state => !!state.token,
+    isAuth: state => !!state.id,
     isValidAddress: state =>
         !!state.selectDelivery.id || !!state.selectDelivery.address,
     isValidDate: state => !!state.selectDelivery.date,

@@ -19,11 +19,11 @@ export default class Init {
 
     user() {
         const user = this.data.user
-        this.store.commit('user/setId', user && user.id ? user.id : null)
+        this.store.commit('user/setId', user && user.id ? { id: user.id } : '')
 
         this.store.commit(
             'user/setToken',
-            user && user.token ? user.token : null
+            user && user.token ? { token: user.token } : ''
         )
 
         if (user && user.person) {

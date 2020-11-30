@@ -12,8 +12,8 @@ export const personState = {
 
 export default {
     id: null,
-    token: token === 'null' ? null : token || null,
-    person: getPersonFromStorage(personState),
+    token: null,
+    person: personState,
     delivery: {
         types: [
             {

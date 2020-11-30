@@ -14,7 +14,8 @@
                     :placeholder="phone.placeholder"
                     :valid-type="phone.validType"
                 )
-            .auth-form__message(v-if="message") {{ message }}
+            .auth-form__message(v-if="message" v-html="message")
+            .auth-form__error(v-if="error" v-html="error")
             .auth-form__button
                 +button('default')(:disabled="!isValidForm") Отправить
 
@@ -39,11 +40,12 @@ export default {
             mask: 'phone',
             validType: 'phone'
         },
-        message: ''
+        message: null,
+        error: null
     }),
     computed: {
         isValidForm() {
-            return this.phone.isValid
+            return this.phone.isValid && !this.error
         }
     },
     methods: {
@@ -57,12 +59,27 @@ export default {
                 }).then(response => {
                     if (response.status) {
                         this.message = response.data.message
+                        setTimeout(() => {
+                            this.$router.push({ name: 'login' })
+                        }, 3000)
+                    } else if (!response.status) {
+                        this.error =
+                            response.error ||
+                            'Ошибка при восстановлении пароля!'
+                    } else {
+                        console.error(
+                            'Unknown status from response restore form!'
+                        )
                     }
                 })
             }
         },
         onInput(data) {
             this.phone.value = data.value
+
+            if (this.error) {
+                this.error = null
+            }
         },
         onValidate(data) {
             this.phone.isValid = data.isValid

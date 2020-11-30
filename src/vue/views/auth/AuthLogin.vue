@@ -18,6 +18,7 @@
                     :is-valid-type="item.isValidType"
                     :min-length="item.minLength"
                 )
+            .auth-form__error(v-if="error" v-html="error")
             .auth-form__button
                 +button('default')(:disabled="!isValidForm") Войти
                 router-link(:to="linkToRestore").link.link--default.auth-form__restore Забыли пароль?
@@ -53,7 +54,8 @@ export default {
                 validType: 'password',
                 isValidType: false
             }
-        ]
+        ],
+        error: null
     }),
     computed: {
         isValidForm() {
@@ -76,6 +78,11 @@ export default {
                     if (response.status) {
                         window.location = '/'
                     }
+                    if (!response.status) {
+                        this.error = response.error || 'Ошибка при авторизации!'
+                    } else {
+                        console.error('Unknown status from response auth form!')
+                    }
                 })
             }
         },
@@ -84,6 +91,10 @@ export default {
         },
         onInput(data, name) {
             this.form[this.getIndexByName(name)].value = data.value
+
+            if (this.error) {
+                this.error = null
+            }
         },
         onValidate(data, name) {
             this.form[this.getIndexByName(name)].isValid = data.isValid

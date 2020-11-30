@@ -22,7 +22,8 @@
             .auth-form__agree
                 +field-checkbox-rounded('agree')(@change="onAgree")
                     span Согласен с условиями
-                    a(href='#') Публичной оферты
+                    a(href='/info/') Публичной оферты
+            .auth-form__error(v-if="error" v-html="error")
             .auth-form__button
                 +button('default')(:disabled="!isValidForm") Зарегистрироваться
 </template>
@@ -37,6 +38,7 @@ export default {
     },
     data: () => ({
         agree: false,
+        error: null,
         form: [
             {
                 placeholder: 'Ф. И. О.',
@@ -88,7 +90,11 @@ export default {
     }),
     computed: {
         isValidForm() {
-            return !this.form.filter(el => !el.isValid).length && this.agree
+            return (
+                !this.form.filter(el => !el.isValid).length &&
+                this.agree &&
+                !this.error
+            )
         }
     },
     methods: {
@@ -108,6 +114,10 @@ export default {
                 }).then(response => {
                     if (response.status) {
                         window.location = '/'
+                    } else if (!response.status) {
+                        this.error = response.error || 'Ошибка при регистрации!'
+                    } else {
+                        console.error('Unknown status from server!')
                     }
                 })
             }
@@ -123,6 +133,10 @@ export default {
 
             if (name === 'password_confirm') {
                 this.onSamePassword()
+            }
+
+            if (this.error) {
+                this.error = null
             }
         },
         onValidate(data, name) {

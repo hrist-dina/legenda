@@ -80,6 +80,16 @@
             color: #2d9d46;
         }
 
+        &__error {
+            @include md-block {
+                font-size: 16px;
+                line-height: 22px;
+            }
+            font-size: 14px;
+            line-height: 20px;
+            color: $pink;
+        }
+
         &__restore {
             margin-left: 48px;
         }

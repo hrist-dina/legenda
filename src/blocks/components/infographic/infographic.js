@@ -11,10 +11,17 @@ export default class Infographic extends ComponentBase {
     }
 
     init() {
-        new Vivus('infographic-water', this.options, this.callbackDone)
-        new Vivus('infographic-warranty', this.options, this.callbackDone)
-        new Vivus('infographic-delivery', this.options, this.callbackDone)
-        new Vivus('infographic-products', this.options, this.callbackDone)
+        this.initItem('infographic-water')
+        this.initItem('infographic-warranty')
+        this.initItem('infographic-delivery')
+        this.initItem('infographic-products')
+    }
+
+    initItem(id) {
+        const node = document.getElementById(id)
+        if (node) {
+            new Vivus(id, this.options, this.callbackDone)
+        }
     }
 
     callbackDone(node) {

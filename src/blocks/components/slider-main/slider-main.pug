@@ -5,7 +5,9 @@ mixin slider-main
             .__item.swiper-slide
                 .__item-inner.js-parallax(style='background: radial-gradient(75.72% 133.81% at 31.35% 38.61%, #5BC5F2 11.46%, #169FDB 45.83%, #007BC2 90.62%);')
                     .__pattern
-                        img.__pattern-img.js-parallax-img(src='img/slider-main/pattern-1.svg', alt='pattern')
+                        include pattern-1
+                        +pattern-1
+
                     +container.__message-container
                         .__message
                             | Мы заботимся о здоровье каждого человека с первого дня жизни, производя и доставляя полезную воду Алтая «Легенда жизни»

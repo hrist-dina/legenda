@@ -1,0 +1,93 @@
+@include keyframes(move-long) {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@include keyframes(move-long-reverse) {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-20px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.move-long {
+    animation: move-long 5s infinite;
+
+    &-reverse {
+        animation: move-long-reverse reverse 5s infinite;
+    }
+}
+
+@include keyframes(move-middle) {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@include keyframes(move-middle-reverse) {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-15px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.move-middle {
+    animation: move-middle 4s infinite;
+
+    &-reverse {
+        animation: move-middle-reverse reverse 4s infinite;
+    }
+}
+
+@include keyframes(move-small) {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@include keyframes(move-small-reverse) {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.move-small {
+    animation: move-small 3s infinite;
+
+    &-reverse {
+        animation: move-small-reverse reverse 3s infinite;
+    }
+}

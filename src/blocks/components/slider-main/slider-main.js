@@ -36,8 +36,10 @@ export default class SliderMain extends SwiperBase {
         const img = item.querySelector('.js-parallax-img'),
             bg = item.querySelector('.js-parallax-bg'),
             maxMove = item.offsetWidth / 30,
-            imgCenterX = img.offsetLeft + img.offsetWidth / 2,
-            imgCenterY = img.offsetTop + img.offsetHeight / 2,
+            imgCenterX =
+                (img ? img.offsetLeft : 0) + (img ? img.offsetWidth : 0) / 2,
+            imgCenterY =
+                (img ? img.offsetTop : 0) + (img ? img.offsetHeight : 0) / 2,
             fluidimg = window.matchMedia('(min-width: 726px)')
 
         function getMousePos(xRef, yRef) {
@@ -59,12 +61,14 @@ export default class SliderMain extends SwiperBase {
                 distX = mousePos.x - imgCenterX,
                 distY = mousePos.y - imgCenterY
             if (fluidimg.matches) {
-                img.style.transform =
-                    'translate(' +
-                    (-1 * distX) / 12 +
-                    'px,' +
-                    (-1 * distY) / 12 +
-                    'px)'
+                if (img) {
+                    img.style.transform =
+                        'translate(' +
+                        (-1 * distX) / 12 +
+                        'px,' +
+                        (-1 * distY) / 12 +
+                        'px)'
+                }
                 bg.style.transform = `translate(${(-1 * distX) / 70}px, ${
                     (-1 * distY) / 70
                 }px)`

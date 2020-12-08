@@ -12,12 +12,12 @@
                 .lk-meta__item-data
                     .lk-meta__item-value {{ bottle }}
                     .lk-meta__item-title {{ bottle | bottleTitle }}
-            .lk-meta__item
+            .lk-meta__item(v-if="hasBonus")
                 +icon('bonus').lk-meta__item-icon
                 .lk-meta__item-data
                     .lk-meta__item-value {{ bonus | thousand}}
                     .lk-meta__item-title {{ bonus | bonusTitle }}
-            .lk-meta__item
+            .lk-meta__item(v-if="hasBalance")
                 +icon('money').lk-meta__item-icon
                 .lk-meta__item-data
                     .lk-meta__item-value {{ balance | ruble}}
@@ -33,13 +33,19 @@ export default {
             default: 0
         },
         bonus: {
-            type: Number,
-            default: 0
+            type: Number
         },
         balance: {
-            type: Number,
-            default: 0
+            type: Number
         }
+    },
+    computed: {
+        hasBonus() {
+            return this.bonus !== null
+        },
+        hasBalance() {
+            return this.balance !== null
+        },
     }
 }
 </script>

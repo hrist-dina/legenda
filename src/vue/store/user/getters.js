@@ -1,11 +1,11 @@
 import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
-    getPerson: state => ({
-        ...state.person,
-        bonus: state.person.bonus || 0,
-        bottle: state.person.bottle || 0,
-        balance: state.person.balance || 0
+    getPerson: ({ person }) => ({
+        ...person,
+        bottle: person.bottle || 0,
+        bonus: person.bonus ?? null,
+        balance: person.balance ?? null
     }),
     getDeliveryTypes: state => state.delivery.types,
     getPayment: state => state.payment,
@@ -16,9 +16,9 @@ export default {
             }
             return i
         }),
-    getBonus: (state, getters) => getters.getPerson.bonus,
-    getBottle: (state, getters) => getters.getPerson.bottle,
-    getBalance: (state, getters) => getters.getPerson.balance,
+    getBonus: (state, getters) => getters.getPerson.bonus || 0,
+    getBottle: (state, getters) => getters.getPerson.bottle || 0,
+    getBalance: (state, getters) => getters.getPerson.balance || 0,
     isAuth: state => !!state.id,
     isValidAddress: state =>
         !!state.selectDelivery.id || !!state.selectDelivery.address,

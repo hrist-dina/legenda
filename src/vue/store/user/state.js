@@ -1,13 +1,13 @@
-import { token, deliveryItems, getPersonFromStorage } from './helpers'
+import { deliveryItems } from './helpers'
 
 export const personState = {
     fio: '',
     phone: '',
     email: '',
     birthDate: '',
-    bonus: 0,
     bottle: 0,
-    balance: 0
+    bonus: null,
+    balance: null
 }
 
 export default {

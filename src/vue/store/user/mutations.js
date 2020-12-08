@@ -18,13 +18,13 @@ export default {
         if (payload.phone) {
             state.person.phone = payload.phone
         }
-        if (payload.bonus) {
-            state.person.bonus = payload.bonus
-        }
         if (payload.bottle) {
             state.person.bottle = payload.bottle
         }
-        if (payload.balance) {
+        if (payload.bonus != null) {
+            state.person.bonus = payload.bonus
+        }
+        if (payload.balance != null) {
             state.person.balance = payload.balance
         }
         if (typeof payload.birthDate !== 'undefined') {

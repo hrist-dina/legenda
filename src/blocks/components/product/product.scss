@@ -530,10 +530,6 @@
             }
         }
 
-        &__favorite {
-            display: none;
-        }
-
         &__img-link {
             @include to($break_md) {
                 @include wh(176px);

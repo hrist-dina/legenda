@@ -10,21 +10,25 @@
                         v-if="isAuth"
                         @click.prevent="onLogout"
                     )
-                lk-meta(
-                    v-if="isAuth"
-                    :bottle="person.bottle"
-                    :bonus="person.bonus"
-                    :balance="person.balance"
-                ).lk-header__meta
-                .lk-meta.lk-center-message(v-else)
-                    | Доступно авторизованным пользователям, пожалуйста,
-                    |
-                    a(href="/auth").link зарегистрируйтесь
-                    |
-                    | или
-                    |
-                    a(href="/auth/#/login").link войдите
-            .lk-body(v-if="isAuth")
+                template(v-if="isLoaded")
+                    lk-meta(
+                        v-if="isAuth"
+                        :bottle="person.bottle"
+                        :bonus="person.bonus"
+                        :balance="person.balance"
+                    ).lk-header__meta
+                    .lk-meta.lk-center-message(v-else)
+                        | Доступно авторизованным пользователям, пожалуйста,
+                        |
+                        a(href="/auth").link зарегистрируйтесь
+                        |
+                        | или
+                        |
+                        a(href="/auth/#/login").link войдите
+                template(v-else)
+                    .lk-loading
+                        loader
+            .lk-body(v-if="isAuth && isLoaded")
                 .lk-repeat
                     +link-icon('Повторить последний заказ', 'repeat')(
                         @click.prevent="onRepeat"
@@ -69,6 +73,7 @@ import { mapActions, mapGetters } from 'vuex'
 import LkMeta from '%vue%/views/lk/LkMeta'
 import AppModal from '%vue%/components/AppModal'
 import InputText from '%vue%/components/InputText'
+import Loader from '%vue%/components/Loader'
 import { LK_ORDER_REPEAT, LK_ORDERS } from '%vue%/router/constants'
 import { toggleAdditionalProducts } from '%common%/helper'
 import { showNotification } from '%vue%/store/common/helper'
@@ -78,12 +83,14 @@ export default {
     components: {
         AppModal,
         InputText,
-        LkMeta
+        LkMeta,
+        Loader,
     },
     data: () => ({
         tabNav: null,
         baseRout: null,
         errorMessage: null,
+        isLoaded: false,
         email: {
             placeholder: 'Электронная почта',
             name: 'email',
@@ -113,7 +120,9 @@ export default {
             editPersonalData: 'editPersonalData'
         }),
         onLogout() {
+            this.isLoaded = true
             this.logout().then(response => {
+                this.isLoaded = false
                 if (response.status) {
                     window.location = '/'
                 }
@@ -184,6 +193,7 @@ export default {
         }
     },
     mounted() {
+        this.isLoaded = true
         new TabsScroll()
     }
 }

@@ -232,6 +232,7 @@ export default {
         },
         initMask() {
             if (this.isMaskPhone) {
+                this.isMaskComplete = true
                 // При инициализации в цикле, не задаются events в inputmask, поэтому установлен setTimeout
                 setTimeout(() => {
                     const mask = new Mask(

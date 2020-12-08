@@ -8,7 +8,7 @@
                     .lk-personal-data__list
                         .lk-personal-data__item(v-if="!!person.fio") {{ person.fio }}
                         .lk-personal-data__item(v-if="!!person.birthDate") {{ person.birthDate | dateSlash }}
-                        .lk-personal-data__item(v-if="!!person.phone") {{ person.phone }}
+                        .lk-personal-data__item(v-if="!!person.phone") {{ person.phone | phoneNumber }}
                         .lk-personal-data__item(v-if="!!person.email") {{ person.email }}
                     .lk-personal-data__edit
                         +link('Редактировать', false, 'bordered-md')(

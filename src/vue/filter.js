@@ -6,7 +6,8 @@ import {
     formatThousand,
     BONUS_TITLE,
     BOTTLE_TITLES,
-    formatDate
+    formatDate,
+    formatPhoneNumber
 } from '%common%/formatters'
 
 Vue.filter('ruble', function (value) {
@@ -41,4 +42,9 @@ Vue.filter('dateShort', function (value) {
 Vue.filter('dateSlash', function (value) {
     if (!value) return
     return formatDate(value, '/')
+})
+
+Vue.filter('phoneNumber', function (value) {
+    if (!value) return
+    return formatPhoneNumber(value)
 })

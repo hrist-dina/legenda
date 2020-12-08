@@ -163,6 +163,28 @@ h2,
     }
 }
 
+.scroll-custom-menu {
+    /* Firefox */
+    scrollbar-color: #5bc5f2 #aedae9;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #aedae9;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #5bc5f2;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+    }
+}
+
 .personal-data-form {
     &__submit {
         margin-top: 20px;

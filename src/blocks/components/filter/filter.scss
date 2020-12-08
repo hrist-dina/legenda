@@ -161,12 +161,12 @@
                 }
             }
 
-            .show-all & {
-                display: flex;
-            }
-
             &:nth-child(n + 5) {
                 display: none;
+            }
+
+            .show-all &:nth-child(n + 5) {
+                display: flex;
             }
         }
 

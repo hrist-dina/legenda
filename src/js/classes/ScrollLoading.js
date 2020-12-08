@@ -25,11 +25,12 @@ export default class ScrollLoading extends ComponentBase {
         const loader = item.querySelector(this.classLoader)
         const dataContent = item.querySelector(this.classData)
         let isLoading = false
+        let isEnd = false
         loader.classList.remove('loader')
-        const url = loader.dataset.url
+        let url = loader.dataset.url
         document.addEventListener('scroll', () => {
-            const dist = this.getDistFromBottom()
-            if (!isLoading && dist) {
+            let dist = this.getDistFromBottom()
+            if (!isLoading && !isEnd && dist) {
                 isLoading = true
                 loader.classList.add('loader')
                 new HTTP(url).get().then(({ data }) => {
@@ -42,6 +43,12 @@ export default class ScrollLoading extends ComponentBase {
                             Product,
                             false
                         ).initVue()
+
+                        if (data.nextPageUrl) {
+                            url = data.nextPageUrl
+                        } else {
+                            isEnd = true
+                        }
                     }
                 })
             }

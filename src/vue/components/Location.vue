@@ -2,6 +2,7 @@
 import HTTP, { urlAjax } from '%common%/http'
 import AppModal from '%vue%/components/AppModal'
 import { mapActions } from 'vuex'
+import { setCookie } from '%common%/helper'
 
 export default {
     components: { AppModal },
@@ -37,11 +38,13 @@ export default {
         },
         onSubmit(codeItem, text) {
             const title = this.$refs['title']
-            return new HTTP(urlAjax.location, { code: codeItem }, () => {
+            return new HTTP(urlAjax.location, { code: codeItem }, data => {
                 title.textContent = text
                 title.dataset.code = codeItem
                 this.active = false
                 this.showModal = false
+                setCookie('BVK_CITY', data.id)
+                window.location.reload()
             }).post()
         },
         closeModal() {

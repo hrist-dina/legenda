@@ -4,8 +4,8 @@
     .lk-meta
         .lk-meta__head
             .lk-meta__title Вам доступно
-            +hint.hint--mobile-bottom.lk-meta__hint
-                span Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, illo, sunt. Adipisci corporis cumque dolorem expedita fugit illum nemo nulla odio repudiandae! Incidunt libero quam similique ut! Laborum, quisquam totam.
+            +hint.hint--mobile-bottom.lk-meta__hint(v-if="hint")
+                span(v-html="hint")
         .lk-meta__list
             .lk-meta__item
                 +icon('bottle').lk-meta__item-icon
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { getStaticHtml } from '%common%/helper'
+
 export default {
     name: 'lk-meta',
     props: {
@@ -39,13 +41,19 @@ export default {
             type: Number
         }
     },
+    data: () => ({
+        hint: null
+    }),
     computed: {
         hasBonus() {
             return this.bonus !== null
         },
         hasBalance() {
             return this.balance !== null
-        },
+        }
+    },
+    created() {
+        this.hint = getStaticHtml('static-lk-hint')
     }
 }
 </script>

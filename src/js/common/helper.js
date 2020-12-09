@@ -19,6 +19,14 @@ export const toggleAdditionalProducts = (isHide = true) => {
     isHide ? classList.add('hide') : classList.remove('hide')
 }
 
+export const getStaticHtml = id => {
+    const node = document.getElementById(id)
+    if (!node) {
+        return null
+    }
+    return node.innerHTML
+}
+
 export const checkEmail = string => {
     return !!string.search(/^[-._a-z0-9]+@+[a-z0-9-]+\.[a-z]{2,6}$/i)
 }

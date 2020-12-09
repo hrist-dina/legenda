@@ -14,6 +14,7 @@
 <script>
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/locale/ru'
+import { formatDateToServer } from '%common%/formatters'
 export default {
     components: {
         DatePicker
@@ -38,7 +39,7 @@ export default {
     },
     methods: {
         onChange(val) {
-            this.$emit('change', val)
+            this.$emit('change', formatDateToServer(val))
             this.$emit('validate', { isValid: !!val })
         }
     }

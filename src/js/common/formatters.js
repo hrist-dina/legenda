@@ -42,6 +42,16 @@ export const formatDate = (value, separator = '.') => {
     return `${dd}${separator}${mm}${separator}${yy}`
 }
 
+export const formatDateToServer = date => {
+    let d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear()
+    if (month.length < 2) month = '0' + month
+    if (day.length < 2) day = '0' + day
+    return [year, month, day].join('-')
+}
+
 export const formatPhoneNumber = phone => {
     const cleaned = ('' + phone).replace(/\D/g, '')
     const match = cleaned.match(/^(7|)?(\d{3})(\d{3})(\d{2})(\d{2})$/)

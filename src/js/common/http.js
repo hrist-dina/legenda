@@ -59,7 +59,6 @@ export const urlAjax = {
     basketPromocode: isProd ? '/api/basket/promocode' : '/mock/promocode.json',
     favoriteAdd: isProd ? '/api/favorite/add' : '/mock/favorite.json',
     favoriteRemove: isProd ? '/api/favorite/remove' : '/mock/favorite.json',
-    favoriteClean: isProd ? '/api/favorite/clean' : '/mock/favorite.json',
     register: isProd ? '/api/register' : '/mock/register.json',
     editPersonalData: isProd ? '/api/person/edit' : '/mock/person-edit.json',
     login: isProd ? '/api/login' : '/mock/login.json',

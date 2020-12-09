@@ -23,6 +23,9 @@ export default class ScrollLoading extends ComponentBase {
 
     initScrolling(item) {
         const loader = item.querySelector(this.classLoader)
+        if (!loader) {
+            return
+        }
         const dataContent = item.querySelector(this.classData)
         let isLoading = false
         let isEnd = false

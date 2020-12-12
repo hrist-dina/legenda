@@ -8,6 +8,12 @@ export default {
     setToken(state, payload) {
         state.token = payload.token
     },
+    setType(state, payload) {
+        state.type = payload.type
+    },
+    setSelectType(state, payload) {
+        state.selectType = payload.selectType
+    },
     setPersonalData(state, payload) {
         if (payload.fio) {
             state.person.fio = payload.fio

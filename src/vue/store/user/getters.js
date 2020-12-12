@@ -7,6 +7,7 @@ export default {
         bonus: person.bonus ?? null,
         balance: person.balance ?? null
     }),
+    hasSelectType: state => state.selectType,
     getDeliveryTypes: state => state.delivery.types,
     getPayment: state => state.payment,
     getDeliveryItems: state =>

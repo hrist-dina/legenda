@@ -24,6 +24,18 @@ export default {
 
         return response.data
     },
+    editSelectType: async ({ commit }, payload) => {
+        const response = await new HTTP(
+            urlAjax.userType,
+            { delivery_type: payload.type },
+            () => {
+                commit('setType', payload)
+                commit('setSelectType', { selectType: false })
+            }
+        ).post()
+
+        return response.data
+    },
     login: async ({ commit }, payload) => {
         const response = await new HTTP(urlAjax.login, payload, data => {
             commit('setId', { id: data.id })

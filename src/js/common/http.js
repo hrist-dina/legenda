@@ -61,6 +61,7 @@ export const urlAjax = {
     favoriteRemove: isProd ? '/api/favorite/remove' : '/mock/favorite.json',
     register: isProd ? '/api/register' : '/mock/register.json',
     editPersonalData: isProd ? '/api/person/edit' : '/mock/person-edit.json',
+    userType: isProd ? '/api/usertype' : '/mock/person-edit.json',
     login: isProd ? '/api/login' : '/mock/login.json',
     restore: isProd ? '/api/restore' : '/mock/restore.json',
     logout: isProd ? '/api/logout' : '/mock/logout.json',

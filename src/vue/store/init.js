@@ -31,6 +31,10 @@ export default class Init {
         } else {
             this.store.commit('user/cleanPersonData')
         }
+
+        if (this.data.selectType) {
+            this.store.commit('user/setSelectType', { selectType: true })
+        }
     }
 
     cart() {

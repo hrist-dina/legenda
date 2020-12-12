@@ -8,6 +8,7 @@
                     .lk-write-off
                         delivery-form(
                             :is-new="true"
+                            :show-delivery-type="false"
                             :show-title-and-city="false"
                             :show-date-time="true"
                         )

@@ -6,8 +6,6 @@ export const CHECKOUT_DELIVERY = 'delivery'
 export const CHECKOUT_PAYMENT = 'payment'
 export const CHECKOUT_SUCCESS = 'success'
 
-export const CHECKOUT_BONUS_COEFFICIENT = 0.0186
-
 export default {
     activeStep: CHECKOUT_WELCOME,
     hasLogin: false,

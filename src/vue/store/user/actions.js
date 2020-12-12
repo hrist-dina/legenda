@@ -195,6 +195,18 @@ export default {
 
         return response.data
     },
+    orderBonus: async ({ commit }) => {
+        const response = await new HTTP(
+            urlAjax.orderBonus,
+            false,
+            data => {
+                commit('setPersonalData', { bonus: data.bonus })
+            },
+            showNotification(commit)
+        ).get()
+
+        return response.data
+    },
     deliveryLk({ commit }, payload) {
         // TODO:: как будет api
     }

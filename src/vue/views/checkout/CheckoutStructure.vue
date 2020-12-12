@@ -5,10 +5,15 @@
                 .checkout-stucture__total-data
                     .checkout-stucture__total-title Итого к оплате:
                     .checkout-stucture__total-value {{ total | ruble }}
-                    .checkout-stucture__total-bonus(v-if="isAuthFinalStep") +{{ bonus | bonus }}
+                    .checkout-stucture__total-bonus(
+                        v-if="isAuthFinalStep && bonus > 0"
+                    ) +{{ bonus | bonus }}
                 .checkout-stucture__total-button(v-if="!isWelcome")
                     include ../../../blocks/components/ui-kit/ui-kit
-                    +button('order')(:disabled="!canOrder" @click="onClickSendOrder") Оформить заказ
+                    +button('order')(
+                        :disabled="!canOrder"
+                        @click="onClickSendOrder"
+                    ) Оформить заказ
             .checkout-stucture__agree
                 +field-checkbox-rounded('agree')(@change="onAgree")
                     span Согласен с условиями
@@ -37,7 +42,6 @@
 import CartItem from '%vue%/components/CartItem'
 import { mapActions, mapGetters } from 'vuex'
 import {
-    CHECKOUT_BONUS_COEFFICIENT,
     CHECKOUT_FINAL,
     CHECKOUT_PAYMENT,
     CHECKOUT_WELCOME
@@ -50,10 +54,16 @@ export default {
         CartItem
     },
     data: () => ({
-        agree: false
+        agree: false,
+        newBonus: null,
+        newBonusWithPay: null
     }),
     computed: {
-        ...mapGetters('user', ['isAuth', 'isValidCheckoutFinal']),
+        ...mapGetters('user', [
+            'isAuth',
+            'isValidCheckoutFinal',
+            'isSpendBonus'
+        ]),
         ...mapGetters('cart', ['productsDetailed', 'total']),
         isEndStep() {
             const name = this.$route.name
@@ -76,12 +86,13 @@ export default {
             }
         },
         bonus() {
-            return Math.ceil(this.total * CHECKOUT_BONUS_COEFFICIENT)
+            return this.isSpendBonus ? this.newBonusWithPay : this.newBonus
         }
     },
     methods: {
         ...mapActions('user', {
-            handlerPayment: 'payment'
+            handlerPayment: 'payment',
+            orderBonus: 'orderBonus'
         }),
         onClickSendOrder() {
             this.handlerPayment()
@@ -89,6 +100,14 @@ export default {
         onAgree() {
             this.agree = !this.agree
         }
+    },
+    created() {
+        this.orderBonus().then(response => {
+            if (response.status) {
+                this.newBonus = response.data.newBonus
+                this.newBonusWithPay = response.data.newBonusWithPay
+            }
+        })
     }
 }
 </script>

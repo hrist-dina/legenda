@@ -1,6 +1,7 @@
 <template lang="pug">
     form.delivery-form(@submit.prevent="onSubmit")
         delivery-type-list(
+            v-if="showDeliveryType"
             :delivery-types="deliveryTypes"
             @change-type="onChangeType"
         )
@@ -90,6 +91,10 @@ export default {
         showCity: {
             type: Boolean,
             default: false
+        },
+        showDeliveryType: {
+            type: Boolean,
+            default: true
         },
         isNew: {
             type: Boolean,

@@ -67,6 +67,7 @@ export const urlAjax = {
     logout: isProd ? '/api/logout' : '/mock/logout.json',
     delivery: isProd ? '/api/delivery' : '/mock/delivery.json',
     orderTime: isProd ? '/api/order/time' : '/mock/order-time.json',
+    orderBonus: isProd ? '/api/order/bonus' : '/mock/order-bonus.json',
     // На проде будет один путь, запрос будет приходить с параметрами типа оплаты
     paymentCard: isProd ? '/api/payment' : '/mock/payment-card.json',
     paymentMoney: isProd ? '/api/payment' : '/mock/payment-money.json',

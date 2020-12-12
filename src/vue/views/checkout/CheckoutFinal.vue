@@ -44,14 +44,14 @@
                     :value="selectPaymentType"
                 )
         .checkout__checkbox-list
-            .checkout__checkbox-item
+            .checkout__checkbox-item(v-if="getBonus > 0")
                 +field-checkbox-rounded('bonus', '', 'field-checkbox-rounded--dark')(
                     @change="onBonus"
                     :checked="isSpendBonus"
                 )
                     | Списать бонусы
                     b (доступно {{ getBonus | bonus }})
-            .checkout__checkbox-item
+            .checkout__checkbox-item(v-if="getBottle > 0")
                 +field-checkbox-rounded('bottle', '', 'field-checkbox-rounded--dark')(
                     @change="onBottle"
                     :checked="isSpendBottle"
@@ -77,6 +77,7 @@
             delivery-form(
                 :is-new="true"
                 :show-date-time="false"
+                :show-city="false"
                 @submit="onSubmitModalAddress"
                 @isValid="onValidModalAddress"
             )

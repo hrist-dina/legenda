@@ -11,7 +11,7 @@
             .lk-stucture__agree
                 +field-checkbox-rounded('agree')(@change="onAgree")
                     span Согласен с условиями
-                    a(href='#') Публичной оферты
+                    a(href='/info/') Публичной оферты
         .lk-stucture__data
             .lk-stucture__list
                 cart-item-lk(

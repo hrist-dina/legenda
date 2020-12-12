@@ -182,6 +182,19 @@ export default {
 
         return response.data
     },
+    orderTime: async ({ commit, getters }, payload) => {
+        const response = await new HTTP(
+            urlAjax.orderTime,
+            {
+                ...payload,
+                delivery: getters.getSelectDelivery
+            },
+            false,
+            showNotification(commit)
+        ).get()
+
+        return response.data
+    },
     deliveryLk({ commit }, payload) {
         // TODO:: как будет api
     }

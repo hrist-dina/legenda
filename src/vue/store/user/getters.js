@@ -9,6 +9,7 @@ export default {
     }),
     hasSelectType: state => state.selectType,
     getDeliveryTypes: state => state.delivery.types,
+    getSelectDelivery: state => state.selectDelivery,
     getPayment: state => state.payment,
     getDeliveryItems: state =>
         state.delivery.items.map(i => {

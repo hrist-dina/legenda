@@ -87,6 +87,10 @@ export default {
             type: Boolean,
             default: false
         },
+        showCity: {
+            type: Boolean,
+            default: false
+        },
         isNew: {
             type: Boolean,
             default: false
@@ -102,6 +106,9 @@ export default {
         fields() {
             if (this.showTitleAndCity) {
                 return Object.values(this.inputs)
+            }
+            if (this.showCity) {
+                return [this.inputs.city, this.inputs.address]
             }
             return [this.inputs.address]
         },
@@ -177,6 +184,12 @@ export default {
         }
 
         if (this.showTitleAndCity) {
+            if (this.cities) {
+                this.inputs.city.options = this.cities
+            }
+        }
+
+        if (this.showCity) {
             if (this.cities) {
                 this.inputs.city.options = this.cities
             }

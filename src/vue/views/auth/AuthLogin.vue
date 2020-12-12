@@ -77,8 +77,7 @@ export default {
                 }).then(response => {
                     if (response.status) {
                         window.location = '/'
-                    }
-                    if (!response.status) {
+                    } else if (!response.status) {
                         this.error = response.error || 'Ошибка при авторизации!'
                     } else {
                         console.error('Unknown status from response auth form!')

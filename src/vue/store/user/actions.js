@@ -4,12 +4,19 @@ import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
 import { showNotification } from '%vue%/store/common/helper'
 
 export default {
-    register: async ({ commit }, payload) => {
-        const response = await new HTTP(urlAjax.register, payload, data => {
-            commit('setId', { id: data.id })
-            commit('setToken', { token: data.token })
-            commit('setPersonalData', payload)
-        }).post()
+    register: async ({ commit, rootGetters }, payload) => {
+        const response = await new HTTP(
+            urlAjax.register,
+            {
+                ...payload,
+                wish: rootGetters['favorite/idsArray']
+            },
+            data => {
+                commit('setId', { id: data.id })
+                commit('setToken', { token: data.token })
+                commit('setPersonalData', payload)
+            }
+        ).post()
 
         return response.data
     },
@@ -36,12 +43,23 @@ export default {
 
         return response.data
     },
-    login: async ({ commit }, payload) => {
-        const response = await new HTTP(urlAjax.login, payload, data => {
-            commit('setId', { id: data.id })
-            commit('setToken', { token: data.token })
-            commit('setPersonalData', data.person)
-        }).post()
+    login: async ({ commit, rootGetters }, payload) => {
+        const response = await new HTTP(
+            urlAjax.login,
+            {
+                ...payload,
+                wish: rootGetters['favorite/idsArray']
+            },
+            data => {
+                commit('setId', { id: data.id })
+                commit('setToken', { token: data.token })
+                commit('setPersonalData', data.person)
+            }
+        ).post()
+
+        if (response.data.wish) {
+            commit('favorite/concat', response.data.wish, { root: true })
+        }
 
         return response.data
     },

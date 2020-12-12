@@ -28,5 +28,7 @@ export default {
         !getters.inFavorite(payload) &&
         !getters.inProcessingFavorite(payload.id),
     canRemoveFavorite: (state, getters) => payload =>
-        getters.inFavorite(payload) && !getters.inProcessingFavorite(payload.id)
+        getters.inFavorite(payload) &&
+        !getters.inProcessingFavorite(payload.id),
+    idsArray: state => state.favorites.map(i => i.id)
 }

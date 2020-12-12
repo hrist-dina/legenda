@@ -35,6 +35,10 @@ export default class Init {
         if (this.data.selectType) {
             this.store.commit('user/setSelectType', { selectType: true })
         }
+
+        if (user && user.wish) {
+            this.store.commit('favorite/concat', user.wish)
+        }
     }
 
     cart() {

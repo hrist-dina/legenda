@@ -8,7 +8,8 @@ export default {
             return await new HTTP(
                 urlAjax.basketAdd,
                 {
-                    id: payload.id
+                    id: payload.id,
+                    qnt: payload.cnt || 1
                 },
                 () => {
                     if (!getters.isEqualCnt(payload)) {

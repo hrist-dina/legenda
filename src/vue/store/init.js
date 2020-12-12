@@ -39,6 +39,10 @@ export default class Init {
         if (user && user.wish) {
             this.store.commit('favorite/concat', user.wish)
         }
+
+        if (user && user.address && !!user.address.length) {
+            user.address.map(i => this.store.commit('user/setDeliveryItem', i))
+        }
     }
 
     cart() {

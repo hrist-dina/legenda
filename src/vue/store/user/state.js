@@ -1,4 +1,5 @@
 import { deliveryItems } from './helpers'
+import { isProd } from '%common%/http'
 
 export const personState = {
     fio: '',
@@ -27,7 +28,10 @@ export default {
                 name: 'В офис'
             }
         ],
-        items: deliveryItems || []
+        items:
+            !isProd && deliveryItems && !!deliveryItems.length
+                ? deliveryItems
+                : []
     },
     payment: [
         {

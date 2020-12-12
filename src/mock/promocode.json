@@ -2,6 +2,13 @@
   "status": true,
   "data": {
     "message": "Промокод применен",
-    "sale": 170
+    "sale": 170,
+    "cart": [
+      {
+        "id": 14,
+        "price": 140.5,
+        "sum": 281
+      }
+    ]
   }
 }

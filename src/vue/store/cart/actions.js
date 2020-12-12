@@ -57,6 +57,10 @@ export default {
                 },
                 data => {
                     commit('setIsLoading', false)
+                    commit(
+                        'addMany',
+                        data.cart.map(i => ({ ...i, cnt: i.cnt || 1 }))
+                    )
                 }
             )
                 .post()

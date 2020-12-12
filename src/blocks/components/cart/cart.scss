@@ -261,6 +261,13 @@
             position: relative;
         }
 
+        &__item {
+            margin-bottom: 25px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
         &__data {
             @include md-block {
                 width: #{calc(100% - 222px)};

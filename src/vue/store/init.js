@@ -11,6 +11,7 @@ export default class Init {
     process() {
         this.user()
         this.cart()
+        this.cartBottle()
         this.cites()
         this.bottles()
         this.bottlesLimit()
@@ -58,6 +59,13 @@ export default class Init {
         const cart = this.data.cart
         if (cart && isProd) {
             this.store.commit('cart/addMany', cart)
+        }
+    }
+
+    cartBottle() {
+        const cartBottle = this.data.cartBottle
+        if (cartBottle) {
+            this.store.commit('cart/setCartBottles', cartBottle)
         }
     }
 

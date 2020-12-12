@@ -71,5 +71,8 @@ export default {
     },
     addWarningMessages(state, payload) {
         state.warningMessages = payload
+    },
+    setCartBottles(state, payload) {
+        state.cartBottles = payload
     }
 }

@@ -136,9 +136,14 @@ export default {
         },
         changeButtonText() {
             const inCartText = this.buttonEl.dataset.inCartText
+            const textEl = this.$refs['product-button-text']
+            const defaultText =
+                this.buttonEl.dataset.defaultText || textEl.textContent
             if (this.hasInCart) {
-                const textEl = this.$refs['product-button-text']
                 textEl.textContent = inCartText || 'В корзине'
+                this.buttonEl.dataset.defaultText = defaultText
+            } else {
+                textEl.textContent = defaultText
             }
         },
         toggleToFavorite() {

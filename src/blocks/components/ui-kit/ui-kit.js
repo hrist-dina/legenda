@@ -10,11 +10,11 @@ class ButtonHover extends ComponentBase {
     constructor(
         selector = [
             '.button--back',
-            '.button--for-bottle',
             '.button--bordered',
             '.button--bordered-md',
             '.button--in-cart:not(.in-cart)',
-            '.button--in-cart-category:not(.in-cart)'
+            '.button--in-cart-category:not(.in-cart)',
+            '.button--for-bottle:not(.in-cart)'
         ]
     ) {
         super(selector)

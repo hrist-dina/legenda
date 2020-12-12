@@ -47,7 +47,7 @@ include ../../views/helpers/mixins
                         a(href="/catalog.html").link каталог
             .cart-page__footer(v-if="hasProducts")
                 .cart-page__footer-left
-                    cart-bottle
+                    cart-bottle(v-if="hasCartBottles" :list="cartBottles")
                 .cart-page__footer-right
                     .cart-page__promocode
                         input-text(
@@ -111,7 +111,8 @@ export default {
             'total',
             'productsDetailed',
             'isLoading',
-            'warningMessages'
+            'warningMessages',
+            'cartBottles'
         ]),
         ...mapGetters('user', ['isAuth']),
         hasProducts() {
@@ -129,6 +130,9 @@ export default {
             return (
                 !this.isLoadData && (this.isLoadingProducts || this.isLoading)
             )
+        },
+        hasCartBottles() {
+            return !!this.cartBottles
         }
     },
     methods: {

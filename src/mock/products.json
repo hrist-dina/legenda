@@ -250,6 +250,22 @@
             "desc": "Компактная модель",
             "price": 700,
             "img": "/img/product/item-19.png"
+        },
+        {
+            "id": 100,
+            "link": "#",
+            "title": "Тара на замену 19 л",
+            "desc": "Бутыль на обмен",
+            "price": 150,
+            "img": "/img/product/cart-bottle.svg"
+        },
+        {
+            "id": 101,
+            "link": "#",
+            "title": "Тара на замену 14 л",
+            "desc": "Бутыль на обмен",
+            "price": 120,
+            "img": "/img/product/cart-bottle.svg"
         }
     ]
 }

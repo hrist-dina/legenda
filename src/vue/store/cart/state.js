@@ -6,6 +6,7 @@ export default {
         !isProd && cartProducts && !!cartProducts.length
             ? JSON.parse(cartProducts)
             : [],
+    cartBottles: [], // Доп. бутыли в корзине
     processingId: [],
     isLoading: false,
     bottles: [], // Бутыли в личном кабинете в табе "Пополнить"

@@ -44,5 +44,6 @@ export default {
     isLoading: state => state.isLoading,
     getBottles: state => state.bottles,
     getBottlesLimit: state => state.bottlesLimit,
-    warningMessages: state => state.warningMessages
+    warningMessages: state => state.warningMessages,
+    cartBottles: state => state.cartBottles
 }

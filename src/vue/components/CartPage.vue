@@ -132,7 +132,7 @@ export default {
             )
         },
         hasCartBottles() {
-            return !!this.cartBottles
+            return !!this.cartBottles.length
         }
     },
     methods: {

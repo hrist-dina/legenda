@@ -34,7 +34,7 @@ export default {
     },
     computed: {
         hasBottles() {
-            return !!this.list
+            return !!this.list.length
         }
     }
 }

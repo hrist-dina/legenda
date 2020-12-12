@@ -5,7 +5,7 @@
             placeholder="Картой / Безналичный расчет"
             @change="onChange"
             :options="getPaymentOne"
-            :value="selectPaymentType"
+            :value="selectedPayment"
         )
         .lk-replenish__button
             +button('default')(
@@ -27,7 +27,13 @@ export default {
     computed: {
         getPaymentOne() {
             return this.getPayment.filter(i => i.code !== 'money')
+        },
+        selectedPayment() {
+            return this.selectPaymentType || this.getPaymentOne
         }
+    },
+    created() {
+        this.setType(this.selectedPayment)
     }
 }
 </script>

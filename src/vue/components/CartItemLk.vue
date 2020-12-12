@@ -15,7 +15,7 @@
                         :type="false"
                         :limit="limit"
                     )
-                .cart-item__limit(v-if="limit")
+                .cart-item__limit(v-if="isLimit")
                     .cart-item__limit-text из
                     +icon('bottle').cart-item__limit-icon
                         span.cart-item__limit-value {{ limit }}
@@ -60,6 +60,10 @@ export default {
         limit: {
             type: Number,
             default: null
+        },
+        isLimit: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -70,14 +74,14 @@ export default {
             'removeBottleLimit'
         ]),
         onChangeQuantity(cnt) {
-            if (this.limit) {
+            if (this.isLimit) {
                 this.updateBottleLimit({ id: this.id, cnt: cnt })
             } else {
                 this.updateBottle({ id: this.id, cnt: cnt })
             }
         },
         removeFromLK() {
-            if (this.limit) {
+            if (this.isLimit) {
                 this.removeBottleLimit({ id: this.id })
             } else {
                 this.removeBottle({ id: this.id })

@@ -24,6 +24,7 @@
                     :desc="bottle.desc"
                     :quantity="bottle.cnt"
                     :limit="bottle.limit"
+                    :is-limit="isLimit"
                 )
 </template>
 
@@ -52,10 +53,12 @@ export default {
             bottlesLimit: 'getBottlesLimit'
         }),
         getBottles() {
-            return this.isLimit ? this.bottlesLimit : this.bottles
+            return this.isLimit
+                ? this.bottlesLimit
+                : this.bottles.map(i => ({ ...i, cnt: i.cnt || 1 }))
         },
         total() {
-            return this.getBottles.reduce((tot, i) => tot + i.cnt, 0)
+            return this.getBottles.reduce((tot, i) => tot + i.cnt || 1, 0)
         },
         isLimitValidate() {
             return !this.isLimit ? this.isValidPaymentType : true

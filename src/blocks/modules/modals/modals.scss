@@ -28,19 +28,21 @@
     @include md-block {
         padding: 48px;
     }
-
     @include sm-block {
         padding: 24px;
     }
+    @extend .scroll-custom;
     box-sizing: border-box;
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 518px;
+    max-height: 100vh;
     margin: 0 auto;
     padding: 16px;
     transition: all 0.3s ease;
     background-color: #fff;
+    overflow-y: auto;
 }
 
 .modal-close {

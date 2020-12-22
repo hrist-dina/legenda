@@ -5,6 +5,7 @@ $primary-color: #004f91;
 $input-hover-border-color: #909FAB;
 
 @import '../../../../node_modules/vue2-datepicker/scss/index';
+@import '../../helpers/icons-data';
 
 .mx-datepicker {
     max-width: 220px;

@@ -152,5 +152,12 @@
             color: #004f91;
             text-decoration: none;
         }
+
+        & iframe {
+            width: 100% !important;
+            max-width: 500px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
     }
 }

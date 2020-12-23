@@ -14,6 +14,9 @@ export default {
     setSelectType(state, payload) {
         state.selectType = payload.selectType
     },
+    setNeedEmail(state, payload) {
+        state.needEmail = payload.needEmail
+    },
     setPersonalData(state, payload) {
         if (payload.fio) {
             state.person.fio = payload.fio

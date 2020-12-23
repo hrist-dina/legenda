@@ -66,28 +66,17 @@
                     :disabled="false"
                     :class="{'is-loading': false}"
                 ) Сохранить
-        app-modal(:show-modal="isSelectType" :show-cross="false")
-            template(#header)
-                h4 Чтобы продолжить выберите тип
-            form(@submit.prevent="onSendSelectType")
-                delivery-type-list(
-                    :delivery-types="deliveryTypes"
-                    @change-type="onChangeType"
-                )
-                .error-message(v-if="!!errorMessage" v-html="errorMessage")
-                +button('default')(
-                    :disabled="false"
-                    :class="{'is-loading': false}"
-                ) Сохранить
+        modal-select-type(:show-modal="isSelectType")
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapMutations, mapGetters } from 'vuex'
 import LkMeta from '%vue%/views/lk/LkMeta'
 import AppModal from '%vue%/components/AppModal'
 import InputText from '%vue%/components/InputText'
 import Loader from '%vue%/components/Loader'
 import DeliveryTypeList from '%vue%/components/DeliveryTypeList'
+import ModalSelectType from '%vue%/components/ModalSelectType'
 import { LK_ORDER_REPEAT, LK_ORDERS } from '%vue%/router/constants'
 import { toggleAdditionalProducts } from '%common%/helper'
 import { showNotification } from '%vue%/store/common/helper'
@@ -99,7 +88,8 @@ export default {
         InputText,
         LkMeta,
         Loader,
-        DeliveryTypeList
+        DeliveryTypeList,
+        ModalSelectType
     },
     data: () => ({
         tabNav: null,
@@ -121,6 +111,7 @@ export default {
             person: 'getPerson',
             isAuth: 'isAuth',
             hasSelectType: 'hasSelectType',
+            hasNeedEmail: 'hasNeedEmail',
             deliveryTypes: 'getDeliveryTypes'
         }),
         isActive: el => data => {
@@ -128,18 +119,20 @@ export default {
             return el.$route.path.includes(data.path)
         },
         isEmptyEmail() {
-            return !this.person.email.length && this.isAuth
+            return this.hasNeedEmail && this.isAuth
         },
         isSelectType() {
             return this.hasSelectType && !this.isEmptyEmail
         }
     },
     methods: {
+        ...mapMutations('user', {
+            setNeedEmail: 'setNeedEmail'
+        }),
         ...mapActions('user', {
             logout: 'logout',
             getOrderLast: 'getOrderLast',
-            editPersonalData: 'editPersonalData',
-            editSelectType: 'editSelectType'
+            editPersonalData: 'editPersonalData'
         }),
         onLogout() {
             this.isLoaded = true
@@ -177,7 +170,11 @@ export default {
             this.editPersonalData({
                 email: this.email.value
             }).then(response => {
-                if (!response.status) {
+                if (response.status) {
+                    this.setNeedEmail({
+                        needEmail: false
+                    })
+                } else {
                     this.errorMessage = response.error
                 }
             })
@@ -191,21 +188,6 @@ export default {
         },
         onValidateEmail(data) {
             this.email.isValid = data.isValid
-        },
-        onChangeType(data) {
-            this.type = data
-            if (this.errorMessage) {
-                this.errorMessage = null
-            }
-        },
-        onSendSelectType() {
-            this.editSelectType({
-                type: this.type
-            }).then(response => {
-                if (!response.status) {
-                    this.errorMessage = response.error
-                }
-            })
         }
     },
     created() {

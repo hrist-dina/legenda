@@ -16,6 +16,7 @@ export default {
     token: null,
     person: personState,
     selectType: false,
+    needEmail: false,
     type: null,
     delivery: {
         types: [

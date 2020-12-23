@@ -8,6 +8,7 @@ export default {
         balance: person.balance ?? null
     }),
     hasSelectType: state => state.selectType,
+    hasNeedEmail: state => state.needEmail,
     getDeliveryTypes: state => state.delivery.types,
     getSelectDelivery: state => state.selectDelivery,
     getPayment: state => state.payment,

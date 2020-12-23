@@ -37,6 +37,10 @@ export default class Init {
             this.store.commit('user/setSelectType', { selectType: true })
         }
 
+        if (this.data.needEmail) {
+            this.store.commit('user/setNeedEmail', { needEmail: true })
+        }
+
         if (user && user.wish) {
             this.store.commit('favorite/concat', user.wish)
         }

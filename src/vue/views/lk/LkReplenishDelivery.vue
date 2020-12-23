@@ -29,46 +29,34 @@
                             v-for="(item, i) in deliveryItems"
                         ) {{ `${i + 1}. ${item.label}`}}
                     span.checkout-block__list-item(v-else) Адресов нет
-                .lk-replenish__button
-            +button('back')(
-                @click.prevent="backReplenish"
-            ) Назад
-        app-modal(:showModal="showModalAddress" @close="showModalAddress = false")
-            template(#header)
-                h3 Новый адрес
-            delivery-form(
-                :is-new="true"
-                :show-title-and-city="true"
-                :show-date-time="false"
-                @submit="onSubmitModalAddress"
-                @isValid="onValidModalAddress"
-            )
-                template(#submit)
-                    .error-message(v-if="!!errorMessage") {{ errorMessage }}
-                    +button('default')(
-                        :disabled="!isValidModalAddress || isSubmittingModalAddress"
-                        :class="{'is-loading': isSubmittingModalAddress}"
-                    ) Сохранить
+            .lk-replenish__button
+                +button('back')(
+                    @click.prevent="backReplenish"
+                ) Назад
+        modal-add-delivery(
+            :show-modal="showModalAddress",
+            :delivery-form="deliveryFormPros"
+            @close="showModalAddress = false"
+        )
 </template>
 
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex'
 import AppModal from '%vue%/components/AppModal'
 import DeliveryForm from '%vue%/components/DeliveryForm'
+import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
 import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
     name: 'lk-replenish-delivery',
     components: {
         AppModal,
-        DeliveryForm
+        DeliveryForm,
+        ModalAddDelivery
     },
     data: () => ({
         type: 'one',
-        errorMessage: '',
-        showModalAddress: false,
-        isValidModalAddress: false,
-        isSubmittingModalAddress: false
+        showModalAddress: false
     }),
     computed: {
         ...mapState('user', ['selectDelivery']),
@@ -88,42 +76,23 @@ export default {
                 }
             }
             return this.deliveryItems ? this.deliveryItems[0] : {}
-        }
+        },
+        deliveryFormPros: () => ({
+            isNew: true,
+            showTitleAndCity: true,
+            showDateTime: false
+        })
     },
     methods: {
         ...mapActions('checkout', ['backReplenish']),
         ...mapActions('user', {
-            handleDelivery: 'delivery',
-            handleDeliveryLk: 'deliveryLk'
+            setDelivery: 'setDelivery'
         }),
         onSelectAddress(val) {
-            // TODO:: как будет api
-            console.log(val)
+            this.setDelivery({ ...this.selectDelivery, ...val })
         },
         onAddAddress() {
             this.showModalAddress = !this.showModalAddress
-        },
-        onValidModalAddress(value) {
-            this.isValidModalAddress = value
-        },
-        onSubmitModalAddress(value) {
-            if (this.isValidModalAddress) {
-                this.isSubmittingModalAddress = true
-                this.handleDelivery(value)
-                    .then(response => {
-                        if (response) {
-                            this.showModalAddress = false
-                            this.errorMessage = ''
-                        } else {
-                            this.errorMessage = response.error
-                        }
-                        this.isSubmittingModalAddress = false
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.isSubmittingModalAddress = false
-                    })
-            }
         }
     }
 }

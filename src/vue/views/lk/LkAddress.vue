@@ -19,52 +19,38 @@
                 +button('default')(
                     @click.prevent="onEditAddress"
                 ) Добавить адрес
-        app-modal(:showModal="showModalAddress" @close="showModalAddress = false")
-            template(#header)
-                h3 Новый адрес
-            delivery-form(
-                :show-title-and-city="true"
-                :show-date-time="false"
-                @submit="onSubmitModalAddress"
-                @isValid="onValidModalAddress"
-            )
-                template(#submit)
-                    .error-message(v-if="!!errorMessage") {{ errorMessage }}
-                    +button('default')(
-                        :disabled="!isValidModalAddress || isSubmittingModalAddress"
-                        :class="{'is-loading': isSubmittingModalAddress}"
-                    ) Сохранить
+        modal-add-delivery(
+            :showModal="showModalAddress"
+            :delivery-form="deliveryFormPros"
+            @close="showModalAddress = false"
+        )
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 import LkAddressItem from '%vue%/views/lk/LkAddressItem'
-import AppModal from '%vue%/components/AppModal'
-import DeliveryForm from '%vue%/components/DeliveryForm'
+import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
 
 export default {
     name: 'lk-address',
     components: {
         LkAddressItem,
-        AppModal,
-        DeliveryForm
+        ModalAddDelivery
     },
     data: () => ({
-        errorMessage: '',
-        showModalAddress: false,
-        isValidModalAddress: false,
-        isSubmittingModalAddress: false
+        showModalAddress: false
     }),
     computed: {
         ...mapGetters('user', {
-            addressList: 'getDeliveryItems'
+            addressList: 'getAddressList'
+        }),
+        deliveryFormPros: () => ({
+            showTitleAndCity: true,
+            showDateTime: false
         })
     },
     methods: {
-        ...mapActions('user', {
-            handleDelivery: 'delivery'
-        }),
         ...mapMutations('user', ['setSelectedDelivery']),
         onEditAddress(e, index) {
             this.showModalAddress = !this.showModalAddress
@@ -73,28 +59,10 @@ export default {
                 this.setSelectedDelivery({
                     selectDelivery: this.addressList[index]
                 })
-            }
-        },
-        onValidModalAddress(value) {
-            this.isValidModalAddress = value
-        },
-        onSubmitModalAddress(value) {
-            if (this.isValidModalAddress) {
-                this.isSubmittingModalAddress = true
-                this.handleDelivery(value)
-                    .then(response => {
-                        if (response) {
-                            this.showModalAddress = false
-                            this.errorMessage = ''
-                        } else {
-                            this.errorMessage = response.error
-                        }
-                        this.isSubmittingModalAddress = false
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.isSubmittingModalAddress = false
-                    })
+            } else {
+                this.setSelectedDelivery({
+                    selectDelivery: null
+                })
             }
         }
     }

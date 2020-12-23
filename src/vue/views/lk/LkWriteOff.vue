@@ -4,30 +4,85 @@
         section.lk-section
             article.lk-section__half
                 .lk-section-body
-                    .lk-section__title Доставка
                     .lk-write-off
-                        delivery-form(
-                            :is-new="true"
-                            :show-delivery-type="false"
-                            :show-title-and-city="false"
-                            :show-date-time="true"
-                        )
+                        .checkout-block
+                            .checkout-block__title
+                                span.lk-section__title Доставка
+                                +link('Добавить адрес', false, 'bordered')(
+                                    @click.prevent="onAddAddress"
+                                ).checkout-block__edit
+                            .checkout-block__body
+                                template(v-if="deliveryItems.length")
+                                    v-select(
+                                        placeholder="Выберите адрес доставки"
+                                        @input="onSelectAddress"
+                                        :options="deliveryItems"
+                                        :value="selectedDeliveryItem"
+                                    )
+                                        div(slot="no-options") Не найден адрес доставки
+                                template(v-else)
+                                    span.checkout-block__list-item Адресов нет
             article.lk-section__half
                 .lk-section-order
                     lk-structure(
                         :is-limit="true"
                     )
+        modal-add-delivery(
+            :show-modal="showModalAddress"
+            :delivery-form="deliveryFormPros"
+            @close="showModalAddress = false"
+        )
 </template>
 
 <script>
 import LkStructure from '%vue%/views/lk/LkStructure'
-import DeliveryForm from '%vue%/components/DeliveryForm'
+import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
+import { mapActions, mapGetters, mapState } from 'vuex'
+import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
     name: 'lk-write-off',
     components: {
-        DeliveryForm,
-        LkStructure
+        LkStructure,
+        ModalAddDelivery
+    },
+    data: () => ({ showModalAddress: false }),
+    computed: {
+        ...mapState('user', ['selectDelivery']),
+        ...mapGetters('user', ['getDeliveryItems']),
+        deliveryItems() {
+            return this.getDeliveryItems.map(i => ({
+                code: i.address,
+                label: getDeliveryLabel(i)
+            }))
+        },
+        selectedDeliveryItem() {
+            const delivery = this.selectDelivery
+            if (delivery && delivery.address) {
+                return {
+                    code: delivery.address,
+                    label: getDeliveryLabel(delivery)
+                }
+            }
+            return this.deliveryItems ? this.deliveryItems[0] : {}
+        },
+        deliveryFormPros: () => ({
+            isNew: true,
+            showTitleAndCity: false,
+            showDateTime: false,
+            showCity: true
+        })
+    },
+    methods: {
+        ...mapActions('user', {
+            setDelivery: 'setDelivery'
+        }),
+        onSelectAddress(val) {
+            this.setDelivery({ ...this.selectDelivery, ...val })
+        },
+        onAddAddress() {
+            this.showModalAddress = !this.showModalAddress
+        }
     }
 }
 </script>

@@ -13,12 +13,21 @@ export default {
     getSelectDelivery: state => state.selectDelivery,
     getPayment: state => state.payment,
     getDeliveryItems: state =>
-        state.delivery.items.map(i => {
-            if (i.city.name) {
-                i.city.label = getDeliveryLabel(i)
+        state.delivery.items.map(i => ({
+            ...i,
+            city: {
+                ...i.city,
+                label: getDeliveryLabel(i)
             }
-            return i
-        }),
+        })),
+    getAddressList: state =>
+        state.delivery.items.map(i => ({
+            ...i,
+            city: {
+                ...i.city,
+                label: i.city.name
+            }
+        })),
     getBonus: (state, getters) => getters.getPerson.bonus || 0,
     getBottle: (state, getters) => getters.getPerson.bottle || 0,
     getBalance: (state, getters) => getters.getPerson.balance || 0,

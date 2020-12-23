@@ -43,11 +43,6 @@ export default {
             commit('clean')
         }).post()
     },
-    update: async ({ commit }) => {
-        return await new HTTP(urlAjax.basket, null, data => {
-            commit('addMany', data)
-        }).post()
-    },
     promocode: async ({ getters, commit }, payload) => {
         if (!!getters.cnt && !getters.isLoading) {
             commit('setIsLoading', true)

@@ -52,7 +52,6 @@ export const urlAjax = {
     location: isProd ? '/api/location' : '/mock/location.json',
     products: isProd ? '/api/products' : '/mock/products.json',
     filter: isProd ? '/api/filter' : '/mock/filter.json',
-    basket: isProd ? '/api/basket' : '/mock/basket.json',
     basketAdd: isProd ? '/api/basket/add' : '/mock/basket-change.json',
     basketRemove: isProd ? '/api/basket/remove' : '/mock/basket-change.json',
     basketClean: isProd ? '/api/basket/clean' : '/mock/basket-change.json',

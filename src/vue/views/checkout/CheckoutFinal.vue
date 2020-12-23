@@ -71,31 +71,20 @@
                         :disabled="!isValidModalPersonalData || isSubmittingModalPersonalData"
                         :class="{'is-loading': isSubmittingModalPersonalData}"
                     ) Сохранить
-        app-modal(:showModal="showModalAddress" @close="showModalAddress = false")
-            template(#header)
-                h3 Новый адрес
-            delivery-form(
-                :is-new="true"
-                :show-date-time="false"
-                :show-city="false"
-                @submit="onSubmitModalAddress"
-                @isValid="onValidModalAddress"
-            )
-                template(#submit)
-                    .error-message(v-if="!!errorMessage") {{ errorMessage }}
-                    +button('default')(
-                        :disabled="!isValidModalAddress || isSubmittingModalAddress"
-                        :class="{'is-loading': isSubmittingModalAddress}"
-                    ) Сохранить
+        modal-add-delivery(
+            :showModal="showModalAddress"
+            :delivery-form="deliveryFormPros"
+            @close="showModalAddress = false"
+        )
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from 'vuex'
 import AppSelectPayment from '%vue%/components/AppSelectPayment'
 import AppModal from '%vue%/components/AppModal'
-import DeliveryForm from '%vue%/components/DeliveryForm'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
 import PersonalDataForm from '%vue%/components/PersonalDataForm'
+import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
 import { getDeliveryLabel } from '%common%/formatters'
 
 export default {
@@ -103,8 +92,8 @@ export default {
         DeliveryDatetime,
         AppSelectPayment,
         AppModal,
-        DeliveryForm,
-        PersonalDataForm
+        PersonalDataForm,
+        ModalAddDelivery
     },
     data: () => ({
         errorMessage: '',
@@ -113,9 +102,7 @@ export default {
         showModalPersonalData: false,
         isValidModalPersonalData: false,
         isSubmittingModalPersonalData: false,
-        showModalAddress: false,
-        isValidModalAddress: false,
-        isSubmittingModalAddress: false
+        showModalAddress: false
     }),
     props: {
         isAddedAddress: {
@@ -144,7 +131,7 @@ export default {
         deliveryItems() {
             return this.getDeliveryItems.map(i => ({
                 ...i,
-                code: i.address,
+                code: i.id,
                 label: getDeliveryLabel(i)
             }))
         },
@@ -153,7 +140,7 @@ export default {
             if (delivery && delivery.address) {
                 return {
                     ...delivery,
-                    code: delivery.address,
+                    code: delivery.id,
                     label: getDeliveryLabel(delivery)
                 }
             }
@@ -164,7 +151,13 @@ export default {
         },
         selectedDeliveryTime() {
             return this.selectDelivery ? this.selectDelivery.time : null
-        }
+        },
+        deliveryFormPros: () => ({
+            isNew: true,
+            showTitleAndCity: false,
+            showDateTime: false,
+            showCity: true
+        })
     },
     methods: {
         ...mapActions('checkout', {
@@ -175,7 +168,6 @@ export default {
             setDelivery: 'setDelivery',
             setIsBonus: 'setIsSpendBonus',
             setIsBottle: 'setIsSpendBottle',
-            handleDelivery: 'delivery',
             handleEditPersonalData: 'editPersonalData'
         }),
         setType(val) {
@@ -228,45 +220,20 @@ export default {
         },
         onAddAddress() {
             this.showModalAddress = !this.showModalAddress
-        },
-        onValidModalAddress(value) {
-            this.isValidModalAddress = value
-        },
-        onSubmitModalAddress(value) {
-            if (this.isValidModalAddress) {
-                this.isSubmittingModalAddress = true
-                this.handleDelivery(value)
-                    .then(response => {
-                        if (response) {
-                            this.showModalAddress = false
-                            this.errorMessage = ''
-                        } else {
-                            this.errorMessage = response.error
-                        }
-                        this.isSubmittingModalAddress = false
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        this.isSubmittingModalAddress = false
-                    })
-            }
         }
     },
     created() {
         this.date = this.selectedDeliveryDate
         this.time = this.selectedDeliveryTime
         this.setDelivery({
-            ...this.selectDelivery,
-            address: this.selectedDeliveryItem
-                ? this.selectedDeliveryItem.code
-                : ''
+            selectDelivery: {
+                ...this.selectDelivery,
+                ...this.selectedDeliveryItem
+            }
         })
     },
     watch: {
         showModalPersonalData: function () {
-            this.errorMessage = ''
-        },
-        showModalAddress: function () {
             this.errorMessage = ''
         }
     }

@@ -85,7 +85,7 @@
         @include sm-block {
             font-size: 18px;
             line-height: 25px;
-            max-height: 54px;
+            max-height: 75px;
         }
         display: -webkit-box;
         font-weight: 500;
@@ -93,7 +93,7 @@
         line-height: 18px;
         color: #343e44;
         text-decoration: none;
-        max-height: 75px;
+        max-height: 54px;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;

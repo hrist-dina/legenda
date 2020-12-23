@@ -4,6 +4,7 @@ include ../../blocks/modules/inner-page/inner-page
 include ../../blocks/modules/header/header
 include ../../blocks/modules/footer/footer
 include ../../blocks/modules/notification/notification
+include ../../blocks/modules/modals/modals
 block variables
     include ../helpers/variables
 
@@ -26,8 +27,8 @@ html(lang="ru")
                 +footer
             block notification
                 +notification
-        block modals
-            //- include ../../blocks/modules/modals/modals
+            block modals
+                +modals
         block scripts
             script(src="/js/main.js")
             script(src="/js/vendor.js")

@@ -18,6 +18,7 @@ export default {
     selectType: false,
     needEmail: false,
     type: null,
+    message: null,
     delivery: {
         types: [
             {

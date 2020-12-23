@@ -17,6 +17,9 @@ export default {
     setNeedEmail(state, payload) {
         state.needEmail = payload.needEmail
     },
+    setMessage(state, payload) {
+        state.message = payload.message
+    },
     setPersonalData(state, payload) {
         if (payload.fio) {
             state.person.fio = payload.fio

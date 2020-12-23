@@ -41,6 +41,10 @@ export default class Init {
             this.store.commit('user/setNeedEmail', { needEmail: true })
         }
 
+        if (this.data.message) {
+            this.store.commit('user/setMessage', { message: this.data.message })
+        }
+
         if (user && user.wish) {
             this.store.commit('favorite/concat', user.wish)
         }

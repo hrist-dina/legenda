@@ -9,6 +9,7 @@ export default {
     }),
     hasSelectType: state => state.selectType,
     hasNeedEmail: state => state.needEmail,
+    getMessage: state => state.message,
     getDeliveryTypes: state => state.delivery.types,
     getSelectDelivery: state => state.selectDelivery,
     getPayment: state => state.payment,

@@ -85,13 +85,17 @@
         @include sm-block {
             font-size: 18px;
             line-height: 25px;
+            max-height: 54px;
         }
+        display: -webkit-box;
         font-weight: 500;
         font-size: 15px;
         line-height: 18px;
         color: #343e44;
         text-decoration: none;
-        max-height: 42px;
+        max-height: 75px;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
         overflow: hidden;
     }
 

@@ -34,7 +34,7 @@ export default {
     props: {
         showModal: {
             type: Boolean,
-            default: false
+            default: true
         },
         showCross: {
             type: Boolean,
@@ -43,11 +43,12 @@ export default {
     },
     computed: {
         ...mapGetters('user', {
+            isAuth: 'isAuth',
             hasSelectType: 'hasSelectType',
             deliveryTypes: 'getDeliveryTypes'
         }),
         isSelectType() {
-            return this.hasSelectType && this.showModal
+            return this.hasSelectType && this.showModal && this.isAuth
         }
     },
     methods: {

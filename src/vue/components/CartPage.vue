@@ -71,6 +71,7 @@ include ../../views/helpers/mixins
                             .cart-page__total-sale(v-if="sale") Скидка {{ sale | ruble }}
                         .cart-page__to-order
                             router-link(:to="toOrder").link.link--big К оформлению заказа
+    modal-select-type
 </template>
 
 <script>
@@ -79,6 +80,7 @@ import CartItem from '%vue%/components/CartItem'
 import CartItemSkeleton from '%vue%/components/CartItemSkeleton'
 import CartBottle from '%vue%/components/CartBottle'
 import InputText from '%vue%/components/InputText'
+import ModalSelectType from '%vue%/components/ModalSelectType'
 import { toggleAdditionalProducts } from '%common%/helper'
 import { CHECKOUT_FINAL, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 
@@ -87,7 +89,8 @@ export default {
         CartItem,
         CartBottle,
         CartItemSkeleton,
-        InputText
+        InputText,
+        ModalSelectType
     },
     data: () => ({
         promocode: {

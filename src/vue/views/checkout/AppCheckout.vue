@@ -20,6 +20,7 @@
                         router-view
                 .checkout__body-half
                     checkout-structure
+        modal-select-type
 </template>
 
 <script>
@@ -27,12 +28,14 @@ import { mapState, mapActions, mapGetters } from 'vuex'
 import { CHECKOUT_FINAL, CHECKOUT_WELCOME } from '%vue%/store/checkout/state'
 import CheckoutStructure from '%vue%/views/checkout/CheckoutStructure'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
+import ModalSelectType from '%vue%/components/ModalSelectType'
 import { toggleAdditionalProducts } from '%common%/helper'
 
 export default {
     components: {
         CheckoutStructure,
-        CheckoutNavigation
+        CheckoutNavigation,
+        ModalSelectType
     },
     computed: {
         ...mapState('checkout', ['steps', 'activeStep']),

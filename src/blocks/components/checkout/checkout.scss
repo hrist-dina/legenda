@@ -563,4 +563,9 @@
             margin-top: 20px;
         }
     }
+
+    &__error {
+        @include error-message();
+        margin-bottom: 5px;
+    }
 }

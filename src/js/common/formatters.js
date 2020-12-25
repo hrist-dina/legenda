@@ -43,6 +43,7 @@ export const formatDate = (value, separator = '.') => {
 }
 
 export const formatDateToServer = date => {
+    if (!date) return date
     let d = new Date(date),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),

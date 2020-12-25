@@ -45,6 +45,13 @@ export default class Init {
             this.store.commit('user/setMessage', { message: this.data.message })
         }
 
+        if (this.data.disabledBeforeDateDelivery) {
+            this.store.commit(
+                'user/setDisabledBeforeDateDelivery',
+                this.data.disabledBeforeDateDelivery
+            )
+        }
+
         if (user && user.wish) {
             this.store.commit('favorite/concat', user.wish)
         }

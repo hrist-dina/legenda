@@ -108,6 +108,8 @@ export default {
                 isSpendBottle: state.isSpendBottle
             },
             data => {
+                console.log(data)
+
                 if (data.order) {
                     dispatch('cart/clean', null, { root: true }).then(() => {
                         const path = router.resolve({
@@ -117,6 +119,11 @@ export default {
                         // Делаем так, чтобы можно было сделать редирект из разных типов route (order, lk)
                         window.location = path.href
                     })
+                }
+
+                if (data.url) {
+                    // Делаем редирект на онлайн оплату
+                    window.location = data.url
                 }
             }
         ).post()

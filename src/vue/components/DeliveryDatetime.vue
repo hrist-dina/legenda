@@ -3,6 +3,7 @@
     .delivery-datetime__part
         app-date-picker(
             :date="date"
+            :disabled-before="disabledBeforeDate"
             @change="onChangeDate"
             placeholder="Желаемая дата"
         )
@@ -37,6 +38,10 @@ export default {
         time: {
             type: null,
             required: true
+        },
+        disabledBeforeDate: {
+            type: [Date, null],
+            default: () => null
         }
     },
     computed: {

@@ -9,6 +9,7 @@
             :show-city="deliveryForm.showCity"
             :show-delivery-type="deliveryForm.deliveryType"
             :is-new="deliveryForm.isNew"
+            :disabled-before-date="deliveryForm.disabledBeforeDate"
             @submit="onSubmitModalAddress"
             @isValid="onValidModalAddress"
         )
@@ -49,7 +50,8 @@ export default {
                 showTitleAndCity: false,
                 showCity: false,
                 deliveryType: false,
-                isNew: false
+                isNew: false,
+                disabledBeforeDate: null
             })
         }
     },

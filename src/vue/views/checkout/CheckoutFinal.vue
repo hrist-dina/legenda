@@ -32,6 +32,7 @@
                 delivery-datetime(
                     :date="date"
                     :time="time"
+                    :disabled-before-date="getDisabledBeforeDateDelivery"
                     @changeDate="onChangeDate"
                     @changeTime="onChangeTime"
                 )
@@ -111,7 +112,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('user', ['getPerson']),
+        ...mapGetters('user', ['getPerson', 'getDisabledBeforeDateDelivery']),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         ...mapState('user', [
             'selectPaymentType',
@@ -152,12 +153,15 @@ export default {
         selectedDeliveryTime() {
             return this.selectDelivery ? this.selectDelivery.time : null
         },
-        deliveryFormPros: () => ({
-            isNew: true,
-            showTitleAndCity: false,
-            showDateTime: false,
-            showCity: true
-        })
+        deliveryFormPros() {
+            return {
+                isNew: true,
+                showTitleAndCity: false,
+                showDateTime: false,
+                showCity: true,
+                disabledBeforeDate: this.getDisabledBeforeDateDelivery
+            }
+        }
     },
     methods: {
         ...mapActions('checkout', {
@@ -226,10 +230,8 @@ export default {
         this.date = this.selectedDeliveryDate
         this.time = this.selectedDeliveryTime
         this.setDelivery({
-            selectDelivery: {
-                ...this.selectDelivery,
-                ...this.selectedDeliveryItem
-            }
+            ...this.selectDelivery,
+            ...this.selectedDeliveryItem
         })
     },
     watch: {

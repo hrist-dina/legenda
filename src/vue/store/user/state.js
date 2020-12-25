@@ -19,6 +19,7 @@ export default {
     needEmail: false,
     type: null,
     message: null,
+    disabledBeforeDateDelivery: undefined,
     delivery: {
         types: [
             {

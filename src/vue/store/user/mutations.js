@@ -20,6 +20,11 @@ export default {
     setMessage(state, payload) {
         state.message = payload.message
     },
+    setDisabledBeforeDateDelivery(state, payload) {
+        if (payload) {
+            state.disabledBeforeDateDelivery = new Date(payload)
+        }
+    },
     setPersonalData(state, payload) {
         if (payload.fio) {
             state.person.fio = payload.fio

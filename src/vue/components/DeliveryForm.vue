@@ -30,6 +30,7 @@
             v-if="showDateTime"
             :date="date"
             :time="time"
+            :disabled-before-date="disabledBeforeDate"
             @changeDate="onChangeDate"
             @changeTime="onChangeTime"
         )
@@ -99,6 +100,10 @@ export default {
         isNew: {
             type: Boolean,
             default: false
+        },
+        disabledBeforeDate: {
+            type: [Date, null],
+            default: () => null
         }
     },
     computed: {
@@ -173,6 +178,7 @@ export default {
         }
     },
     created() {
+        console.log('disabledBeforeDate', this.disabledBeforeDate)
         if (!this.isNew && this.selectDelivery) {
             this.inputs.address.value = this.selectDelivery.address
             this.inputs.title.value = this.selectDelivery.title

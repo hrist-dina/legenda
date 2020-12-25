@@ -6,6 +6,8 @@
             :value="value"
             @change="onChange"
             format="DD.MM.YYYY"
+            :not-before="disabledBefore"
+            :disabled-date="disabledDate"
         )
         .datepicker__desc(v-if="hasDesc")
             slot(name="desc")
@@ -27,6 +29,14 @@ export default {
         date: {
             type: null,
             required: true
+        },
+        disabledBefore: {
+            type: [Date, null],
+            default: () => null
+        },
+        disabledAfter: {
+            type: [Date, null],
+            default: () => null
         }
     },
     computed: {
@@ -35,6 +45,22 @@ export default {
         },
         value() {
             return this.date ? new Date(this.date) : ''
+        },
+        disabledDate() {
+            const before = this.disabledBefore
+            const after = this.disabledAfter
+            return function (date) {
+                if (before && after) {
+                    return date <= before || date >= after
+                }
+                if (before) {
+                    return date <= before
+                }
+                if (after) {
+                    return date >= after
+                }
+                return false
+            }
         }
     },
     methods: {

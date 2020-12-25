@@ -70,9 +70,10 @@
             box-sizing: border-box;
             width: 100%;
             border: none;
-            padding: 14px 0;
+            padding: 13px 0;
             border-bottom: 1px solid #909fab;
             background: transparent;
+            line-height: 1.5;
         }
 
         &.focus &__placeholder {

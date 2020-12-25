@@ -7,6 +7,7 @@
             @isValid="onValidForm"
         ).checkout-personal-data__form
             template(#submit)
+                .checkout__error(v-if="errorMessage" v-html="errorMessage")
                 .checkout__button
                     include ../../../blocks/components/ui-kit/ui-kit
                     +button('default')(:disabled="!isValidForm") Далее
@@ -25,7 +26,8 @@ export default {
         CheckoutBack
     },
     data: () => ({
-        isValidForm: false
+        isValidForm: false,
+        errorMessage: null
     }),
     computed: {
         ...mapState('checkout', ['hasLogin', 'activeStep'])
@@ -40,8 +42,11 @@ export default {
         onSubmit(value) {
             if (this.isValidForm) {
                 this.register(value).then(response => {
-                    if (response) {
+                    if (response.status) {
+                        this.errorMessage = null
                         this.onNext()
+                    } else {
+                        this.errorMessage = response.error || 'Ошибка!'
                     }
                 })
             }

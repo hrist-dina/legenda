@@ -8,10 +8,13 @@ include ../../../blocks/components/ui-kit/ui-kit
     delivery-form.checkout-delivery__form(
         @submit="onSubmit"
         @isValid="onValidForm"
+        :disabled-before-date="getDisabledBeforeDateDelivery"
     )
-        .checkout__button(slot='submit')
-            +button('default')(:disabled="!isValidForm") Далее
-            checkout-back
+        template(#submit)
+            .checkout__error(v-if="errorMessage" v-html="errorMessage")
+            .checkout__button(slot='submit')
+                +button('default')(:disabled="!isValidForm") Далее
+                checkout-back
 </template>
 
 <script>
@@ -25,10 +28,11 @@ export default {
         CheckoutBack
     },
     data: () => ({
-        isValidForm: false
+        isValidForm: false,
+        errorMessage: null
     }),
     computed: {
-        ...mapGetters('user', ['getPerson']),
+        ...mapGetters('user', ['getPerson', 'getDisabledBeforeDateDelivery']),
         fio() {
             return this.getPerson.fio
         }
@@ -44,7 +48,10 @@ export default {
             if (this.isValidForm) {
                 this.handleDelivery(value).then(response => {
                     if (response.status) {
+                        this.errorMessage = null
                         this.onNext()
+                    } else {
+                        this.errorMessage = response.error || 'Ошибка!'
                     }
                 })
             }

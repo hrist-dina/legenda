@@ -13,15 +13,22 @@ $input-hover-border-color: #909FAB;
 }
 
 .mx-input {
+    @include sm-block {
+        font-size: 16px;
+        line-height: 28px;
+        padding-right: 30px;
+    }
     border: none;
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 15px;
+    line-height: 24px;
     color: #373737;
     box-sizing: border-box;
-    padding: 0;
+    padding: 0 20px 0 0;
     border-radius: 0;
     height: auto;
     box-shadow: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     @include placeholder {
         color: #909FAB;
@@ -32,9 +39,13 @@ $input-hover-border-color: #909FAB;
     & svg {
         display: none;
     }
+    @include sm-block {
+        @include wh(24px);
+        background-size: 24px;
+    }
     background-image: url(icon-calendar());
-    @include wh(24px);
-    background-size: 24px;
+    @include wh(18px);
+    background-size: 18px;
     background-repeat: no-repeat;
     background-position: center;
 
@@ -54,6 +65,13 @@ $input-hover-border-color: #909FAB;
         fill: #B7C8D6;
         @include wh(24px);
     }
+}
+
+.mx-icon-calendar, .mx-icon-clear {
+    @include sm-block {
+        right: 6px;
+    }
+    right: 0;
 }
 
 .mx-time {

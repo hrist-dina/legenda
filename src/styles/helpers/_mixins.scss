@@ -114,6 +114,16 @@
     }
 }
 
+@mixin error-message() {
+    @include md-block {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    font-size: 14px;
+    line-height: 20px;
+    color: $pink;
+}
+
 
 @mixin placeholder() {
     &::-webkit-input-placeholder {

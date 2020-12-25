@@ -44,7 +44,7 @@ include ../../views/helpers/mixins
                     p Корзина пуста! Перейдите в
                         |
                         |
-                        a(href="/catalog.html").link каталог
+                        a(href="/catalog/").link каталог
             .cart-page__footer(v-if="hasProducts")
                 .cart-page__footer-left
                     cart-bottle(v-if="hasCartBottles" :list="cartBottles")

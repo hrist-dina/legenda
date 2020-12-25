@@ -1,6 +1,6 @@
 {
   "status": true,
-  "data": {
+  "data": [{
     "id": 1,
     "city": {
       "code": "barnaul",
@@ -11,5 +11,5 @@
     "title": "Дом",
     "date": "",
     "time": ""
-  }
+  }]
 }

@@ -86,7 +86,8 @@ export default {
     },
     delivery: async ({ commit }, payload) => {
         const response = await new HTTP(urlAjax.delivery, payload, data => {
-            commit('setDeliveryItem', data)
+            const item = Array.isArray(data) && data.length ? data[0] : data
+            commit('setDeliveryItem', item)
             commit('setSelectedDelivery', { selectDelivery: payload })
         }).post()
 

@@ -178,7 +178,6 @@ export default {
         }
     },
     created() {
-        console.log('disabledBeforeDate', this.disabledBeforeDate)
         if (!this.isNew && this.selectDelivery) {
             this.inputs.address.value = this.selectDelivery.address
             this.inputs.title.value = this.selectDelivery.title

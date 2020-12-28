@@ -60,6 +60,13 @@
         max-width: 100%;
         min-height: 200px;
         max-height: 100%;
+        overflow: hidden;
+        font-size: 10px;
+        line-height: 1;
+        &:not([src]), &:not([src="unknown"]) {
+            width: 100%;
+            height: 70%;
+        }
     }
 
     &__img-link {

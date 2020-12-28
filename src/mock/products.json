@@ -147,7 +147,7 @@
             "title": "Легенда жизни 19л",
             "desc": "Йод, фтор и селен",
             "price": 250,
-            "img": "/img/product/item-7.png",
+            "img": null,
             "labels": null,
             "composition": ["Йод", "Фтор", "Селен"]
         },

@@ -27,7 +27,7 @@
         overflow: hidden;
         font-size: 10px;
         line-height: 1;
-        &:not([src]), &:not([src="unknown"]) {
+        &:not([src]) {
             height: 100%;
         }
     }

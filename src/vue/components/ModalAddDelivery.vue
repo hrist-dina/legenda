@@ -71,7 +71,11 @@ export default {
         onSubmitModalAddress(value) {
             if (this.isValidModal) {
                 this.isSubmittingModal = true
-                if (this.selectedDelivery && this.selectedDelivery.id) {
+                if (
+                    this.selectedDelivery &&
+                    this.selectedDelivery.id &&
+                    !this.deliveryForm.isNew
+                ) {
                     value.id = this.selectedDelivery.id
                 }
                 this.handleDelivery(value)

@@ -19,14 +19,4 @@ export const initStoreWatch = store => {
             )
         }
     )
-
-    store.watch(
-        state => state.user.delivery.items,
-        newVal => {
-            localStorage.setItem('deliveryItems', JSON.stringify(newVal))
-        },
-        {
-            deep: true
-        }
-    )
 }

@@ -56,7 +56,9 @@
     }
 
     &__img {
+        @include empty-image;
         max-width: 100%;
+        min-height: 200px;
         max-height: 100%;
     }
 

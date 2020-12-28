@@ -21,6 +21,7 @@
     }
 
     &__img {
+        @include empty-image;
         max-width: 100%;
         max-height: 100%;
     }
@@ -42,6 +43,10 @@
         height: 48px;
         margin-right: 20px;
         margin-bottom: 6px;
+        font-size: 12px;
+        line-height: 21px;
+        color: #343e44;
+        text-decoration: none;
     }
 
     &__data {
@@ -354,7 +359,7 @@
             max-width: 350px;
             padding-right: 30px;
         }
-        
+
         &__delete {
             @include md-block {
                 margin-left: 10px;

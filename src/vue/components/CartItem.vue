@@ -64,8 +64,8 @@ export default {
             required: true
         },
         img: {
-            type: String,
-            required: true
+            type: [String, null],
+            default: ''
         },
         quantity: {
             type: Number,

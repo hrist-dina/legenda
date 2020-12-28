@@ -26,15 +26,21 @@ export default {
         deliveryTypes: {
             type: Array,
             required: true
+        },
+        selectedType: {
+            type: [String, null]
         }
     },
     computed: {
-        checked: el => (i, code) => {
-            if (i === 0) {
-                el.changeType(code)
-                return true
+        checked(el) {
+            const selectedType = this.selectedType || this.deliveryTypes[0].code
+            return (i, code) => {
+                if (selectedType === code) {
+                    el.changeType(code)
+                    return true
+                }
+                return false
             }
-            return false
         }
     },
     methods: {

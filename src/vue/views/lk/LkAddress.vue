@@ -6,7 +6,7 @@
             .lk-address-list(v-if="!!addressList.length")
                 lk-address-item(
                     v-for="(item, index) in addressList"
-                    :key="index"
+                    :key="item.id"
                     :data="item"
                 )
                     template(#actions)

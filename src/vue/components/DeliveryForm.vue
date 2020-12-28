@@ -3,6 +3,7 @@
         delivery-type-list(
             v-if="showDeliveryType"
             :delivery-types="deliveryTypes"
+            :selected-type="deliverySelected"
             @change-type="onChangeType"
         )
         .field(
@@ -78,7 +79,8 @@ export default {
             }
         },
         date: null,
-        time: null
+        time: null,
+        deliverySelected: null
     }),
     props: {
         showDateTime: {
@@ -191,6 +193,7 @@ export default {
             }
             this.date = this.selectDelivery.date
             this.time = this.selectDelivery.time
+            this.deliverySelected = this.selectDelivery.type
         }
 
         if (this.showTitleAndCity) {

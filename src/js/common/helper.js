@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 export const debounce = (func, wait, immediate) => {
     let timeout
     return () => {
@@ -43,7 +45,7 @@ export const pushToArray = (arr, obj) => {
     if (index === -1) {
         arr.push(obj)
     } else {
-        arr[index] = obj
+        Vue.set(arr, index, obj)
     }
 }
 

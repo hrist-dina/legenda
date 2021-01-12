@@ -14,9 +14,11 @@ import {
     CHECKOUT_FINAL,
     CHECKOUT_PAYMENT,
     CHECKOUT_PERSONAL_DATA,
+    CHECKOUT_RESTORE,
     CHECKOUT_SUCCESS,
     CHECKOUT_WELCOME
 } from '%vue%/store/checkout/state'
+import CheckoutRestore from '%vue%/views/checkout/CheckoutRestore'
 
 const routes = [
     {
@@ -44,6 +46,11 @@ const routes = [
                 name: CHECKOUT_AUTH,
                 path: CHECKOUT_AUTH,
                 component: CheckoutAuth
+            },
+            {
+                name: CHECKOUT_RESTORE,
+                path: CHECKOUT_RESTORE,
+                component: CheckoutRestore
             },
             {
                 name: CHECKOUT_FINAL,

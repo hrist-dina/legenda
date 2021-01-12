@@ -18,13 +18,14 @@
                 +button('default')(:disabled="!isValidForm") Войти
                 checkout-back
             .form__footer
-                +link('Забыли пароль?')
+                router-link(:to="linkToRestore").link.link--default Забыли пароль?
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import CheckoutBack from '%vue%/views/checkout/CheckoutBack'
+import { CHECKOUT_RESTORE } from '%vue%/store/checkout/state'
 
 export default {
     components: {
@@ -57,6 +58,9 @@ export default {
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         isValidForm() {
             return !this.form.filter(el => !el.isValid).length
+        },
+        linkToRestore() {
+            return { name: CHECKOUT_RESTORE }
         }
     },
     methods: {

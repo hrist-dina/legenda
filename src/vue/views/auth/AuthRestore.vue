@@ -43,6 +43,12 @@ export default {
         message: null,
         error: null
     }),
+    props: {
+        redirectTo: {
+            type: String,
+            default: 'login'
+        }
+    },
     computed: {
         isValidForm() {
             return this.phone.isValid && !this.error
@@ -60,7 +66,7 @@ export default {
                     if (response.status) {
                         this.message = response.data.message
                         setTimeout(() => {
-                            this.$router.push({ name: 'login' })
+                            this.$router.push({ name: this.redirectTo })
                         }, 3000)
                     } else if (!response.status) {
                         this.error =

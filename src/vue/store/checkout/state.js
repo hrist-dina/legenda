@@ -1,5 +1,6 @@
 export const CHECKOUT_WELCOME = 'welcome'
 export const CHECKOUT_AUTH = 'auth'
+export const CHECKOUT_RESTORE = 'restore'
 export const CHECKOUT_FINAL = 'final'
 export const CHECKOUT_PERSONAL_DATA = 'personal-data'
 export const CHECKOUT_DELIVERY = 'delivery'

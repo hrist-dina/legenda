@@ -47,7 +47,8 @@ export default {
         }),
         deliveryFormPros: () => ({
             showTitleAndCity: true,
-            showDateTime: false
+            showDateTime: false,
+            showPhones: true
         })
     },
     methods: {

@@ -511,6 +511,13 @@
                 margin-bottom: 12px;
             }
 
+            &__phones {
+                margin-top: 12px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #004f91;
+            }
+
             & + & {
                 margin-top: 40px;
             }
@@ -615,7 +622,7 @@
                 margin-bottom: 40px;
             }
             margin-bottom: 24px;
-            
+
             &-data {
                 margin-right: 12px;
                 margin-bottom: 12px;

@@ -12,12 +12,15 @@
             .lk-address-item__data
                 .lk-address-item__city {{ city }}
                 .lk-address-item__value {{ data.address }}
+                .lk-address-item__phones {{ phones }}
             .lk-address-item__actions
                 slot(name="actions")
 
 </template>
 
 <script>
+import { formatPhoneNumber } from '%common%/formatters'
+
 export default {
     name: 'lk-address-item',
     props: {
@@ -34,6 +37,12 @@ export default {
                 : typeof city === 'string'
                 ? city
                 : 'Не указан'
+        },
+        phones() {
+            const phones = this.data.phones
+            return phones.length
+                ? phones.map(i => formatPhoneNumber(i)).join(', ')
+                : 'Номер телефона не указан'
         }
     }
 }

@@ -35,6 +35,24 @@
             @changeDate="onChangeDate"
             @changeTime="onChangeTime"
         )
+        template(v-if="showPhones")
+            .field(
+                v-for="(item, key) in phones"
+                :key="key"
+            )
+                input-text(
+                    :required="item.required"
+                    :name="item.name"
+                    :value="item.value"
+                    @input="onInputPhone($event, key)"
+                    @validate="onValidatePhone($event, key)"
+                    :placeholder="item.placeholder"
+                    :mask="item.mask"
+                    :valid-type="item.validType"
+                )
+            .delivery-form__more
+                include ../../blocks/components/ui-kit/ui-kit
+                +link('Добавить еще')(@click.prevent="onClickMorePhone")
         .delivery-form__submit(v-if="hasSubmit")
             slot(name='submit')
 </template>
@@ -44,6 +62,16 @@ import { mapGetters, mapState } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import DeliveryTypeList from '%vue%/components/DeliveryTypeList'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
+
+const initialPhone = {
+    placeholder: 'Телефон',
+    name: 'phones[]',
+    value: '',
+    required: false,
+    isValid: true,
+    mask: 'phone',
+    validType: 'phone'
+}
 
 export default {
     components: {
@@ -80,7 +108,8 @@ export default {
         },
         date: null,
         time: null,
-        deliverySelected: null
+        deliverySelected: null,
+        phones: [initialPhone]
     }),
     props: {
         showDateTime: {
@@ -98,6 +127,10 @@ export default {
         showDeliveryType: {
             type: Boolean,
             default: true
+        },
+        showPhones: {
+            type: Boolean,
+            default: false
         },
         isNew: {
             type: Boolean,
@@ -129,7 +162,8 @@ export default {
                 this.inputs.address.isValid &&
                 !!this.type.length &&
                 this.isValidDateTime &&
-                this.isValidTitleAndCity
+                this.isValidTitleAndCity &&
+                this.isValidPhones
             )
         },
         isValidDateTime() {
@@ -139,6 +173,14 @@ export default {
             return this.showTitleAndCity
                 ? !!this.inputs.title.value && !!this.inputs.city.value
                 : true
+        },
+        isValidPhones() {
+            if (!this.showPhones) {
+                return true
+            }
+            return (
+                this.phones.length === this.phones.filter(i => i.isValid).length
+            )
         },
         deliveryTypes() {
             return this.getDeliveryTypes
@@ -156,7 +198,8 @@ export default {
                     type: this.type,
                     address: this.inputs.address.value,
                     date: this.date,
-                    time: this.time
+                    time: this.time,
+                    phones: this.phones.map(i => i.value)
                 })
             }
         },
@@ -177,6 +220,21 @@ export default {
         },
         onChangeCity(val) {
             this.inputs.city.value = val
+        },
+        setDataToPhone(key, value, field) {
+            const item = this.phones[key]
+            if (item) {
+                this.$set(this.phones, key, { ...item, [field]: value })
+            }
+        },
+        onInputPhone(data, key) {
+            this.setDataToPhone(key, data.value, 'value')
+        },
+        onValidatePhone(data, key) {
+            this.setDataToPhone(key, data.isValid, 'isValid')
+        },
+        onClickMorePhone() {
+            this.phones.push(initialPhone)
         }
     },
     created() {
@@ -196,15 +254,16 @@ export default {
             this.deliverySelected = this.selectDelivery.type
         }
 
-        if (this.showTitleAndCity) {
+        if (this.showTitleAndCity || this.showCity) {
             if (this.cities) {
                 this.inputs.city.options = this.cities
             }
         }
 
-        if (this.showCity) {
-            if (this.cities) {
-                this.inputs.city.options = this.cities
+        if (this.showPhones && this.selectDelivery) {
+            const phones = this.selectDelivery.phones
+            if (phones) {
+                this.phones = phones.map(i => ({ ...initialPhone, value: i }))
             }
         }
     },

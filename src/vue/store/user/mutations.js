@@ -59,7 +59,8 @@ export default {
             city: payload.city,
             address: payload.address,
             date: payload.date,
-            time: payload.time
+            time: payload.time,
+            phones: payload.phones || []
         })
     },
     cleanDeliveryItems(state) {

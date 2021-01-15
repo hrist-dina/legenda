@@ -262,8 +262,10 @@ export default {
 
         if (this.showPhones && this.selectDelivery) {
             const phones = this.selectDelivery.phones
-            if (phones) {
+            if (phones.length) {
                 this.phones = phones.map(i => ({ ...initialPhone, value: i }))
+            } else {
+                this.phones = [initialPhone]
             }
         }
     },

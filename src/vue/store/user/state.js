@@ -17,6 +17,7 @@ export default {
     type: null,
     message: null,
     disabledBeforeDateDelivery: undefined,
+    disabledAfterDateDelivery: undefined,
     delivery: {
         types: [
             {

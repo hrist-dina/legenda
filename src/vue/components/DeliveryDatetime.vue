@@ -4,6 +4,7 @@
         app-date-picker(
             :date="date"
             :disabled-before="disabledBeforeDate"
+            :disabled-after="disabledAfterDate"
             @change="onChangeDate"
             placeholder="Желаемая дата"
         )
@@ -40,6 +41,10 @@ export default {
             required: true
         },
         disabledBeforeDate: {
+            type: [Date, null],
+            default: () => null
+        },
+        disabledAfterDate: {
             type: [Date, null],
             default: () => null
         }

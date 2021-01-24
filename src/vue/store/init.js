@@ -52,6 +52,13 @@ export default class Init {
             )
         }
 
+        if (this.data.disabledAfterDateDelivery) {
+            this.store.commit(
+                'user/setDisabledAfterDateDelivery',
+                this.data.disabledAfterDateDelivery
+            )
+        }
+
         if (user && user.wish) {
             this.store.commit('favorite/concat', user.wish)
         }

@@ -7,6 +7,7 @@
             @change="onChange"
             format="DD.MM.YYYY"
             :not-before="disabledBefore"
+            :not-after="disabledAfter"
             :disabled-date="disabledDate"
         )
         .datepicker__desc(v-if="hasDesc")
@@ -49,6 +50,8 @@ export default {
         disabledDate() {
             const before = this.disabledBefore
             const after = this.disabledAfter
+            console.log(before)
+            console.log(after)
             return function (date) {
                 if (before && after) {
                     return date <= before || date >= after

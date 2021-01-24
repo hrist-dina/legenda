@@ -36,7 +36,10 @@ const routes = [
             {
                 name: AUTH_RESTORE,
                 path: '/#/restore',
-                component: AuthRestore
+                component: AuthRestore,
+                meta: {
+                    title: 'Восстановить пароль'
+                }
             }
         ]
     }

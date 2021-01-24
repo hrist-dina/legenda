@@ -32,7 +32,8 @@
                 delivery-datetime(
                     :date="date"
                     :time="time"
-                    :disabled-before-date="getDisabledBeforeDateDelivery"
+                    :disabled-before-date="deliveryFormPros.disabledBeforeDate"
+                    :disabled-after-date="deliveryFormPros.disabledAfterDate"
                     @changeDate="onChangeDate"
                     @changeTime="onChangeTime"
                 )
@@ -112,7 +113,11 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('user', ['getPerson', 'getDisabledBeforeDateDelivery']),
+        ...mapGetters('user', [
+            'getPerson',
+            'getDisabledBeforeDateDelivery',
+            'getDisabledAfterDateDelivery'
+        ]),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         ...mapState('user', [
             'selectPaymentType',
@@ -159,7 +164,8 @@ export default {
                 showTitleAndCity: false,
                 showDateTime: false,
                 showCity: true,
-                disabledBeforeDate: this.getDisabledBeforeDateDelivery
+                disabledBeforeDate: this.getDisabledBeforeDateDelivery,
+                disabledAfterDate: this.getDisabledAfterDateDelivery
             }
         }
     },

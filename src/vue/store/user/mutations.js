@@ -25,6 +25,11 @@ export default {
             state.disabledBeforeDateDelivery = new Date(payload)
         }
     },
+    setDisabledAfterDateDelivery(state, payload) {
+        if (payload) {
+            state.disabledAfterDateDelivery = new Date(payload)
+        }
+    },
     setPersonalData(state, payload) {
         if (payload.fio) {
             state.person.fio = payload.fio

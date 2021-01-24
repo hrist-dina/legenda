@@ -11,6 +11,7 @@ export default {
     hasNeedEmail: state => state.needEmail,
     getMessage: state => state.message,
     getDisabledBeforeDateDelivery: state => state.disabledBeforeDateDelivery,
+    getDisabledAfterDateDelivery: state => state.disabledAfterDateDelivery,
     getDeliveryTypes: state => state.delivery.types,
     getSelectDelivery: state => state.selectDelivery,
     getPayment: state => state.payment,

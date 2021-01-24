@@ -32,6 +32,7 @@
             :date="date"
             :time="time"
             :disabled-before-date="disabledBeforeDate"
+            :disabled-after-date="disabledAfterDate"
             @changeDate="onChangeDate"
             @changeTime="onChangeTime"
         )
@@ -137,6 +138,10 @@ export default {
             default: false
         },
         disabledBeforeDate: {
+            type: [Date, null],
+            default: () => null
+        },
+        disabledAfterDate: {
             type: [Date, null],
             default: () => null
         }

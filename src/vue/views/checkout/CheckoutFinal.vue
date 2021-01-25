@@ -9,7 +9,6 @@
                 ).checkout-block__edit
             .checkout-block__body
                 p.checkout-block__row {{ person.fio }}
-                p.checkout-block__row {{ person.phone }}
                 p.checkout-block__row {{ person.email }}
         .checkout-block
             .checkout-block__title
@@ -66,6 +65,7 @@
             personal-data-form(
                 @submit="onSubmitModalPersonalData"
                 @isValid="onValidModalPersonalData"
+                :has-phone="false"
             ).checkout-personal-data__form
                 template(#submit)
                     .error-message(v-if="!!errorMessage") {{ errorMessage }}

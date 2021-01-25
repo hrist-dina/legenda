@@ -77,6 +77,10 @@ export default {
         hasBirthDate: {
             type: Boolean,
             default: false
+        },
+        hasPhone: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {
@@ -84,6 +88,8 @@ export default {
         formFields() {
             return this.form.reduce((tot, i) => {
                 if (i.name === 'birthDate' && !this.hasBirthDate) {
+                    return tot
+                } else if (i.name === 'phone' && !this.hasPhone) {
                     return tot
                 } else {
                     tot.push(i)
@@ -101,12 +107,19 @@ export default {
     methods: {
         onSubmit() {
             if (this.isValidForm) {
-                this.$emit('submit', {
+                const data = {
                     fio: this.form[this.getIndexByName('fio')].value,
-                    email: this.form[this.getIndexByName('email')].value,
-                    phone: this.form[this.getIndexByName('phone')].value,
-                    birthDate: this.form[this.getIndexByName('birthDate')].value
-                })
+                    email: this.form[this.getIndexByName('email')].value
+                }
+                if (this.hasBirthDate) {
+                    data.birthDate = this.form[
+                        this.getIndexByName('birthDate')
+                    ].value
+                }
+                if (this.hasPhone) {
+                    data.phone = this.form[this.getIndexByName('phone')].value
+                }
+                this.$emit('submit', data)
             }
         },
         getIndexByName(name) {
@@ -132,6 +145,7 @@ export default {
                     let value = person[item]
                     if (item === 'phone') {
                         value = phoneReplaceForMask(value)
+                        fromItem.isValid = !this.hasPhone
                     }
                     this.form[this.getIndexByName(item)].value = value
                 }

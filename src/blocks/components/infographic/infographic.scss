@@ -28,12 +28,16 @@
 
     &__img {
         @include md-block {
-            @include wh(auto);
+            @include wh(105px);
         }
         @include wh(72px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         & svg {
-            @include wh(100%);
+            width: auto;
+            max-width: 100%;
         }
     }
 

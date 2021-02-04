@@ -2,6 +2,7 @@
 
     &__list {
         @include row-flex;
+        align-items: flex-start;
         & svg:not(.done-draw) * {
             fill: none;
             stroke: currentColor;

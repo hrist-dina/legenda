@@ -2,6 +2,7 @@ import HTTP, { urlAjax } from '%common%/http'
 import router from '%vue%/router/order'
 import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
 import { showNotification } from '%vue%/store/common/helper'
+import { sendPayment } from '%vue%/store/user/helpers'
 
 export default {
     register: async ({ commit, rootGetters }, payload) => {
@@ -94,42 +95,18 @@ export default {
         return response.data
     },
     payment: async ({ state, rootState, dispatch }) => {
-        const type = state.selectPaymentType.code
-        const url =
-            type === 'money' ? urlAjax.paymentMoney : urlAjax.paymentCard
-        const response = await new HTTP(
-            url,
-            {
-                userId: state.id,
-                token: state.token,
-                paymentType: type,
-                delivery: state.selectDelivery,
-                products: rootState.cart.products,
-                isSpendBonus: state.isSpendBonus,
-                isSpendBottle: state.isSpendBottle
-            },
-            data => {
-                console.log(data)
-
-                if (data.order) {
-                    dispatch('cart/clean', null, { root: true }).then(() => {
-                        const path = router.resolve({
-                            name: CHECKOUT_SUCCESS,
-                            params: { number: data.order }
-                        })
-                        // Делаем так, чтобы можно было сделать редирект из разных типов route (order, lk)
-                        window.location = path.href
-                    })
-                }
-
-                if (data.url) {
-                    // Делаем редирект на онлайн оплату
-                    window.location = data.url
-                }
-            }
-        ).post()
-
-        return response.data.status
+        return await sendPayment(state, dispatch, {
+            delivery: state.selectDelivery,
+            products: rootState.cart.products,
+            isSpendBonus: state.isSpendBonus,
+            isSpendBottle: state.isSpendBottle
+        })
+    },
+    replenish: async ({ state, dispatch }, payload) => {
+        return await sendPayment(state, dispatch, {
+            delivery: state.selectDelivery,
+            ...payload
+        })
     },
     setPaymentType: ({ commit }, payload) => {
         commit('setSelectedPaymentType', { selectPaymentType: payload })
@@ -203,8 +180,5 @@ export default {
         ).get()
 
         return response.data
-    },
-    deliveryLk({ commit }, payload) {
-        // TODO:: как будет api
     }
 }

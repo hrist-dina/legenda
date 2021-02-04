@@ -32,6 +32,10 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import CartItemLk from '%vue%/components/CartItemLk'
+import {
+    PAYMENT_BANK_CARD,
+    PAYMENT_METHOD_WRITE_OFF
+} from '%vue%/store/user/state'
 
 export default {
     name: 'lk-structure',
@@ -53,6 +57,10 @@ export default {
         isEndStep: {
             type: Boolean,
             default: true
+        },
+        paymentMethod: {
+            type: String,
+            required: true
         }
     },
     computed: {
@@ -75,6 +83,17 @@ export default {
                 0
             )
         },
+        getSelectedBottles() {
+            return this.getBottles.reduce((tot, i) => {
+                if (i.cnt > 0) {
+                    tot.push({
+                        id: i.id,
+                        cnt: i.cnt
+                    })
+                }
+                return tot
+            }, [])
+        },
         isLimitValidate() {
             return !this.isLimit ? this.isValidPaymentType : true
         },
@@ -89,10 +108,17 @@ export default {
     },
     methods: {
         ...mapActions('user', {
-            handlerPayment: 'payment'
+            handlerPayment: 'replenish'
         }),
         onClickSendOrder() {
-            this.handlerPayment()
+            const payload = {
+                products: this.getSelectedBottles,
+                paymentMethod: this.paymentMethod
+            }
+            if (this.paymentMethod === PAYMENT_METHOD_WRITE_OFF) {
+                payload.paymentType = PAYMENT_BANK_CARD
+            }
+            this.handlerPayment(payload)
         },
         onAgree() {
             this.agree = !this.agree

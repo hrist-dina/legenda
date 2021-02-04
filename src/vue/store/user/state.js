@@ -8,6 +8,11 @@ export const personState = {
     balance: null
 }
 
+export const PAYMENT_MONEY = 'money'
+export const PAYMENT_BANK_CARD = 'bank-card'
+export const PAYMENT_METHOD_REPLENISH = 'replenish'
+export const PAYMENT_METHOD_WRITE_OFF = 'write-off'
+
 export default {
     id: null,
     token: null,
@@ -33,12 +38,12 @@ export default {
     },
     payment: [
         {
-            code: 'money',
+            code: PAYMENT_MONEY,
             label: 'Наличные',
             selected: true
         },
         {
-            code: 'bank-card',
+            code: PAYMENT_BANK_CARD,
             label: 'Банковской картой'
         }
     ],

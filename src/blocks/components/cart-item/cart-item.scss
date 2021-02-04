@@ -412,6 +412,23 @@
             }
         }
     }
+
+    &--is-limit & {
+
+        &__data {
+            @include lg-block {
+                max-width: 175px;
+                padding-right: 5px;
+                margin-right: 0;
+            }
+            max-width: 250px;
+            margin-right: 0;
+        }
+
+        &__order {
+            padding-right: 10px;
+        }
+    }
     &:last-child {
         margin-bottom: 0;
     }

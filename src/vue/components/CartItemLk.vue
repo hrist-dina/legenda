@@ -1,6 +1,6 @@
 <template lang="pug">
     include ../../views/helpers/mixins
-    .cart-item.cart-item--lk
+    .cart-item.cart-item--lk(:class="{'cart-item--is-limit': this.isLimit}")
         .cart-item__inner
             a(:href="link").cart-item__img-link
                 img(:src="img" :alt="title" :title="title").cart-item__img

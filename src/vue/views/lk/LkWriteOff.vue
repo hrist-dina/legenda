@@ -26,6 +26,7 @@
                 .lk-section-order
                     lk-structure(
                         :is-limit="true"
+                        :payment-method="paymentMethod"
                     )
         modal-add-delivery(
             :show-modal="showModalAddress"
@@ -39,6 +40,7 @@ import LkStructure from '%vue%/views/lk/LkStructure'
 import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
 import { mapActions, mapGetters, mapState } from 'vuex'
 import { getDeliveryLabel } from '%common%/formatters'
+import { PAYMENT_METHOD_WRITE_OFF } from '%vue%/store/user/state'
 
 export default {
     name: 'lk-write-off',
@@ -52,6 +54,7 @@ export default {
         ...mapGetters('user', ['getDeliveryItems']),
         deliveryItems() {
             return this.getDeliveryItems.map(i => ({
+                id: i.id,
                 code: i.address,
                 label: getDeliveryLabel(i)
             }))
@@ -60,6 +63,7 @@ export default {
             const delivery = this.selectDelivery
             if (delivery && delivery.address) {
                 return {
+                    id: delivery.id,
                     code: delivery.address,
                     label: getDeliveryLabel(delivery)
                 }
@@ -71,7 +75,10 @@ export default {
             showTitleAndCity: false,
             showDateTime: false,
             showCity: true
-        })
+        }),
+        paymentMethod() {
+            return PAYMENT_METHOD_WRITE_OFF
+        }
     },
     methods: {
         ...mapActions('user', {
@@ -83,6 +90,14 @@ export default {
         onAddAddress() {
             this.showModalAddress = !this.showModalAddress
         }
+    },
+    created() {
+        const val = this.selectedDeliveryItem
+        this.setDelivery({
+            id: val.id,
+            address: val.address,
+            type: val.type
+        })
     }
 }
 </script>

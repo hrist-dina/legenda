@@ -19,14 +19,19 @@
                     lk-structure(
                         :can-be-zero="true"
                         :is-end-step="isEndStep"
+                        :payment-method="paymentMethod"
                     )
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
 import LkStructure from '%vue%/views/lk/LkStructure'
-import { LK_REPLENISH_DELIVERY } from '%vue%/router/constants'
+import {
+    LK_REPLENISH_DELIVERY,
+    LK_REPLENISH_PAYMENT
+} from '%vue%/router/constants'
+import { PAYMENT_METHOD_REPLENISH } from '%vue%/store/user/state'
 
 export default {
     name: 'lk-replenish',
@@ -36,15 +41,22 @@ export default {
     },
     computed: {
         ...mapState('checkout', ['replenish', 'activeStep']),
+        ...mapGetters('user', ['isValidPaymentType']),
         isEndStep() {
             return this.$route.name === LK_REPLENISH_DELIVERY
+        },
+        paymentMethod() {
+            return PAYMENT_METHOD_REPLENISH
         }
     },
     methods: {
         ...mapActions('checkout', ['setActiveStep'])
     },
     created() {
-        this.setActiveStep({ activeStep: this.$route.name })
+        const routName = this.isValidPaymentType
+            ? this.$route.name
+            : LK_REPLENISH_PAYMENT
+        this.setActiveStep({ activeStep: routName })
     },
     watch: {
         activeStep() {

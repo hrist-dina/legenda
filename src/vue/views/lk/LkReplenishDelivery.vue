@@ -63,16 +63,20 @@ export default {
         ...mapGetters('user', ['getDeliveryItems']),
         deliveryItems() {
             return this.getDeliveryItems.map(i => ({
+                ...i,
                 code: i.address,
-                label: getDeliveryLabel(i)
+                label: getDeliveryLabel(i),
+                type: 'one'
             }))
         },
         selectedDeliveryItem() {
             const delivery = this.selectDelivery
             if (delivery && delivery.address) {
                 return {
+                    ...delivery,
                     code: delivery.address,
-                    label: getDeliveryLabel(delivery)
+                    label: getDeliveryLabel(delivery),
+                    type: 'one'
                 }
             }
             return this.deliveryItems ? this.deliveryItems[0] : {}
@@ -89,10 +93,33 @@ export default {
             setDelivery: 'setDelivery'
         }),
         onSelectAddress(val) {
-            this.setDelivery({ ...this.selectDelivery, ...val })
+            this.setDelivery({
+                ...this.selectDelivery,
+                id: val.id,
+                address: val.address,
+                type: val.type
+            })
         },
         onAddAddress() {
             this.showModalAddress = !this.showModalAddress
+        }
+    },
+    created() {
+        const val = this.selectedDeliveryItem
+        this.setDelivery({
+            id: val.id,
+            address: val.address,
+            type: val.type
+        })
+    },
+    watch: {
+        type(val) {
+            if (val === 'all') {
+                this.setDelivery({
+                    id: val,
+                    type: 'all'
+                })
+            }
         }
     }
 }

@@ -31,6 +31,7 @@
                 delivery-datetime(
                     :date="date"
                     :time="time"
+                    :time-options="timeOptions"
                     :disabled-before-date="deliveryFormPros.disabledBeforeDate"
                     :disabled-after-date="deliveryFormPros.disabledAfterDate"
                     @changeDate="onChangeDate"
@@ -88,6 +89,7 @@ import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
 import PersonalDataForm from '%vue%/components/PersonalDataForm'
 import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
 import { getDeliveryLabel } from '%common%/formatters'
+import { orderTimeOptions } from '%vue%/mixins/delivery'
 
 export default {
     components: {
@@ -97,6 +99,7 @@ export default {
         PersonalDataForm,
         ModalAddDelivery
     },
+    mixins: [orderTimeOptions],
     data: () => ({
         errorMessage: '',
         date: null,
@@ -104,7 +107,8 @@ export default {
         showModalPersonalData: false,
         isValidModalPersonalData: false,
         isSubmittingModalPersonalData: false,
-        showModalAddress: false
+        showModalAddress: false,
+        timeOptions: []
     }),
     props: {
         isAddedAddress: {
@@ -187,8 +191,15 @@ export default {
             this.setType(val)
         },
         onChangeDate(val) {
+            console.log(val)
             this.date = val
             this.setDelivery({ ...this.selectDelivery, date: val })
+            this.setOptionsOrderTime(val)
+        },
+        setOptionsOrderTime(date) {
+            this.getOptionsOrderTime({ date: date }).then(
+                res => (this.timeOptions = res)
+            )
         },
         onChangeTime(val) {
             this.time = val
@@ -196,6 +207,9 @@ export default {
         },
         onSelectAddress(val) {
             this.setDelivery({ ...this.selectDelivery, ...val })
+            if (this.date) {
+                this.setOptionsOrderTime(this.date)
+            }
         },
         onBonus() {
             this.setIsBonus(!this.isSpendBonus)

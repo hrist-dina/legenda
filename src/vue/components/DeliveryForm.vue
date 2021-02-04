@@ -31,6 +31,7 @@
             v-if="showDateTime"
             :date="date"
             :time="time"
+            :time-options="timeOptions"
             :disabled-before-date="disabledBeforeDate"
             :disabled-after-date="disabledAfterDate"
             @changeDate="onChangeDate"
@@ -63,6 +64,7 @@ import { mapGetters, mapState } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import DeliveryTypeList from '%vue%/components/DeliveryTypeList'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
+import { orderTimeOptions } from '%vue%/mixins/delivery'
 
 const initialPhone = {
     placeholder: 'Телефон',
@@ -80,6 +82,7 @@ export default {
         DeliveryTypeList,
         DeliveryDatetime
     },
+    mixins: [orderTimeOptions],
     data: () => ({
         type: '',
         inputs: {
@@ -110,7 +113,8 @@ export default {
         date: null,
         time: null,
         deliverySelected: null,
-        phones: [initialPhone]
+        phones: [initialPhone],
+        timeOptions: []
     }),
     props: {
         showDateTime: {
@@ -219,6 +223,10 @@ export default {
         },
         onChangeDate(val) {
             this.date = val
+            this.getOptionsOrderTime({
+                date: val,
+                address: this.inputs.address.value
+            }).then(res => (this.timeOptions = res))
         },
         onChangeTime(val) {
             this.time = val

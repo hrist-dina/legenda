@@ -28,9 +28,6 @@ export default {
     components: {
         AppDatePicker
     },
-    data: () => ({
-        timeOptions: null
-    }),
     props: {
         date: {
             type: null,
@@ -47,6 +44,10 @@ export default {
         disabledAfterDate: {
             type: [Date, null],
             default: () => null
+        },
+        timeOptions: {
+            type: Array,
+            required: true
         }
     },
     computed: {
@@ -55,21 +56,8 @@ export default {
         }
     },
     methods: {
-        ...mapActions('user', {
-            getOrderTime: 'orderTime'
-        }),
         onChangeDate(val) {
             this.$emit('changeDate', val)
-            this.getOrderTime({
-                date: val
-            }).then(response => {
-                if (response.status) {
-                    this.timeOptions = response.data.map(i => ({
-                        code: i,
-                        label: i
-                    }))
-                }
-            })
         },
         onChangeTime(val) {
             this.$emit('changeTime', val.code)

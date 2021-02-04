@@ -1,5 +1,6 @@
 .hint {
     position: relative;
+    cursor: default;
     &-icon {
         @include xl-block {
             @include wh(27px);
@@ -43,6 +44,18 @@
         font-size: 14px;
         line-height: 18px;
         color: #343e44;
+        cursor: default;
+
+        & a {
+            font-size: 14px;
+            line-height: 18px;
+            color: $link-color;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
 
         &:before {
             @include wh(8px);
@@ -71,7 +84,17 @@
         }
     }
 
-    &-icon:hover &-content {
+    &:hover {
+        &:before {
+            content: "";
+            position: absolute;
+            right: -10px;
+            width: 15px;
+            height: 100%;
+        }
+    }
+
+    &:hover &-content {
         visibility: visible;
         opacity: 1;
         z-index: 5;

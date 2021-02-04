@@ -18,6 +18,7 @@
                 .lk-section-order
                     lk-structure(
                         :can-be-zero="true"
+                        :is-end-step="isEndStep"
                     )
 </template>
 
@@ -25,6 +26,7 @@
 import { mapActions, mapState } from 'vuex'
 import CheckoutNavigation from '%vue%/views/checkout/CheckoutNavigation'
 import LkStructure from '%vue%/views/lk/LkStructure'
+import { LK_REPLENISH_DELIVERY } from '%vue%/router/constants'
 
 export default {
     name: 'lk-replenish',
@@ -33,7 +35,10 @@ export default {
         LkStructure
     },
     computed: {
-        ...mapState('checkout', ['replenish', 'activeStep'])
+        ...mapState('checkout', ['replenish', 'activeStep']),
+        isEndStep() {
+            return this.$route.name === LK_REPLENISH_DELIVERY
+        }
     },
     methods: {
         ...mapActions('checkout', ['setActiveStep'])

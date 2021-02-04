@@ -49,6 +49,10 @@ export default {
         canBeZero: {
             type: Boolean,
             default: false
+        },
+        isEndStep: {
+            type: Boolean,
+            default: true
         }
     },
     computed: {
@@ -75,7 +79,12 @@ export default {
             return !this.isLimit ? this.isValidPaymentType : true
         },
         canOrder() {
-            return this.isLimitValidate && this.getBottles.length && this.agree
+            return (
+                this.isLimitValidate &&
+                this.getBottles.length &&
+                this.agree &&
+                this.isEndStep
+            )
         }
     },
     methods: {

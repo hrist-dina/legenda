@@ -22,7 +22,8 @@ const routes = [
                 path: '/#/register',
                 component: AuthRegister,
                 meta: {
-                    title: 'Регистрация'
+                    title: 'Регистрация',
+                    tabTitle: 'Регистрация'
                 }
             },
             {
@@ -30,7 +31,8 @@ const routes = [
                 path: '/#/login',
                 component: AuthLogin,
                 meta: {
-                    title: 'Войти с паролем'
+                    title: 'Войти с паролем',
+                    tabTitle: 'Войти с паролем'
                 }
             },
             {

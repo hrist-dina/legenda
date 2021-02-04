@@ -14,6 +14,7 @@
                         :quantity="quantity"
                         :type="false"
                         :limit="limit"
+                        :can-be-zero="canBeZero"
                     )
                 .cart-item__limit(v-if="isLimit")
                     .cart-item__limit-text из
@@ -62,6 +63,10 @@ export default {
             default: null
         },
         isLimit: {
+            type: Boolean,
+            default: false
+        },
+        canBeZero: {
             type: Boolean,
             default: false
         }

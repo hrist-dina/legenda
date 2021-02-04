@@ -356,7 +356,9 @@
 
         &__data {
             @include lg-block {
-                max-width: 165px;
+                max-width: 200px;
+                padding-right: 10px;
+                margin-right: 0;
             }
             max-width: 350px;
             padding-right: 30px;

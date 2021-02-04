@@ -24,9 +24,9 @@ export default {
 
         if (baseRoute) {
             this.tabNav = baseRoute.children.reduce((tot, i) => {
-                if (i.meta && i.meta.title) {
+                if (i.meta && i.meta.tabTitle) {
                     tot.push({
-                        title: i.meta.title,
+                        title: i.meta.tabTitle,
                         name: i.name,
                         path: i.path
                     })

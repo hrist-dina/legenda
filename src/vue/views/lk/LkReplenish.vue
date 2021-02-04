@@ -16,7 +16,9 @@
                                     router-view
             article.lk-section__half
                 .lk-section-order
-                    lk-structure
+                    lk-structure(
+                        :can-be-zero="true"
+                    )
 </template>
 
 <script>

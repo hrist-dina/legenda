@@ -25,6 +25,7 @@
                     :quantity="bottle.cnt"
                     :limit="bottle.limit"
                     :is-limit="isLimit"
+                    :can-be-zero="canBeZero"
                 )
 </template>
 
@@ -44,6 +45,10 @@ export default {
         isLimit: {
             type: Boolean,
             default: false
+        },
+        canBeZero: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
@@ -55,10 +60,16 @@ export default {
         getBottles() {
             return this.isLimit
                 ? this.bottlesLimit
-                : this.bottles.map(i => ({ ...i, cnt: i.cnt || 1 }))
+                : this.bottles.map(i => ({
+                      ...i,
+                      cnt: this.handleCnt(i.cnt)
+                  }))
         },
         total() {
-            return this.getBottles.reduce((tot, i) => tot + i.cnt || 1, 0)
+            return this.getBottles.reduce(
+                (tot, i) => tot + this.handleCnt(i.cnt),
+                0
+            )
         },
         isLimitValidate() {
             return !this.isLimit ? this.isValidPaymentType : true
@@ -76,6 +87,9 @@ export default {
         },
         onAgree() {
             this.agree = !this.agree
+        },
+        handleCnt(val) {
+            return typeof val === 'undefined' ? 1 : val || 0
         }
     }
 }

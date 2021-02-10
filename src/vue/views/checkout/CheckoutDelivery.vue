@@ -10,6 +10,7 @@ include ../../../blocks/components/ui-kit/ui-kit
         @isValid="onValidForm"
         :disabled-before-date="getDisabledBeforeDateDelivery"
         :disabled-after-date="getDisabledAfterDateDelivery"
+        :dates-delivery="getDatesDelivery"
     )
         template(#submit)
             .checkout__error(v-if="errorMessage" v-html="errorMessage")
@@ -36,7 +37,8 @@ export default {
         ...mapGetters('user', [
             'getPerson',
             'getDisabledBeforeDateDelivery',
-            'getDisabledAfterDateDelivery'
+            'getDisabledAfterDateDelivery',
+            'getDatesDelivery'
         ]),
         fio() {
             return this.getPerson.fio

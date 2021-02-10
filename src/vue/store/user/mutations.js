@@ -30,6 +30,11 @@ export default {
             state.disabledAfterDateDelivery = new Date(payload)
         }
     },
+    setDatesDelivery(state, payload) {
+        if (payload) {
+            state.datesDelivery = payload.map(i => new Date(i))
+        }
+    },
     setPersonalData(state, payload) {
         if (payload.fio) {
             state.person.fio = payload.fio

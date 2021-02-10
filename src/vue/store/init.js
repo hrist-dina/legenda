@@ -59,6 +59,10 @@ export default class Init {
             )
         }
 
+        if (this.data.datesDelivery) {
+            this.store.commit('user/setDatesDelivery', this.data.datesDelivery)
+        }
+
         if (user && user.wish) {
             this.store.commit('favorite/concat', user.wish)
         }

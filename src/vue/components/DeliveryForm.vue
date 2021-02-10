@@ -34,6 +34,7 @@
             :time-options="timeOptions"
             :disabled-before-date="disabledBeforeDate"
             :disabled-after-date="disabledAfterDate"
+            :dates-delivery="datesDelivery"
             @changeDate="onChangeDate"
             @changeTime="onChangeTime"
         )
@@ -147,6 +148,10 @@ export default {
         },
         disabledAfterDate: {
             type: [Date, null],
+            default: () => null
+        },
+        datesDelivery: {
+            type: [Array, null],
             default: () => null
         }
     },

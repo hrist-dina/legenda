@@ -34,6 +34,7 @@
                     :time-options="timeOptions"
                     :disabled-before-date="deliveryFormPros.disabledBeforeDate"
                     :disabled-after-date="deliveryFormPros.disabledAfterDate"
+                    :dates-delivery="deliveryFormPros.datesDelivery"
                     @changeDate="onChangeDate"
                     @changeTime="onChangeTime"
                 )
@@ -120,7 +121,8 @@ export default {
         ...mapGetters('user', [
             'getPerson',
             'getDisabledBeforeDateDelivery',
-            'getDisabledAfterDateDelivery'
+            'getDisabledAfterDateDelivery',
+            'getDatesDelivery'
         ]),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         ...mapState('user', [
@@ -169,7 +171,8 @@ export default {
                 showDateTime: false,
                 showCity: true,
                 disabledBeforeDate: this.getDisabledBeforeDateDelivery,
-                disabledAfterDate: this.getDisabledAfterDateDelivery
+                disabledAfterDate: this.getDisabledAfterDateDelivery,
+                datesDelivery: this.getDatesDelivery
             }
         }
     },

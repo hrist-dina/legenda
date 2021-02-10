@@ -23,6 +23,7 @@ export default {
     message: null,
     disabledBeforeDateDelivery: undefined,
     disabledAfterDateDelivery: undefined,
+    datesDelivery: [], // Даты разрешенные для доставки
     delivery: {
         types: [
             {

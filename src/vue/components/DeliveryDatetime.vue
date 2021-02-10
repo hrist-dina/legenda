@@ -5,6 +5,7 @@
             :date="date"
             :disabled-before="disabledBeforeDate"
             :disabled-after="disabledAfterDate"
+            :dates-show="datesDelivery"
             @change="onChangeDate"
             placeholder="Желаемая дата"
         )
@@ -22,7 +23,6 @@
 
 <script>
 import AppDatePicker from '%vue%/components/AppDatePicker'
-import { mapActions } from 'vuex'
 
 export default {
     components: {
@@ -43,6 +43,10 @@ export default {
         },
         disabledAfterDate: {
             type: [Date, null],
+            default: () => null
+        },
+        datesDelivery: {
+            type: [Array, null],
             default: () => null
         },
         timeOptions: {

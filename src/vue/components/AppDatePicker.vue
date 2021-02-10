@@ -6,8 +6,6 @@
             :value="value"
             @change="onChange"
             format="DD.MM.YYYY"
-            :not-before="disabledBefore"
-            :not-after="disabledAfter"
             :disabled-date="disabledDate"
         )
         .datepicker__desc(v-if="hasDesc")
@@ -38,6 +36,10 @@ export default {
         disabledAfter: {
             type: [Date, null],
             default: () => null
+        },
+        datesShow: {
+            type: [Array, null],
+            default: () => null
         }
     },
     computed: {
@@ -50,7 +52,15 @@ export default {
         disabledDate() {
             const before = this.disabledBefore
             const after = this.disabledAfter
+            const datesShow = this.datesShow
             return function (date) {
+                const isNotSame =
+                    datesShow &&
+                    datesShow.findIndex(i => i.getTime() === date.getTime()) < 0
+
+                if (isNotSame) {
+                    return true
+                }
                 if (before && after) {
                     return date <= before || date >= after
                 }

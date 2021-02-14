@@ -37,12 +37,11 @@ export default {
     data: () => ({
         form: [
             {
-                placeholder: 'Адрес электронная почта',
-                name: 'email',
+                placeholder: 'Логин',
+                name: 'login',
                 value: '',
                 required: true,
-                isValid: false,
-                validType: 'email'
+                isValid: false
             },
             {
                 placeholder: 'Пароль',

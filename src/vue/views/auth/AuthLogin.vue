@@ -71,7 +71,7 @@ export default {
         onSubmit() {
             if (this.isValidForm) {
                 this.login({
-                    email: this.form[this.getIndexByName('email')].value,
+                    login: this.form[this.getIndexByName('login')].value,
                     password: this.form[this.getIndexByName('password')].value
                 }).then(response => {
                     if (response.status) {

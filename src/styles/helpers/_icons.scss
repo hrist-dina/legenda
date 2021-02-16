@@ -220,6 +220,13 @@
     }
 }
 
+.icon-soc-youtube {
+    @include soc-icon;
+    @include icon-bgc(icon-youtube('fff'));
+    background-color: #c4302b;
+    background-size: 24px;
+}
+
 @mixin menu-soc-icon {
     @include wh(40px);
     border-radius: 50%;

@@ -15,8 +15,8 @@ include ../../../blocks/components/ui-kit/ui-kit
         template(#submit)
             .checkout__error(v-if="errorMessage" v-html="errorMessage")
             .checkout__button(slot='submit')
-                +button('default')(:disabled="!isValidForm") Далее
                 checkout-back
+                +button('default')(:disabled="!isValidForm") Далее
 </template>
 
 <script>

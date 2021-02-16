@@ -10,8 +10,8 @@
                 .checkout__error(v-if="errorMessage" v-html="errorMessage")
                 .checkout__button
                     include ../../../blocks/components/ui-kit/ui-kit
-                    +button('default')(:disabled="!isValidForm") Далее
                     checkout-back
+                    +button('default')(:disabled="!isValidForm") Далее
 
 </template>
 

@@ -4,7 +4,11 @@
     }
     margin-top: 26px;
 
-    .button ~ &-back {
+    .button + &-back {
+        margin-left: 16px;
+    }
+
+    &-back + .button {
         margin-left: 16px;
     }
 

@@ -6,7 +6,7 @@ export default {
     },
     productsDetailed: (state, getters, rootState, rootGetters) => {
         return state.products.reduce((tot, pr) => {
-            const product = rootGetters['products/one'](pr.id)
+            const product = rootGetters['products/oneOrder'](pr.id)
             if (!product) return tot
             tot.push({
                 ...product,

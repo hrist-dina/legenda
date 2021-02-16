@@ -1,0 +1,271 @@
+{
+    "status": true,
+    "data": [
+        {
+            "id": 1,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением йода",
+            "price": 290,
+            "img": null,
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 2,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Йод, фтор и селен",
+            "price": 310,
+            "img": "/img/product/item-2.png",
+            "labels": [{ "name": "Новинка", "type": "new" }],
+            "composition": ["Йод", "Фтор", "Селен"]
+        },
+        {
+            "id": 3,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 350,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 4,
+            "link": "#",
+            "title": "«Легенда жизни» Бизнес»",
+            "desc": "С добавлением йода",
+            "price": 310,
+            "img": "/img/product/item-4.png",
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 5,
+            "link": "#",
+            "title": "«Легенда жизни» (уп. 6 шт по 1,5 л) ",
+            "desc": "6 бутылок",
+            "price": 310,
+            "img": "/img/product/item-5.png",
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 6,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 350,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 7,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Природная вода без добавок",
+            "price": 280,
+            "img": "/img/product/item-6.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": null
+        },
+        {
+            "id": 8,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением йода",
+            "price": 390,
+            "img": "/img/product/item-1.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 9,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 350,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 10,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Природная вода без добавок",
+            "price": 280,
+            "img": "/img/product/item-6.png",
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 11,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением йода",
+            "price": 290,
+            "img": "/img/product/item-1.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 12,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Йод, фтор и селен",
+            "price": 310,
+            "img": "/img/product/item-2.png",
+            "labels": null,
+            "composition": ["Йод", "Фтор", "Селен"]
+        },
+        {
+            "id": 13,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "С добавлением янтарной кислоты и селена",
+            "price": 350,
+            "img": "/img/product/item-3.png",
+            "labels": [{ "name": "Хит", "type": "hit" }],
+            "composition": ["Янтарь", "Селен"]
+        },
+        {
+            "id": 14,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Природная вода без добавок",
+            "price": 280,
+            "img": "/img/product/item-6.png",
+            "labels": null,
+            "composition": null
+        },
+        {
+            "id": 15,
+            "link": "#",
+            "title": "Легенда жизни 19л",
+            "desc": "Йод, фтор и селен",
+            "price": 350,
+            "img": null,
+            "labels": null,
+            "composition": ["Йод", "Фтор", "Селен"]
+        },
+        {
+            "id": 16,
+            "link": "#",
+            "title": "«Легенда жизни» Спорт 0,7л",
+            "desc": "Калий, кальций и магний",
+            "price": 268,
+            "img": "/img/product/item-8.png",
+            "labels": null,
+            "composition": ["Калий", "Кальций", "Магний"]
+        },
+        {
+            "id": 17,
+            "link": "#",
+            "title": "«Легенда жизни» Детская 0,33л",
+            "desc": "С добавлением йода",
+            "price": 388,
+            "img": "/img/product/item-9.png",
+            "labels": null,
+            "composition": ["Йод"]
+        },
+        {
+            "id": 17,
+            "link": "#",
+            "title": "Мука «Алейка» пшеничная высший сорт",
+            "desc": "3кг",
+            "price": 210,
+            "img": "/img/product/item-10.png"
+        },
+        {
+            "id": 18,
+            "link": "#",
+            "title": "Морс облепиховый, 0,2 л",
+            "desc": "Сибирская ягода",
+            "price": 195,
+            "img": "/img/product/item-11.png"
+        },
+        {
+            "id": 19,
+            "link": "#",
+            "title": "«Легенда жизни» Детская 0,33л",
+            "desc": "С добавлением йода",
+            "price": 150,
+            "img": "/img/product/item-12.png"
+        },
+        {
+            "id": 20,
+            "link": "#",
+            "title": "Средство Fairy д/мытья посуды Зеленое яблоко",
+            "desc": "450 мл",
+            "price": 185,
+            "img": "/img/product/item-13.png"
+        },
+        {
+            "id": 21,
+            "link": "#",
+            "title": "Жидкое крем-мыло «Ушастый нянь» с экстрактом алоэ",
+            "desc": "300 мл",
+            "price": 195,
+            "img": "/img/product/item-14.png"
+        },
+        {
+            "id": 22,
+            "link": "#",
+            "title": "Антисептик для рук, 100мл",
+            "desc": "100 мл ",
+            "price": 260,
+            "img": "/img/product/item-15.png"
+        },
+        {
+            "id": 23,
+            "link": "#",
+            "title": "Кулер для воды Aqua Work 105-TDR",
+            "desc": "бело-черный",
+            "price": 17000,
+            "img": "/img/product/item-16.png"
+        },
+        {
+            "id": 24,
+            "link": "#",
+            "title": "Кулер для воды Aqua Work 0.7-L",
+            "desc": "Напольный",
+            "price": 20000,
+            "img": "/img/product/item-17.png"
+        },
+        {
+            "id": 25,
+            "link": "#",
+            "title": "Ecotronic A1-TE",
+            "desc": "Настольный кулер",
+            "price": 50000,
+            "img": "/img/product/item-18.png"
+        },
+        {
+            "id": 26,
+            "link": "#",
+            "title": "Помпа механическая",
+            "desc": "Компактная модель",
+            "price": 1700,
+            "img": "/img/product/item-19.png"
+        },
+        {
+            "id": 100,
+            "link": "#",
+            "title": "Тара на замену 19 л",
+            "desc": "Бутыль на обмен",
+            "price": 250,
+            "img": "/img/product/cart-bottle.svg"
+        },
+        {
+            "id": 101,
+            "link": "#",
+            "title": "Тара на замену 14 л",
+            "desc": "Бутыль на обмен",
+            "price": 220,
+            "img": "/img/product/cart-bottle.svg"
+        }
+    ]
+}

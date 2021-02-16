@@ -7,5 +7,12 @@ export default {
             commit('addItems', { items: data })
             commit('setIsLoading', false)
         }).get()
+    },
+    getOrderItems: async ({ commit }, payload) => {
+        commit('setIsLoading', true)
+        await new HTTP(urlAjax.orderProducts, { ids: payload.ids }, data => {
+            commit('addItemsOrder', { itemsOrder: data })
+            commit('setIsLoading', false)
+        }).get()
     }
 }

@@ -38,11 +38,11 @@ export default {
     },
     methods: {
         ...mapActions('products', {
-            getItems: 'getItems'
+            getOrderItems: 'getOrderItems'
         }),
         loadProducts() {
             if (this.products.length && !this.isLoading) {
-                this.getItems({ ids: this.products.map(item => item.id) })
+                this.getOrderItems({ ids: this.products.map(item => item.id) })
             }
         }
     },

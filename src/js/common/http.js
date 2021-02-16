@@ -51,6 +51,7 @@ export const isProd = process.env.NODE_ENV === 'production'
 export const urlAjax = {
     location: isProd ? '/api/location' : '/mock/location.json',
     products: isProd ? '/api/products' : '/mock/products.json',
+    orderProducts: isProd ? '/api/order/products' : '/mock/products-order.json',
     filter: isProd ? '/api/filter' : '/mock/filter.json',
     basketAdd: isProd ? '/api/basket/add' : '/mock/basket-change.json',
     basketRemove: isProd ? '/api/basket/remove' : '/mock/basket-change.json',

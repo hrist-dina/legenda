@@ -89,7 +89,7 @@ export default {
         const response = await new HTTP(urlAjax.delivery, payload, data => {
             const item = Array.isArray(data) && data.length ? data[0] : data
             commit('setDeliveryItem', item)
-            commit('setSelectedDelivery', { selectDelivery: payload })
+            commit('setSelectedDelivery', { selectDelivery: item })
         }).post()
 
         return response.data
@@ -179,11 +179,15 @@ export default {
             {
                 delivery: deliveryId
             },
-            data => {
-                commit('setDatesDelivery', data.datesDelivery)
-                if (data.bottlesLimit) {
-                    commit('cart/setBottlesLimit', data.bottlesLimit, {
+            ({ datesDelivery, bottlesLimit }) => {
+                commit('setDatesDelivery', datesDelivery)
+                if (bottlesLimit) {
+                    commit('cart/setBottlesLimit', bottlesLimit, {
                         root: true
+                    })
+                    // Устанавливаем лимит бутылей
+                    commit('setPersonalData', {
+                        bottle: bottlesLimit.reduce((t, i) => t + i.limit, 0)
                     })
                 }
             },

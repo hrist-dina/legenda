@@ -10,34 +10,7 @@
             .checkout-block__body
                 p.checkout-block__row {{ person.fio }}
                 p.checkout-block__row {{ person.email }}
-        .checkout-block
-            .checkout-block__title
-                span Адрес доставки
-                +link('Добавить адрес', false, 'bordered')(
-                    v-if="isAddedAddress"
-                    @click.prevent="onAddAddress"
-                ).checkout-block__edit
-            .checkout-block__body
-                v-select(
-                    placeholder="Выберите адрес доставки"
-                    @input="onSelectAddress"
-                    :options="deliveryItems"
-                    :value="selectedDeliveryItem"
-                )
-                    div(slot="no-options") Не найден адрес доставки
-        .checkout-block
-            .checkout-block__title Когда доставить
-            .checkout-block__body
-                delivery-datetime(
-                    :date="date"
-                    :time="time"
-                    :time-options="timeOptions"
-                    :disabled-before-date="deliveryFormPros.disabledBeforeDate"
-                    :disabled-after-date="deliveryFormPros.disabledAfterDate"
-                    :dates-delivery="deliveryFormPros.datesDelivery"
-                    @changeDate="onChangeDate"
-                    @changeTime="onChangeTime"
-                )
+        delivery-address
         .checkout-block
             .checkout-block__title Оплата
             .checkout-block__body
@@ -75,11 +48,6 @@
                         :disabled="!isValidModalPersonalData || isSubmittingModalPersonalData"
                         :class="{'is-loading': isSubmittingModalPersonalData}"
                     ) Сохранить
-        modal-add-delivery(
-            :showModal="showModalAddress"
-            :delivery-form="deliveryFormPros"
-            @close="showModalAddress = false"
-        )
 </template>
 
 <script>
@@ -88,28 +56,21 @@ import AppSelectPayment from '%vue%/components/AppSelectPayment'
 import AppModal from '%vue%/components/AppModal'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
 import PersonalDataForm from '%vue%/components/PersonalDataForm'
-import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
-import { getDeliveryLabel } from '%common%/formatters'
-import { orderDateTimeOptions } from '%vue%/mixins/delivery'
+import DeliveryAddress from '%vue%/components/DeliveryAddress'
 
 export default {
     components: {
+        DeliveryAddress,
         DeliveryDatetime,
         AppSelectPayment,
         AppModal,
-        PersonalDataForm,
-        ModalAddDelivery
+        PersonalDataForm
     },
-    mixins: [orderDateTimeOptions],
     data: () => ({
         errorMessage: '',
-        date: null,
-        time: null,
         showModalPersonalData: false,
         isValidModalPersonalData: false,
-        isSubmittingModalPersonalData: false,
-        showModalAddress: false,
-        timeOptions: []
+        isSubmittingModalPersonalData: false
     }),
     props: {
         isAddedAddress: {
@@ -118,62 +79,16 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('user', [
-            'getPerson',
-            'getDisabledBeforeDateDelivery',
-            'getDisabledAfterDateDelivery',
-            'getDatesDelivery'
-        ]),
+        ...mapGetters('user', ['getPerson']),
         ...mapState('checkout', ['hasLogin', 'activeStep']),
         ...mapState('user', [
             'selectPaymentType',
-            'selectDelivery',
             'isSpendBonus',
             'isSpendBottle'
         ]),
-        ...mapGetters('user', [
-            'getPayment',
-            'getDeliveryItems',
-            'getBonus',
-            'getBottle'
-        ]),
+        ...mapGetters('user', ['getPayment', 'getBonus', 'getBottle']),
         person() {
             return this.getPerson
-        },
-        deliveryItems() {
-            return this.getDeliveryItems.map(i => ({
-                ...i,
-                code: i.id,
-                label: getDeliveryLabel(i)
-            }))
-        },
-        selectedDeliveryItem() {
-            const delivery = this.selectDelivery
-            if (delivery && delivery.address) {
-                return {
-                    ...delivery,
-                    code: delivery.id,
-                    label: getDeliveryLabel(delivery)
-                }
-            }
-            return this.deliveryItems ? this.deliveryItems[0] : {}
-        },
-        selectedDeliveryDate() {
-            return this.selectDelivery ? this.selectDelivery.date : null
-        },
-        selectedDeliveryTime() {
-            return this.selectDelivery ? this.selectDelivery.time : null
-        },
-        deliveryFormPros() {
-            return {
-                isNew: true,
-                showTitleAndCity: false,
-                showDateTime: false,
-                showCity: true,
-                disabledBeforeDate: this.getDisabledBeforeDateDelivery,
-                disabledAfterDate: this.getDisabledAfterDateDelivery,
-                datesDelivery: this.getDatesDelivery
-            }
         }
     },
     methods: {
@@ -182,7 +97,6 @@ export default {
         }),
         ...mapActions('user', {
             setPaymentType: 'setPaymentType',
-            setDelivery: 'setDelivery',
             setIsBonus: 'setIsSpendBonus',
             setIsBottle: 'setIsSpendBottle',
             handleEditPersonalData: 'editPersonalData'
@@ -192,30 +106,6 @@ export default {
         },
         onChange(val) {
             this.setType(val)
-        },
-        onChangeDate(val) {
-            this.date = val
-            this.setDelivery({ ...this.selectDelivery, date: val })
-            this.setOptionsOrderTime(val)
-        },
-        setOptionsOrderTime(date) {
-            this.getOptionsOrderTime({ date: date }).then(
-                res => (this.timeOptions = res)
-            )
-        },
-        setOrderDate(delivery) {
-            this.getOrderDate(delivery)
-        },
-        onChangeTime(val) {
-            this.time = val
-            this.setDelivery({ ...this.selectDelivery, time: val })
-        },
-        onSelectAddress(val) {
-            this.setDelivery({ ...this.selectDelivery, ...val })
-            this.getOrderDate(this.selectDelivery)
-            if (this.date) {
-                this.setOptionsOrderTime(this.date)
-            }
         },
         onBonus() {
             this.setIsBonus(!this.isSpendBonus)
@@ -247,20 +137,7 @@ export default {
                         this.isSubmittingModalPersonalData = false
                     })
             }
-        },
-        onAddAddress() {
-            this.showModalAddress = !this.showModalAddress
         }
-    },
-    created() {
-        this.date = this.selectedDeliveryDate
-        this.time = this.selectedDeliveryTime
-        const deliveryItem = this.selectedDeliveryItem
-        this.setDelivery({
-            ...this.selectDelivery,
-            ...deliveryItem
-        })
-        this.getOrderDate(deliveryItem)
     },
     watch: {
         showModalPersonalData: function () {

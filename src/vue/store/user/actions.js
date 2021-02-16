@@ -169,6 +169,29 @@ export default {
 
         return response.data
     },
+    orderDate: async ({ commit, getters }, payload) => {
+        const deliveryId = payload.id
+        if (!deliveryId) {
+            throw new Error('Not set select delivery')
+        }
+        const response = await new HTTP(
+            urlAjax.orderDate,
+            {
+                delivery: deliveryId
+            },
+            data => {
+                commit('setDatesDelivery', data.datesDelivery)
+                if (data.bottlesLimit) {
+                    commit('cart/setBottlesLimit', data.bottlesLimit, {
+                        root: true
+                    })
+                }
+            },
+            showNotification(commit)
+        ).get()
+
+        return response.data
+    },
     orderBonus: async ({ commit }) => {
         const response = await new HTTP(
             urlAjax.orderBonus,

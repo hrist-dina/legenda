@@ -54,9 +54,13 @@ export default {
             const after = this.disabledAfter
             const datesShow = this.datesShow
             return function (date) {
+                const start = date.setHours(0, 0, 0, 0)
+                const end = date.setHours(23, 59, 59, 999)
                 const isNotSame =
                     datesShow &&
-                    datesShow.findIndex(i => i.getTime() === date.getTime()) < 0
+                    datesShow.findIndex(
+                        i => i.getTime() >= start && i.getTime() <= end
+                    ) < 0
 
                 if (isNotSame) {
                     return true

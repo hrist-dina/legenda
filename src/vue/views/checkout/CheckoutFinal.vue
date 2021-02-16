@@ -90,7 +90,7 @@ import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
 import PersonalDataForm from '%vue%/components/PersonalDataForm'
 import ModalAddDelivery from '%vue%/components/ModalAddDelivery'
 import { getDeliveryLabel } from '%common%/formatters'
-import { orderTimeOptions } from '%vue%/mixins/delivery'
+import { orderDateTimeOptions } from '%vue%/mixins/delivery'
 
 export default {
     components: {
@@ -100,7 +100,7 @@ export default {
         PersonalDataForm,
         ModalAddDelivery
     },
-    mixins: [orderTimeOptions],
+    mixins: [orderDateTimeOptions],
     data: () => ({
         errorMessage: '',
         date: null,
@@ -194,7 +194,6 @@ export default {
             this.setType(val)
         },
         onChangeDate(val) {
-            console.log(val)
             this.date = val
             this.setDelivery({ ...this.selectDelivery, date: val })
             this.setOptionsOrderTime(val)
@@ -204,12 +203,16 @@ export default {
                 res => (this.timeOptions = res)
             )
         },
+        setOrderDate(delivery) {
+            this.getOrderDate(delivery)
+        },
         onChangeTime(val) {
             this.time = val
             this.setDelivery({ ...this.selectDelivery, time: val })
         },
         onSelectAddress(val) {
             this.setDelivery({ ...this.selectDelivery, ...val })
+            this.getOrderDate(this.selectDelivery)
             if (this.date) {
                 this.setOptionsOrderTime(this.date)
             }
@@ -252,10 +255,12 @@ export default {
     created() {
         this.date = this.selectedDeliveryDate
         this.time = this.selectedDeliveryTime
+        const deliveryItem = this.selectedDeliveryItem
         this.setDelivery({
             ...this.selectDelivery,
-            ...this.selectedDeliveryItem
+            ...deliveryItem
         })
+        this.getOrderDate(deliveryItem)
     },
     watch: {
         showModalPersonalData: function () {

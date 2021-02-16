@@ -65,7 +65,7 @@ import { mapGetters, mapState } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import DeliveryTypeList from '%vue%/components/DeliveryTypeList'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
-import { orderTimeOptions } from '%vue%/mixins/delivery'
+import { orderDateTimeOptions } from '%vue%/mixins/delivery'
 
 const initialPhone = {
     placeholder: 'Телефон',
@@ -83,7 +83,7 @@ export default {
         DeliveryTypeList,
         DeliveryDatetime
     },
-    mixins: [orderTimeOptions],
+    mixins: [orderDateTimeOptions],
     data: () => ({
         type: '',
         inputs: {

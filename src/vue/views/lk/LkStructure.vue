@@ -124,7 +124,7 @@ export default {
             this.agree = !this.agree
         },
         handleCnt(val) {
-            return typeof val === 'undefined' ? 1 : val || 0
+            return typeof val === 'undefined' ? 0 : val || 0
         }
     }
 }

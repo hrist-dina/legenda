@@ -6,7 +6,7 @@
         .cart-bottle__head
             .cart-bottle__title Нет бутыли на обмен?
             +hint.cart-bottle__hint
-                span Вы можете приобрести бутыль для обмена
+                span {{ hint }}
         .cart-bottle__list
             cart-bottle-item(
                 v-for="item in list"
@@ -21,11 +21,15 @@
 
 <script>
 import CartBottleItem from '%vue%/components/CartBottleItem'
+import { getStaticHtml } from '%common%/helper'
 
 export default {
     components: {
         CartBottleItem
     },
+    data: () => ({
+        hint: 'Приобретите пустую бутыль для обмена на время сотрудничества'
+    }),
     props: {
         list: {
             type: Array,
@@ -36,6 +40,9 @@ export default {
         hasBottles() {
             return !!this.list.length
         }
+    },
+    created() {
+        this.hint = getStaticHtml('static-bottle-hint')
     }
 }
 </script>

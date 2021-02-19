@@ -3,7 +3,7 @@
 mixin product-stock(test)
     include ../product/data
     include ../ui-kit/ui-kit
-    section.product-stock
+    section.product-stock.js-vue-product
         +product-stock-item({
             img: getProductImg(2),
             title: '«Легенда жизни» 19 л',
@@ -23,7 +23,14 @@ mixin product-stock(test)
                     .product-stock-price__value=ruble(1050)
                 .product-stock-desc Цена за комплект
             .product-stock-button
-                +button('buy-all', 'button') Купить все
+                +button('buy-all', 'button')(
+                    @click='addSetToCart'
+                    :disabled='isDisabled'
+                    data-set='{"14": "1", "15": "3"}'
+                    data-in-cart-text='В корзине'
+                    ref='product-button'
+                )
+                    span(ref='product-button-text') Купить все
 
 mixin product-stock-item(data)
     .product-stock-item

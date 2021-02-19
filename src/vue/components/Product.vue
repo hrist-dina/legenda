@@ -57,6 +57,7 @@ export default {
     data() {
         return {
             id: '',
+            set: {},
             cnt: 1,
             buttonEl: null
         }
@@ -131,6 +132,24 @@ export default {
         addToCart() {
             this.add({ id: this.id, cnt: this.cnt })
         },
+        addSetToCart() {
+            const set = JSON.parse(this.set)
+            if (!set) {
+                throw new Error('Attribute date set is empty')
+            }
+            const forLoop = async _ => {
+                for (let id in set) {
+                    if (set.hasOwnProperty(id)) {
+                        await this.add({ id, cnt: +set[id] })
+                    }
+                }
+            }
+            forLoop().then(() => {
+                const inCartText = this.buttonEl.dataset.inCartText
+                const textEl = this.$refs['product-button-text']
+                textEl.textContent = inCartText || 'В корзине'
+            })
+        },
         onChangeQuantity(cnt) {
             this.cnt = cnt
         },
@@ -156,6 +175,7 @@ export default {
         this.buttonEl = this.$refs['product-button']
         if (!this.buttonEl) return
         this.id = this.initId || this.buttonEl.dataset.id
+        this.set = this.buttonEl.dataset.set
         const data = this.dataById(this.id)
         if (data) {
             this.cnt = data.cnt

@@ -23,12 +23,14 @@ include ../../../blocks/components/ui-kit/ui-kit
 import { mapActions, mapGetters } from 'vuex'
 import DeliveryForm from '%vue%/components/DeliveryForm'
 import CheckoutBack from './CheckoutBack'
+import { orderDateTimeOptions } from '%vue%/mixins/delivery'
 
 export default {
     components: {
         DeliveryForm,
         CheckoutBack
     },
+    mixins: [orderDateTimeOptions],
     data: () => ({
         isValidForm: false,
         errorMessage: null
@@ -66,6 +68,11 @@ export default {
         onValidForm(value) {
             this.isValidForm = value
         }
+    },
+    created() {
+        // Передаем 0, чтобы получить общие даты о доставки
+        // Так как на этом этапе у нас нет созданного адреса
+        this.orderDate({ id: 0 })
     }
 }
 </script>

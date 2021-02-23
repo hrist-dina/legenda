@@ -171,7 +171,7 @@ export default {
     },
     orderDate: async ({ commit, getters }, payload) => {
         const deliveryId = payload.id
-        if (!deliveryId) {
+        if (typeof deliveryId === 'undefined') {
             throw new Error('Not set select delivery')
         }
         const response = await new HTTP(

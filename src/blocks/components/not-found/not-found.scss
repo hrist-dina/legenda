@@ -1,8 +1,10 @@
 .not-found {
     @include md-block {
         margin-top: 54px;
+        margin-bottom: 54px;
     }
     margin-top: 24px;
+    margin-bottom: 24px;
 
     & .container {
         @include container-padding;

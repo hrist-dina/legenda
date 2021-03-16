@@ -32,16 +32,17 @@ export const sendPayment = async (state, dispatch, payload, commit = null) => {
                 window.location = data.url
             }
         },
-        showNotification(commit)
-    )
-        .post()
-        .catch(err => {
+        data => {
+            let message = 'Ошибка! Попробуйте позже'
+            if (!data?.status && data?.error) {
+                message = data.error
+            }
             showNotification(commit)({
                 status: false,
-                error: 'Ошибка! Попробуйте позже'
+                error: message
             })
-            console.error(err)
-        })
+        }
+    ).post()
 
     return response.data.status
 }

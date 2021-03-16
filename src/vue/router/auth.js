@@ -18,21 +18,21 @@ const routes = [
         },
         children: [
             {
-                name: AUTH_REGISTER,
-                path: '/#/register',
-                component: AuthRegister,
-                meta: {
-                    title: 'Регистрация',
-                    tabTitle: 'Регистрация'
-                }
-            },
-            {
                 name: AUTH_LOGIN,
                 path: '/#/login',
                 component: AuthLogin,
                 meta: {
                     title: 'Войти с паролем',
                     tabTitle: 'Войти с паролем'
+                }
+            },
+            {
+                name: AUTH_REGISTER,
+                path: '/#/register',
+                component: AuthRegister,
+                meta: {
+                    title: 'Регистрация',
+                    tabTitle: 'Регистрация'
                 }
             },
             {
@@ -47,4 +47,4 @@ const routes = [
     }
 ]
 
-export default router('/auth/', routes, 'register')
+export default router('/auth/', routes, AUTH_LOGIN)

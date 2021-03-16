@@ -3,6 +3,7 @@ import HTTP from '%common%/http'
 import ComponentVue from '%vue%/ComponentVue'
 import { SELECTOR_PRODUCT } from '%vue%/component-selectors'
 import Product from '%vue%/components/Product'
+import UiKit from '%components%/ui-kit/ui-kit'
 
 export default class ScrollLoading extends ComponentBase {
     constructor(selector = '.js-scroll-loading') {
@@ -41,11 +42,7 @@ export default class ScrollLoading extends ComponentBase {
                         dataContent.insertAdjacentHTML('beforeend', data.html)
                         isLoading = false
                         loader.classList.remove('loader')
-                        new ComponentVue(
-                            SELECTOR_PRODUCT,
-                            Product,
-                            false
-                        ).initVue()
+                        this.reInitEvents()
 
                         if (data.nextPageUrl) {
                             url = data.nextPageUrl
@@ -56,6 +53,11 @@ export default class ScrollLoading extends ComponentBase {
                 })
             }
         })
+    }
+
+    reInitEvents() {
+        new ComponentVue(SELECTOR_PRODUCT, Product, false).initVue()
+        new UiKit()
     }
 
     getDistFromBottom() {

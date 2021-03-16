@@ -94,13 +94,18 @@ export default {
 
         return response.data
     },
-    payment: async ({ state, rootState, dispatch }) => {
-        return await sendPayment(state, dispatch, {
-            delivery: state.selectDelivery,
-            products: rootState.cart.products,
-            isSpendBonus: state.isSpendBonus,
-            isSpendBottle: state.isSpendBottle
-        })
+    payment: async ({ state, commit, rootState, dispatch }) => {
+        return await sendPayment(
+            state,
+            dispatch,
+            {
+                delivery: state.selectDelivery,
+                products: rootState.cart.products,
+                isSpendBonus: state.isSpendBonus,
+                isSpendBottle: state.isSpendBottle
+            },
+            commit
+        )
     },
     replenish: async ({ state, dispatch }, payload) => {
         return await sendPayment(state, dispatch, {

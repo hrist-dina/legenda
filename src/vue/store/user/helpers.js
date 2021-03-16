@@ -1,10 +1,11 @@
 import HTTP, { urlAjax } from '%common%/http'
 import router from '%vue%/router/order'
 import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
+import { showNotification } from '%vue%/store/common/helper'
 
 export const token = localStorage.getItem('token')
 
-export const sendPayment = async (state, dispatch, payload) => {
+export const sendPayment = async (state, dispatch, payload, commit = null) => {
     const selectedPaymentType = state.selectPaymentType
     const type = selectedPaymentType ? selectedPaymentType.code : null
     const url = type === 'money' ? urlAjax.paymentMoney : urlAjax.paymentCard
@@ -30,8 +31,17 @@ export const sendPayment = async (state, dispatch, payload) => {
                 // Делаем редирект на онлайн оплату
                 window.location = data.url
             }
-        }
-    ).post()
+        },
+        showNotification(commit)
+    )
+        .post()
+        .catch(err => {
+            showNotification(commit)({
+                status: false,
+                error: 'Ошибка! Попробуйте позже'
+            })
+            console.error(err)
+        })
 
     return response.data.status
 }

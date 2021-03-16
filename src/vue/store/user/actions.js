@@ -107,11 +107,16 @@ export default {
             commit
         )
     },
-    replenish: async ({ state, dispatch }, payload) => {
-        return await sendPayment(state, dispatch, {
-            delivery: state.selectDelivery,
-            ...payload
-        })
+    replenish: async ({ state, commit, dispatch }, payload) => {
+        return await sendPayment(
+            state,
+            dispatch,
+            {
+                delivery: state.selectDelivery,
+                ...payload
+            },
+            commit
+        )
     },
     setPaymentType: ({ commit }, payload) => {
         commit('setSelectedPaymentType', { selectPaymentType: payload })

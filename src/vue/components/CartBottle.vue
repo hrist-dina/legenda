@@ -5,7 +5,7 @@
     .cart-bottle(v-if="hasBottles")
         .cart-bottle__head
             .cart-bottle__title Нет бутыли на обмен?
-            +hint.cart-bottle__hint
+            +hint.cart-bottle__hint(v-if="hint")
                 span {{ hint }}
         .cart-bottle__list
             cart-bottle-item(
@@ -28,7 +28,7 @@ export default {
         CartBottleItem
     },
     data: () => ({
-        hint: 'Приобретите пустую бутыль для обмена на время сотрудничества'
+        hint: null
     }),
     props: {
         list: {
@@ -42,7 +42,9 @@ export default {
         }
     },
     created() {
-        this.hint = getStaticHtml('static-bottle-hint')
+        this.hint =
+            getStaticHtml('static-bottle-hint') ||
+            'Приобретите пустую бутыль для обмена на время сотрудничества'
     }
 }
 </script>

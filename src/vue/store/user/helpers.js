@@ -44,5 +44,5 @@ export const sendPayment = async (state, dispatch, payload, commit = null) => {
         }
     ).post()
 
-    return response.data.status
+    return response?.data?.status
 }

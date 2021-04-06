@@ -653,4 +653,10 @@
             margin-top: 20px;
         }
     }
+
+    & .hide-order {
+        opacity: 0;
+        cursor: default;
+        pointer-events: none;
+    }
 }

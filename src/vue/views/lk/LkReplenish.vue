@@ -19,6 +19,7 @@
                     lk-structure(
                         :can-be-zero="true"
                         :is-end-step="isEndStep"
+                        :is-hide-order="true"
                         :payment-method="paymentMethod"
                     )
 </template>

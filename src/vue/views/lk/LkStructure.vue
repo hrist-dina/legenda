@@ -7,8 +7,12 @@
                     .lk-stucture__total-title Итого:
                     .lk-stucture__total-value {{ total | bottle }}
                 .lk-stucture__total-button
-                    +button('order')(:disabled="!canOrder" @click="onClickSendOrder") Оформить заказ
-            .lk-stucture__agree
+                    +button('order')(
+                        :disabled="!canOrder"
+                        @click="onClickSendOrder"
+                        :class="{'hide-order': hideOrder}"
+                    ) Оформить заказ
+            .lk-stucture__agree(:class="{'hide-order': hideOrder}")
                 +field-checkbox-rounded('agree')(@change="onAgree")
                     span Согласен с условиями
                     a(href='/info/') Публичной оферты
@@ -58,6 +62,10 @@ export default {
             type: Boolean,
             default: true
         },
+        isHideOrder: {
+            type: Boolean,
+            default: false
+        },
         paymentMethod: {
             type: String,
             required: true
@@ -104,6 +112,9 @@ export default {
                 this.agree &&
                 this.isEndStep
             )
+        },
+        hideOrder() {
+            return this.isHideOrder && !this.isEndStep
         }
     },
     methods: {

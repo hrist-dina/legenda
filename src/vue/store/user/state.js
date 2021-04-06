@@ -10,6 +10,7 @@ export const personState = {
 
 export const PAYMENT_MONEY = 'money'
 export const PAYMENT_BANK_CARD = 'bank-card'
+export const PAYMENT_TERMINAL = 'terminal'
 export const PAYMENT_METHOD_REPLENISH = 'replenish'
 export const PAYMENT_METHOD_WRITE_OFF = 'write-off'
 
@@ -39,13 +40,17 @@ export default {
     },
     payment: [
         {
-            code: PAYMENT_MONEY,
-            label: 'Наличные',
+            code: PAYMENT_BANK_CARD,
+            label: 'Банковской картой онлайн',
             selected: true
         },
         {
-            code: PAYMENT_BANK_CARD,
-            label: 'Банковской картой'
+            code: PAYMENT_MONEY,
+            label: 'Наличными при получении'
+        },
+        {
+            code: PAYMENT_TERMINAL,
+            label: 'Банковской картой при получении'
         }
     ],
     selectPaymentType: null,

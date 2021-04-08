@@ -37,20 +37,33 @@
                             +button-link('Отменить', false, 'bordered-md')(
                                 @click.prevent="onEditPersonalData"
                             ).lk-personal-data__cancel
+            app-modal(
+                :showModal="showSuccessMessage"
+                @close="showSuccessMessage = false"
+            )
+                template(#header)
+                    h4 Сообщение
+                template
+                    p Спасибо. Ваши изменения приняты.
+                    p Для уточнения данных с вами может связаться менеджер.
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import PersonalDataForm from '%vue%/components/PersonalDataForm'
+import AppModal from '%vue%/components/AppModal'
+
 export default {
     name: 'lk-personal-data',
     components: {
-        PersonalDataForm
+        PersonalDataForm,
+        AppModal
     },
     data: () => ({
         showEditForm: false,
         isValidForm: false,
         isSubmittingForm: false,
+        showSuccessMessage: false,
         errorMessage: ''
     }),
     computed: {
@@ -80,6 +93,7 @@ export default {
                         if (response) {
                             this.showEditForm = false
                             this.errorMessage = ''
+                            this.showSuccessMessage = true
                         } else {
                             this.errorMessage = response.error
                         }

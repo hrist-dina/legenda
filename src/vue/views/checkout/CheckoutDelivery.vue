@@ -8,6 +8,8 @@ include ../../../blocks/components/ui-kit/ui-kit
     delivery-form.checkout-delivery__form(
         @submit="onSubmit"
         @isValid="onValidForm"
+        :show-city="true"
+        :show-birth-date="true"
         :disabled-before-date="getDisabledBeforeDateDelivery"
         :disabled-after-date="getDisabledAfterDateDelivery"
         :dates-delivery="getDatesDelivery"

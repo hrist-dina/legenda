@@ -26,15 +26,15 @@ const routes = [
                     tabTitle: 'Войти с паролем'
                 }
             },
-            {
-                name: AUTH_REGISTER,
-                path: '/#/register',
-                component: AuthRegister,
-                meta: {
-                    title: 'Регистрация',
-                    tabTitle: 'Регистрация'
-                }
-            },
+            // {
+            //     name: AUTH_REGISTER,
+            //     path: '/#/register',
+            //     component: AuthRegister,
+            //     meta: {
+            //         title: 'Регистрация',
+            //         tabTitle: 'Регистрация'
+            //     }
+            // },
             {
                 name: AUTH_RESTORE,
                 path: '/#/restore',

@@ -57,19 +57,19 @@ export default {
                 validType: 'phone'
             },
             {
-                placeholder: 'Дата рождения',
-                name: 'birthDate',
-                value: '',
-                type: 'date',
-                isValid: true
-            },
-            {
                 placeholder: 'Электронная почта',
                 name: 'email',
                 value: '',
                 required: true,
                 isValid: false,
                 validType: 'email'
+            },
+            {
+                placeholder: 'Дата рождения',
+                name: 'birthDate',
+                value: '',
+                type: 'date',
+                isValid: true
             }
         ]
     }),

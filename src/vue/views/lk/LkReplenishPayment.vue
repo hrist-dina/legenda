@@ -26,7 +26,7 @@ export default {
     },
     computed: {
         getPaymentOne() {
-            return this.getPayment.filter(i => i.code !== 'money')
+            return this.getPayment.filter(i => i.code === 'bank-card')
         },
         selectedPayment() {
             return this.selectPaymentType || this.getPaymentOne

@@ -120,6 +120,7 @@
         line-height: 20px;
         color: #007bc2;
         background: #fff;
+        white-space: nowrap;
 
         &:before {
             @include wh(24px);

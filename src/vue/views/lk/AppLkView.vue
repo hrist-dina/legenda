@@ -20,10 +20,6 @@
                     .lk-meta.lk-center-message(v-else)
                         | Доступно авторизованным пользователям, пожалуйста,
                         |
-                        a(href="/auth").link зарегистрируйтесь
-                        |
-                        | или
-                        |
                         a(href="/auth/#/login").link войдите
                 template(v-else)
                     .lk-loading

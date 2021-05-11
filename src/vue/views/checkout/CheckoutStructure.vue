@@ -14,8 +14,8 @@
                         :disabled="!canOrder"
                         @click="onClickSendOrder"
                     ) Оформить заказ
-            .checkout-stucture__agree
-                +field-checkbox-rounded('agree')(@change="onAgree")
+            .checkout-stucture__agree(v-if="isShowAgree")
+                +field-checkbox-rounded('agree')(@change="onAgree" checked="agree")
                     span Согласен с условиями
                     a(href='/info/') Публичной оферты
         .checkout-stucture__data
@@ -44,6 +44,7 @@ import { mapActions, mapGetters } from 'vuex'
 import {
     CHECKOUT_FINAL,
     CHECKOUT_PAYMENT,
+    CHECKOUT_RESTORE,
     CHECKOUT_WELCOME
 } from '%vue%/store/checkout/state'
 import { LK_ORDER_REPEAT } from '%vue%/router/constants'
@@ -54,7 +55,7 @@ export default {
         CartItem
     },
     data: () => ({
-        agree: false,
+        agree: true,
         newBonus: null,
         newBonusWithPay: null
     }),
@@ -68,6 +69,9 @@ export default {
         isEndStep() {
             const name = this.$route.name
             return name === CHECKOUT_PAYMENT || name === CHECKOUT_FINAL
+        },
+        isShowAgree() {
+            return this.isEndStep || this.isRepeat
         },
         isAuthFinalStep() {
             return this.isAuth && this.$route.name === CHECKOUT_FINAL

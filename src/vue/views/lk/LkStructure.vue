@@ -13,7 +13,7 @@
                         :class="{'hide-order': hideOrder}"
                     ) Оформить заказ
             .lk-stucture__agree(:class="{'hide-order': hideOrder}")
-                +field-checkbox-rounded('agree')(@change="onAgree")
+                +field-checkbox-rounded('agree')(@change="onAgree" checked="agree")
                     span Согласен с условиями
                     a(href='/info/') Публичной оферты
         .lk-stucture__data
@@ -47,7 +47,7 @@ export default {
         CartItemLk
     },
     data: () => ({
-        agree: false
+        agree: true
     }),
     props: {
         isLimit: {

@@ -10,6 +10,7 @@
             @focus="onFocus"
             @blur="onBlur"
             autocomplete="off"
+            :tabindex="tabindex"
         )
         span.input-text__eye-off(v-if="isPassword" @click.prevent="onShowPassword")
         transition(name='fade-in')
@@ -51,6 +52,9 @@ export default {
         required: {
             type: Boolean,
             default: false
+        },
+        tabindex: {
+            type: [String, Number]
         },
         validType: {
             type: String

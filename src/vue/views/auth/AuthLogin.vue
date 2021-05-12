@@ -3,12 +3,14 @@
     .auth-form.auth-form--login
         form(@submit.prevent="onSubmit")
             .field(
-                v-for="item in form"
+                v-for="(item, index) in form"
                 :key="item.name"
             )
                 input-text(
+                    :tabindex="index"
                     :required="item.required"
                     :name="item.name"
+                    :ref="item.name"
                     :type="item.type"
                     :value="item.value"
                     @input="onInput($event, item.name)"
@@ -78,6 +80,7 @@ export default {
                         window.location = '/'
                     } else if (!response.status) {
                         this.error = response.error || 'Ошибка при авторизации!'
+                        this.focusFirstInput()
                     } else {
                         console.error('Unknown status from response auth form!')
                     }
@@ -96,7 +99,13 @@ export default {
         },
         onValidate(data, name) {
             this.form[this.getIndexByName(name)].isValid = data.isValid
+        },
+        focusFirstInput() {
+            this.$refs.login[0].$el.focus()
         }
+    },
+    mounted() {
+        this.focusFirstInput()
     }
 }
 </script>

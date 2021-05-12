@@ -176,7 +176,11 @@
     }
 
     &__promocode {
+        @include sm-block {
+            flex-wrap: nowrap;
+        }
         display: flex;
+        flex-wrap: wrap;
         align-items: flex-start;
         justify-content: flex-end;
         width: 100%;
@@ -192,8 +196,14 @@
         @include md-block {
             width: #{calc(100% - 160px)};
         }
-        width: #{calc(100% - 135px)};
-        margin-right: 10px;
+        @include sm-block {
+            width: #{calc(100% - 135px)};
+            margin-right: 10px;
+            margin-bottom: 0;
+        }
+        width: 100%;
+        margin-bottom: 10px;
+
         &.error {
             margin-bottom: 0;
         }

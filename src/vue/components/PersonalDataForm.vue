@@ -6,6 +6,7 @@
                 :key="item.name"
                 :required="item.required"
                 :name="item.name"
+                :ref="item.name"
                 :value="item.value"
                 @input="onInput($event, item.name)"
                 @validate="onValidate($event, item.name)"
@@ -151,6 +152,9 @@ export default {
                 }
             }
         }
+    },
+    mounted() {
+        this.$refs.fio[0].$el.focus()
     },
     watch: {
         isValidForm: function () {

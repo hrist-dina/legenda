@@ -18,6 +18,22 @@ export default class SliderProduct extends SwiperBase {
             navigation: {
                 nextEl: this.nextEl,
                 prevEl: this.prevEl
+            },
+            on: {
+                init: function () {
+                    if (this.slides.length <= this.passedParams.loop ? 3 : 1) {
+                        this.allowSlidePrev = this.allowSlideNext = false // disabling swiping
+                        this.el
+                            .querySelector('.swiper-button-prev')
+                            .classList.add('hidden')
+                        this.el
+                            .querySelector('.swiper-button-next')
+                            .classList.add('hidden')
+                        this.el
+                            .querySelector('.swiper-pagination')
+                            .classList.add('hidden')
+                    }
+                }
             }
         })
     }

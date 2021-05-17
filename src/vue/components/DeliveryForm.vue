@@ -104,7 +104,7 @@ export default {
                 options: []
             },
             address: {
-                placeholder: 'Адрес(улица, дом, подъезд, квартира)',
+                placeholder: 'Адрес(улица, дом, подъезд, квартира, этаж)',
                 name: 'address',
                 value: '',
                 required: true,

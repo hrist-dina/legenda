@@ -1,4 +1,6 @@
 import { getDeliveryLabel } from '%common%/formatters'
+import { PAYMENT_BANK_CARD } from '%vue%/store/user/state'
+import { getCookie } from '%common%/helper'
 
 export default {
     getPerson: ({ person }) => ({
@@ -15,7 +17,18 @@ export default {
     getDatesDelivery: state => state.datesDelivery,
     getDeliveryTypes: state => state.delivery.types,
     getSelectDelivery: state => state.selectDelivery,
-    getPayment: state => state.payment,
+    getPayment: state =>
+        state.payment.reduce((tot, item) => {
+            if (
+                getCookie('BVK_CITY_CODE') === 'biysk' &&
+                item.code === PAYMENT_BANK_CARD
+            ) {
+                return tot
+            } else {
+                tot.push(item)
+            }
+            return tot
+        }, []),
     getDeliveryItems: state =>
         state.delivery.items.map(i => ({
             ...i,

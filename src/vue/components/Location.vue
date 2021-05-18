@@ -44,6 +44,7 @@ export default {
                 this.active = false
                 this.showModal = false
                 setCookie('BVK_CITY', data.id)
+                setCookie('BVK_CITY_CODE', codeItem)
                 window.location.reload()
             }).post()
         },

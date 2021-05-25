@@ -57,12 +57,12 @@ export default {
                 commit('setPersonalData', data.person)
                 if (data.address.home) {
                     data.address.home.map(i =>
-                        this.store.commit('user/setDeliveryItem', i)
+                        commit('user/setDeliveryItem', i)
                     )
                 }
                 if (data.address.office) {
                     data.address.office.map(i =>
-                        this.store.commit('user/setDeliveryItem', i)
+                        commit('user/setDeliveryItem', i)
                     )
                 }
             }

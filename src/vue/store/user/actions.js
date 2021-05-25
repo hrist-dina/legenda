@@ -1,6 +1,4 @@
 import HTTP, { urlAjax } from '%common%/http'
-import router from '%vue%/router/order'
-import { CHECKOUT_SUCCESS } from '%vue%/store/checkout/state'
 import { showNotification } from '%vue%/store/common/helper'
 import { sendPayment } from '%vue%/store/user/helpers'
 
@@ -56,14 +54,10 @@ export default {
                 commit('setToken', { token: data.token })
                 commit('setPersonalData', data.person)
                 if (data.address.home) {
-                    data.address.home.map(i =>
-                        commit('user/setDeliveryItem', i)
-                    )
+                    data.address.home.map(i => commit('setDeliveryItem', i))
                 }
                 if (data.address.office) {
-                    data.address.office.map(i =>
-                        commit('user/setDeliveryItem', i)
-                    )
+                    data.address.office.map(i => commit('setDeliveryItem', i))
                 }
             }
         ).post()

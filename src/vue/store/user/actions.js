@@ -180,10 +180,7 @@ export default {
         return response.data
     },
     orderDate: async ({ commit, getters }, payload) => {
-        const deliveryId = payload.id
-        if (typeof deliveryId === 'undefined') {
-            throw new Error('Not set select delivery')
-        }
+        const deliveryId = payload?.id || 0
         const response = await new HTTP(
             urlAjax.orderDate,
             {

@@ -45,7 +45,7 @@ export default {
         if (payload.phone) {
             state.person.phone = payload.phone
         }
-        if (payload.bottle) {
+        if (payload.bottle != null) {
             state.person.bottle = payload.bottle
         }
         if (payload.bonus != null) {

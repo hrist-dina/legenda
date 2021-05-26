@@ -51,6 +51,9 @@ export default {
             return !!this.steps.withoutLogin.filter(
                 el => el.name === this.activeStep
             ).length
+        },
+        getRouteName() {
+            return this.$route.name
         }
     },
     methods: {
@@ -67,7 +70,7 @@ export default {
     },
     watch: {
         activeStep() {
-            if (this.$route.name !== this.activeStep) {
+            if (this.getRouteName !== this.activeStep) {
                 this.$router.push({ name: this.activeStep })
             }
             this.getDataByName(this.$route.name).then(title => {
@@ -78,6 +81,12 @@ export default {
                             : title
                 }
             })
+        },
+        getRouteName(route) {
+            // Дополнительная проверка при смене навигации нативными стрелками браузера
+            if (route !== this.activeStep) {
+                this.setActiveStep({ activeStep: route })
+            }
         }
     }
 }

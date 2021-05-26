@@ -26,6 +26,7 @@
                     :checked="isSpendBonus"
                 )
                     | Списать бонусы
+                    |
                     b (доступно {{ getBonus | bonus }})
             .checkout__checkbox-item(v-if="getBottle > 0")
                 +field-checkbox-rounded('bottle', '', 'field-checkbox-rounded--dark')(
@@ -33,6 +34,7 @@
                     :checked="isSpendBottle"
                 )
                     | Списать воду
+                    |
                     b (доступно {{ getBottle | bottle }})
         app-modal(:showModal="showModalPersonalData" @close="showModalPersonalData = false")
             template(#header)

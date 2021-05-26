@@ -1,13 +1,13 @@
 <template lang="pug">
     include ../../../blocks/components/ui-kit/ui-kit
     .auth-form.auth-form--login
-        form(@submit.prevent="onSubmit")
+        form(@submit.prevent="onSubmit" ref="form")
             .field(
                 v-for="(item, index) in form"
                 :key="item.name"
             )
                 input-text(
-                    :tabindex="index"
+                    :tabindex="index + 1"
                     :required="item.required"
                     :name="item.name"
                     :ref="item.name"
@@ -31,6 +31,7 @@
 import { AUTH_RESTORE } from '%vue%/router/auth'
 import InputText from '%vue%/components/InputText'
 import { mapActions } from 'vuex'
+import { handlerTab } from '%common%/helper'
 
 export default {
     components: {
@@ -101,11 +102,21 @@ export default {
             this.form[this.getIndexByName(name)].isValid = data.isValid
         },
         focusFirstInput() {
-            this.$refs.login[0].$el.focus()
+            const label = this.$refs?.login[0]?.$el
+            if (!label) {
+                return
+            }
+            const input = label.querySelector('input')
+            if (!input) {
+                return
+            }
+            input.dispatchEvent(new Event('focus'))
+            input.focus()
         }
     },
     mounted() {
         this.focusFirstInput()
+        handlerTab(this.$refs.form)
     }
 }
 </script>

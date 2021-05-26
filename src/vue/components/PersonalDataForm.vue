@@ -1,6 +1,6 @@
 <template lang="pug">
-    form.personal-data-form(@submit.prevent="onSubmit")
-        .field(v-for="item in formFields")
+    form.personal-data-form(@submit.prevent="onSubmit" ref="form")
+        .field(v-for="(item, index) in formFields")
             input-text(
                 v-if="item.type !== 'date'"
                 :key="item.name"
@@ -13,6 +13,7 @@
                 :placeholder="item.placeholder"
                 :mask="item.mask"
                 :valid-type="item.validType"
+                :tabindex="index + 1"
             )
             app-date-picker(
                 v-else
@@ -20,6 +21,7 @@
                 :date="item.value"
                 @change="onInput($event, item.name)"
                 :placeholder="item.placeholder"
+                :tabindex="index + 1"
             ).datepicker--full
                 template(#desc)
                      | * Укажите дату рождения, чтобы получать подарки
@@ -33,6 +35,7 @@ import { mapGetters } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import AppDatePicker from '%vue%/components/AppDatePicker'
 import { phoneReplaceForMask } from '%common%/formatters'
+import { handlerTab } from '%common%/helper'
 
 export default {
     components: {
@@ -155,6 +158,7 @@ export default {
     },
     mounted() {
         this.$refs.fio[0].$el.focus()
+        handlerTab(this.$refs.form)
     },
     watch: {
         isValidForm: function () {

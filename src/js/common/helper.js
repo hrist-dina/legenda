@@ -266,3 +266,40 @@ export const getCoords = elem => {
         left: left
     }
 }
+
+export const handlerTab = element => {
+    const listIndex = [...element.querySelectorAll('[tabindex]')]
+        .map(i => +i.getAttribute('tabindex'))
+        .sort((a, b) => a - b)
+
+    if (!listIndex.length) return
+    const startIndex = listIndex[0]
+    const lastIndex = listIndex[listIndex.length - 1]
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Tab') {
+            const focusItem = document.querySelector(':focus')
+            if (!focusItem) {
+                return
+            }
+            let thisTab = +focusItem.getAttribute('tabindex')
+            if (e.shiftKey) {
+                if (thisTab === startIndex) {
+                    element
+                        .querySelector('[tabindex="' + lastIndex + '"]')
+                        .focus()
+                    e.preventDefault()
+                    return false
+                }
+            } else {
+                if (thisTab === lastIndex) {
+                    element
+                        .querySelector('[tabindex="' + startIndex + '"]')
+                        .focus()
+                    e.preventDefault()
+                    return false
+                }
+            }
+        }
+    })
+}

@@ -7,6 +7,7 @@
             @change="onChange"
             format="DD.MM.YYYY"
             :disabled-date="disabledDate"
+            :inputAttr="{tabindex}"
         )
         .datepicker__desc(v-if="hasDesc")
             slot(name="desc")
@@ -40,6 +41,9 @@ export default {
         datesShow: {
             type: [Array, null],
             default: () => null
+        },
+        tabindex: {
+            type: [String, Number]
         }
     },
     computed: {

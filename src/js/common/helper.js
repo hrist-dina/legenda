@@ -69,6 +69,8 @@ export const getCookie = name => {
     return null
 }
 
+export const getCityCookie = () => getCookie('BVK_CITY_CODE')
+
 export const DOMAnimations = {
     /**
      * SlideUp

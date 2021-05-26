@@ -7,13 +7,14 @@
                 +link('Добавить адрес', false, 'bordered')(
                     @click.prevent="onAddAddress"
                 ).checkout-block__edit
-            .checkout-block__options
-                +field-radio(false, 'all', 'Все адреса', 'checkout-block__options-radio')(
-                    v-model="type"
-                )
-                +field-radio(false, 'one', 'Выбрать один', 'checkout-block__options-radio')(
-                    v-model="type"
-                )
+            //- TODO:: Пока решено не выводить варинт выбора
+            //-.checkout-block__options(v-if="type")
+            //-    +field-radio(false, 'all', 'Все адреса', 'checkout-block__options-radio')(
+            //-        v-model="type"
+            //-    )
+            //-    +field-radio(false, 'one', 'Выбрать один', 'checkout-block__options-radio')(
+            //-        v-model="type"
+            //-    )
             .checkout-block__body
                 v-select(
                     v-if="type === 'one'"

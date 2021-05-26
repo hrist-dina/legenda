@@ -2,7 +2,7 @@
 import HTTP, { urlAjax } from '%common%/http'
 import AppModal from '%vue%/components/AppModal'
 import { mapActions } from 'vuex'
-import { setCookie } from '%common%/helper'
+import { getCityCookie, setCookie } from '%common%/helper'
 
 export default {
     components: { AppModal },
@@ -17,7 +17,12 @@ export default {
             this.active = !this.active
         },
         onItem({ target }) {
-            const codeItem = target.dataset.code
+            const cityCookie = getCityCookie()
+            const targetCode = target.dataset.code
+            const codeItem =
+                cityCookie === targetCode
+                    ? targetCode
+                    : cityCookie || targetCode
             const isDelivery = !!target.dataset.delivery
             const title = this.$refs['title']
             if (title.dataset.code === codeItem) {

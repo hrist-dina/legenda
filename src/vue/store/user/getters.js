@@ -7,7 +7,8 @@ export default {
         ...person,
         bottle: person.bottle || 0,
         bonus: person.bonus ?? null,
-        balance: person.balance ?? null
+        balance: person.balance ?? null,
+        lastOrder: person.lastOrder ?? null
     }),
     hasSelectType: state => state.selectType,
     hasNeedEmail: state => state.needEmail,

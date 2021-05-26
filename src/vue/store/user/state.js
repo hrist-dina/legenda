@@ -5,7 +5,8 @@ export const personState = {
     birthDate: '',
     bottle: 0,
     bonus: null,
-    balance: null
+    balance: null,
+    lastOrder: null
 }
 
 export const PAYMENT_MONEY = 'money'

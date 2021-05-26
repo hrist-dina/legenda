@@ -25,7 +25,7 @@
                     .lk-loading
                         loader
             .lk-body(v-if="isAuth && isLoaded")
-                .lk-repeat
+                .lk-repeat(v-if="person.lastOrder")
                     +link-icon('Повторить последний заказ', 'repeat')(
                         @click.prevent="onRepeat"
                     ).link--repeat
@@ -39,6 +39,7 @@
                             :class="{active: isActive(tab)}"
                         ).swiper-slide.lk-nav__item {{ tab.title }}
                     +link-icon('Повторить последний заказ', 'repeat')(
+                        v-if="person.lastOrder"
                         @click.prevent="onRepeat"
                     ).link--repeat.lk-nav__repeat
                 .lk-tabs
@@ -147,20 +148,12 @@ export default {
             }
         },
         onRepeat() {
-            this.getOrderLast().then(response => {
-                const data = response.data
-                if (response.status && data.order_id) {
-                    this.$router.push({
-                        name: LK_ORDER_REPEAT,
-                        params: { number: data.order_id }
-                    })
-                } else {
-                    showNotification(this.$store.commit)({
-                        status: false,
-                        error: 'Что-то пошло не так'
-                    })
-                }
-            })
+            if (this.person.lastOrder) {
+                this.$router.push({
+                    name: LK_ORDER_REPEAT,
+                    params: { number: this.person.lastOrder }
+                })
+            }
         },
         onSendEmail() {
             this.editPersonalData({

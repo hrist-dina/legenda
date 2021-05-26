@@ -57,6 +57,9 @@ export default {
         if (typeof payload.birthDate !== 'undefined') {
             state.person.birthDate = payload.birthDate
         }
+        if (payload.lastOrder != null) {
+            state.person.lastOrder = payload.lastOrder
+        }
     },
     cleanPersonData(state) {
         state.person = personState

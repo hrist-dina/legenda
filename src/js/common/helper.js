@@ -272,7 +272,9 @@ export const handlerTab = element => {
         .map(i => +i.getAttribute('tabindex'))
         .sort((a, b) => a - b)
 
-    if (!listIndex.length) return
+    if (!listIndex.length) {
+        return
+    }
     const startIndex = listIndex[0]
     const lastIndex = listIndex[listIndex.length - 1]
 

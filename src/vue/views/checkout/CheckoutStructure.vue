@@ -17,7 +17,7 @@
             .checkout-stucture__agree(v-if="isShowAgree")
                 +field-checkbox-rounded('agree')(@change="onAgree" checked="agree")
                     span Согласен с условиями
-                    a(href='/info/') Публичной оферты
+                    a(href='/info/') Публичной оферты и обработкой персональных данных
         .checkout-stucture__data
             .checkout-stucture__head
                 .checkout-stucture__title Состав заказа

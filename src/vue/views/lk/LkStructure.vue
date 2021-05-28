@@ -15,7 +15,7 @@
             .lk-stucture__agree(:class="{'hide-order': hideOrder}")
                 +field-checkbox-rounded('agree')(@change="onAgree" checked="agree")
                     span Согласен с условиями
-                    a(href='/info/') Публичной оферты
+                    a(href='/info/') Публичной оферты и обработкой персональных данных
         .lk-stucture__data
             .lk-stucture__list
                 cart-item-lk(

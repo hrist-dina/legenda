@@ -22,7 +22,7 @@
             .auth-form__agree
                 +field-checkbox-rounded('agree')(@change="onAgree")
                     span Согласен с условиями
-                    a(href='/info/') Публичной оферты
+                    a(href='/info/') Публичной оферты и обработкой персональных данных
             .auth-form__error(v-if="error" v-html="error")
             .auth-form__button
                 +button('default')(:disabled="!isValidForm") Зарегистрироваться

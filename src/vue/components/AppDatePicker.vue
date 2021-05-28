@@ -17,6 +17,7 @@
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/locale/ru'
 import { formatDateToServer } from '%common%/formatters'
+import { parseDate } from '%common%/helper'
 export default {
     components: {
         DatePicker
@@ -51,7 +52,7 @@ export default {
             return !!this.$slots.desc
         },
         value() {
-            return this.date ? new Date(this.date) : ''
+            return this.date ? parseDate(this.date) : ''
         },
         disabledDate() {
             const before = this.disabledBefore

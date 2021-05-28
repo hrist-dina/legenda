@@ -1,5 +1,5 @@
 import { personState } from '%vue%/store/user/state'
-import { pushToArray } from '%common%/helper'
+import { parseDate, pushToArray } from '%common%/helper'
 
 export default {
     setId(state, payload) {
@@ -22,17 +22,17 @@ export default {
     },
     setDisabledBeforeDateDelivery(state, payload) {
         if (payload) {
-            state.disabledBeforeDateDelivery = new Date(payload)
+            state.disabledBeforeDateDelivery = parseDate(payload)
         }
     },
     setDisabledAfterDateDelivery(state, payload) {
         if (payload) {
-            state.disabledAfterDateDelivery = new Date(payload)
+            state.disabledAfterDateDelivery = parseDate(payload)
         }
     },
     setDatesDelivery(state, payload) {
         if (payload) {
-            state.datesDelivery = payload.map(i => new Date(i))
+            state.datesDelivery = payload.map(i => parseDate(i))
         }
     },
     setPersonalData(state, payload) {

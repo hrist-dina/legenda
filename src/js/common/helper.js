@@ -305,3 +305,21 @@ export const handlerTab = element => {
         }
     })
 }
+
+export const parseDate = (dateString = '') => {
+    // Для Safari
+    const ua = navigator.userAgent.toLowerCase()
+    if (ua.indexOf('safari') !== -1) {
+        if (ua.indexOf('chrome') > -1) {
+            return new Date(dateString)
+        } else {
+            const values = dateString.split(/[^0-9]/).filter(i => i !== ''),
+                year = parseInt(values[0], 10),
+                month = parseInt(values[1], 10) - 1, // Month is zero based, so subtract 1
+                day = parseInt(values[2], 10),
+                hours = parseInt(values[3], 10),
+                minutes = parseInt(values[4], 10)
+            return new Date(year, month, day, hours, minutes)
+        }
+    }
+}

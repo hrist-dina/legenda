@@ -21,7 +21,8 @@ export default {
     getPayment: state =>
         state.payment.reduce((tot, item) => {
             if (
-                getCityCookie() === 'biysk' &&
+                (state.selectDelivery?.city?.code === 'biysk' ||
+                    getCityCookie() === 'biysk') &&
                 item.code === PAYMENT_BANK_CARD
             ) {
                 return tot

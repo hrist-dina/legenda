@@ -1,3 +1,5 @@
+import { parseDate } from '%common%/helper'
+
 export const BONUS_TITLE = ['бонус', 'бонуса', 'бонусов']
 
 export const BOTTLE_TITLES = ['бутыль', 'бутыли', 'бутылей']
@@ -44,8 +46,14 @@ export const formatDate = (value, separator = '.') => {
 
 export const formatDateToServer = date => {
     if (!date) return date
-    let d = new Date(date),
-        month = '' + (d.getMonth() + 1),
+    let d
+    if (typeof date === 'string') {
+        d = parseDate(date)
+    } else {
+        d = new Date(date)
+    }
+
+    let month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear()
     if (month.length < 2) month = '0' + month

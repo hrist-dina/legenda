@@ -194,3 +194,31 @@ h2,
 .static-text-section {
     display: none;
 }
+
+.lazy.skeleton:not(.loaded):not(.entered),
+.lazy.skeleton.loading {
+    @include skeleton-loader {
+        z-index: 2;
+    }
+
+    &:after {
+        @include wh(100%);
+        content: "";
+        left: 0;
+        top: 0;
+        position: absolute;
+        z-index: 1;
+        background: #ebebeb;
+        border-radius: 8px;
+    }
+}
+
+.lazy.skeleton:not(.loaded):not(.entered):not([data-bg]),
+.lazy.skeleton.loading:not([data-bg]) {
+    position: initial;
+}
+
+.skeleton-wrap {
+    position: relative;
+    overflow: hidden;
+}

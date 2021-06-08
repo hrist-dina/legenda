@@ -22,12 +22,12 @@
                             .product-composition__item(
                                 v-for="item in composition"
                             ) {{ item }}
-            a(:href="link").product__img-link
+            a(:href="link").product__img-link.skeleton-wrap
                 img(
-                    :src="img"
+                    :data-src="img"
                     :alt="title"
                     :title="title"
-                ).product__img
+                ).product__img.lazy.skeleton
             .product__data
                 a(:href="link").product__title {{ title }}
                 .product__desc {{ desc }}
@@ -49,6 +49,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import QuantityCounter from '%vue%/components/QuantityCounter'
+import Lazy from '%classes%/Lazy'
 
 export default {
     components: {
@@ -181,6 +182,7 @@ export default {
             this.cnt = data.cnt
         }
         this.changeButtonText()
+        Lazy.dispatchUpdate()
     },
     watch: {
         hasInCart: function () {

@@ -38,7 +38,7 @@ mixin blog-content
 
 mixin blog-item(data)
     a(href='#').blog-item
-        .__pic(style=`background-image: url(${data.img})`)
+        .__pic(data-bg=data.img).lazy.skeleton
         .__info
             .__date=data.date
             .__title=data.title

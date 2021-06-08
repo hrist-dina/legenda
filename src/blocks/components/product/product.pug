@@ -21,12 +21,12 @@ mixin product(data, isCategory, toOrder, isRecommendation)
                         +product-label(data.labels).__label
                     if data.composition
                         +product-composition(data.composition).__composition
-            a(href='#').__img-link
+            a(href='#').__img-link.skeleton-wrap
                 img(
-                    src=data.img
+                    data-src=data.img
                     alt=data.title
                     title=data.title
-                ).__img
+                ).__img.lazy.skeleton
             .__data
                 a(href='#').__title=data.title
                 .__desc=data.desc
@@ -47,8 +47,8 @@ mixin product(data, isCategory, toOrder, isRecommendation)
 
 mixin product-banner(data)
     article.product.product--banner
-        a(href='#').__img-link
-            img(src=data.banner alt=data.title title=data.title).__img
+        a(href='#').__img-link.skeleton-wrap
+            img(data-src=data.banner alt=data.title title=data.title).__img.lazy.skeleton
 
 mixin product-list(isAjax)
     include data

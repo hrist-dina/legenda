@@ -96,6 +96,7 @@
         height: 100%;
         animation: load 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         background: linear-gradient(to right, transparent 0%, #fff 50%, transparent 100%);
+        @content;
     }
 }
 

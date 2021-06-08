@@ -11,5 +11,5 @@ mixin info-card-section(data)
 
 mixin info-card(data)
     a(href='#').info-card.swiper-slide&attributes(attributes)
-        .__pic(style=`background-image: url(${data.img})`)
+        .__pic(data-bg=data.img).lazy.skeleton
         .__title=data.title

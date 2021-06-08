@@ -14,6 +14,7 @@ import UiKit from '%components%/ui-kit/ui-kit'
 import Gallery from '%components%/gallery/gallery'
 import ScrollLoading from '%classes%/ScrollLoading'
 import Infographic from '%components%/infographic/infographic'
+import Lazy from '%classes%/Lazy'
 
 new App().init(() => {
     new SliderProduct()
@@ -34,4 +35,5 @@ new App().init(() => {
     new Gallery()
     new ScrollLoading()
     new Infographic()
+    new Lazy()
 })

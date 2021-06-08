@@ -1,7 +1,7 @@
 import ComponentBase from '%classes%/ComponentBase'
 import HTTP from '%common%/http'
 import ComponentVue from '%vue%/ComponentVue'
-import { SELECTOR_PRODUCT } from '%vue%/component-selectors'
+import { SELECTOR_PRODUCT_NOT_IS_VUE_MOUNT } from '%vue%/component-selectors'
 import Product from '%vue%/components/Product'
 import UiKit from '%components%/ui-kit/ui-kit'
 
@@ -56,7 +56,9 @@ export default class ScrollLoading extends ComponentBase {
     }
 
     reInitEvents() {
-        new ComponentVue(SELECTOR_PRODUCT, Product, false).initVue()
+        document
+            .querySelectorAll(SELECTOR_PRODUCT_NOT_IS_VUE_MOUNT)
+            .forEach(item => new ComponentVue(item, Product, false).initVue())
         new UiKit()
     }
 

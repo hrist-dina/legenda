@@ -2,6 +2,7 @@ import Vue from 'vue'
 Vue.config.productionTip = false
 
 import store from './store'
+import { IS_VUE_MOUNT } from '%vue%/component-selectors'
 
 export default class ComponentVue {
     constructor(selector, component, needRender = true, options = {}) {
@@ -30,11 +31,20 @@ export default class ComponentVue {
                 render: false
             }
         }
-        document.querySelectorAll(this.selector).forEach(node => {
-            new Vue({
-                store,
-                ...options
-            }).$mount(node)
-        })
+        if (typeof this.selector === 'string') {
+            document
+                .querySelectorAll(this.selector)
+                .forEach(node => this.initByNode(node, options))
+        } else {
+            this.initByNode(this.selector, options)
+        }
+    }
+
+    initByNode(node, options) {
+        node.classList.add(IS_VUE_MOUNT)
+        new Vue({
+            store,
+            ...options
+        }).$mount(node)
     }
 }

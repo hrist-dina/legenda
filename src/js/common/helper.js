@@ -307,9 +307,9 @@ export const handlerTab = element => {
 }
 
 export const parseDate = (dateString = '') => {
-    // Для Safari
+    // Для Safari или Firefox
     const ua = navigator.userAgent.toLowerCase()
-    if (ua.indexOf('safari') !== -1) {
+    if (ua.indexOf('safari') !== -1 || ua.indexOf('firefox') !== -1) {
         if (ua.indexOf('chrome') > -1) {
             return new Date(dateString)
         } else {
@@ -321,5 +321,7 @@ export const parseDate = (dateString = '') => {
                 minutes = parseInt(values[4] || 0, 10)
             return new Date(year, month, day, hours, minutes)
         }
+    } else {
+        return new Date(dateString)
     }
 }

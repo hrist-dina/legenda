@@ -10,14 +10,18 @@ export default {
         })
     },
     setNotification(state, payload) {
+        if (!payload.error) {
+            return
+        }
         state.notifications.push({
             time: new Date(),
-            message: payload
+            message: payload.error,
+            fixedMessage: payload.fixError || false
         })
     },
-    deleteNotification(state, payload) {
+    deleteNotification(state, { time }) {
         const index = state.notifications.findIndex(
-            i => i.time.timestamp === payload.time.timestamp
+            i => i.time.timestamp === time.timestamp
         )
         state.notifications.splice(index, 1)
     }

@@ -34,7 +34,8 @@ export default {
                 () => {
                     commit('remove', payload)
                     commit('endProcessing', payload)
-                }
+                },
+                showNotification(commit)
             ).post()
         }
     },

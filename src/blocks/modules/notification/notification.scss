@@ -10,6 +10,15 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
 
+    &.fixed {
+        flex-direction: column;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+    }
+
     &__icon {
         @include md-block {
             @include wh(25px);
@@ -42,6 +51,32 @@
 
     & + & {
         margin-top: 10px;
+    }
+
+    &__desc {
+        font-size: 14px;
+        line-height: 18px;
+        color: #004f91;
+        margin-top: 10px;
+
+        & br {
+            display: none;
+        }
+
+        & a {
+            display: inline;
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 18px;
+            color: #004f91;
+        }
+    }
+
+    &__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
     }
 
     &-section {

@@ -35,8 +35,11 @@
         }
 
         &__desc {
+            @include sm-block {
+                bottom: -25px;
+            }
             position: absolute;
-            bottom: -25px;
+            bottom: -44px;
             left: 0;
             margin-top: 8px;
             font-size: 13px;
@@ -139,7 +142,10 @@
         }
 
         &.has-desc {
-            margin-bottom: 36px;
+            @include sm-block {
+                margin-bottom: 36px;
+            }
+            margin-bottom: 52px;
         }
     }
 }

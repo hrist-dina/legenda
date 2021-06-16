@@ -76,7 +76,6 @@ import DeliveryTypeList from '%vue%/components/DeliveryTypeList'
 import ModalSelectType from '%vue%/components/ModalSelectType'
 import { LK_ORDER_REPEAT, LK_ORDERS } from '%vue%/router/constants'
 import { toggleAdditionalProducts } from '%common%/helper'
-import { showNotification } from '%vue%/store/common/helper'
 import TabsScroll from '%classes%/TabsScroll'
 
 export default {

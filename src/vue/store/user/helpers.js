@@ -39,7 +39,8 @@ export const sendPayment = async (state, dispatch, payload, commit = null) => {
             }
             showNotification(commit)({
                 status: false,
-                error: message
+                error: message,
+                fixError: data.fixError
             })
         }
     ).post()

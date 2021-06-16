@@ -1,6 +1,7 @@
 <template lang="pug">
     form.personal-data-form(@submit.prevent="onSubmit" ref="form")
-        .field(v-for="(item, index) in formFields")
+        h4.personal-data-form__title(v-if="hasPassword") Личные данные
+        .field(v-for="item in formFields")
             input-text(
                 v-if="item.type !== 'date'"
                 :key="item.name"
@@ -13,7 +14,6 @@
                 :placeholder="item.placeholder"
                 :mask="item.mask"
                 :valid-type="item.validType"
-                :tabindex="index + 1"
             )
             app-date-picker(
                 v-else
@@ -21,10 +21,30 @@
                 :date="item.value"
                 @change="onInput($event, item.name)"
                 :placeholder="item.placeholder"
-                :tabindex="index + 1"
+
             ).datepicker--full
                 template(#desc)
                      | * Укажите дату рождения, чтобы получать подарки
+
+        h4.personal-data-form__title(v-if="hasPassword") Данные для входа в личный кабинет
+        template(v-if="hasPassword")
+            .field(v-for="item in formPassword")
+                input-text(
+                    :key="item.name"
+                    :mask="item.mask"
+                    :required="item.required"
+                    :name="item.name"
+                    :type="item.type"
+                    :value="item.value"
+                    @input="onInput($event, item.name)"
+                    @validate="onValidate($event, item.name)"
+                    :placeholder="item.placeholder"
+                    :valid-type="item.validType"
+                    :is-valid-type="item.isValidType"
+                    :min-length="item.minLength"
+                )
+                    template(#desc)(v-if="item.desc")
+                        template {{ item.desc }}
 
         .personal-data-form__submit(v-if="hasSubmit")
             slot(name='submit')
@@ -37,12 +57,22 @@ import AppDatePicker from '%vue%/components/AppDatePicker'
 import { phoneReplaceForMask } from '%common%/formatters'
 import { handlerTab } from '%common%/helper'
 
+const emailField = {
+    placeholder: 'Электронная почта',
+    name: 'email',
+    value: '',
+    required: true,
+    isValid: false,
+    validType: 'email'
+}
+
 export default {
     components: {
         InputText,
         AppDatePicker
     },
     data: () => ({
+        tabIndex: 0,
         form: [
             {
                 placeholder: 'Ф. И. О.',
@@ -60,20 +90,42 @@ export default {
                 mask: 'phone',
                 validType: 'phone'
             },
-            {
-                placeholder: 'Электронная почта',
-                name: 'email',
-                value: '',
-                required: true,
-                isValid: false,
-                validType: 'email'
-            },
+            { ...emailField },
             {
                 placeholder: 'Дата рождения',
                 name: 'birthDate',
                 value: '',
                 type: 'date',
                 isValid: true
+            }
+        ],
+        formPassword: [
+            {
+                ...emailField,
+                desc:
+                    '*Электронная почта будет Вашим логином при входе в личный кабинет.'
+            },
+            {
+                placeholder: 'Пароль',
+                type: 'password',
+                name: 'password',
+                value: '',
+                required: true,
+                isValid: false,
+                validType: 'password',
+                isValidType: false,
+                minLength: 6
+            },
+            {
+                placeholder: 'Подтвердить пароль',
+                type: 'password',
+                name: 'password_confirm',
+                value: '',
+                required: true,
+                isValid: false,
+                validType: 'password',
+                isValidType: false,
+                minLength: 6
             }
         ]
     }),
@@ -85,13 +137,19 @@ export default {
         hasPhone: {
             type: Boolean,
             default: true
+        },
+        hasPassword: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
         ...mapGetters('user', ['getPerson']),
         formFields() {
             return this.form.reduce((tot, i) => {
-                if (i.name === 'birthDate' && !this.hasBirthDate) {
+                if (i.name === 'email' && this.hasPassword) {
+                    return tot
+                } else if (i.name === 'birthDate' && !this.hasBirthDate) {
                     return tot
                 } else if (i.name === 'phone' && !this.hasPhone) {
                     return tot
@@ -102,7 +160,11 @@ export default {
             }, [])
         },
         isValidForm() {
-            return !this.form.filter(el => !el.isValid).length
+            let form = this.form
+            if (this.hasPassword) {
+                form = [...form, ...this.formPassword]
+            }
+            return form.every(el => el.isValid)
         },
         hasSubmit() {
             return !!this.$slots.submit
@@ -112,32 +174,63 @@ export default {
         onSubmit() {
             if (this.isValidForm) {
                 const data = {
-                    fio: this.form[this.getIndexByName('fio')].value,
-                    email: this.form[this.getIndexByName('email')].value
+                    fio: this.getField('fio').value,
+                    email: this.getField('email').value
                 }
                 if (this.hasBirthDate) {
-                    data.birthDate = this.form[
-                        this.getIndexByName('birthDate')
-                    ].value
+                    data.birthDate = this.getField('birthDate').value
                 }
                 if (this.hasPhone) {
-                    data.phone = this.form[this.getIndexByName('phone')].value
+                    data.phone = this.getField('phone').value
+                }
+                if (this.hasPassword) {
+                    data.email = this.getField('email').value
+                    data.password = this.getField('password').value
+                    data.password_confirm = this.getField(
+                        'password_confirm'
+                    ).value
                 }
                 this.$emit('submit', data)
             }
         },
-        getIndexByName(name) {
-            return this.form.findIndex(el => el.name === name)
+        getIndexByName(name, form = this.form) {
+            return form.findIndex(el => el.name === name)
+        },
+        getField(name) {
+            const index = this.getIndexByName(name)
+            const indexFormPass = this.getIndexByName(name, this.formPassword)
+            if (this.form[index]) {
+                return this.form[index]
+            } else if (this.formPassword[indexFormPass]) {
+                return this.formPassword[indexFormPass]
+            }
         },
         onInput(data, name) {
             let value = data || ''
             if (data && data.hasOwnProperty('value')) {
                 value = data.value
             }
-            this.form[this.getIndexByName(name)].value = value
+            const field = this.getField(name)
+            field.value = value
+
+            if (name === 'password_confirm') {
+                this.onSamePassword()
+            }
         },
         onValidate(data, name) {
-            this.form[this.getIndexByName(name)].isValid = data.isValid
+            this.getField(name).isValid = data.isValid
+        },
+        onSamePassword() {
+            const password = this.getField('password')
+            const passwordConfirm = this.getField('password_confirm')
+
+            if (password.value !== passwordConfirm.value) {
+                password.isValidType = true
+                passwordConfirm.isValidType = true
+            } else {
+                password.isValidType = false
+                passwordConfirm.isValidType = false
+            }
         }
     },
     created() {
@@ -154,6 +247,10 @@ export default {
                     this.form[this.getIndexByName(item)].value = value
                 }
             }
+        }
+        if (this.hasPassword) {
+            const index = this.getIndexByName('email')
+            this.form.splice(index, 1)
         }
     },
     mounted() {

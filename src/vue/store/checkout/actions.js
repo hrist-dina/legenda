@@ -1,6 +1,6 @@
 import {
     CHECKOUT_AUTH,
-    CHECKOUT_PERSONAL_DATA
+    CHECKOUT_REGISTRATION
 } from '%vue%/store/checkout/state'
 import { backStep, nextStep } from '%vue%/store/checkout/helper'
 
@@ -10,7 +10,7 @@ export default {
         if (payload.hasLogin) {
             commit('setActiveStep', { activeStep: CHECKOUT_AUTH })
         } else {
-            commit('setActiveStep', { activeStep: CHECKOUT_PERSONAL_DATA })
+            commit('setActiveStep', { activeStep: CHECKOUT_REGISTRATION })
         }
     },
     setActiveStep({ commit }, payload) {

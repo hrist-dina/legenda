@@ -257,6 +257,7 @@
     background-size: 24px;
 }
 
+.icon-registration,
 .icon-personal-data {
     @include wh(24px);
     @include icon-bgc(icon-personal-data());

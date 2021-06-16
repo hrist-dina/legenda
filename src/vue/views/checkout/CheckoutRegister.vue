@@ -6,6 +6,7 @@
             @submit="onSubmit"
             @isValid="onValidForm"
             :has-birth-date="true"
+            :has-password="true"
         ).checkout-personal-data__form
             template(#submit)
                 .checkout__error(v-if="errorMessage" v-html="errorMessage")

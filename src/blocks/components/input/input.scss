@@ -1,5 +1,4 @@
 .input {
-
     &-text {
         box-sizing: border-box;
         display: flex;
@@ -31,9 +30,18 @@
             overflow: hidden;
             font-size: 13px;
             line-height: 18px;
-
             white-space: nowrap;
             text-overflow: ellipsis;
+        }
+
+        &__desc {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 18px;
+            color: #909fab;
         }
 
         &__error {
@@ -128,6 +136,10 @@
             &:before {
                 content: none;
             }
+        }
+
+        &.has-desc {
+            margin-bottom: 36px;
         }
     }
 }

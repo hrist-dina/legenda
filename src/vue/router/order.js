@@ -4,7 +4,7 @@ import AppCheckout from '%vue%/views/checkout/AppCheckout'
 import CheckoutAuth from '%vue%/views/checkout/CheckoutAuth'
 import CheckoutOrder from '%vue%/views/checkout/CheckoutFinal'
 import CheckoutWelcome from '%vue%/views/checkout/CheckoutWelcome'
-import CheckoutPersonalData from '%vue%/views/checkout/CheckoutPersonalData'
+import CheckoutRegister from '%vue%/views/checkout/CheckoutRegister'
 import CheckoutDelivery from '%vue%/views/checkout/CheckoutDelivery'
 import CheckoutPayment from '%vue%/views/checkout/CheckoutPayment'
 import CheckoutSuccess from '%vue%/views/checkout/CheckoutSuccess'
@@ -13,7 +13,7 @@ import {
     CHECKOUT_DELIVERY,
     CHECKOUT_FINAL,
     CHECKOUT_PAYMENT,
-    CHECKOUT_PERSONAL_DATA,
+    CHECKOUT_REGISTRATION,
     CHECKOUT_RESTORE,
     CHECKOUT_SUCCESS,
     CHECKOUT_WELCOME
@@ -58,9 +58,9 @@ const routes = [
                 component: CheckoutOrder
             },
             {
-                name: CHECKOUT_PERSONAL_DATA,
-                path: CHECKOUT_PERSONAL_DATA,
-                component: CheckoutPersonalData
+                name: CHECKOUT_REGISTRATION,
+                path: CHECKOUT_REGISTRATION,
+                component: CheckoutRegister
             },
             {
                 name: CHECKOUT_DELIVERY,

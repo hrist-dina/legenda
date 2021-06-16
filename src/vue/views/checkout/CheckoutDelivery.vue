@@ -19,23 +19,32 @@ include ../../../blocks/components/ui-kit/ui-kit
             .checkout__button(slot='submit')
                 checkout-back
                 +button('default')(:disabled="!isValidForm") Далее
+    app-modal(:show-modal="isShowModal" @close="onClose" :close-only-cross="true")
+        template(#header)
+            h3 Сообщение
+        .modal-message(v-html="modalMessage")
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import DeliveryForm from '%vue%/components/DeliveryForm'
+import AppModal from '%vue%/components/AppModal'
 import CheckoutBack from './CheckoutBack'
 import { orderDateTimeOptions } from '%vue%/mixins/delivery'
+import { getStaticHtml } from '%common%/helper'
 
 export default {
     components: {
         DeliveryForm,
-        CheckoutBack
+        CheckoutBack,
+        AppModal
     },
     mixins: [orderDateTimeOptions],
     data: () => ({
         isValidForm: false,
-        errorMessage: null
+        errorMessage: null,
+        isShowModal: true,
+        modalMessage: null
     }),
     computed: {
         ...mapGetters('user', [
@@ -69,12 +78,20 @@ export default {
         },
         onValidForm(value) {
             this.isValidForm = value
+        },
+        onClose() {
+            this.isShowModal = !this.isShowModal
         }
     },
     created() {
         // Передаем 0, чтобы получить общие даты о доставки
         // Так как на этом этапе у нас нет созданного адреса
         this.orderDate({ id: 0 })
+    },
+    mounted() {
+        this.modalMessage =
+            getStaticHtml('static-checkout-modal-message') ||
+            'Вы успешно зарегистрировались. Ваш логин и пароль отправлены Вам на почту. Используйте их при повторном оформлении заказов.'
     }
 }
 </script>

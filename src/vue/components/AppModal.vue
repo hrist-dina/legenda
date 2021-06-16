@@ -28,6 +28,10 @@ export default {
         showCross: {
             type: Boolean,
             default: true
+        },
+        closeOnlyCross: {
+            type: Boolean,
+            default: false
         }
     },
     computed: {
@@ -43,6 +47,9 @@ export default {
     },
     methods: {
         onMask({ target }) {
+            if (this.closeOnlyCross) {
+                return
+            }
             if (this.$refs['modal-mask'] === target) {
                 this.$emit('close')
             }

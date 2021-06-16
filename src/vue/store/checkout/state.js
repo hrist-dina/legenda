@@ -2,7 +2,7 @@ export const CHECKOUT_WELCOME = 'welcome'
 export const CHECKOUT_AUTH = 'auth'
 export const CHECKOUT_RESTORE = 'restore'
 export const CHECKOUT_FINAL = 'final'
-export const CHECKOUT_PERSONAL_DATA = 'personal-data'
+export const CHECKOUT_REGISTRATION = 'registration'
 export const CHECKOUT_DELIVERY = 'delivery'
 export const CHECKOUT_PAYMENT = 'payment'
 export const CHECKOUT_SUCCESS = 'success'
@@ -27,8 +27,8 @@ export default {
         ],
         withoutLogin: [
             {
-                name: CHECKOUT_PERSONAL_DATA,
-                title: 'Личные данные'
+                name: CHECKOUT_REGISTRATION,
+                title: 'Регистрация'
             },
             { name: CHECKOUT_DELIVERY, title: 'Доставка' },
             {

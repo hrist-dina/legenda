@@ -13,6 +13,8 @@
             :tabindex="tabindex"
         )
         span.input-text__eye-off(v-if="isPassword" @click.prevent="onShowPassword")
+        .input-text__desc(v-if="hasDesc")
+            slot(name="desc")
         transition(name='fade-in')
             span.input-text__error(v-if='hasError') {{ validate }}
             span.input-text__success(v-if='hasSuccess') {{ successValue }}
@@ -124,6 +126,9 @@ export default {
         }
     },
     computed: {
+        hasDesc() {
+            return !!this.$slots.desc
+        },
         getType() {
             if (this.isMaskPhone) {
                 return 'tel'
@@ -142,7 +147,8 @@ export default {
                 error: this.hasError,
                 success: this.hasSuccess,
                 password: this.isPassword,
-                'show-password': this.showPassword
+                'show-password': this.showPassword,
+                'has-desc': this.hasDesc
             }
         },
         classInput() {

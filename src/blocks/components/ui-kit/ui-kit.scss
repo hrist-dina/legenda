@@ -430,6 +430,7 @@
 
         &__input:checked ~ &__custom {
             border-color: #007bc2;
+            background-color: #007bc2;
             &:before {
                 @include wh(100%);
                 content: "";
@@ -439,7 +440,6 @@
                 right: 0;
                 bottom: 0;
                 left: 0;
-                background-color: #007bc2;
                 background-image: url(icon-checkbox-check());
                 background-position: center;
                 background-repeat: no-repeat;

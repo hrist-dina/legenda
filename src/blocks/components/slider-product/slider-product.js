@@ -21,7 +21,8 @@ export default class SliderProduct extends SwiperBase {
             },
             on: {
                 init: function () {
-                    if (this.slides.length <= this.passedParams.loop ? 3 : 1) {
+                    const count = this.passedParams.loop ? 3 : 1
+                    if (this.slides.length <= count) {
                         this.allowSlidePrev = this.allowSlideNext = false // disabling swiping
                         this.el
                             .querySelector('.swiper-button-prev')

@@ -1,6 +1,13 @@
 -
+    const sliderProductImg = img => `img/slider-product/${img}`
+    const sliderProductItem = (img, href, type) =>
+            ({
+                img: sliderProductImg(img),
+                href: href ? sliderProductImg(href) : sliderProductImg(img),
+                type: type || 'img'
+            })
     const sliderProduct = [
-        'img/slider-product/item-1.png',
-        'img/slider-product/item-1.png',
-        'img/slider-product/item-1.png'
+        sliderProductItem('item-1.png'),
+        sliderProductItem('item-2.png'),
+        sliderProductItem('preview-video.jpg', 'video.mp4', 'video'),
     ];

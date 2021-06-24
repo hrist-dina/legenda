@@ -21,22 +21,36 @@ export default class Gallery extends ComponentBase {
 
             for (let i = 0; i < numNodes; i++) {
                 figureEl = thumbElements[i] // <figure> element
-
+                const list = figureEl.classList ? [...figureEl.classList] : []
                 // include only element nodes
                 if (
                     figureEl.nodeType !== 1 ||
-                    figureEl.classList.contains('swiper-slide-duplicate')
+                    list.includes('swiper-slide-duplicate-active') ||
+                    (list.includes('swiper-slide-duplicate') &&
+                        !list.includes('swiper-slide-active'))
                 ) {
                     continue
                 }
 
                 linkEl = figureEl.children[0] // <a> element
 
+                const type = figureEl.dataset.type
+
                 size = linkEl.getAttribute('data-size')?.split('x')
 
+                const src = linkEl.getAttribute('href')
+
                 // create slide object
-                item = {
-                    src: linkEl.getAttribute('href')
+                if (type === 'video') {
+                    item = {
+                        html: wrapVideo(
+                            `<video controls name="media" src='${src}'></video>`
+                        )
+                    }
+                } else {
+                    item = {
+                        src
+                    }
                 }
 
                 if (size) {
@@ -86,9 +100,24 @@ export default class Gallery extends ComponentBase {
             // alternatively, you may define index via data- attribute
             let clickedGallery = clickedListItem.parentNode,
                 childNodes = clickedListItem.parentNode.childNodes,
-                numChildNodes = childNodes.length,
                 nodeIndex = 0,
                 index
+
+            childNodes = [...childNodes].reduce((tot, i) => {
+                const list = i.classList ? [...i.classList] : []
+                if (
+                    i.nodeType !== 1 ||
+                    list.includes('swiper-slide-duplicate-active') ||
+                    (list.includes('swiper-slide-duplicate') &&
+                        !list.includes('swiper-slide-active'))
+                ) {
+                    return tot
+                }
+                tot.push(i)
+                return tot
+            }, [])
+
+            let numChildNodes = childNodes.length
 
             for (let i = 0; i < numChildNodes; i++) {
                 if (childNodes[i].nodeType !== 1) {
@@ -229,5 +258,8 @@ export default class Gallery extends ComponentBase {
                 true
             )
         }
+
+        const wrapVideo = data =>
+            `<div class='pswp__wrapper'><div class='pswp__wrapper-video'>${data}</div></div>`
     }
 }

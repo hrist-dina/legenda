@@ -13,8 +13,14 @@ mixin slider-product
                     itemtype='http://schema.org/ImageObject'
                     data-type=slide.type
                 ).__item.swiper-slide
-                    // data-size - оригинальный размер большого изображения
-                    a(href=slide.href itemprop="contentUrl" data-size="440x552").__inner
-                        img(src=slide.img alt='' itemprop="image").__img
+                    if slide.type === 'video'
+                        a.__inner(href=slide.href)
+                            .pswp__wrapper
+                                .pswp__wrapper-video
+                                    video(controls name="media" src=slide.href)
+                    else
+                        // data-size - оригинальный размер большого изображения
+                        a(href=slide.href itemprop="contentUrl" data-size="440x552").__inner
+                            img(src=slide.img alt='' itemprop="image").__img
         +icon('arrow-product-next').__arrow-next.swiper-button-next.js-slider-product-next
         .__pagination.swiper-pagination

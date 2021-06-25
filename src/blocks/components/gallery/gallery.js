@@ -186,9 +186,9 @@ export default class Gallery extends ComponentBase {
 
                 getThumbBoundsFn: function (index) {
                     // See Options -> getThumbBoundsFn section of documentation for more info
-                    let thumbnail = items[index].el.getElementsByTagName(
-                            'img'
-                        )[0], // find thumbnail
+                    let thumbnail =
+                            items[index].el.getElementsByTagName('img')[0] ||
+                            items[index].el.getElementsByTagName('video')[0], // find thumbnail
                         pageYScroll =
                             window.pageYOffset ||
                             document.documentElement.scrollTop,

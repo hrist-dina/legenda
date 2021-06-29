@@ -12,8 +12,12 @@
         height: auto;
         margin: inherit;
 
+        & .pswp__wrapper {
+            position: relative;
+        }
         & .pswp__wrapper-video {
-            padding-bottom: 100%;
+            padding-bottom: 120%;
+            max-width: 71%;
         }
     }
 

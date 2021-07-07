@@ -11,10 +11,12 @@
                     lk-structure(
                         :is-limit="true"
                         :payment-method="paymentMethod"
+                        :is-can-order="isCanOrder"
                     )
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import LkStructure from '%vue%/views/lk/LkStructure'
 import DeliveryAddress from '%vue%/components/DeliveryAddress'
 import { PAYMENT_METHOD_WRITE_OFF } from '%vue%/store/user/state'
@@ -26,8 +28,12 @@ export default {
         LkStructure
     },
     computed: {
+        ...mapGetters('user', ['isValidDate', 'isValidTime']),
         paymentMethod() {
             return PAYMENT_METHOD_WRITE_OFF
+        },
+        isCanOrder() {
+            return this.isValidDate && this.isValidTime
         }
     }
 }

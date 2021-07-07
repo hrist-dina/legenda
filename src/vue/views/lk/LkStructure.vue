@@ -66,6 +66,10 @@ export default {
             type: Boolean,
             default: false
         },
+        isCanOrder: {
+            type: Boolean,
+            default: true
+        },
         paymentMethod: {
             type: String,
             required: true
@@ -107,6 +111,7 @@ export default {
         },
         canOrder() {
             return (
+                this.isCanOrder &&
                 this.isLimitValidate &&
                 this.getBottles.length &&
                 this.agree &&

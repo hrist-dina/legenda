@@ -1,5 +1,5 @@
 -
-    const getProduct = (id, title, desc, price, img, composition,labels, isInCart, isInFavorite) => ({
+    const getProduct = (id, title, desc, price, img, composition,labels, isInCart, isInFavorite, priceOld) => ({
         id,
         title,
         desc,
@@ -8,7 +8,8 @@
         labels,
         composition,
         isInCart,
-        isInFavorite
+        isInFavorite,
+        priceOld
     })
     const getProductImg = (num) => `/img/product/item-${num}.png`
     const getProductComposition = (name, type) => ({ name, type })
@@ -30,7 +31,10 @@
         250,
         getProductImg(3),
         ['Янтарь', 'Селен'],
-        [getProductComposition('Хит', 'hit')]
+        [getProductComposition('Хит', 'hit')],
+        false,
+        false,
+        350
     )
 
     const getProductSimple = (id, isHit) => getProduct(
@@ -53,7 +57,9 @@
             getProductImg(2),
             ['Йод', 'Фтор', 'Селен'],
             [getProductComposition('Новинка', 'new')],
-            true
+            true,
+            false,
+            250
         ),
         getProduct(
             3,
@@ -113,7 +119,11 @@
             'Калий, кальций и магний',
             168,
             getProductImg(8),
-            ['Калий', 'Кальций', 'Магний']
+            ['Калий', 'Кальций', 'Магний'],
+            [],
+            false,
+            false,
+            180
         ),
         getProduct(
             16,
@@ -131,7 +141,12 @@
             'Мука «Алейка» пшеничная высший сорт',
             '3 кг',
             110,
-            getProductImg(10)
+            getProductImg(10),
+            [],
+            [],
+            false,
+            false,
+            150
         ),
         getProduct(
             18,
@@ -186,7 +201,12 @@
             'Кулер для воды Aqua Work 0.7-L',
             'Напольный',
             12000,
-            getProductImg(17)
+            getProductImg(17),
+            [],
+            [],
+            false,
+            false,
+            15000
         ),
         getProduct(
             25,
@@ -209,7 +229,12 @@
             'Кулер для воды Aqua Work 105-TDR',
             'бело-черный',
             7000,
-            getProductImg(16)
+            getProductImg(16),
+            [],
+            [],
+            false,
+            false,
+            8000
         ),
         getProduct(
             26,
@@ -235,7 +260,12 @@
             '«Легенда жизни» Бизнес»',
             'С добавлением йода',
             210,
-            getProductImg(4)
+            getProductImg(4),
+            [],
+            [],
+            false,
+            false,
+            310
         ),
         getProduct(
             5,

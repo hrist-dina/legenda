@@ -17,7 +17,11 @@
                     .lk-orders-item__title
                         a(:href="item.link").lk-orders-item__link {{ item.title }}
                     .lk-orders-item__count {{ item.cnt}} шт.
-                    .lk-orders-item__price {{ item.totalPrice | ruble }}
+                    .lk-orders-item__price
+                        span.lk-orders-item__price-old(
+                            v-if="item.totalOldPrice"
+                        ) {{ item.totalOldPrice | thousand }}
+                        span.lk-orders-item__price-value {{ item.totalPrice | ruble }}
 
             .lk-orders-item__actions
                 .lk-orders-item__total {{ orderTotal | ruble }}
@@ -43,7 +47,8 @@ export default {
         orderList() {
             return this.order.list.map(i => ({
                 ...i,
-                totalPrice: i.price * i.cnt
+                totalPrice: i.price * i.cnt,
+                totalOldPrice: i.priceOld * i.cnt
             }))
         },
         orderTotal() {

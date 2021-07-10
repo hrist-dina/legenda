@@ -120,6 +120,34 @@
             display: none;
         }
 
+        &-old {
+            @include sm-block {
+                font-size: 16px;
+                line-height: 20px;
+            }
+            display: inline-block;
+            position: relative;
+            font-family: $ff-Manrope;
+            font-style: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #96a5ae;
+            margin-right: 4px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                margin: auto;
+                background: #ef5026;
+            }
+        }
+
         &-value {
             @include lg-block {
                 font-size: 20px;
@@ -194,7 +222,7 @@
 
     &__result {
         align-self: flex-start;
-        min-width: 100px;
+        min-width: 110px;
         text-align: right;
         margin-left: 20px;
 
@@ -211,6 +239,42 @@
             font-size: 18px;
             line-height: 22px;
             color: #000000;
+            white-space: nowrap;
+        }
+
+        &-price {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        &-old {
+            @include sm-block {
+                font-size: 16px;
+                line-height: 20px;
+            }
+            display: inline-block;
+            position: relative;
+            font-family: $ff-Manrope;
+            font-style: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #96a5ae;
+            margin-right: 4px;
+            white-space: nowrap;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                margin: auto;
+                background: #ef5026;
+            }
         }
     }
 
@@ -320,6 +384,11 @@
             font-size: 14px;
             line-height: 18px;
             color: #989898;
+        }
+
+        &__price-old {
+            font-size: 14px;
+            line-height: 18px;
         }
 
         &__total {

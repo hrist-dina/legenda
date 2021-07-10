@@ -7,6 +7,7 @@
             "title": "Легенда жизни 19л",
             "desc": "С добавлением йода",
             "price": 19000,
+            "priceOld": 22000,
             "img": null,
             "labels": null,
             "composition": ["Йод"]
@@ -27,6 +28,7 @@
             "title": "Легенда жизни 19л",
             "desc": "С добавлением янтарной кислоты и селена",
             "price": 250,
+            "priceOld": 350,
             "img": "/img/product/item-3.png",
             "labels": [{ "name": "Хит", "type": "hit" }],
             "composition": ["Янтарь", "Селен"]
@@ -67,6 +69,7 @@
             "title": "Легенда жизни 19л",
             "desc": "Природная вода без добавок",
             "price": 180,
+            "priceOld": 280,
             "img": "/img/product/item-6.png",
             "labels": [{ "name": "Хит", "type": "hit" }],
             "composition": null

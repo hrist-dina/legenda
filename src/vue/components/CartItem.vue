@@ -15,10 +15,12 @@
                         :quantity="quantity"
                     ).quantity--mini
                     .cart-item__price
+                        span.cart-item__price-old(v-if="priceOld") {{ priceOld | thousand }}
                         span.cart-item__price-value {{ price | ruble }}
                         span.cart-item__price-type / шт.
             template(v-else)
                 .cart-item__price.cart-item__price--desktop(v-if="!inOrder")
+                    span.cart-item__price-old(v-if="priceOld") {{ priceOld | thousand }}
                     span.cart-item__price-value {{ price | ruble }}
                     span.cart-item__price-type / шт.
                 .cart-item__order(v-if="!inOrder")
@@ -29,10 +31,13 @@
                         )
             .cart-item__result(v-if="inOrder")
                 .cart-item__result-quantity {{ quantity }} шт.
-                .cart-item__result-total {{ total | ruble }}
+                .cart-item__result-price
+                    .cart-item__result-old(v-if="totalOld > 0") {{ totalOld | thousand }}
+                    .cart-item__result-total {{ total | ruble }}
             .cart-item__total(v-else)
                 span {{ total | ruble }}
                 .cart-item__total-price
+                    span.cart-item__price-old(v-if="priceOld") {{ priceOld | thousand }}
                     span.cart-item__price-value {{ price | ruble }}
                     span.cart-item__price-type / шт.
             .cart-item__delete(v-if="!inOrder")
@@ -75,6 +80,9 @@ export default {
             type: Number,
             required: true
         },
+        priceOld: {
+            type: Number
+        },
         inOrder: {
             type: Boolean,
             default: false
@@ -87,6 +95,9 @@ export default {
     computed: {
         total() {
             return this.price * this.quantity
+        },
+        totalOld() {
+            return this.priceOld * this.quantity
         },
         classModificators() {
             return {

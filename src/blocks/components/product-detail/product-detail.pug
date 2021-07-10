@@ -19,7 +19,9 @@ mixin product-detail
                     article.__content
                         .__data.js-vue-product
                             .__offer(itemprop="offers" itemscope itemtype="http://schema.org/Offer")
-                                .__price(itemprop="price") !{ruble(190)}
+                                .__price
+                                    .__price-old !{formatThousand(290)}
+                                    .__price-value(itemprop="price") !{ruble(190)}
                                 .__currency.hide(itemprop="priceCurrency") RUB
                             .__actions
                                 quantity-counter(

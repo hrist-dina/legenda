@@ -43,7 +43,7 @@
                     :is-valid-type="item.isValidType"
                     :min-length="item.minLength"
                 )
-                    template(#desc)(v-if="item.desc")
+                    template(#desc v-if="item.desc")
                         template {{ item.desc }}
 
         .personal-data-form__submit(v-if="hasSubmit")

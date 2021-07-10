@@ -31,7 +31,10 @@ mixin product(data, isCategory, toOrder, isRecommendation)
                 a(href='#').__title=data.title
                 .__desc=data.desc
             .__actions
-                .__price=ruble(data.price)
+                .__price
+                    if data.priceOld
+                        .__price-old=formatThousand(data.priceOld)
+                    .__price-value=ruble(data.price)
                 +button(isCategory || isRecommendation ? 'in-cart-category' : 'in-cart', 'button')(
                     :class='classInCart'
                     class={'in-cart': data.isInCart}

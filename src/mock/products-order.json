@@ -7,6 +7,7 @@
             "title": "Легенда жизни 19л",
             "desc": "С добавлением йода",
             "price": 290,
+            "priceOld": 390,
             "img": null,
             "labels": null,
             "composition": ["Йод"]
@@ -17,6 +18,7 @@
             "title": "Легенда жизни 19л",
             "desc": "Йод, фтор и селен",
             "price": 310,
+            "priceOld": 510,
             "img": "/img/product/item-2.png",
             "labels": [{ "name": "Новинка", "type": "new" }],
             "composition": ["Йод", "Фтор", "Селен"]
@@ -27,6 +29,7 @@
             "title": "Легенда жизни 19л",
             "desc": "С добавлением янтарной кислоты и селена",
             "price": 350,
+            "priceOld": 450,
             "img": "/img/product/item-3.png",
             "labels": [{ "name": "Хит", "type": "hit" }],
             "composition": ["Янтарь", "Селен"]
@@ -157,6 +160,7 @@
             "title": "«Легенда жизни» Спорт 0,7л",
             "desc": "Калий, кальций и магний",
             "price": 268,
+            "priceOld": 368,
             "img": "/img/product/item-8.png",
             "labels": null,
             "composition": ["Калий", "Кальций", "Магний"]
@@ -233,6 +237,7 @@
             "title": "Кулер для воды Aqua Work 0.7-L",
             "desc": "Напольный",
             "price": 20000,
+            "priceOld": 23000,
             "img": "/img/product/item-17.png"
         },
         {

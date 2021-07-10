@@ -38,6 +38,7 @@ include ../../views/helpers/mixins
                         :img="product.img"
                         :desc="product.desc"
                         :price="product.price"
+                        :price-old="product.priceOld"
                         :quantity="product.cnt"
                     )
                 .cart-page__empty(v-else)

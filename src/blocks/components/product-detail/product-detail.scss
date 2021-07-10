@@ -71,13 +71,49 @@
             color: #343e44;
             margin-bottom: 24px;
             text-align: left;
+            justify-content: flex-start;
         }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
         font-weight: $bold;
         font-size: 25px;
         line-height: 30px;
         color: #343e44;
         margin-bottom: 20px;
         text-align: center;
+
+        &-old {
+            @include sm-block {
+                font-size: 32px;
+                line-height: 40px;
+                margin-right: 10px;
+            }
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-family: $ff-Manrope;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 28px;
+            color: #96a5ae;
+            margin-right: 8px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                margin: auto;
+                background: #ef5026;
+            }
+        }
     }
 
     &__actions {

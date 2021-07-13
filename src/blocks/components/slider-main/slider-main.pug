@@ -58,5 +58,76 @@ mixin slider-main
                                     use(xlink:href='#image4', transform='scale(0.00100015)')
                                 image#image3(width='1600', height='1590', xlink:href='img/slider-main/bg-2.jpg')
                                 image#image4(width='1000', height='994', xlink:href='img/slider-main/item-2.png')
-
+            +slider-main-3
+            +slider-main-4
         .__pagination.swiper-pagination
+
+
+
+mixin slider-main-3
+    .slider-main__item.swiper-slide
+        .slider-main__item-inner.js-parallax(style='background: linear-gradient(73deg, #A8E063 7.16%, #56AB2F 59.21%);')
+            .slider-main__pattern
+                img.slider-main__pattern-img.js-parallax-img(src='img/slider-main/pattern-3.svg', alt='pattern')
+            +container.slider-main__message-container
+                .slider-main__message
+                    | Вкусные продукты
+                    br
+                    | и товары для дома
+                    br
+                    | с доставкой
+            .slider-main__pic.js-parallax-bg
+                svg.slider-main__pic-svg(width='1177' height='1093' viewBox='0 0 1177 1093' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink')
+                    path(opacity='0.4' d='M686.153 160.168C628.78 183.418 545.009 243.668 508.026 262.256C363.22 335.036 217.715 209.825 137.644 355.153C37.6441 536.652 67.8301 816.67 258.953 870.412C393.037 916.582 578.946 862.997 737.144 881.652C843.144 894.152 889.144 934.652 1050.95 813.053C1191.61 721.91 1217.85 474.081 1075.31 266.773C877.373 87.0204 743.526 136.917 686.153 160.168Z' fill='#96DB77')
+                    path(opacity='0.95' d='M721.124 189.209C645.355 209.414 619.293 278.844 583.731 295.789C444.486 362.139 296.499 259.837 212.144 389.652C111.363 544.746 98.1435 825.152 281.644 848.652C409.144 900.152 508.644 869.652 662.644 869.652C763.144 869.652 913.605 862.675 1048.64 779.152C1183.68 695.628 1215.81 490.692 1075.78 295.789C935.745 100.882 796.893 169.005 721.124 189.209Z' fill='#4BAE1E')
+                    path(d='M653.85 266.576C653.85 266.576 608.369 339.578 550.667 342.85C371.146 353.028 304.74 287.024 212.143 442.152C142.954 593.217 204.481 737.038 327.144 824.652C419.89 890.898 556.144 849.152 671.644 849.152C855.644 834.652 863.662 859.83 986.644 782.652C1109.63 705.475 1132.14 468.652 1075.18 350.573C948.541 171.916 744.16 159.892 653.85 266.576Z' fill='#0F9B0F')
+                    mask#mask3-1(mask-type='alpha' maskUnits='userSpaceOnUse' x='250' y='203' width='818' height='634')
+                        path(d='M677.152 268.633C677.152 268.633 588.895 365.653 536.152 365.414C439.33 364.972 350.694 321.385 282.897 428.486C230.29 522.371 242.871 640.248 315.344 722.764C375.445 805.073 518.788 837.359 635.578 835.972C744.499 834.678 834.84 810.008 944.374 735.757C1053.91 661.505 1120.54 508.268 1012.17 343.438C903.803 178.604 758.445 167.36 677.152 268.633Z' fill='#FFF2DD')
+                    g(mask='url(#mask3-1)')
+                        rect(x='243.144' y='145.652' width='823' height='823' fill='url(#pattern3-1)')
+                    mask#mask3-2(mask-type='alpha' maskUnits='userSpaceOnUse' x='289' y='158' width='407' height='414')
+                        rect(x='289.144' y='158.652' width='406' height='413' fill='#C4C4C4')
+                    g(mask='url(#mask3-2)')
+                        rect(x='288' y='166' width='823' height='823' fill='url(#pattern3-2)')
+                    defs
+                        pattern#pattern3-1(patternContentUnits='objectBoundingBox' width='1' height='1')
+                            use(xlink:href='#image3-1' transform='scale(0.001)')
+                        pattern#pattern3-2(patternContentUnits='objectBoundingBox' width='1' height='1')
+                            use(xlink:href='#image3-2' transform='scale(0.001)')
+                        image#image3-1(width='1000' height='1000' xlink:href='img/slider-main/bg-3.jpg')
+                        image#image3-2(width='497' height='504' xlink:href='img/slider-main/item-3.png')
+mixin slider-main-4
+    .slider-main__item.swiper-slide
+        .slider-main__item-inner.js-parallax(style='background: linear-gradient(237.93deg, #004F91 32.29%, #109FDA 87.26%);')
+            .slider-main__pattern
+                img.slider-main__pattern-img.js-parallax-img(src='img/slider-main/pattern-4.svg', alt='pattern')
+            +container.slider-main__message-container
+                .slider-main__message
+                    | Помпа в подарок
+                    br
+                    | на дачу!
+            .slider-main__pic.js-parallax-bg
+                svg.slider-main__pic-svgsvg(width='1182' height='900' viewBox='0 0 1182 900' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink')
+                    path(opacity='0.5' d='M559.243 147.987C559.243 147.987 641.335 152.724 702.086 146.301C813.607 134.506 895.097 95.3546 1019.16 207.224C1131.83 321.278 1141.29 581.363 1075.01 694.164C1022.93 805.266 842.051 880.086 707.129 891.884C581.297 902.888 471.996 882.163 330.202 800.94C188.408 719.716 67.5595 489.412 158.015 268.312C248.467 47.2071 444.355 29.3017 559.243 147.987Z' fill='#229BD7')
+                    path(d='M766.655 185.233C766.655 185.233 629.158 225.253 580.182 194.958C490.28 139.343 432.599 48.2203 308.406 109.291C205.891 166.717 150.397 283.65 170.832 401.805C179.865 512.714 223.074 660.882 332.613 726.179C434.772 787.077 604.814 779.238 749.141 772.552C893.469 765.865 1070.04 649.946 1063.11 434.679C1056.19 219.409 900.091 137.283 766.655 185.233Z' fill='#2C9BCA')
+                    path(d='M751.113 138.179C679.114 206.304 584.113 61.6793 538.547 51.6791C514.113 41.6793 352.014 55.6794 287.614 161.679C207.114 294.179 176.205 469.102 238.592 563.492C288.382 655.935 418.719 733.204 538.114 748.179C649.465 762.146 728.398 765.09 850.614 704.679C972.83 644.268 1079.5 457.577 992.035 274.136C904.567 90.6908 823.112 70.0543 751.113 138.179Z' fill='#A5DDFA')
+                    g(clip-path='url(#clip4-1)')
+                        mask#mask4-2(mask-type='alpha' maskUnits='userSpaceOnUse' x='237' y='74' width='796' height='640')
+                            path(d='M237.613 381.679C240.019 294.727 238.72 212.821 322.889 143.5C357.96 116.267 442.128 74.1792 498.241 74.1792C557.861 74.1792 587.917 114.218 622.987 143.927C672.086 183.539 714.17 218.199 791.325 223.151C840.423 225.627 903.55 210.772 949.141 223.151C1050.85 250.384 1040.61 381.679 1014.11 489.179C949.141 627.179 914.071 631.648 815.874 673.736C672.086 733.153 497.64 727.946 392.613 642.179C247.848 523.963 236.636 416.958 237.613 381.679Z' fill='#DADADA')
+                        g(mask='url(#mask4-2)')
+                            rect(x='157.114' y='-15.8208' width='879' height='879' fill='url(#pattern4-2)')
+                    mask#mask4-1(mask-type='alpha' maskUnits='userSpaceOnUse' x='670' y='-7' width='315' height='522')
+                        rect(x='670.113' y='-6.8208' width='314' height='521' fill='#C4C4C4')
+                    g(mask='url(#mask4-1)')
+                        rect(x='609' y='-15' width='879' height='879' fill='url(#pattern4-1)')
+                    defs
+                        pattern#pattern4-2(patternContentUnits='objectBoundingBox' width='1' height='1')
+                            use(xlink:href='#image4-2' transform='scale(0.001)')
+                        clippath#clip4-1
+                            rect(width='811' height='643' fill='white' transform='translate(223.113 67.1792)')
+                        pattern#pattern4-1(patternContentUnits='objectBoundingBox' width='1' height='1')
+                            use(xlink:href='#image4-1' transform='scale(0.001)')
+                        image#image4-2(width='1000' height='1000' xlink:href='img/slider-main/bg-4.jpg')
+                        image#image4-1(width='454' height='652' xlink:href='img/slider-main/item-4.png')
+
+

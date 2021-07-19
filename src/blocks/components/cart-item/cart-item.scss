@@ -120,6 +120,10 @@
             display: none;
         }
 
+        &-sale {
+            color: #ce272d;
+        }
+
         &-old {
             @include sm-block {
                 font-size: 16px;

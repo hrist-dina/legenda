@@ -84,6 +84,10 @@
         margin-bottom: 20px;
         text-align: center;
 
+        &-sale {
+            color: #ce272d;
+        }
+
         &-old {
             @include sm-block {
                 font-size: 32px;

@@ -19,7 +19,9 @@ export const declOfNum = (n, titles) => {
 export const formatThousand = number =>
     String(number).replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
 export const phoneReplace = value => value.replace(/[^\d+]/g, '')
-export const ruble = value => `${formatThousand(value)} ₽`
+export const ruble = value => `${formatThousand(decimal(value))} ₽`
+export const decimal = value =>
+    value % 1 !== 0 ? parseFloat(value).toFixed(1) : value
 export const bonus = value =>
     `${formatThousand(value)} ${declOfNum(value, BONUS_TITLE)}`
 

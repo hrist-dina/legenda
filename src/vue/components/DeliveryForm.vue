@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import InputText from '%vue%/components/InputText'
 import DeliveryTypeList from '%vue%/components/DeliveryTypeList'
 import DeliveryDatetime from '%vue%/components/DeliveryDatetime'
@@ -204,6 +204,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions('user', ['setDelivery']),
         onSubmit() {
             if (this.isValidForm) {
                 this.$emit('submit', {
@@ -238,6 +239,7 @@ export default {
         },
         onChangeCity(val) {
             this.inputs.city.value = val
+            this.setDelivery({ ...this.selectDelivery, ...{ city: val } })
         },
         setDataToPhone(key, value, field) {
             const item = this.phones[key]
